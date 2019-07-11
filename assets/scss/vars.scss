@@ -1,0 +1,47 @@
+@import "@/assets/scss/mixins.scss";
+
+// FONTS
+// $fontLato: 'Lato', Helvetica, Arial, sans-serif;
+
+$fontMontserrat: 'Montserrat', sans-serif;
+$fontThemify: 'themify';
+
+// COLORS
+$app-background: #FCFCFC;
+$white: #FFFFFF;
+$black: #565859;
+$gray-dark: #909497;
+$gray-light: #B6BFC6;
+$green: #6EB63B;
+$green-light: #6BCA27;
+$red: #E22355;
+$blue: #1296F9;
+$blue-light: #37CCDB;
+$violet: #795BF4;
+$yellow: #F7D921;
+$yellow-light: #FFE85D;
+$blockBorder: rgba(0,0,0,.2);
+
+// TRANSITIONS
+$tr-01: all .1s ease-in-out;
+$tr-02: all .2s ease-in-out;
+$tr-04: all .4s ease-in-out;
+$tr-06: all .6s ease-in-out;
+
+// SHADOWS
+$btnShadow: 0 1px 6px 1px rgba(52,40,104,.4);
+$btnHoverShadow: 0 1px 4px 0px rgba(52,40,104,.4);
+$btnActiveShadow: 0 1px 4px 1px rgba(52,40,104,.4);
+
+
+
+
+
+
+
+// DEBAGGING
+// border: 1px solid red;
+// @import '@/assets/scss/vars.scss';
+
+// расстояние между элементами 1 блока 10px между разными блоками 20px или 40px
+

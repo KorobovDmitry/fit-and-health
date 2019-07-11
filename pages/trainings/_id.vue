@@ -1,0 +1,67 @@
+<template>
+  <div class="training-program-full-view">
+
+    <div class="training-program-full-view__content-wrapper">
+      <p class="training-program-full-view__title">Название программы тренировок</p>
+      <overview-current-training />
+      <div class="exercises">
+        <exercises-list />
+        <current-training-exercises />
+      </div>
+    </div>
+
+  </div>
+</template>
+
+<script>
+import ExercisesList from '@/components/trainings/TrainingProgramFullView/ExercisesList.vue'
+import CurrentTrainingExercises from '@/components/trainings/TrainingProgramFullView/CurrentTrainingExercises.vue'
+import OverviewCurrentTraining from '@/components/trainings/TrainingProgramFullView/OverviewCurrentTraining.vue'
+export default {
+  middleware: ['user-auth'],
+  components: {
+    ExercisesList,
+    CurrentTrainingExercises,
+    OverviewCurrentTraining
+  },
+  data () {
+    return {
+      programName: this.$route.params['name']
+    }
+  },
+  watch: {
+    $route (toR) {
+      this.programName = toR.params['name']
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "@/assets/scss/vars.scss";
+
+.training-program-full-view {
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .training-program-full-view__content-wrapper {
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    padding: 40px;
+    width: 100%;
+    max-width: 1400px;
+    .training-program-full-view__title {
+      text-align: center;
+      font-size: 26px;
+    }
+  }
+}
+
+.exercises {
+  display: flex;
+}
+
+</style>

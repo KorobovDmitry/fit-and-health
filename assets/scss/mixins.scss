@@ -1,0 +1,12 @@
+// MIXINS
+@mixin for ($width) {
+  @media screen and (max-width: $width + 'px') {
+    @content
+  }
+}
+
+// Пример использования
+// @include for (800) {
+//   font-weight: 900;
+// }
+// Минимальный размер брейкпоинта. Отображение для мобильных телефонов 580px
