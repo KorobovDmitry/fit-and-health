@@ -51,11 +51,12 @@ export default {
   // border: 1px solid red;
   display: flex;
   align-items: center;
-  margin: 5px 0;
+  margin: 10px 0;
   .input__text {
     // border: 1px solid red;
     padding-top: 2px;
-    min-width: 180px;
+    min-width: 200px;
+    // width: 100%;
     font-size: 16px;
     // color: $gray-dark;
   }

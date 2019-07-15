@@ -1,11 +1,6 @@
-export const state = () => ({
-
-})
-
+export const state = () => ({})
 export const getters = {}
-
 export const mutations = {}
-
 export const actions = {
   // этот action вызывается на стороне сервера при запуске SSR
   nuxtServerInit ({dispatch}) {

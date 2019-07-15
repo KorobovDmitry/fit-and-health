@@ -1,21 +1,26 @@
 <template>
   <div class="food-part__overview">
-    <div class="food-part__description-wrapper">
-      <p class="food-part__title">Завтрак</p>
-      <p class="food-part__description">Бутерброды с творогом и фруктами.</p>
+    <div class="food-part__text-wrapper">
+      <p class="food-part__title">{{element.title}}</p>
+      <p class="food-part__description">{{ element.description }}</p>
     </div>
-    <div class="food-part__nutrition-sum food-part__nutrition-sum-kkal">Калорийность: 1056</div>
+    <div class="food-part__nutrition-sum food-part__nutrition-sum-kkal">
+      Калорийность: 1056
+    </div>
     <div class="food-part__nutrition-sum-wrapper">
-      <div class="food-part__nutrition-sum">Белки: 80 гр.</div>
-      <div class="food-part__nutrition-sum">Жиры: 68 гр.</div>
-      <div class="food-part__nutrition-sum">Углеводы: 98 гр.</div>
+      <p class="food-part__nutrition-sum">Белки: 80 гр.</p>
+      <p class="food-part__nutrition-sum">Жиры: 68 гр.</p>
+      <p class="food-part__nutrition-sum">Углеводы: 98 гр.</p>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
-
+export default {
+  props: {
+    element: Object
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -27,15 +32,15 @@ export default {}
   margin-right: 10px;
   width: 500px;
   min-width: 500px;
-  height: 280px;
+  height: 290px;
   background: $green;
   color: $white;
   border-radius: 6px;
-  .food-part__description-wrapper {
+  .food-part__text-wrapper {
     // border: 1px solid red;
     position: absolute;
-    top: 50px;
-    bottom: 80px;
+    top: 70px;
+    bottom: 70px;
     left: 40px;
     right: 40px;
     display: flex;
@@ -45,6 +50,7 @@ export default {}
       margin-top: auto;
       font-size: 26px;
       font-weight: 600;
+      // white-space: nowrap;
     }
     .food-part__description {
       margin-top: 6px;

@@ -5,7 +5,7 @@
       <div class="meal-planer__content">
         <nutritients />
         <date-selection />
-        <food-parts />
+        <meal-parts />
       </div>
     </div>
   </div>
@@ -14,7 +14,7 @@
 <script>
 import Nutritients from '@/components/nutritionDiary/MealPlaner/Nutritients.vue'
 import DateSelection from '@/components/nutritionDiary/MealPlaner/DateSelection.vue'
-import FoodParts from '@/components/nutritionDiary/MealPlaner/FoodParts/FoodParts.vue'
+import MealParts from '@/components/nutritionDiary/MealPlaner/MealParts/MealParts.vue'
 export default {
   middleware: ['user-auth'],
   async fetch ({ store }) {
@@ -23,7 +23,7 @@ export default {
   components: {
     Nutritients,
     DateSelection,
-    FoodParts
+    MealParts
   },
   beforeMount: function () {
     this.$store.commit('nutritionDiary/openSidebar')
@@ -42,7 +42,7 @@ export default {
   .meal-planer__content-wrapper {
     // border: 1px solid red;
     margin-top: 60px;
-    padding: 40px 40px 20px 40px;
+    padding: 40px 40px 40px 40px;
     width: 100%;
     max-width: 1400px;
     .meal-planer__page-title {

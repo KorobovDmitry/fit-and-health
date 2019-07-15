@@ -8,33 +8,30 @@
       <li class="food-part__top-list-item">углеводы</li>
       <li class="food-part__top-list-item">Ккал</li>
       <li class="food-part__top-list-item">
-        <i class="ti-pencil"></i>
+        <i class="ti-more"></i>
       </li>
     </ul>
 
     <div class="scroll__wrapper">
-      <ul class="food-part__meal-list">
-        <li class="food-part__meal-list-item">Творог</li>
+      <ul
+        class="food-part__meal-list"
+        v-for="(item, index) of element.productsList"
+        :key="index"
+      >
+        <li class="food-part__meal-list-item">{{ item.title }}</li>
         <li class="food-part__meal-list-item">
-          <input class="food-part__meal-list-item-input" type="text" value="150">
+          <input
+            class="food-part__meal-list-item-input"
+            type="text"
+            :value="item.weight"
+            @keypress.enter="updateProductWeight(element, index, item.title)"
+            @blur="updateProductWeight(element, index, item.title)"
+          >
         </li>
-        <li class="food-part__meal-list-item">85.4</li>
-        <li class="food-part__meal-list-item">15.6</li>
-        <li class="food-part__meal-list-item">10.5</li>
-        <li class="food-part__meal-list-item">306.45</li>
-        <li class="food-part__meal-list-item">
-          <i class="food-part__meal-icon ti-close"></i>
-        </li>
-      </ul>
-      <ul class="food-part__meal-list">
-        <li class="food-part__meal-list-item">Киви</li>
-        <li class="food-part__meal-list-item">
-          <input class="food-part__meal-list-item-input" type="text" value="250">
-        </li>
-        <li class="food-part__meal-list-item">250</li>
-        <li class="food-part__meal-list-item">250</li>
-        <li class="food-part__meal-list-item">250</li>
-        <li class="food-part__meal-list-item">250</li>
+        <li class="food-part__meal-list-item">{{ Math.round( (item.protein * item.weight / 100) * 100 ) / 100 }}</li>
+        <li class="food-part__meal-list-item">{{ Math.round( (item.fats * item.weight / 100) * 100 ) / 100 }}</li>
+        <li class="food-part__meal-list-item">{{ Math.round( (item.carb * item.weight / 100) * 100 ) / 100 }}</li>
+        <li class="food-part__meal-list-item">{{ Math.round( (item.kkal * item.weight / 100) * 100 ) / 100 }}</li>
         <li class="food-part__meal-list-item">
           <i class="food-part__meal-icon ti-close"></i>
         </li>
@@ -42,21 +39,32 @@
     </div>
 
     <div class="food-part__btn-wrapper">
-      <app-button class="food-part__btn" size14px uppercase>+ Добавить продукт или рецепт</app-button>
-      <app-button size14px uppercase>Удалить все</app-button>
+      <app-button class="food-part__btn" size14px uppercase fillArea>Удалить</app-button>
+      <app-button class="food-part__btn" size14px uppercase fillArea @click.native="openEditModal()">Редактировать</app-button>
+      <app-button class="food-part__btn" size14px uppercase fillArea>Сохранить изменения</app-button>
     </div>
+
   </div>
 </template>
 
 <script>
 import AppButton from '@/components/basic/AppButton.vue'
 export default {
+  props: {
+    element: Object
+  },
   components: {
     AppButton
   },
   data () {
-    return {
-
+    return {}
+  },
+  methods: {
+    updateProductWeight (element, index, itemTitle) {
+      console.log(`update weight for ELEMENT ${element.mealPartNumber} product INDEX ${index} and TITLE ${itemTitle}`)
+    },
+    openEditModal () {
+      this.$store.commit('mealPlaner/setMealPartModalActive')
     }
   }
 }
@@ -87,7 +95,6 @@ export default {
       text-align: center;
       color: $white;
       font-size: 12px;
-      font-weight: 600;
       padding: 10px 0;
       border-left: 1px solid rgba($white, .3);
       user-select: none;
@@ -110,14 +117,20 @@ export default {
     // border: 1px solid red;
     display: flex;
     flex-direction: column;
-    margin-top: 34px;
+    margin-top: 44px;
+    margin-bottom: 10px;
+    // margin-right: -16px;
+    height: 204px;
+    max-height: 204px;
+    overflow: auto;
+    // overflow-x: hidden;
   }
 
   .food-part__meal-list {
     // border: 1px solid red;
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-bottom: 10px;
     background: $white;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 6px;
@@ -128,12 +141,8 @@ export default {
       min-width: 100px;
       height: 35px;
       text-align: center;
-      // color: $gray-dark;
       font-size: 14px;
-      // font-weight: 600;
       padding: 8px 0;
-      // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      // border-left: 1px solid transparent;
       .food-part__meal-list-item-input {
         position: absolute;
         top: 50%;
@@ -144,7 +153,6 @@ export default {
         max-width: 100px;
         background: none;
         text-align: center;
-        // color: $gray-dark;
         font-family: $fontMontserrat;
         font-size: 16px;
         font-weight: 600;
@@ -183,7 +191,6 @@ export default {
       min-width: 200px;
       width: 100%;
       text-align: left;
-      // color: $green;
       font-size: 16px;
       font-weight: 500;
       line-height: 18px;
@@ -196,18 +203,24 @@ export default {
       min-width: 40px;
     }
   }
+  .food-part__meal-list:last-child {
+    margin-bottom: 0;
+  }
 
   .food-part__btn-wrapper {
     // border: 1px solid red;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
+    display: flex;
+    // align-items: center;
+    // justify-content: center;
     .food-part__btn {
       margin-right: 10px;
+    }
+    .food-part__btn:last-child {
+      margin-right: 0;
     }
   }
 }

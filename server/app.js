@@ -6,7 +6,8 @@ const cors = require('cors')
 const morgan = require('morgan')
 const keys = require('./keys')
 
-const authRoutes = require('./routes/auth.js')
+const authRoutes = require('./routes/auth')
+const userProfileRoutes = require('./routes/userProfile')
 const nutritionDiaryRoutes = require('./routes/nutritionDiary')
 
 const app = express()
@@ -26,7 +27,7 @@ app.use(passport.initialize())
 require('./middleware/passport.js')(passport)
 
 // выводит в консоль информацию о запросах пришедших на сервер
-app.use(morgan('dev'))
+// app.use(morgan('dev'))
 
 // подключение bodyParser
 app.use(bodyParser.urlencoded({extended: true}))
@@ -35,10 +36,11 @@ app.use(bodyParser.json())
 app.use(cors())
 
 // Для получения доступа к папке напрямую
-// localhost:5000/uploads/названиеКартинки.png
+// localhost:3000/uploads/названиеКартинки.png
 app.use('/uploads', express.static('uploads'))
 
 app.use('/api/auth', authRoutes)
+app.use('/api/user-profile', userProfileRoutes)
 app.use('/api/nutrition-diary', nutritionDiaryRoutes)
 
 module.exports = app

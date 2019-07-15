@@ -9,7 +9,7 @@
       ]"
     >
       {{ title }}
-      <span v-if="error.exist" class="input__error-message">{{ ` * ${error.message} * ` }}</span>
+      <span v-if="error.exist" class="input__error-message">{{ `${error.message}` }}</span>
     </p>
 
     <input

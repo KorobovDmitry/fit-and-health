@@ -18,7 +18,7 @@
       </div>
 
       <div class="user-card__bottom">
-        <p class="user-card__user-name">Коробов Дмитрий</p>
+        <p class="user-card__user-name">{{ firstName }} {{ lastName }}</p>
         <p class="user-card__user-status">Тренер</p>
         <!-- <p class="user-card__user-status">Здесь можно разместить статус или ванильную цитату</p> -->
         <div class="user-card__favorite-sports-block">
@@ -32,22 +32,35 @@
     </div>
 
     <ul class="user-card__menu-list">
-      <!-- <li class="user-card__menu-list-item">Лента</li> -->
+      <li class="user-card__menu-list-item">Лента</li>
       <li class="user-card__menu-list-item">Активность</li>
-      <router-link tag="li" class="user-card__menu-list-item" to="trainings/training-programs">Тренировочные программы</router-link>
-      <!-- <li class="user-card__menu-list-item">Оповещения</li> -->
-      <!-- <li class="user-card__menu-list-item">Личные сообщения</li> -->
-      <!-- <li class="user-card__menu-list-item">Статистика</li> -->
+      <!-- <li class="user-card__menu-list-item">Тренировочные программы</li> -->
+      <li class="user-card__menu-list-item">Оповещения</li>
+      <li class="user-card__menu-list-item">Личные сообщения</li>
+      <li class="user-card__menu-list-item">Статистика</li>
       <li class="user-card__menu-list-item user-card__menu-list-item--active">Настройки</li>
-      <!-- <li class="user-card__menu-list-item">FAQ</li> -->
-      <li class="user-card__menu-list-item">Выйти</li>
+      <li class="user-card__menu-list-item">FAQ</li>
+      <li class="user-card__menu-list-item" @click="logout()">Выйти</li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-
+  computed: {
+    lastName () {
+      return this.$store.getters['userProfile/getUserLastName']
+    },
+    firstName () {
+      return this.$store.getters['userProfile/getUserFirstName']
+    }
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch('auth/logout')
+      this.$router.push('/auth/login')
+    }
+  }
 }
 </script>
 
@@ -56,7 +69,7 @@ export default {
 
 .user-card {
   // border: 1px solid red;
-  margin-top: 40px;
+  // margin-top: 40px;
   min-width: 400px;
   max-width: 400px;
   .user-card__user-info {

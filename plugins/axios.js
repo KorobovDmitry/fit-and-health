@@ -5,7 +5,7 @@ export default function ({$axios, redirect, store}) {
   $axios.interceptors.request.use(request => {
     // console.log('interceptor')
     if (store.getters['auth/isAuthenticated'] && !request.headers.common.Authorization) {
-      const token = store.getters['auth/token']
+      const token = store.getters['auth/getToken']
       // request.headers.common.Authorization = `Bearer ${token}`
       request.headers.common.Authorization = token
     }

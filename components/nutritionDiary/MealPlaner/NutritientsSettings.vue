@@ -164,6 +164,7 @@ export default {
       switch (targetNutrient) {
         case 'protein':
           this.proteinEditActive = true
+          // setTimeout нужен что бы сработали функции focus() и select()
           setTimeout(() => {
             this.$refs.inputProtein.focus()
             this.$refs.inputProtein.select()
@@ -199,41 +200,26 @@ export default {
       switch (targetNutrient) {
         case 'protein':
           this.proteinEditActive = false
-          this.changeNutrients(targetNutrient)
+          // this.$store.dispatch('mealPlaner/updateTargetProtein', this.$refs.inputProtein.value)
+          this.$store.commit('mealPlaner/setTargetProtein', this.$refs.inputProtein.value)
           break
         case 'fats':
           this.fatsEditActive = false
-          this.changeNutrients(targetNutrient)
+          // this.$store.dispatch('mealPlaner/updateTargetProtein', this.$refs.inputProtein.value)
+          this.$store.commit('mealPlaner/setTargetFats', this.$refs.inputFats.value)
           break
         case 'carb':
           this.carbEditActive = false
-          this.changeNutrients(targetNutrient)
+          // this.$store.dispatch('mealPlaner/updateTargetProtein', this.$refs.inputProtein.value)
+          this.$store.commit('mealPlaner/setTargetCarb', this.$refs.inputCarb.value)
           break
         case 'targetWeight':
           this.targetWeightEditActive = false
-          this.changeNutrients(targetNutrient)
+          // this.$store.dispatch('mealPlaner/updateTargetProtein', this.$refs.inputProtein.value)
+          this.$store.commit('mealPlaner/setTargetWeight', this.$refs.inputTargetWeight.value)
           break
         default:
           console.log('closeInputEdit func argument error')
-          break
-      }
-    },
-    changeNutrients (nutrient) {
-      switch (nutrient) {
-        case 'protein':
-          this.$store.state.mealPlaner.nutrients.protein = this.$refs.inputProtein.value
-          break
-        case 'fats':
-          this.$store.state.mealPlaner.nutrients.fats = this.$refs.inputFats.value
-          break
-        case 'carb':
-          this.$store.state.mealPlaner.nutrients.carb = this.$refs.inputCarb.value
-          break
-        case 'targetWeight':
-          this.$store.state.userProfile.targetWeight = this.$refs.inputTargetWeight.value
-          break
-        default:
-          console.log('changeNutrients func argument error')
           break
       }
     }

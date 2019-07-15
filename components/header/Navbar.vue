@@ -20,7 +20,6 @@
     >
       {{ element }}
     </nuxt-link>
-    <p @click="logout()">выйти</p>
   </div>
 </template>
 
@@ -31,18 +30,13 @@ export default {
       navbarLink: {
         '/trainings': 'Тренировки',
         '/nutrition-diary': 'Дневник питания',
-        '/events': 'Вызовы',
-        '/auth': 'Auth'
+        '/events': 'Вызовы'
       }
     }
   },
   methods: {
     closeSidebar () {
       this.$store.commit('nutritionDiary/closeSidebar', false)
-    },
-    logout () {
-      this.$store.dispatch('auth/logout')
-      this.$router.push('/auth/login')
     }
   }
 }

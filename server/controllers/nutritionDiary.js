@@ -6,7 +6,7 @@ const Product = require('../models/Product')
 const errorHandler = require('../utils/errorHandler.js')
 
 // Meal Planer
-module.exports.getCurrentDayMealPlaner = async function (req, res) {
+module.exports.getSelectedDayMealPlaner = async function (req, res) {
   // Подтянуть данные пользователя о текущем весе и о желаемом весе
   // поскольку параметры пользователя должны отслеживаться каждый день то под них нужно сделать отдельную таблицу
   // а значит не получится делать ref ссылку на данные. Нужно делать запрос к базе и формировать объект который будем отправлять пользователю в ответ
@@ -19,7 +19,7 @@ module.exports.getCurrentDayMealPlaner = async function (req, res) {
       .findOne({}, {currentWeight: true, targetWeight: true, height: true, userId: true, _id: false})
       .populate('userId', 'gender birthday activity')
       .sort({$natural:-1})
-    console.log(lastWeightParams)
+    // console.log(lastWeightParams)
 
     if (!lastMealPlanerDay) {
       // Если не найдено ни одной записи о рационе Meal Planer
@@ -30,6 +30,9 @@ module.exports.getCurrentDayMealPlaner = async function (req, res) {
         targetCarb: 0,
         userId: decoded_token.userId
       }).save()
+
+      // console.log(currentDayMealPlaner)
+
       res.status(200).json(currentDayMealPlaner)
     } else if (currentDate === lastMealPlanerDay.date) {
       // Если запись найдена и последняя запись выполнена текущим числом, тогда отправить данные пользователю на фронтенд
@@ -40,7 +43,31 @@ module.exports.getCurrentDayMealPlaner = async function (req, res) {
         currentWeight: lastWeightParams.currentWeight,
         targetWeight: lastWeightParams.targetWeight,
         selectedDay: lastMealPlanerDay.date,
-        selectedDayMealParts: [{}]
+        selectedDayMealParts: [
+          {
+            mealPartNumber: 0,
+            title: 'Первый прием пищи',
+            description: ' Описание для первого приема пищи в рационе на день',
+            productsList: [
+              {
+                title: 'Гречка',
+                weight: 20,
+                protein: 5.2,
+                fats: 0.2,
+                carb: 67.2,
+                kkal: 453
+              },
+              {
+                title: 'Гречка',
+                weight: 100,
+                protein: 5.2,
+                fats: 0.2,
+                carb: 67.2,
+                kkal: 453
+              }
+            ]
+          }
+        ]
       }
       res.status(200).json(returnData)
     } else {
@@ -58,6 +85,8 @@ module.exports.getCurrentDayMealPlaner = async function (req, res) {
     errorHandler(res, err)
   }
 }
+
+module.exports.updateSelectedDayMealPlaner = async function (req, res) {}
 
 // food calorie table
 module.exports.createProduct = async function (req, res) {
@@ -105,13 +134,13 @@ module.exports.getAllProducts = async function (req, res) {
   }
 }
 
-module.exports.getUserProducts = async function (req, res) {
-  const token = req.headers.authorization
-  const decoded_token = jwtDecode(token)
-  try {
-    const products = await Product.find({user: decoded_token.userId})
-    res.status(200).json(products)
-  } catch (err) {
-    errorHandler(res, err)
-  }
-}
+// module.exports.getUserProducts = async function (req, res) {
+//   const token = req.headers.authorization
+//   const decoded_token = jwtDecode(token)
+//   try {
+//     const products = await Product.find({user: decoded_token.userId})
+//     res.status(200).json(products)
+//   } catch (err) {
+//     errorHandler(res, err)
+//   }
+// }

@@ -19,7 +19,7 @@ export const getters = {
   isAuthenticated (state) {
     return Boolean(state.token)
   },
-  token (state) {
+  getToken (state) {
     return state.token
   },
   getLoginEmailError (state) {
@@ -33,11 +33,9 @@ export const getters = {
 export const mutations = {
   setToken (state, token) {
     state.token = token
-    // console.log(state.token)
   },
-  clearToken (state, getters) {
+  clearToken (state) {
     state.token = null
-    // console.log(state.token)
   },
   setLoginEmailError (state, error) {
     state.loginEmailError = error
@@ -50,12 +48,12 @@ export const mutations = {
 export const actions = {
   async login ({commit, dispatch}, formData) {
     try {
-      const {token} = await this.$axios.$post('http://localhost:3000/api/auth/login', formData)
-      // console.log(`Функция логина вернула токен ${token}`)
-      dispatch('setToken', token)
+      const token = await this.$axios.$post('http://localhost:3000/api/auth/login', formData)
+      await dispatch('setToken', token)
+
       // Сбросить сообщения об ошибках если они были
-      commit('setLoginEmailError', {exist: false, status: undefined, message: ''})
-      commit('setLoginPasswordError', {exist: false, status: undefined, message: ''})
+      await commit('setLoginEmailError', {exist: false, status: undefined, message: ''})
+      await commit('setLoginPasswordError', {exist: false, status: undefined, message: ''})
     } catch (e) {
       // получаем сообщение об ошибке которую возвращае axios
       console.log(e.response.status, e.response.data.message)
@@ -80,8 +78,8 @@ export const actions = {
     this.$axios.setToken(token, 'Bearer')
     // сохроняем в state токен полученный из action login
     commit('setToken', token)
-    // сохраняем cookie
-    cookie.set('jwt-token', token)
+    // сохраняем cookie на 1 день
+    cookie.set('jwt-token', token, { expires: 1 })
   },
   logout ({commit}, token) {
     // убираем токен из запросов axios
@@ -95,13 +93,14 @@ export const actions = {
     try {
       // console.log('создать юзера', formData)
       const newUser = await this.$axios.$post('http://localhost:3000/api/auth/register', formData)
+      // await dispatch('setToken', token)
       console.log(newUser)
     } catch (e) {
       // получаем сообщение об ошибке которую возвращае axios
       console.log(e.response.data.message)
     }
   },
-  autoLogin ({dispatch}) {
+  async autoLogin ({dispatch}) {
     // Получаем в переменную значение cookie проверяя находимся ли мы в браузере.
     // Если да то берем куки из document.cookie
     // Если нет тогда куки можно получить из get запроса (куки отправляются автоматически со всеми запросами, если куки для этого сайта есть)
@@ -112,8 +111,8 @@ export const actions = {
     const cookie = cookieParser.parse(cookieStr || '') || {}
     // Получаем значение cookie токена по ключу
     const token = cookie['jwt-token']
-    // запускаем action setToken для того чтобы установоить значение токена
-    dispatch('setToken', token)
 
+    // запускаем action setToken для того чтобы установоить значение токена
+    await dispatch('setToken', token)
   }
 }

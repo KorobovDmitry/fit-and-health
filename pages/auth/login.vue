@@ -9,16 +9,14 @@
           <app-input-valid
             title="Email"
             placeholder=""
-            :required="true"
             :error="emailError"
             @inputValueChanged="loginEmail = $event"
+            @blur="$v.loginEmail.$touch()"
           />
           <app-input-valid
             title="Пароль"
             placeholder=""
             native-type="password"
-            :required="true"
-            :min-length="6"
             :error="passwordError"
             @inputValueChanged="loginPassword = $event"
           />
@@ -75,6 +73,7 @@ export default {
       this.$router.push('/auth/register')
     },
     async login () {
+      // добавить валидацию перед диспатчем
       try {
         const formData = {
           email: this.loginEmail,

@@ -1,9 +1,7 @@
 <template>
   <div class="training-programs">
     <div class="training-programs__content-wrapper">
-      <p class="training-programs__title">
-        Тренировочные программы
-      </p>
+      <p class="training-programs__title">Тренировочные программы</p>
       <overview-trainings />
       <main-training-program />
       <training-programs-list />

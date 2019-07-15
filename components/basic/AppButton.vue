@@ -9,6 +9,7 @@
       {'mt20': mt20},
       {'mb10': mb10},
       {'mb20': mb20},
+      {'fill-area': fillArea}
     ]"
   >
     <button
@@ -18,7 +19,11 @@
         {'size14px': size14px},
         {'size16px': size16px},
         {'size18px': size18px},
-        {'fill-area': fillArea}
+        {'fill-area': fillArea},
+        {'success-btn': successBtn},
+        {'info-btn': infoBtn},
+        {'warning-btn': warningBtn},
+        {'danger-btn': dangerBtn}
       ]"
     >
       <slot></slot>
@@ -40,7 +45,11 @@ export default {
     mt10: Boolean,
     mt20: Boolean,
     mb10: Boolean,
-    mb20: Boolean
+    mb20: Boolean,
+    successBtn: Boolean,
+    infoBtn: Boolean,
+    warningBtn: Boolean,
+    dangerBtn: Boolean
   }
 }
 </script>
@@ -49,10 +58,10 @@ export default {
 @import '@/assets/scss/vars.scss';
 
 .btn-wrapper {
-  border: 1px solid red;
+  // border: 1px solid red;
   display: flex;
   align-items: center;
-  // user-select: none;
+  user-select: none;
 }
 .btn {
   padding: 10px 20px;
@@ -62,7 +71,6 @@ export default {
   border: none;
   border-radius: 6px;
   outline: none;
-  user-select: none;
   transition: $tr-01;
 }
 .btn:hover {
@@ -118,6 +126,19 @@ export default {
 }
 .mb20 {
   margin-bottom: 20px;
+}
+
+.success-btn {
+  background: $green;
+}
+.info-btn {
+  background: $blue-light;
+}
+.warning-btn {
+  background: $yellow;
+}
+.danger-btn {
+  background: $red;
 }
 
 </style>

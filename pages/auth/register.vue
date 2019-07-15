@@ -7,42 +7,77 @@
         <i class="auth-page__icon ti-user"></i>
 
         <form class="auth-page__form">
-          <app-input-valid
+          <!-- <app-input-valid
             title="Email"
-            placeholder=""
-            :required="true"
-            :error="{exist: false, message: ''}"
+            :error="registerError"
+            @inputValueChanged="newUserEmail = $event"
           />
           <br>
           <app-input-valid
             title="Пароль"
-            placeholder=""
-            native-type="password"
-            :required="true"
-            :min-length="6"
-            :error="{exist: false, message: ''}"
+            :error="registerError"
+            @inputValueChanged="newUserPassword = $event"
           />
           <app-input-valid
             title="Пароль еще раз"
-            placeholder=""
-            native-type="password"
-            :required="true"
-            :min-length="6"
-            :error="{exist: false, message: ''}"
+            :error="registerError"
           />
+          <br>
+          <app-input-valid
+            title="Телефон"
+            :error="registerError"
+            @inputValueChanged="newUserPhone = $event"
+          /> -->
+
+          <div>
+            <p>E-mail</p>
+            <input type="text" required>
+          </div>
+          <div>
+            <p>lastName</p>
+            <input type="text" required>
+          </div>
+          <div>
+            <p>firstName</p>
+            <input type="text" required>
+          </div>
+          <div>
+            <p>middleName</p>
+            <input type="text" required>
+          </div>
+          <div>
+            <p>birthday</p>
+            <input type="text" required>
+          </div>
+          <div>
+            <p>phoneNumber</p>
+            <input type="text" required>
+          </div>
+          <div>
+            <p>gender</p>
+            <input type="text" required>
+          </div>
+          <div>
+            <p>activity</p>
+            <input type="text" required>
+          </div>
+
+          <app-button
+            size16px
+            uppercase
+            center
+            mt20
+            mb20
+            @click.native.prevent="createUser()"
+          >Создать аккаунт</app-button>
+
+          <p class="auth-page__question">
+            Уже есть аккаунт?
+            <span class="auth-page__question-action-btn" @click="toLoginPage()">Войти.</span>
+          </p>
+
         </form>
 
-        <app-button
-          size16px
-          uppercase
-          mb20
-          @click.native.prevent="createUser()"
-        >Создать аккаунт</app-button>
-
-        <p class="auth-page__question">
-          Уже есть аккаунт?
-          <span class="auth-page__question-action-btn" @click="toLoginPage()">Войти.</span>
-        </p>
       </section>
 
     </div>
@@ -58,18 +93,42 @@ export default {
     AppButton,
     AppInputValid
   },
+  data () {
+    return {
+      registerError: {
+        exist: false,
+        message: 'ошибки нет'
+      },
+      email: 'test',
+      password: 'test',
+      lastName: 'test',
+      firstName: 'test',
+      middleName: 'test',
+      birthday: 'test',
+      phoneNumber: 111,
+      gender: 'test',
+      activity: 'test'
+    }
+  },
   methods: {
     toLoginPage () {
       this.$router.push('/auth/login')
     },
     async createUser () {
       try {
-        const formData = {
-          email: 'test',
-          password: 'test'
+        const newUser = {
+          email: this.email,
+          password: this.password,
+          lastName: this.lastName,
+          firstName: this.firstName,
+          middleName: this.middleName,
+          birthday: this.birthday,
+          phoneNumber: this.phoneNumber,
+          gender: this.gender,
+          activity: this.activity
         }
-        await this.$store.dispatch('auth/createUser', formData)
-        this.$router.push('/')
+        await this.$store.dispatch('auth/createUser', newUser)
+        // this.$router.push('/')
       } catch (e) {
         console.log(e)
       }

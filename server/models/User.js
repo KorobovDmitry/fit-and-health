@@ -11,22 +11,31 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  phoneNumber: {
-    type: Number,
-  },
-  firstName: {
-    type: String,
-    required: true
-  },
   lastName: {
     type: String,
     required: true
   },
+  firstName: {
+    type: String,
+    required: true,
+  },
+  middleName: {
+    type: String
+  },
   birthday: {
-    type: Date,
+    type: String,
     required: true
   },
+  phoneNumber: {
+    type: Number,
+    required: true,
+    unique: true
+  },
   gender: {
+    type: String,
+    required: true
+  },
+  activity: {
     type: String,
     required: true
   }
