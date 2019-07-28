@@ -16,18 +16,38 @@ const mealPlanerDaySchema = new Schema({
   targetCarb: {
     type: Float
   },
-  selectedDayMealParts: {
-    parts: [
-      {
-        title: {
-          type: String
-        },
-        description: {
-          type: String
+  mealParts: [
+    {
+      mealPartNumber: {
+        type: Number
+      },
+      title: {
+        type: String
+      },
+      description: {
+        type: String
+      },
+      // products: [
+      //   {
+      //     type: Schema.Types.ObjectId,
+      //     ref: 'products',
+      //   }
+      // ]
+      products: [
+        {
+          productId: {
+            type: Schema.Types.ObjectId,
+            ref: 'products',
+            required: true
+          },
+          currentWeight: {
+            type: Number,
+            required: true
+          }
         }
-      }
-    ]
-  },
+      ]
+    }
+  ],
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'users'

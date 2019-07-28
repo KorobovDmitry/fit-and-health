@@ -1,7 +1,7 @@
 <template>
   <div class="nutrients-settings">
-    <p class="nutrients-settings__title">Рацион</p>
-    <p class="nutrients-settings__current-week">14 Декабря 2019 - 20 Декабря 2019</p>
+    <!-- <p class="nutrients-settings__title">Рацион</p> -->
+    <!-- <p class="nutrients-settings__current-week">14 Декабря 2019 - 20 Декабря 2019</p> -->
 
     <div class="nutrients">
       <p class="nutrients__title">Кол-во БЖУ на 1 кг. массы тела</p>
@@ -200,23 +200,22 @@ export default {
       switch (targetNutrient) {
         case 'protein':
           this.proteinEditActive = false
-          // this.$store.dispatch('mealPlaner/updateTargetProtein', this.$refs.inputProtein.value)
-          this.$store.commit('mealPlaner/setTargetProtein', this.$refs.inputProtein.value)
+          this.$store.dispatch('mealPlaner/fetchUpdatedTargetProtein', this.$refs.inputProtein.value)
           break
         case 'fats':
           this.fatsEditActive = false
-          // this.$store.dispatch('mealPlaner/updateTargetProtein', this.$refs.inputProtein.value)
-          this.$store.commit('mealPlaner/setTargetFats', this.$refs.inputFats.value)
+          this.$store.dispatch('mealPlaner/fetchUpdatedTargetFats', this.$refs.inputFats.value)
+          // this.$store.commit('mealPlaner/setNewTargetFats', this.$refs.inputFats.value)
           break
         case 'carb':
           this.carbEditActive = false
-          // this.$store.dispatch('mealPlaner/updateTargetProtein', this.$refs.inputProtein.value)
-          this.$store.commit('mealPlaner/setTargetCarb', this.$refs.inputCarb.value)
+          this.$store.dispatch('mealPlaner/fetchUpdatedTargetCarb', this.$refs.inputCarb.value)
+          // this.$store.commit('mealPlaner/setNewTargetCarb', this.$refs.inputCarb.value)
           break
         case 'targetWeight':
           this.targetWeightEditActive = false
-          // this.$store.dispatch('mealPlaner/updateTargetProtein', this.$refs.inputProtein.value)
-          this.$store.commit('mealPlaner/setTargetWeight', this.$refs.inputTargetWeight.value)
+          // this.$store.dispatch('mealPlaner/fetchUpdatedTargetWeight', this.$refs.inputTargetWeight.value)
+          this.$store.commit('mealPlaner/setNewTargetWeight', this.$refs.inputTargetWeight.value)
           break
         default:
           console.log('closeInputEdit func argument error')
@@ -249,7 +248,7 @@ export default {
     // border: 1px solid red;
     // width: 300px;
     min-width: 300px;
-    margin-top: 24px;
+    // margin-top: 24px;
     .nutrients__title {
       font-size: 18px;
       font-weight: 500;

@@ -1,7 +1,7 @@
 <template>
   <div ref="scrollBlock" class="scroll-block" @wheel.self="scrollBlock($event)">
     <div ref="scrollContent" class="scroll-block__content">
-      <slot></slot>
+      <slot name="scrollContent"></slot>
     </div>
     <div ref="scrollLine" class="scroll-block__scroll-line"></div>
   </div>
@@ -10,9 +10,7 @@
 <script>
 export default {
   data () {
-    return {
-
-    }
+    return {}
   },
   methods: {
     scrollBlock ($event) {
@@ -28,7 +26,7 @@ export default {
 
       // получаем значение шага прокрутки контента в процентах от невидимой области прокручиваемого контента
       let percentToScrol = 100 / ((hiddenContentHeight + contentMarginTop) / scrollStep) * -1
-      console.log(percentToScrol)
+      // console.log(percentToScrol)
 
       // узнать сколько процентов содержится в 20px по отношению к hiddenContentHeight
       // 100 / (hiddenContentHeight / scrollStep)
@@ -94,31 +92,30 @@ export default {
   position: relative;
   display: flex;
   width: 200px;
-  height: 155px;
+  height: 200px;
   overflow: hidden;
-  // background: none;
   .scroll-block__content {
     // border: 1px solid blue;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    transition: all .25s linear;
     z-index: -1;
+    transition: .25s linear;
   }
   .scroll-block__scroll-line {
     position: absolute;
     top: 0;
     right: 2px;
-    width: 4px;
-    background: rgba(0,0,0,.06);
-    border-radius: 6px;
-    // cursor: pointer;
-    transition: all .25s linear;
+    width: 2px;
+    background: rgba(0,0,0,.2);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .25s linear;
   }
-  // .scroll-block__scroll-line:hover {
-  //   background: rgba(0,0,0,.3);
-  //   transition: all .25s linear;
-  // }
+  .scroll-block__scroll-line:hover {
+    width: 6px;
+    background: rgba(0,0,0,.4);
+  }
 }
 </style>

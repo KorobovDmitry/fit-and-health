@@ -24,6 +24,7 @@
 <script>
 export default {
   props: {
+    value: String,
     infoText: String,
     placeholderText: String,
     textAlignLeft: Boolean,
@@ -33,7 +34,7 @@ export default {
   },
   data () {
     return {
-      inputValue: ''
+      inputValue: this.value || ''
     }
   },
   methods: {
@@ -70,7 +71,7 @@ export default {
       // color: $gray-dark;
       font-family: $fontMontserrat;
       font-size: 16px;
-      border: 1px solid rgba(52,40,104,.2);
+      border: 1px solid $blockBorder;
       border-radius: 6px;
       outline: none;
       transition: $tr-02;

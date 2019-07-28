@@ -33,7 +33,6 @@ export default {
     },
     setFilterOrder($event) {
       this.filterOrder = $event
-      // console.log($event)
     }
   }
 }
@@ -48,10 +47,8 @@ export default {
   .search__input {
     padding: 8px 0px 8px 20px;
     width: 100%;
-    // color: $gray-dark;
     font-family: $fontMontserrat;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    // border: 2px solid $green;
+    border: 1px solid $blockBorder;
     border-right: none;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
@@ -71,9 +68,6 @@ export default {
     border-top: 1px solid $green;
     border-bottom: 1px solid $green;
   }
-  // .search__input:focus ~ .search__btn {
-  //   border-left: 1px solid $green;
-  // }
   .search__reset-value-btn {
     display: flex;
     align-items: center;
@@ -81,8 +75,8 @@ export default {
     background: $white;
     padding: 0 14px;
     color: $green;
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid $blockBorder;
+    border-bottom: 1px solid $blockBorder;
     user-select: none;
     cursor: pointer;
     transition: $tr-01;
@@ -96,9 +90,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    // background: $white;
     background: $green;
-    // border: 1px solid rgba(0, 0, 0, 0.2);
     border: 1px solid $green;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -108,10 +100,8 @@ export default {
     cursor: pointer;
     transition: $tr-02;
     .search__btn-text {
-      // color: $gray-dark;
       color: $white;
       transition: $tr-02;
-      // font-weight: 400;
     }
   }
 }

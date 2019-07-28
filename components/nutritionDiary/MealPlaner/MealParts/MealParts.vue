@@ -9,7 +9,7 @@
       <meal-part-product-list :element="element" />
     </div>
 
-    <app-button size16px uppercase fillArea>Добавить прием пищи в рацион на сегодня</app-button>
+    <app-button size16px uppercase fillArea @click.native="openModalNewMealPart()">Добавить прием пищи в рацион на сегодня</app-button>
 
     <meal-part-modal/>
 
@@ -20,7 +20,7 @@
 import AppButton from '@/components/basic/AppButton.vue'
 import MealPartOverview from '@/components/nutritionDiary/MealPlaner/MealParts/MealPartOverview.vue'
 import MealPartProductList from '@/components/nutritionDiary/MealPlaner/MealParts/MealPartProductList.vue'
-import MealPartModal from '@/components/nutritionDiary/MealPlaner/MealParts/MealPartModal'
+import MealPartModal from '@/components/nutritionDiary/MealPlaner/MealParts/Modal/MealPartModal'
 export default {
   components: {
     AppButton,
@@ -31,6 +31,26 @@ export default {
   computed: {
     mealParts () {
       return this.$store.getters['mealPlaner/getMealParts']
+    }
+  },
+  methods: {
+    openModalNewMealPart () {
+      // Формируем объект с данными, которые будут отображены в модальном окне
+      const newMealPartModal = {
+        modalTitle: 'Новый прием пищи',
+        modalSubtitle: 'Заполните форму и нажмите сохранить',
+        mealPartNumber: null,
+        mealPartTitle: '',
+        mealPartSubtitle: '',
+        mealPartProducts: []
+      }
+      this.$store.commit('mealPlaner/setMealPartModalInfo', newMealPartModal)
+      this.$store.commit('mealPlaner/setMealPartModalActive')
+      // проверяем загружен ли список продуктов из базы
+      if (this.$store.getters['products/getAllProducts'].length === 0) {
+        // console.log('продукты еще не загружены. нужно выполнить диспатч')
+        this.$store.dispatch('products/fetchAllProducts')
+      }
     }
   }
 }
@@ -49,13 +69,6 @@ export default {
     // border: 1px solid red;
     display: flex;
     margin-bottom: 20px;
-  }
-  .meal-part__modal-content {
-    // border: 1px solid red;
-    .meal-part__modal-section-title {
-      font-size: 18px;
-      font-weight: 600;
-    }
   }
 }
 </style>

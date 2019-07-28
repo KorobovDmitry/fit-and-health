@@ -1,7 +1,7 @@
 <template>
   <div class="meal-planer">
     <div class="meal-planer__content-wrapper">
-      <p class="meal-planer__page-title">Планировщик</p>
+      <p class="meal-planer__page-title">Планировщик рациона</p>
       <div class="meal-planer__content">
         <nutritients />
         <date-selection />

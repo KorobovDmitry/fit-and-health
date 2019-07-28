@@ -78,8 +78,8 @@ export const actions = {
     this.$axios.setToken(token, 'Bearer')
     // сохроняем в state токен полученный из action login
     commit('setToken', token)
-    // сохраняем cookie на 1 день
-    cookie.set('jwt-token', token, { expires: 1 })
+    // сохраняем cookie на 361 день
+    cookie.set('jwt-token', token, { expires: 361 })
   },
   logout ({commit}, token) {
     // убираем токен из запросов axios

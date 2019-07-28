@@ -23,7 +23,7 @@ export default {
     ProductTable
   },
   async fetch ({ store }) {
-    await store.dispatch('foodCalorieTable/getAllProducts')
+    await store.dispatch('products/fetchAllProducts')
   },
   beforeMount: function () {
     this.$store.commit('nutritionDiary/openSidebar')

@@ -38,7 +38,7 @@
         <p class="chart__info-text-title">Ккал</p>
         <p class="chart__info-text-amount">
           {{ currentKkal }}
-          <span class="chart__info-text-amount-span">гр.</span>
+          <!-- <span class="chart__info-text-amount-span">гр.</span> -->
         </p>
         <p class="chart__info-text-percent">{{ kkalPercent }}%</p>
       </div>
@@ -54,29 +54,76 @@ export default {
   },
   computed: {
     currentProtein () {
-      // сумма белков каждого из приема пищи в рационе на сегодня
-      return 42
+      let mealPartsProteinSumArray = []
+      for (let i = 0; i < this.$store.getters['mealPlaner/getMealParts'].length; i++) {
+        let proteinSum = 0
+        for (let p = 0; p < this.$store.getters['mealPlaner/getMealParts'][i].products.length; p++) {
+          proteinSum += this.$store.getters['mealPlaner/getMealParts'][i].products[p].currentWeight * this.$store.getters['mealPlaner/getMealParts'][i].products[p].productInfo.protein / 100
+        }
+        mealPartsProteinSumArray.push(proteinSum)
+      }
+      let totalProtein = 0
+      for (let i = 0; i < mealPartsProteinSumArray.length; i++) {
+        totalProtein += mealPartsProteinSumArray[i]
+      }
+      return Math.round(totalProtein * 100) / 100
     },
     proteinPercent () {
       let percent = 100 / (this.$store.getters['mealPlaner/getDayTargetProtein'] / this.currentProtein)
       return Math.round(percent * 100) / 100
     },
     currentFats () {
-      return 25
+      let mealPartsFatsSumArray = []
+      for (let i = 0; i < this.$store.getters['mealPlaner/getMealParts'].length; i++) {
+        let fatsSum = 0
+        for (let p = 0; p < this.$store.getters['mealPlaner/getMealParts'][i].products.length; p++) {
+          fatsSum += this.$store.getters['mealPlaner/getMealParts'][i].products[p].currentWeight * this.$store.getters['mealPlaner/getMealParts'][i].products[p].productInfo.fats / 100
+        }
+        mealPartsFatsSumArray.push(fatsSum)
+      }
+      let totalFats = 0
+      for (let i = 0; i < mealPartsFatsSumArray.length; i++) {
+        totalFats += mealPartsFatsSumArray[i]
+      }
+      return Math.round(totalFats * 100) / 100
     },
     fatsPercent () {
       let percent = 100 / (this.$store.getters['mealPlaner/getDayTargetFats'] / this.currentFats)
       return Math.round(percent * 100) / 100
     },
     currentCarb () {
-      return 60
+      let mealPartsCarbSumArray = []
+      for (let i = 0; i < this.$store.getters['mealPlaner/getMealParts'].length; i++) {
+        let carbSum = 0
+        for (let p = 0; p < this.$store.getters['mealPlaner/getMealParts'][i].products.length; p++) {
+          carbSum += this.$store.getters['mealPlaner/getMealParts'][i].products[p].currentWeight * this.$store.getters['mealPlaner/getMealParts'][i].products[p].productInfo.carb / 100
+        }
+        mealPartsCarbSumArray.push(carbSum)
+      }
+      let totalCarb = 0
+      for (let i = 0; i < mealPartsCarbSumArray.length; i++) {
+        totalCarb += mealPartsCarbSumArray[i]
+      }
+      return Math.round(totalCarb * 100) / 100
     },
     carbPercent () {
       let percent = 100 / (this.$store.getters['mealPlaner/getDayTargetCarb'] / this.currentCarb)
       return Math.round(percent * 100) / 100
     },
     currentKkal () {
-      return 456
+      let mealPartsKkalSumArray = []
+      for (let i = 0; i < this.$store.getters['mealPlaner/getMealParts'].length; i++) {
+        let kkalSum = 0
+        for (let p = 0; p < this.$store.getters['mealPlaner/getMealParts'][i].products.length; p++) {
+          kkalSum += this.$store.getters['mealPlaner/getMealParts'][i].products[p].currentWeight * this.$store.getters['mealPlaner/getMealParts'][i].products[p].productInfo.kkal / 100
+        }
+        mealPartsKkalSumArray.push(kkalSum)
+      }
+      let totalKkal = 0
+      for (let i = 0; i < mealPartsKkalSumArray.length; i++) {
+        totalKkal += mealPartsKkalSumArray[i]
+      }
+      return Math.round(totalKkal * 100) / 100
     },
     kkalPercent () {
       let percent = 100 / (this.$store.getters['mealPlaner/getDayTargetKkal'] / this.currentKkal)
@@ -203,7 +250,8 @@ export default {
   align-items: center;
   justify-content: space-between;
   margin-top: 40px;
-  padding: 0 60px 0 80px;
+  margin-left: 10px;
+  padding: 0 100px;
   width: 100%;
   .chart {
     // border: 1px solid $green;
@@ -211,8 +259,8 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     text-align: center;
     font-weight: 700;
@@ -221,8 +269,8 @@ export default {
       // border: 1px solid red;
       position: relative;
       transform: rotate(-90deg);
-      width: 180px;
-      height: 180px;
+      width: 150px;
+      height: 150px;
     }
     .chart__info {
       position: absolute;
@@ -230,7 +278,7 @@ export default {
       left: 50%;
       transform: translate(-50%,-50%);
       .chart__info-text-title {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 600;
       }
       .chart__info-text-amount {
@@ -238,18 +286,18 @@ export default {
         display: flex;
         align-items: flex-end;
         margin: 5px 0;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 800;
         .chart__info-text-amount-span {
           // border: 1px solid red;
           margin-left: 5px;
-          margin-bottom: 3px;
-          font-size: 16px;
+          margin-bottom: 2px;
+          font-size: 12px;
           font-weight: 800;
         }
       }
       .chart__info-text-percent {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 600;
       }
     }

@@ -15,33 +15,40 @@
     <div class="scroll__wrapper">
       <ul
         class="food-part__meal-list"
-        v-for="(item, index) of element.productsList"
+        v-for="(item, index) of element.products"
         :key="index"
       >
-        <li class="food-part__meal-list-item">{{ item.title }}</li>
+        <li class="food-part__meal-list-item">{{ item.productInfo.title }}</li>
         <li class="food-part__meal-list-item">
           <input
+            :data-current-input="`product-input-${index}`"
             class="food-part__meal-list-item-input"
             type="text"
-            :value="item.weight"
-            @keypress.enter="updateProductWeight(element, index, item.title)"
-            @blur="updateProductWeight(element, index, item.title)"
+            :value="item.currentWeight"
+            @keypress.enter="updateProductActionBtn($event, element, index, item)"
+            @blur="updateProductActionBtn($event, element, index, item)"
           >
         </li>
-        <li class="food-part__meal-list-item">{{ Math.round( (item.protein * item.weight / 100) * 100 ) / 100 }}</li>
-        <li class="food-part__meal-list-item">{{ Math.round( (item.fats * item.weight / 100) * 100 ) / 100 }}</li>
-        <li class="food-part__meal-list-item">{{ Math.round( (item.carb * item.weight / 100) * 100 ) / 100 }}</li>
-        <li class="food-part__meal-list-item">{{ Math.round( (item.kkal * item.weight / 100) * 100 ) / 100 }}</li>
+        <li class="food-part__meal-list-item">{{ Math.round( (item.productInfo.protein * item.currentWeight / 100) * 100 ) / 100 }}</li>
+        <li class="food-part__meal-list-item">{{ Math.round( (item.productInfo.fats * item.currentWeight / 100) * 100 ) / 100 }}</li>
+        <li class="food-part__meal-list-item">{{ Math.round( (item.productInfo.carb * item.currentWeight / 100) * 100 ) / 100 }}</li>
+        <li class="food-part__meal-list-item">{{ Math.round( (item.productInfo.kkal * item.currentWeight / 100) * 100 ) / 100 }}</li>
         <li class="food-part__meal-list-item">
-          <i class="food-part__meal-icon ti-close"></i>
+          <i
+            :data-remove-btn="`btn-remove-product-${index}-meal-part-${element.mealPartNumber}`"
+            class="ti-close food-part__meal-icon-remove"
+          ></i>
+          <i
+            :data-save-btn="`btn-save-product-${index}-meal-part-${element.mealPartNumber}`"
+            class="ti-save food-part__meal-icon-save"
+          ></i>
         </li>
       </ul>
     </div>
 
     <div class="food-part__btn-wrapper">
-      <app-button class="food-part__btn" size14px uppercase fillArea>Удалить</app-button>
-      <app-button class="food-part__btn" size14px uppercase fillArea @click.native="openEditModal()">Редактировать</app-button>
-      <app-button class="food-part__btn" size14px uppercase fillArea>Сохранить изменения</app-button>
+      <!-- <app-button class="food-part__btn" size14px uppercase fillArea>Сохранить изменения</app-button> -->
+      <app-button class="food-part__btn" size14px uppercase fillArea @click.native="editCurrentMealPart(element)">Редактировать</app-button>
     </div>
 
   </div>
@@ -60,11 +67,64 @@ export default {
     return {}
   },
   methods: {
-    updateProductWeight (element, index, itemTitle) {
-      console.log(`update weight for ELEMENT ${element.mealPartNumber} product INDEX ${index} and TITLE ${itemTitle}`)
+    updateProductActionBtn ($event, element, index, item) {
+      // console.log(`update weight for ELEMENT ${element.mealPartNumber} product INDEX ${index} and TITLE ${item.title}`)
+      // console.log(`текущий вес продукта ${item.weight}`)
+      // console.log(`новый вес продукта ${$event.target.value}`)
+
+      const btnRemoveProduct = document.querySelector(`[data-remove-btn="btn-remove-product-${index}-meal-part-${element.mealPartNumber}"]`)
+      const btnSaveProduct = document.querySelector(`[data-save-btn="btn-save-product-${index}-meal-part-${element.mealPartNumber}"]`)
+
+      const currentWeight = parseFloat(item.weight)
+      const newWeight = parseFloat($event.target.value)
+      if (currentWeight !== newWeight) {
+        btnRemoveProduct.style.display = 'none'
+        btnSaveProduct.style.display = 'inline'
+      }
+
+      const updatedProduct = {
+        productInfo: {
+          title: item.productInfo.title,
+          protein: item.productInfo.protein,
+          fats: item.productInfo.fats,
+          carb: item.productInfo.carb,
+          kkal: item.productInfo.kkal,
+        },
+        currentWeight: $event.target.value,
+        _id: item._id
+      }
+      this.$store.commit('mealPlaner/updateMealPartsProductWeight', {
+        mealPartNumber: element.mealPartNumber,
+        productIndex: index,
+        updatedProduct: updatedProduct
+      })
     },
-    openEditModal () {
+    editCurrentMealPart (element) {
+      // console.log(`open Edit Modal for ELEMENT meal Part Number ${element.mealPartNumber}`)
+
+      // Формируем новый масив products чтобы данные из element.products не были реактивно связаны с данными из mealPartModalInfo.mealPartProducts
+      let products = []
+      for (let i = 0; i < element.products.length; i++) {
+        products.push(element.products[i])
+      }
+
+      const editMealPart = {
+        modalTitle: 'Редактирование',
+        modalSubtitle: 'Заполните форму и нажмите сохранить',
+        mealPartNumber: element.mealPartNumber,
+        mealPartTitle: element.title,
+        mealPartSubtitle: element.description,
+        mealPartProducts: products
+      }
+      // console.log(editMealPart.mealPartProducts)
+      this.$store.commit('mealPlaner/setMealPartModalInfo', editMealPart)
       this.$store.commit('mealPlaner/setMealPartModalActive')
+
+      // проверяем загружен ли список продуктов из базы
+      if (this.$store.getters['products/getAllProducts'].length === 0) {
+        // console.log('продукты еще не загружены. нужно выполнить диспатч')
+        this.$store.dispatch('products/fetchAllProducts')
+      }
     }
   }
 }
@@ -120,8 +180,12 @@ export default {
     margin-top: 44px;
     margin-bottom: 10px;
     // margin-right: -16px;
-    height: 204px;
-    max-height: 204px;
+    padding: 10px;
+    height: 214px;
+    max-height: 214px;
+    background: $white;
+    border: 1px solid $blockBorder;
+    border-radius: 6px;
     overflow: auto;
     // overflow-x: hidden;
   }
@@ -130,7 +194,7 @@ export default {
     // border: 1px solid red;
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     background: $white;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 6px;
@@ -170,13 +234,21 @@ export default {
         background: $green;
         color: $white;
       }
-      .food-part__meal-icon {
-        // border: 1px solid $gray-dark;
-        // border-radius: 50%;
+      .food-part__meal-icon-remove {
+        display: inline;
         font-family: $fontThemify;
         margin: 2px 4px;
         padding: 4px;
-        font-size: 10px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: $tr-02;
+      }
+      .food-part__meal-icon-save {
+        display: none;
+        font-family: $fontThemify;
+        margin: 2px 4px;
+        padding: 4px;
+        font-size: 12px;
         cursor: pointer;
         transition: $tr-02;
       }

@@ -19,54 +19,80 @@
       </div>
     </div>
     <div class="add-product-btn__wrapper">
-      <app-button sizeXL uppercase right @click.native="addUserProduct()">ДОБАВИТЬ ПРОДУКТ</app-button>
+      <app-button sizeXL uppercase right @click.native="openModal()">ДОБАВИТЬ ПРОДУКТ</app-button>
     </div>
+
+    <food-calorie-table-modal/>
+
   </div>
 </template>
 
 <script>
-import AppButton from '@/components/basic/AppButton.vue'
+import AppButton from '@/components/basic/AppButton'
+import FoodCalorieTableModal from '@/components/nutritionDiary/FoodCalorieTable/FoodCalorieTableModal'
 export default {
   components: {
-    AppButton
+    AppButton,
+    FoodCalorieTableModal
   },
   computed: {
     totalProductsAmount () {
-      return this.$store.getters['foodCalorieTable/getTotalProductsAmount']
+      return this.$store.getters['products/getAllProducts'].length
     },
     categoriesAmount () {
-      return this.$store.getters['foodCalorieTable/getCategoriesAmount']
+      return this.$store.getters['products/getCategories'].length
     },
     favoritesAmount () {
-      return this.$store.getters['foodCalorieTable/getFavoritesAmount']
+      let favoritesProductsAmount = 0
+      let products = this.$store.getters['products/getAllProducts']
+      for (let i = 0; i < products.length; i++) {
+        if (products[i].favorites) {
+          favoritesProductsAmount++
+        }
+      }
+      return favoritesProductsAmount
     },
     myProductsAmount () {
-      return this.$store.getters['foodCalorieTable/getMyProductsAmount']
+      let userProductsAmount = 0
+      let products = this.$store.getters['products/getAllProducts']
+      for (let i = 0; i < products.length; i++) {
+        if (products[i].userProduct) {
+          userProductsAmount++
+        }
+      }
+      return userProductsAmount
     }
   },
   methods: {
-    addUserProduct () {
-      const product = {
-        title: 'Рис',
-        category: 'крупы',
-        categoryIcon: '/public/category-img/default.jpg',
-        protein: 1,
-        fats: 1,
-        carb: 1,
-        kkal: 1,
-        water: 1,
-        ash: 1,
-        // vitamins: [],
-        sugar: 1,
-        cellulose: 1,
-        farina: 1,
-        cholesterol: 1,
-        transFats: 1,
-        userProduct: true,
-        favorites: true
-      }
-      this.$store.dispatch('foodCalorieTable/createProduct', product)
-    }
+    openModal() {
+      this.$store.commit('products/setProductsModalActive')
+    },
+    // addUserProduct () {
+    //   const product = {
+    //     productInfo: {
+    //       title: 'Рис',
+    //       category: 'крупы',
+    //       categoryIcon: '/public/category-img/default.jpg',
+    //       protein: 1,
+    //       fats: 1,
+    //       carb: 1,
+    //       kkal: 1,
+    //       water: 1,
+    //       ash: 1,
+    //       // vitamins: [],
+    //       sugar: 1,
+    //       cellulose: 1,
+    //       farina: 1,
+    //       cholesterol: 1,
+    //       transFats: 1,
+    //       userProduct: true,
+    //       favorites: true
+    //     },
+    //     currentWeight: 100
+    //   }
+
+    //   this.$store.dispatch('foodCalorieTable/createProduct', product)
+    // }
   }
 }
 </script>

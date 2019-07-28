@@ -6,12 +6,19 @@ const router = express.Router()
 // passport не дает выполнять корректно fetch запросы axios. 
 // перепроверить как работает паспорт и вообще авторизация и перенастроить . поправить все
 
-// localhost:3000/api/nutrition-diary/meal-planer
-router.get('/meal-planer', controller.getSelectedDayMealPlaner)
-router.post('/meal-planer', controller.updateSelectedDayMealPlaner)
+// http://localhost:3000/api/nutrition-diary/meal-planer
+router.get('/meal-planer', controller.getCurrentDayMealPlanerInfo)
+router.patch('/meal-planer/update-meal-parts', controller.updateMealParts)
+router.patch('/meal-planer/update-target-protein', controller.updateMealPlanerTargetProtein)
+router.patch('/meal-planer/update-target-fats', controller.updateMealPlanerTargetFats)
+router.patch('/meal-planer/update-target-carb', controller.updateMealPlanerTargetCarb)
 
-// localhost:3000/api/nutrition-diary/food-calorie-table
+// http://localhost:3000/api/nutrition-diary/food-calorie-table
 router.get('/food-calorie-table', controller.getAllProducts)
 router.post('/food-calorie-table/create-product', controller.createProduct)
+
+// Общие роуты для nutrition-diary, используемые на разных страницах в Дневнике питания
+// http://localhost:3000/api/nutrition-diary/get-all-products
+router.post('/get-all-products', controller.getAllProducts)
 
 module.exports = router

@@ -28,8 +28,8 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '@/static/fonts/css/themify-icons.css',
     '@/assets/scss/reset.scss',
+    '@/static/fonts/css/themify-icons.css',
     '@/assets/scss/main.scss'
   ],
 

@@ -145,7 +145,7 @@ export default {
   },
   computed: {
     productsList () {
-      return this.$store.getters['foodCalorieTable/getProductsList']
+      return this.$store.getters['products/getAllProducts']
     }
   },
   mounted () {
