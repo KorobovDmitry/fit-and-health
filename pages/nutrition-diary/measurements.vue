@@ -39,7 +39,7 @@ export default {
   flex-direction: column;
   align-items: center;
   .measurements__content-wrapper {
-    border: 1px solid red;
+    // border: 1px solid red;
     margin-top: 60px;
     padding: 40px 40px 20px 40px;
     width: 100%;

@@ -1,12 +1,54 @@
 <template>
   <div class="not-found-page">
     <p>404</p>
+
+    <hr>
+
+    <app-accordion>
+      <template v-slot:accordionHeader>
+        <p>заголовок аккордиона</p>
+      </template>
+      <template v-slot:accordionHiddenContent>
+        <p>Скрытый контент</p>
+      </template>
+    </app-accordion>
+
+    <hr>
+
+    <app-accordion-list v-for="(item, index) in accordionList" :key="index">
+      <template v-slot:accordionHeader>
+        <p :data-target-header="index" >заголовок аккордиона: {{ item.header }}</p>
+      </template>
+      <template v-slot:accordionHiddenContent>
+        <p :data-target-hiddeb-content="index">Скрытый контент: {{ item.hiddenContent }}</p>
+      </template>
+    </app-accordion-list>
   </div>
 </template>
 
 <script>
+import AppAccordion from '@/components/basic/AppAccordion'
+import AppAccordionList from '@/components/basic/AppAccordionList'
 export default {
-  layout: 'empty'
+  layout: 'empty',
+  components: {
+    AppAccordion,
+    AppAccordionList
+  },
+  data () {
+    return {
+      accordionList: [
+        {
+          header: 'first',
+          hiddenContent: 'first block hidden content'
+        },
+        {
+          header: 'second',
+          hiddenContent: 'second block content'
+        }
+      ]
+    }
+  }
 }
 </script>
 

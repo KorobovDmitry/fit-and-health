@@ -19,19 +19,23 @@
           <p class="info-block__statistics-value">1 час 17 мин.</p>
           <p class="info-block__statistics-text">Общее время тренировки</p>
         </div>
+        <div class="info-block__statistics-element">
+          <p class="info-block__statistics-value">1217 кг.</p>
+          <p class="info-block__statistics-text">Общий тоннаж тренировки</p>
+        </div>
       </div>
     </div>
 
-    <!-- <app-button size16px uppercase left mt10>Редактировать тренировочную программу</app-button> -->
+    <app-button size16px uppercase left fillArea mt10>Редактировать тренировочную программу</app-button>
   </div>
 </template>
 
 <script>
-// import AppButton from '@/components/basic/AppButton.vue'
+import AppButton from '@/components/basic/AppButton.vue'
 export default {
-  // components: {
-  //   AppButton
-  // }
+  components: {
+    AppButton
+  }
 }
 </script>
 

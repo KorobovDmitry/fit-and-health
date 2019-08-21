@@ -39,12 +39,14 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 80px;
+  padding: 100px 40px 40px 40px;
   .meal-planer__content-wrapper {
     // border: 1px solid red;
-    margin-top: 60px;
-    padding: 40px 40px 40px 40px;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1800px;
     .meal-planer__page-title {
       text-align: center;
       font-size: 26px;

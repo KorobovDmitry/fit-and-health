@@ -34,12 +34,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 80px;
+  padding: 100px 40px 40px 40px;
   .training-programs__content-wrapper {
-    // border: 1px solid red;
-    margin-top: 60px;
-    padding: 40px 40px 20px 40px;
+    border: 1px solid red;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1800px;
     .training-programs__title {
       // border: 1px solid red;
       text-align: center;

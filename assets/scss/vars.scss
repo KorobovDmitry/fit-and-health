@@ -2,7 +2,6 @@
 
 // FONTS
 // $fontLato: 'Lato', Helvetica, Arial, sans-serif;
-
 $fontMontserrat: 'Montserrat', sans-serif;
 $fontThemify: 'themify';
 
@@ -20,7 +19,8 @@ $blue-light: #37CCDB;
 $violet: #795BF4;
 $yellow: #FFD700;
 $yellow-light: #FFE85D;
-$blockBorder: rgba(52,40,104,.2);
+$blockBorder: rgba(0,0,0,.2);
+$inputBorder: rgba(0,0,0,.1);
 
 // TRANSITIONS
 $tr-01: all .1s ease-in-out;
@@ -33,6 +33,8 @@ $btnShadow: 0 1px 6px 1px rgba(52,40,104,.4);
 $btnHoverShadow: 0 1px 4px 0px rgba(52,40,104,.4);
 $btnActiveShadow: 0 1px 4px 1px rgba(52,40,104,.4);
 
+$boxShadow: 0px 0px 4px 0px $blockBorder;
+
 
 
 
@@ -42,6 +44,4 @@ $btnActiveShadow: 0 1px 4px 1px rgba(52,40,104,.4);
 // DEBAGGING
 // border: 1px solid red;
 // @import '@/assets/scss/vars.scss';
-
-// расстояние между элементами 1 блока 10px между разными блоками 20px или 40px
 

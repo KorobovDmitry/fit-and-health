@@ -45,27 +45,28 @@
             <p class="main-training-program__statistics-text">Средний тоннаж тренировок</p>
           </div>
         </div>
-        <router-link tag="div" to="trainings/4-day-split">
-          <app-button
-            class="main-training-program__link-btn"
-            size16px
-            uppercase
-            fillArea
-          >Редактировать</app-button>
-        </router-link>
         <app-button
           class="main-training-program__link-btn"
           size16px
           uppercase
           fillArea
         >Начать тренировку</app-button>
+        <router-link tag="div" to="trainings/4-day-split">
+          <app-button
+            class="main-training-program__link-btn"
+            size16px
+            uppercase
+            fillArea
+            mt10
+          >Редактировать</app-button>
+        </router-link>
       </div>
     </div>
 
     <app-button
-      class="main-training-program__delete-btn"
       size16px
       uppercase
+      mt10
     >Удалить тренировочную программу</app-button>
   </div>
 </template>
@@ -124,10 +125,12 @@ export default {
       // border: 1px solid red;
       display: flex;
       flex-direction: column;
+      margin-left: 10px;
       .main-training-program__statistics-element-wrapper {
         // border: 1px solid red;
         display: flex;
         flex-wrap: wrap;
+        // margin-bottom: 40px;
         max-width: 500px;
         min-width: 500px;
         .main-training-program__statistics-element {
@@ -135,40 +138,41 @@ export default {
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin: 0 0 10px 10px;
+          // margin: 0 0 10px 10px;
+          // margin-right: 10px;
+          margin-bottom: 10px;
           padding: 20px;
-          width: calc(50% - 10px);
+          // width: 50%;
+          width: calc(50% - 5px);
           background: $white;
           border: 1px solid rgba(0, 0, 0, 0.2);
           border-radius: 6px;
           .main-training-program__statistics-value {
+            color: $green;
             font-size: 24px;
             font-weight: 500;
             .main-training-program__statistics-value-scale {
               font-size: 16px;
+              // font-weight: 500;
             }
           }
           .main-training-program__statistics-text {
             margin-top: 10px;
             text-align: center;
             text-transform: uppercase;
-            color: $green;
+            // color: $green;
             font-size: 14px;
-            font-weight: 500;
+            // font-weight: 500;
           }
         }
-      }
-      .main-training-program__link-btn {
-        margin-top: 10px;
-        margin-left: 10px;
-      }
-      .main-training-program__link-btn:first-child {
-        margin-top: 0;
+        .main-training-program__statistics-element:nth-child(2) {
+          margin-left: 10px;
+        }
+        .main-training-program__statistics-element:nth-child(4) {
+          margin-left: 10px;
+        }
       }
     }
-  }
-  .main-training-program__delete-btn {
-    margin-top: 10px;
   }
 }
 </style>

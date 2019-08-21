@@ -1,64 +1,97 @@
 <template>
   <div class="user-card">
 
-    <div class="user-card__user-info">
-      <div class="user-card__top">
-        <div class="user-card__top-left">
-          <img class="user-card__avatar" src="" alt="user-avatar">
-        </div>
-        <div class="user-card__top-right">
-          <button class="user-card__subscriptions-btn">
-            <p class="user-card__subscriptions-text">+ <br> <span>Подписки</span></p>
-          </button>
-          <div class="user-card__raiting">
-            <p class="user-card__raiting-text">Рейтинг:</p>
-            <p class="user-card__raiting-count">458 796</p>
-          </div>
-        </div>
+    <div class="user-card__main-card">
+      <div class="main-card__avatar-wrapper">
+        <img class="main-card__avatar" src="https://pic.sport.ua/media/images/Foto%202.jpg" alt="user-avatar">
       </div>
 
-      <div class="user-card__bottom">
+      <div class="main-card__bottom">
         <p class="user-card__user-name">{{ firstName }} {{ lastName }}</p>
-        <p class="user-card__user-status">Тренер</p>
-        <!-- <p class="user-card__user-status">Здесь можно разместить статус или ванильную цитату</p> -->
-        <div class="user-card__favorite-sports-block">
-          <p class="user-card__favorite-sports-title">Бодибилдинг</p>
-          <p class="user-card__favorite-sports-title">CrossFit</p>
-          <p class="user-card__favorite-sports-title">Футбол</p>
-          <p class="user-card__favorite-sports-title">Плавание</p>
-          <p class="user-card__favorite-sports-title">Хокей</p>
-        </div>
+        <p class="user-card__user-followers">40 517 подписчиков</p>
+        <p class="user-card__user-status">Online</p>
+      </div>
+      <div class="main-card__action-btn-wrapper">
+        <app-button size14px uppercase >Подписаться</app-button>
+        <app-button size14px uppercase >Написать сообщение</app-button>
       </div>
     </div>
 
-    <ul class="user-card__menu-list">
-      <li class="user-card__menu-list-item">Лента</li>
-      <li class="user-card__menu-list-item">Активность</li>
-      <!-- <li class="user-card__menu-list-item">Тренировочные программы</li> -->
-      <li class="user-card__menu-list-item">Оповещения</li>
-      <li class="user-card__menu-list-item">Личные сообщения</li>
-      <li class="user-card__menu-list-item">Статистика</li>
-      <li class="user-card__menu-list-item user-card__menu-list-item--active">Настройки</li>
-      <li class="user-card__menu-list-item">FAQ</li>
-      <li class="user-card__menu-list-item" @click="logout()">Выйти</li>
-    </ul>
+    <div class="user-card__main-info">
+      <div class="main-info__item">
+        <p class="main-info__item-text">Возраст:</p>
+        <p class="main-info__item-value">30</p>
+      </div>
+      <div class="main-info__item">
+        <p class="main-info__item-text">Вес:</p>
+        <p class="main-info__item-value">70.2</p>
+      </div>
+      <div class="main-info__item">
+        <p class="main-info__item-text">Рост:</p>
+        <p class="main-info__item-value">174</p>
+      </div>
+    </div>
+
+    <div class="user-card__contacts">
+      <div class="contacts__item">
+        <i class="ti-location-pin contacts__item-icon"></i>
+        <p class="contacts__item-title">Город:</p>
+        <p class="contacts__item-text">г. Самара</p>
+      </div>
+      <div class="contacts__item">
+        <i class="ti-pencil contacts__item-icon"></i>
+        <p class="contacts__item-title">Телефон:</p>
+        <p class="contacts__item-text">+7 845 879 87 96</p>
+      </div>
+      <div class="contacts__item">
+        <i class="ti-email contacts__item-icon"></i>
+        <p class="contacts__item-title">E-mail:</p>
+        <p class="contacts__item-text">TestMail@gmail.com</p>
+      </div>
+      <div class="contacts__item">
+        <i class="ti-world contacts__item-icon"></i>
+        <p class="contacts__item-title">Website:</p>
+        <p class="contacts__item-text">johndow-website.com</p>
+      </div>
+      <div class="contacts__item">
+        <i class="ti-new-window contacts__item-icon"></i>
+        <p class="contacts__item-title">Соц. сети:</p>
+        <p class="contacts__item-text">
+          <i class="social-link">vk</i>
+          <i class="ti-facebook social-link"></i>
+          <i class="ti-instagram social-link"></i>
+          <i class="ti-youtube social-link"></i>
+          <i class="ti-twitter social-link"></i>
+          <i class="ti-skype social-link"></i>
+        </p>
+      </div>
+    </div>
+
+    <div class="user-card__media-and-subscriptions">
+      <div class="media-and-subscriptions__element">
+        <i class="ti-gallery element__icon"></i>
+        <p class="element__text">Фото и видео</p>
+      </div>
+      <div class="media-and-subscriptions__element">
+        <i class="ti-crown element__icon"></i>
+        <p class="element__text">Интересные страницы</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import AppButton from '@/components/basic/AppButton'
 export default {
+  components: {
+    AppButton
+  },
   computed: {
     lastName () {
       return this.$store.getters['userProfile/getUserLastName']
     },
     firstName () {
       return this.$store.getters['userProfile/getUserFirstName']
-    }
-  },
-  methods: {
-    logout () {
-      this.$store.dispatch('auth/logout')
-      this.$router.push('/auth/login')
     }
   }
 }
@@ -69,129 +102,143 @@ export default {
 
 .user-card {
   // border: 1px solid red;
-  // margin-top: 40px;
+  margin-bottom: 40px;
   min-width: 400px;
   max-width: 400px;
-  .user-card__user-info {
-    .user-card__top {
+  .user-card__main-card {
+    padding: 10px;
+    background: $white;
+    border: 1px solid $blockBorder;
+    border-radius: 6px;
+    .main-card__avatar-wrapper {
       // border: 1px solid red;
-      display: flex;
-      .user-card__top-left {
-        border: 1px solid $green;
-        min-width: 200px;
-        width: 200px;
-        height: 200px;
-        border-radius: 8px;
-        overflow: hidden;
-        .user-card__avatar {
-          // border: 1px solid red;
-          width: 200px;
-          height: 200px;
-        }
-      }
-      .user-card__top-right {
+      width: 100%;
+      max-height: 250px;
+      border: 1px solid $blockBorder;
+      border-radius: 6px;
+      overflow: hidden;
+      .main-card__avatar {
         // border: 1px solid red;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
         width: 100%;
-        margin-left: 20px;
-        .user-card__subscriptions-btn {
-          // border: 1px solid red;
-          width: 100px;
-          height: 100px;
-          background: $green;
-          border: none;
-          outline: none;
-          border-radius: 8px;
-          box-shadow: $btnShadow;
-          transition: $tr-02;
-          cursor: pointer;
-          .user-card__subscriptions-text {
-            padding: 40px 0 0 13px;
-            text-align-last: left;
-            color: $white;
-            font-size: 22px;
-            font-weight: 900;
-            line-height: 18px;
-            span {
-              font-size: 14px;
-              font-weight: 400;
-            }
-          }
-        }
-        .user-card__subscriptions-btn:hover {
-          box-shadow: $btnHoverShadow;
-          transition: $tr-02;
-        }
-        .user-card__subscriptions-btn:active {
-          box-shadow: $btnActiveShadow;
-          transition: $tr-02;
-        }
-        .user-card__raiting {
-          font-size: 18px;
-          text-align: center;
-          .user-card__raiting-text {
-            // border: 1px solid red;
-            margin-bottom: 4px;
-          }
-          .user-card__raiting-count {
-            // border: 1px solid red;
-            font-weight: 600;
-          }
-        }
+        height: auto;
       }
     }
-    .user-card__bottom {
+    .main-card__bottom {
+      margin: 10px;
       .user-card__user-name {
-        margin-top: 20px;
         font-size: 24px;
         font-weight: 700;
       }
       .user-card__user-status {
-        margin-top: 6px;
-        // font-size: 18px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        font-size: 14px;
       }
-      .user-card__favorite-sports-block {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 20px;
-        .user-card__favorite-sports-title {
-          margin: 0 10px 10px 0;
-          padding: 6px 14px;
-          color: $gray-light;
-          font-size: 14px;
-          border: 1px solid $gray-light;
-          border-radius: 16px;
+      .user-card__user-followers {
+        font-size: 12px;
+        font-weight: 600;
+      }
+    }
+
+    .main-card__action-btn-wrapper {
+      // border: 1px solid red;
+      padding: 0px 10px 10px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: auto;
+    }
+  }
+  .user-card__main-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 10px 0;
+    background: $white;
+    border: 1px solid $blockBorder;
+    border-radius: 6px;
+    .main-info__item {
+      // border: 1px solid red;
+      text-align: center;
+      width: 100%;
+      border-right: 1px solid $blockBorder;
+      .main-info__item-text {
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .main-info__item-value {
+        margin-top: 5px;
+        color: $green;
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+    .main-info__item:last-child {
+      border-right: none;
+    }
+  }
+  .user-card__contacts {
+    margin-top: 10px;
+    padding: 0px 20px;
+    background: $white;
+    border: 1px solid $blockBorder;
+    border-radius: 6px;
+    .contacts__item {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      .contacts__item-icon {
+        margin-right: 10px;
+        font-size: 16px;
+      }
+      .contacts__item-title {
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .contacts__item-text {
+        margin-left: auto;
+        font-size: 14px;
+        .social-link {
+          padding: 5px;
+          cursor: pointer;
         }
       }
     }
   }
-  .user-card__menu-list {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px dashed $gray-light;
-    .user-card__menu-list-item {
-      margin: 10px 0;
-      padding-left: 10px;
-      border-left: 2px solid transparent;
-      font-size: 18px;
-      transition: $tr-02;
-      cursor: pointer;
+  .user-card__media-and-subscriptions {
+    display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    // margin-top: 10px;
+    // padding: 10px;
+    // background: $white;
+    // border: 1px solid $blockBorder;
+    // border-radius: 6px;
+    .media-and-subscriptions__element {
+      display: flex;
+      flex-direction: column;
+      // justify-content: center;
+      align-items: center;
+      flex: 1 1 auto;
+      margin-top: 10px;
+      margin-right: 10px;
+      padding: 20px 10px;
+      background: $white;
+      border: 1px solid $blockBorder;
+      border-radius: 6px;
+      .element__icon {
+        font-size: 26px;
+      }
+      .element__text {
+        margin-top: 15px;
+        font-size: 16px;
+        font-weight: 500;
+      }
     }
-    .user-card__menu-list-item:hover {
-      // border-left: 2px solid $green;
-      color: $green;
-      transition: $tr-02;
-    }
-    .user-card__menu-list-item--active {
-      border-left: 2px solid $green;
-      color: $green;
-    }
-    .user-card__menu-list-item:last-child {
-      margin-bottom: 0;
+    .media-and-subscriptions__element:last-child {
+      margin-right: 0;
     }
   }
 }
+
 </style>

@@ -59,10 +59,10 @@
       <p class="element__data">0 : 0</p>
     </div> -->
 
-    <div class="current-training-info__element">
+    <!-- <div class="current-training-info__element">
       <p class="element__title">Общий тоннаж тренировки</p>
       <p class="element__data">0 кг.</p>
-    </div>
+    </div> -->
 
   </div>
 </template>

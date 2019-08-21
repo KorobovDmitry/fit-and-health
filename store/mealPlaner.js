@@ -157,14 +157,14 @@ export const mutations = {
       }
     }
   },
-  // removeProductFromMealPart (state, productId) {
-  //   for (let i = 0; i < state.mealPartModalInfo.mealPartProducts.length; i++) {
-  //     if (state.mealPartModalInfo.mealPartProducts[i]._id === productId) {
-  //       // console.log(`удалить продукт из массива под индексом ${i}`)
-  //       state.mealPartModalInfo.mealPartProducts.splice(i, 1)
-  //     }
-  //   }
-  // },
+  removeProductFromMealPart (state, productId) {
+    for (let i = 0; i < state.mealPartModalInfo.mealPartProducts.length; i++) {
+      if (state.mealPartModalInfo.mealPartProducts[i]._id === productId) {
+        // console.log(`удалить продукт из массива под индексом ${i}`)
+        state.mealPartModalInfo.mealPartProducts.splice(i, 1)
+      }
+    }
+  },
   updateMealPartsProductWeight (state, {mealPartNumber, productIndex, updatedProduct}) {
     // Одновление данных о продукте в MealParts для пересчета веса
     state.mealParts[mealPartNumber].products.splice(productIndex, 1, updatedProduct)

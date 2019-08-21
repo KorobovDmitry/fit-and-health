@@ -1,0 +1,118 @@
+<template>
+  <nav class="navbar">
+    <div class="navbar__logo">FH</div>
+
+    <nuxt-link
+      tag="i"
+      to="/"
+      exact
+      no-prefetch
+      class="ti-home navbar__page-link"
+      active-class="navbar__page-link--active"
+    ></nuxt-link>
+    <nuxt-link
+      tag="i"
+      to="/trainings"
+      exact
+      no-prefetch
+      class="ti-timer navbar__page-link"
+      active-class="navbar__page-link--active"
+    ></nuxt-link>
+    <nuxt-link
+      tag="i"
+      to="/nutrition-diary"
+      exact
+      no-prefetch
+      class="ti-agenda navbar__page-link"
+      active-class="navbar__page-link--active"
+    ></nuxt-link>
+    <nuxt-link
+      tag="i"
+      to="/challenge"
+      exact
+      no-prefetch
+      class="ti-cup navbar__page-link"
+      active-class="navbar__page-link--active"
+    ></nuxt-link>
+    <nuxt-link
+      tag="i"
+      to="/measurements"
+      exact
+      no-prefetch
+      class="ti-bar-chart navbar__page-link"
+      active-class="navbar__page-link--active"
+    ></nuxt-link>
+
+    <i class="ti-export navbar__page-link logout" @click="logout()"></i>
+  </nav>
+</template>
+
+<script>
+export default {
+  methods: {
+    logout () {
+      this.$store.dispatch('auth/logout')
+      this.$router.push('/auth/login')
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import '@/assets/scss/vars.scss';
+
+.navbar {
+  // border: 1px solid red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 100%;
+  background: $white;
+  border-right: 1px solid $blockBorder;
+  .navbar__logo {
+    // border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    background: $green;
+    color: $white;
+    font-size: 28px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .navbar__page-link {
+    // border: 1px solid red;
+    margin: 5px 0;
+    padding: 10px;
+    text-align: center;
+    font-size: 28px;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    cursor: pointer;
+    transition: $tr-02;
+  }
+  .navbar__page-link:nth-child(2) {
+    margin-top: auto;
+  }
+  .navbar__page-link--active {
+    color: $white;
+    background: $green;
+    border-radius: 6px;
+  }
+
+  .logout {
+    margin-top: auto;
+    margin-bottom: 20px;
+    width: auto;
+    transform: rotate(90deg);
+  }
+}
+
+</style>

@@ -28,7 +28,7 @@
           <!-- <div class="training-info__element">
             <p class="training-info__element-data">4</p>
             <p class="training-info__element-text">Кол-во тренировочных дней:</p>
-          </div> -->
+          </div>
           <div class="training-info__element">
             <p class="training-info__element-data">1 час 45 мин.</p>
             <p class="training-info__element-text">Время последней тренировки:</p>
@@ -36,7 +36,7 @@
           <div class="training-info__element">
             <p class="training-info__element-data">2 845</p>
             <p class="training-info__element-text">Тоннаж последней тренировки:</p>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="training__action-btn-wrapper">
@@ -44,6 +44,14 @@
           <p class="last-training__date-text">Последняя тренировка:</p>
           <p class="last-training__date-data">вторник, 14 декабря 2019</p>
         </div>
+        <!-- <div class="last-training__date">
+          <p class="last-training__date-text">Время последней тренировки:</p>
+          <p class="last-training__date-data">1 час 45 мин.</p>
+        </div> -->
+        <!-- <div class="last-training__date">
+          <p class="last-training__date-text">Тоннаж последней тренировки:</p>
+          <p class="last-training__date-data">2 845</p>
+        </div> -->
         <!-- <nuxt-link tag="div" to="/trainings/training-in-progress?training-programm=4-day-split" class="training__action-btn">
           <app-button size16px uppercase fillArea @click.native="startTraining()">Начать тренировку</app-button>
         </nuxt-link> -->
@@ -127,7 +135,7 @@ export default {
       border-radius: 6px;
       .chart-block {
         // border: 1px solid red;
-        height: 260px;
+        height: 400px;
       }
       .training-info {
         display: flex;
