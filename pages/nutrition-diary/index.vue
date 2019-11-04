@@ -69,14 +69,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 60px;
   margin-left: 80px;
-  padding: 100px 40px 40px 40px;
+  padding: 40px;
   .nutrition-diary__content {
     // border: 1px solid red;
     display: flex;
     align-items: flex-start;
     width: 100%;
-    max-width: 1800px;
+    max-width: 1700px;
     .nutrition-diary__btn-wrapper {
       // border: 1px solid red;
       display: flex;

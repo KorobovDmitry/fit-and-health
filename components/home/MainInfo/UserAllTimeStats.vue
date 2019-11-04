@@ -90,6 +90,7 @@ export default {
       padding: 2px 5px;
       border-bottom: 2px solid transparent;
       .trainings-stats__title {
+        font-size: 18px;
         font-weight: 500;
       }
       .trainings-stats__refresh-btn {
@@ -109,7 +110,7 @@ export default {
         flex: 1 1 auto;
         // border: 1px solid red;
         text-align: center;
-        margin-right: 10px;
+        margin-right: 5px;
         padding: 20px 10px;
         background: $white;
         border: 1px solid $blockBorder;
@@ -136,13 +137,13 @@ export default {
         margin-right: 0;
       }
       .trainings-stats__element:last-child {
-        margin-top: 10px;
+        margin-top: 5px;
         margin-right: 0;
-        width: 100%;
+        // width: 100%;
       }
     }
   }
-  
+
   .nutrition-info {
     // border: 1px solid red;
     margin-bottom: 20px;
@@ -155,6 +156,7 @@ export default {
       padding: 2px 5px;
       border-bottom: 2px solid transparent;
       .nutrition-info__title {
+        font-size: 18px;
         font-weight: 500;
       }
       .nutrition-info__refresh-btn {
@@ -189,7 +191,7 @@ export default {
             .nutriets-item__indicator {
               margin: 0 10px 0 20px;
               width: 20px;
-              height: 8px;
+              height: 6px;
               border-radius: 6px;
             }
             .nutriets-item__indicator-protein {
@@ -203,16 +205,19 @@ export default {
             }
             .nutriets-item__text {
               min-width: 100px;
+              font-size: 14px;
             }
             .nutriets-item__value {
               margin-right: 20px;
               color: $green;
-              font-size: 20px;
+              font-size: 18px;
               font-weight: 600;
             }
           }
         }
         .percent__chart {
+          // flex: 1 1 auto;
+          // align-self: center;
           margin: 20px 0;
           padding: 0px 30px;
           border-right: 1px dashed $blockBorder;
@@ -223,7 +228,7 @@ export default {
             justify-content: center;
             width: 120px;
             height: 120px;
-            border: 8px solid $blockBorder;
+            border: 6px solid $blockBorder;
             border-radius: 50%;
             .percent__kkal-value {
               margin-top: 5px;

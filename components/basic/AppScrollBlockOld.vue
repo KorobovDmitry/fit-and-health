@@ -107,7 +107,7 @@ export default {
     position: absolute;
     top: 0;
     right: 2px;
-    width: 2px;
+    width: 4px;
     background: rgba(0,0,0,.2);
     border-radius: 4px;
     cursor: pointer;

@@ -7,7 +7,7 @@
     </div>
 
     <user-new-post />
-    <user-post />
+    <user-post v-for="(item, index) in 1" :key="index"/>
   </div>
 </template>
 
@@ -33,12 +33,14 @@ export default {
     .news-visibility__block-title {
       margin-right: auto;
       padding: 2px 5px;
+      font-size: 18px;
       font-weight: 500;
       border-bottom: 2px solid transparent;
     }
     .news-visibility__param-btn {
       margin-left: 20px;
       padding: 2px 5px;
+      font-size: 18px;
       font-weight: 500;
       border-bottom: 2px solid transparent;
       cursor: pointer;

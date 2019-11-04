@@ -68,14 +68,14 @@
     </div>
 
     <div class="user-card__media-and-subscriptions">
-      <div class="media-and-subscriptions__element">
+      <nuxt-link to="/media" no-prefetch class="media-and-subscriptions__element">
         <i class="ti-gallery element__icon"></i>
         <p class="element__text">Фото и видео</p>
-      </div>
-      <div class="media-and-subscriptions__element">
+      </nuxt-link>
+      <nuxt-link to="/subscriptions" no-prefetch class="media-and-subscriptions__element">
         <i class="ti-crown element__icon"></i>
         <p class="element__text">Интересные страницы</p>
-      </div>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -101,8 +101,6 @@ export default {
 @import "@/assets/scss/vars.scss";
 
 .user-card {
-  // border: 1px solid red;
-  margin-bottom: 40px;
   min-width: 400px;
   max-width: 400px;
   .user-card__main-card {
@@ -111,14 +109,12 @@ export default {
     border: 1px solid $blockBorder;
     border-radius: 6px;
     .main-card__avatar-wrapper {
-      // border: 1px solid red;
       width: 100%;
       max-height: 250px;
       border: 1px solid $blockBorder;
       border-radius: 6px;
       overflow: hidden;
       .main-card__avatar {
-        // border: 1px solid red;
         width: 100%;
         height: auto;
       }
@@ -129,20 +125,18 @@ export default {
         font-size: 24px;
         font-weight: 700;
       }
+      .user-card__user-followers {
+        margin-top: 5px;
+        font-size: 14px;
+        font-weight: 500;
+      }
       .user-card__user-status {
         margin-top: 5px;
-        margin-bottom: 10px;
         font-size: 14px;
-      }
-      .user-card__user-followers {
-        font-size: 12px;
-        font-weight: 600;
       }
     }
 
     .main-card__action-btn-wrapper {
-      // border: 1px solid red;
-      padding: 0px 10px 10px 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -152,13 +146,12 @@ export default {
   .user-card__main-info {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 5px;
     padding: 10px 0;
     background: $white;
     border: 1px solid $blockBorder;
     border-radius: 6px;
     .main-info__item {
-      // border: 1px solid red;
       text-align: center;
       width: 100%;
       border-right: 1px solid $blockBorder;
@@ -178,7 +171,7 @@ export default {
     }
   }
   .user-card__contacts {
-    margin-top: 10px;
+    margin-top: 5px;
     padding: 0px 20px;
     background: $white;
     border: 1px solid $blockBorder;
@@ -207,25 +200,21 @@ export default {
   }
   .user-card__media-and-subscriptions {
     display: flex;
-    // align-items: center;
-    // justify-content: space-between;
-    // margin-top: 10px;
-    // padding: 10px;
-    // background: $white;
-    // border: 1px solid $blockBorder;
-    // border-radius: 6px;
     .media-and-subscriptions__element {
       display: flex;
       flex-direction: column;
-      // justify-content: center;
       align-items: center;
       flex: 1 1 auto;
-      margin-top: 10px;
-      margin-right: 10px;
+      margin-top: 5px;
+      margin-right: 5px;
+      text-decoration: none;
+      color: $black;
       padding: 20px 10px;
       background: $white;
       border: 1px solid $blockBorder;
       border-radius: 6px;
+      transition: $tr-02;
+      cursor: pointer;
       .element__icon {
         font-size: 26px;
       }
@@ -237,6 +226,9 @@ export default {
     }
     .media-and-subscriptions__element:last-child {
       margin-right: 0;
+    }
+    .media-and-subscriptions__element:hover {
+      color: $green;
     }
   }
 }

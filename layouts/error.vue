@@ -23,17 +23,52 @@
         <p :data-target-hiddeb-content="index">Скрытый контент: {{ item.hiddenContent }}</p>
       </template>
     </app-accordion-list>
+
+    <hr>
+
+    <app-scroll-block-old>
+      <template v-slot:scrollContent>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <br>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <br>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <br>
+        <p>test</p>
+        <br>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+      </template>
+    </app-scroll-block-old>
   </div>
 </template>
 
 <script>
 import AppAccordion from '@/components/basic/AppAccordion'
 import AppAccordionList from '@/components/basic/AppAccordionList'
+import AppScrollBlockOld from '@/components/basic/AppScrollBlockOld'
 export default {
   layout: 'empty',
   components: {
     AppAccordion,
-    AppAccordionList
+    AppAccordionList,
+    AppScrollBlockOld
   },
   data () {
     return {

@@ -1,28 +1,36 @@
 <template>
-  <div class="navbar">
-    <div class="navbar__action-btn-wrapper">
-      <i class="ti-search navbar__action-btn"></i>
-      <i class="ti-email navbar__action-btn"></i>
-      <i class="ti-bell navbar__action-btn"></i>
-      <i class="ti-settings navbar__action-btn"></i>
+  <div class="header-navbar">
+    <div class="header-navbar__action-btn-wrapper">
+      <i class="ti-search header-navbar__action-btn"></i>
+      <nuxt-link
+        to="/messages"
+        exact
+        no-prefetch
+        class="ti-email header-navbar__page-link"
+        active-class="header-navbar__page-link--active"
+      ></nuxt-link>
+      <i class="ti-bell header-navbar__action-btn"></i>
+      <nuxt-link
+        to="/settings"
+        exact
+        no-prefetch
+        class="ti-settings header-navbar__page-link"
+        active-class="header-navbar__page-link--active"
+      ></nuxt-link>
     </div>
-    <!-- <app-main-search-block /> -->
   </div>
 </template>
 
 <script>
-import AppMainSearchBlock from '@/components/navigation/AppMainSearchBlock'
 export default {
-  components: {
-    AppMainSearchBlock
-  }
+
 }
 </script>
 
 <style lang="scss">
 @import '@/assets/scss/vars.scss';
 
-.navbar {
+.header-navbar {
   // border: 1px solid red;
   display: flex;
   align-items: center;
@@ -33,15 +41,31 @@ export default {
   height: 60px;
   background: $white;
   border-bottom: 1px solid $blockBorder;
-  .navbar__action-btn-wrapper {
+  .header-navbar__action-btn-wrapper {
     margin-left: auto;
     margin-right: 20px;
-    .navbar__action-btn {
+    .header-navbar__action-btn {
       // border: 1px solid red;
-      margin: 0 10px;
-      padding: 5px;
+      margin: 0 5px;
+      padding: 10px;
       font-size: 24px;
       cursor: pointer;
+      transition: $tr-02;
+    }
+    // .header-navbar__action-btn--active {
+    //   color: $green;
+    // }
+    .header-navbar__page-link {
+      margin: 0 5px;
+      padding: 10px;
+      text-decoration: none;
+      color: $black;
+      font-size: 24px;
+      cursor: pointer;
+      transition: $tr-02;
+    }
+    .header-navbar__page-link--active {
+      color: $green;
     }
   }
 }

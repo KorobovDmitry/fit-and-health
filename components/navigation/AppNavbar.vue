@@ -3,7 +3,6 @@
     <div class="navbar__logo">FH</div>
 
     <nuxt-link
-      tag="i"
       to="/"
       exact
       no-prefetch
@@ -11,7 +10,6 @@
       active-class="navbar__page-link--active"
     ></nuxt-link>
     <nuxt-link
-      tag="i"
       to="/trainings"
       exact
       no-prefetch
@@ -19,15 +17,13 @@
       active-class="navbar__page-link--active"
     ></nuxt-link>
     <nuxt-link
-      tag="i"
-      to="/nutrition-diary"
+      to="/meal-planer"
       exact
       no-prefetch
       class="ti-agenda navbar__page-link"
       active-class="navbar__page-link--active"
     ></nuxt-link>
     <nuxt-link
-      tag="i"
       to="/challenge"
       exact
       no-prefetch
@@ -35,11 +31,18 @@
       active-class="navbar__page-link--active"
     ></nuxt-link>
     <nuxt-link
-      tag="i"
       to="/measurements"
       exact
       no-prefetch
       class="ti-bar-chart navbar__page-link"
+      active-class="navbar__page-link--active"
+    ></nuxt-link>
+
+    <nuxt-link
+      to="/nutrition-diary"
+      exact
+      no-prefetch
+      class="ti-bookmark-alt navbar__page-link"
       active-class="navbar__page-link--active"
     ></nuxt-link>
 
@@ -92,6 +95,8 @@ export default {
     margin: 5px 0;
     padding: 10px;
     text-align: center;
+    text-decoration: none;
+    color: $black;
     font-size: 28px;
     border-left: 2px solid transparent;
     border-right: 2px solid transparent;

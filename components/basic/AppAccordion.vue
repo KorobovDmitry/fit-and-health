@@ -1,16 +1,9 @@
 <template>
   <div ref="accordion" class="accordion">
-    <div
-      ref="header"
-      class="accordion__header"
-      @click="toggleVisibility()"
-    >
+    <div ref="header" class="accordion__header" @click="toggleVisibility()">
       <slot name="accordionHeader"></slot>
     </div>
-    <div
-      ref="hiddenContent"
-      class="accordion__hidden-content"
-    >
+    <div ref="hiddenContent" class="accordion__hidden-content">
       <slot name="accordionHiddenContent"></slot>
     </div>
   </div>

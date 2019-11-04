@@ -36,18 +36,14 @@
 
 <script>
 import UserCard from '@/components/home/Profile/UserCard.vue'
-import UserMedia from '@/components/home/Profile/UserMedia.vue'
-import UserSubscriptions from '@/components/home/Profile/UserSubscriptions.vue'
 import UserAllTimeStats from '@/components/home/MainInfo/UserAllTimeStats.vue'
 import UserActivity from '@/components/home/Activity/UserActivity.vue'
 export default {
   middleware: ['user-auth'],
   components: {
     UserCard,
-    UserMedia,
-    UserSubscriptions,
-    UserAllTimeStats,
-    UserActivity
+    UserActivity,
+    UserAllTimeStats
   },
   async fetch ({ store }) {
     await store.dispatch('userProfile/getUserInfo')
@@ -66,14 +62,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 60px;
   margin-left: 80px;
-  padding: 100px 40px 40px 40px;
+  padding: 40px;
   .index-page__content {
     // border: 1px solid red;
     display: flex;
     align-items: flex-start;
     width: 100%;
-    max-width: 1800px;
+    max-width: 1700px;
     .index-page__left-block {
       // border: 1px solid red;
       display: flex;

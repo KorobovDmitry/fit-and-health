@@ -1,14 +1,19 @@
 <template>
   <div class="measurements-page">
     <div class="measurements-page__content">
-      measurements
+
+      <tracking-params />
+
     </div>
   </div>
 </template>
 
 <script>
+import TrackingParams from '@/components/measurements/TrackingParams'
 export default {
-
+  components: {
+    TrackingParams
+  }
 }
 </script>
 
@@ -20,14 +25,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 60px;
   margin-left: 80px;
-  padding: 100px 40px 40px 40px;
+  padding: 40px;
   .measurements-page__content {
     // border: 1px solid red;
     display: flex;
     align-items: flex-start;
     width: 100%;
-    max-width: 1800px;
+    max-width: 1700px;
   }
 }
 

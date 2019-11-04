@@ -1,9 +1,9 @@
 <template>
   <div class="new-post">
     <div class="new-post__user-message-wrapper">
-      <div class="new-post__user-avatar-wrapper">
+      <!-- <div class="new-post__user-avatar-wrapper">
         <img src="https://pic.sport.ua/media/images/Foto%202.jpg" alt="" class="new-post__user-avatar">
-      </div>
+      </div> -->
       <textarea class="new-post__message" placeholder="Поделитесь своими достижениями или новостями..."></textarea>
     </div>
     <div class="new-post__attach-and-send">
@@ -29,7 +29,7 @@ export default {
 @import '@/assets/scss/vars.scss';
 
 .new-post {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   background: $white;
   border: 1px solid $blockBorder;
   border-radius: 6px;
@@ -37,23 +37,24 @@ export default {
     // border: 1px solid red;
     display: flex;
     align-items: flex-start;
-    .new-post__user-avatar-wrapper {
-      margin: 20px 20px 0px 20px;
-      min-width: 60px;
-      max-width: 60px;
-      height: 60px;
-      border: 1px solid $blockBorder;
-      border-radius: 6px;
-      overflow-x: hidden;
-      .new-post__user-avatar {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
+    // .new-post__user-avatar-wrapper {
+    //   margin: 20px 20px 0px 20px;
+    //   min-width: 60px;
+    //   max-width: 60px;
+    //   height: 60px;
+    //   border: 1px solid $blockBorder;
+    //   border-radius: 6px;
+    //   overflow-x: hidden;
+    //   .new-post__user-avatar {
+    //     width: 100%;
+    //     height: 100%;
+    //     object-fit: cover;
+    //   }
+    // }
     .new-post__message {
-      margin-top: 20px;
-      margin-right: 20px;
+      margin: 20px;
+      // margin-top: 20px;
+      // margin-right: 20px;
       padding: 10px;
       width: 100%;
       height: 80px;
@@ -71,12 +72,12 @@ export default {
     // border: 1px solid red;
     display: flex;
     align-items: center;
-    margin: 20px 20px 10px 100px;
-    padding: 10px 0px 0px 0px;
+    margin: 0px 20px 10px 20px;
+    padding: 10px 0px 0px 10px;
     border-top: 1px dashed $blockBorder;
     .new-post__attach-btn {
       margin-right: 20px;
-      color: $gray-light;
+      color: $gray;
       font-size: 20px;
       cursor: pointer;
       transition: $tr-02;
