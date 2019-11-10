@@ -1,7 +1,7 @@
 <template>
-  <div ref="filterGroup" class="filter-group">
+  <div ref="filterGroup" class="filter-radio-group">
 
-    <div ref="contentWrapper" class="filter-group__content-wrapper">
+    <div ref="contentWrapper" class="filter-radio-group__content-wrapper">
       <div class="filter-group__title-block" @click="togglefilterGroupOpened()">
         <p class="filter-group__title">{{ groupTitle }}</p>
         <i v-show="!filterGroupOpened" class="filter-group__title-icon ti-arrow-down"></i>
@@ -66,14 +66,14 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/vars.scss';
 
-.filter-group {
+.filter-radio-group {
   // border: 1px solid red;
-  margin-bottom: 20px;
-  border-top: 1px dashed transparent;
-  border-bottom: 1px dashed rgba(0,0,0,.2);
-  overflow: hidden;
-  transition: $tr-02;
-  .filter-group__content-wrapper {
+  // margin-bottom: 20px;
+  // border-top: 1px dashed transparent;
+  // border-bottom: 1px dashed rgba(0,0,0,.2);
+  // overflow: hidden;
+  // transition: $tr-02;
+  .filter-radio-group__content-wrapper {
     // border: 1px solid red;
     display: flex;
     flex-direction: column;
@@ -83,17 +83,17 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     user-select: none;
+    padding: 10px 20px;
+    background: $white;
+    border: 1px solid $blockBorder;
+    border-radius: 6px;
     cursor: pointer;
     .filter-group__title {
-      // border: 1px solid red;
-      padding: 5px 0;
       font-size: 18px;
     }
     .filter-group__title-icon {
-      // border: 1px solid red;
-      padding: 5px 0;
       font-size: 12px;
     }
     .filter-group__title-icon:hover {
@@ -106,6 +106,10 @@ export default {
     flex-wrap: wrap;
     margin-bottom: 25px;
     user-select: none;
+    padding: 15px 20px;
+    background: $white;
+    border: 1px solid $blockBorder;
+    border-radius: 6px;
     .filter-group__list {
       // border: 1px solid red;
       .filter-group__list-item {

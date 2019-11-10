@@ -43,8 +43,9 @@ export default {
   display: flex;
   // flex-wrap: wrap;
   flex-direction: column;
+  // margin-bottom: -74px;
   padding: 10px;
-  // min-width: 350px;
+  // min-width: 300px;
   // max-width: 800px;
   background: $white;
   border: 1px solid $blockBorder;
@@ -91,6 +92,8 @@ export default {
     align-items: center;
     margin-top: auto;
     width: 100%;
+    // border-top: 1px dashed $blockBorder;
+    // padding-top: 12px;
     .added-marks__input {
       // margin-top: 5px;
       padding: 5px 5px;

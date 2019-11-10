@@ -1,9 +1,9 @@
 <template>
-  <div class="results">
+  <div class="search-results">
 
-    <div class="search-block-wrapper">
-      <app-search-block />
-    </div>
+    <p class="search-results__block-title">Поиск рецептов</p>
+
+    <app-search-block />
 
     <div class="filter-by">
       <p class="filter-by__value">Все</p>
@@ -48,29 +48,27 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/vars.scss';
 
-.results {
+.search-results {
   // border: 1px solid red;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  margin-left: 20px;
-  width: 100%;
-  .search-block-wrapper {
-    padding: 0 10px 20px 10px;
+  flex: 1 1 auto;
+  margin-left: 40px;
+  .search-results__block-title {
+    margin: 0 20px 14px 20px;
+    padding: 0 5px;
+    font-size: 18px;
+    font-weight: 500;
   }
   .filter-by {
     // border: 1px solid red;
     display: flex;
     // justify-content: center;
-    margin-left: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     .filter-by__value {
       // border: 1px solid red;
-      // margin-bottom: 40px;
-      margin-left: 10px;
-      padding: 5px 10px;
+      margin: 0 10px;
       text-transform: uppercase;
       font-size: 14px;
-      // font-weight: 600;
       border-top: 2px solid transparent;
     }
     .filter-by__value--active {
@@ -80,26 +78,23 @@ export default {
     }
     .filter-by__divider {
       // border: 1px solid red;
-      margin-left: 10px;
-      padding: 5px 10px;
-      // color: $gray-light;
-      color: rgba(0,0,0,.4);
-      // font-weight: 600;
+      margin: 0 20px;
+      color: rgba(0,0,0,.2);
     }
   }
   .recipes-block__wrapper {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
     .small-block {
-      margin: 10px;
+      // margin: 10px;
       background: $white;
       width: calc(35% - 20px);
       height: 440px;
       border: 1px solid rgba(0,0,0,.2);
     }
     .big-block {
-      margin: 10px;
+      // margin: 10px;
       // margin-left: 0;
       background: $white;
       width: calc(65% - 20px);

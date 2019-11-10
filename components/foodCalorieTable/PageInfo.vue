@@ -21,19 +21,14 @@
     <div class="add-product-btn__wrapper">
       <app-button sizeXL uppercase right @click.native="openModal()">ДОБАВИТЬ ПРОДУКТ</app-button>
     </div>
-
-    <food-calorie-table-modal/>
-
   </div>
 </template>
 
 <script>
 import AppButton from '@/components/basic/AppButton'
-import FoodCalorieTableModal from '@/components/nutritionDiary/FoodCalorieTable/FoodCalorieTableModal'
 export default {
   components: {
-    AppButton,
-    FoodCalorieTableModal
+    AppButton
   },
   computed: {
     totalProductsAmount () {
@@ -102,10 +97,10 @@ export default {
 
 .overview-products {
   // border: 1px solid red;
-  margin-top: 40px;
-  // margin-left: 40px;
-  // margin-right: 40px;
   display: flex;
+  flex: 1 1 auto;
+  margin-bottom: 40px;
+  // margin-left: 440px;
   @include for (1090) {
     flex-direction: column;
     align-items: center;
@@ -177,7 +172,6 @@ export default {
   .add-product-btn__wrapper {
     // border: 1px solid red;
     display: flex;
-    // align-items: center;
     margin-left: auto;
     @include for (1090) {
       margin-left: 0;

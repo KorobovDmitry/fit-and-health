@@ -1,20 +1,14 @@
 <template>
   <div class="meal-planer">
     <div class="meal-planer__content">
-      <!-- <div class="content__left">
-        <meal-planer-search />
-      </div> -->
 
-      <div class="content__center">
-        <meal-plan-overview />
-        <!-- <meal-part /> -->
+      <div class="content__left-block">
+        <meal-plan />
       </div>
 
-      <div class="content__right">
-        <!-- <meal-planer-search /> -->
+      <div class="content__right-block">
         <nutrients-settings />
         <useful-pages />
-        <!-- <nutrients-overview /> -->
       </div>
 
     </div>
@@ -22,24 +16,18 @@
 </template>
 
 <script>
-// import MealPart from '@/components/mealPlaner/MealPart'
+import MealPlan from '@/components/mealPlaner/MealPlan/index'
 import NutrientsSettings from '@/components/mealPlaner/NutrientsSettings'
-import NutrientsOverview from '@/components/mealPlaner/NutrientsOverview'
 import UsefulPages from '@/components/mealPlaner/UsefulPages'
-import MealPlanOverview from '@/components/mealPlaner/MealPlanOverview/index'
-import MealPlanerSearch from '@/components/mealPlaner/MealPlanerSearch'
 export default {
   middleware: ['user-auth'],
   async fetch ({ store }) {
     // await store.dispatch('mealPlaner/getCurrentDayMealPlanerInfo')
   },
   components: {
-    // MealPart,
+    MealPlan,
     NutrientsSettings,
-    NutrientsOverview,
-    UsefulPages,
-    MealPlanOverview,
-    MealPlanerSearch
+    UsefulPages
   }
 }
 </script>
@@ -60,23 +48,11 @@ export default {
     display: flex;
     width: 100%;
     max-width: 1700px;
-    .content__left {
-      display: flex;
-      flex-direction: column;
-      width: 400px;
-      max-width: 400px;
-      min-width: 400px;
-    }
-    .content__center {
-      // margin: 0 40px;
+    .content__left-block {
       margin-right: 40px;
       flex: 1 1 auto;
-      // width: 100%;
-      .meal-planer__search-and-meal-part {
-        display: flex;
-      }
     }
-    .content__right {
+    .content__right-block {
       display: flex;
       flex-direction: column;
       width: 400px;

@@ -1,10 +1,7 @@
 <template>
-  <div class="filters">
+  <div class="sorting-filters">
 
-    <div class="filters__title-block">
-      <p class="filters__title">Фильтры</p>
-      <i class="filters__title-icon ti-pencil-alt"></i>
-    </div>
+    <p class="sorting-filters__block-title">Фильтры</p>
 
     <filter-radio-group
       groupTitle="Сортировка по"
@@ -57,10 +54,10 @@
 </template>
 
 <script>
-import FilterRadioGroup from '@/components/nutritionDiary/Recipes/Filters/FilterRadioGroup.vue'
-import FilterCheckGroup from '@/components/nutritionDiary/Recipes/Filters/FilterCheckGroup.vue'
-// import FilterRangeGroup from '@/components/nutritionDiary/Recipes/Filters/FilterRangeGroup.vue'
-import FilterLimitGroup from '@/components/nutritionDiary/Recipes/Filters/FilterLimitGroup.vue'
+import FilterRadioGroup from '@/components/recipesBook/SortingFilters/FilterRadioGroup'
+import FilterCheckGroup from '@/components/recipesBook/SortingFilters/FilterCheckGroup'
+// import FilterRangeGroup from '@/components/recipesBook/SortingFilters/FilterRangeGroup'
+import FilterLimitGroup from '@/components/recipesBook/SortingFilters/FilterLimitGroup'
 export default {
   components: {
     FilterRadioGroup,
@@ -90,27 +87,18 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/vars.scss';
 
-.filters {
+.sorting-filters {
   // border: 1px solid red;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  min-width: 300px;
-  max-width: 300px;
-  .filters__title-block {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 6px;
-    margin-bottom: 20px;
-    border-bottom: 1px dashed rgba(0,0,0,.2);
-    .filters__title {
-      // border: 1px solid red;
-      font-size: 24px;
-      // font-weight: 600;
-    }
-    .filters__title-icon {
-      font-size: 18px;
-    }
+  // margin-top: 40px;
+  // margin-bottom: 40px;
+  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
+  .sorting-filters__block-title {
+    margin: 0 20px 14px 20px;
+    padding: 0 5px;
+    font-size: 18px;
+    font-weight: 500;
   }
 }
 

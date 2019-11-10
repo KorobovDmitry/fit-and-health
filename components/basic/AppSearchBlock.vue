@@ -85,7 +85,7 @@ export default {
   .search-field {
     display: flex;
     .search__input {
-      padding: 8px 0px 8px 20px;
+      padding: 10px 0px 10px 20px;
       width: 100%;
       font-family: $fontMontserrat;
       border: 1px solid $blockBorder;

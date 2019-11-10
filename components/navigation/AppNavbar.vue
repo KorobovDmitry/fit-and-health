@@ -39,7 +39,7 @@
     ></nuxt-link>
 
     <nuxt-link
-      to="/nutrition-diary"
+      to="/handbook"
       exact
       no-prefetch
       class="ti-bookmark-alt navbar__page-link"
