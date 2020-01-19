@@ -10,6 +10,13 @@
       active-class="navbar__page-link--active"
     ></nuxt-link>
     <nuxt-link
+      to="/messages"
+      exact
+      no-prefetch
+      class="ti-comments navbar__page-link"
+      active-class="navbar__page-link--active"
+    ></nuxt-link>
+    <nuxt-link
       to="/trainings"
       exact
       no-prefetch
@@ -46,7 +53,26 @@
       active-class="navbar__page-link--active"
     ></nuxt-link>
 
-    <i class="ti-export navbar__page-link logout" @click="logout()"></i>
+
+
+    <nuxt-link
+      to="/search"
+      exact
+      no-prefetch
+      class="ti-search navbar__page-link"
+      active-class="navbar__page-link--active"
+    ></nuxt-link>
+    <nuxt-link
+      to="/settings"
+      exact
+      no-prefetch
+      class="ti-settings navbar__page-link logout"
+      active-class="navbar__page-link--active"
+    ></nuxt-link>
+
+
+
+    <!-- <i class="ti-export navbar__page-link logout" @click="logout()"></i> -->
   </nav>
 </template>
 
@@ -71,7 +97,6 @@ export default {
   left: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 80px;
   height: 100%;
@@ -106,17 +131,14 @@ export default {
   .navbar__page-link:nth-child(2) {
     margin-top: auto;
   }
+  .navbar__page-link:last-child {
+    margin-top: auto;
+    margin-bottom: 20px;
+  }
   .navbar__page-link--active {
     color: $white;
     background: $green;
     border-radius: 6px;
-  }
-
-  .logout {
-    margin-top: auto;
-    margin-bottom: 20px;
-    width: auto;
-    transform: rotate(90deg);
   }
 }
 

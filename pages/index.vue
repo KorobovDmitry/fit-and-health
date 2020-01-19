@@ -1,10 +1,11 @@
 <template>
   <div class="index-page">
+    <app-page-title>Профиль</app-page-title>
+    <!-- <app-page-title>Профиль пользователя</app-page-title> -->
     <div class="index-page__content">
       <div class="index-page__left-block">
         <user-card />
       </div>
-
       <div class="index-page__center-block">
         <user-activity />
 
@@ -35,12 +36,14 @@
 </template>
 
 <script>
+import AppPageTitle from '@/components/basic/AppPageTitle'
 import UserCard from '@/components/home/Profile/UserCard.vue'
 import UserAllTimeStats from '@/components/home/MainInfo/UserAllTimeStats.vue'
 import UserActivity from '@/components/home/Activity/UserActivity.vue'
 export default {
   middleware: ['user-auth'],
   components: {
+    AppPageTitle,
     UserCard,
     UserActivity,
     UserAllTimeStats
@@ -62,7 +65,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
   .index-page__content {

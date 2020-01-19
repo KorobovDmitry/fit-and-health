@@ -1,6 +1,8 @@
 <template>
   <div class="tracking-params">
-    <p class="tracking-params__block-title">Отслеживаемые параметры</p>
+
+    <app-block-title>Отслеживаемые параметры</app-block-title>
+
     <div class="tracking-params__scrolling-items">
       <div class="tracking-parameter tracking-parameter--active">
         <div class="tracking-parameter__top">
@@ -18,7 +20,7 @@
           </div>
         </div>
       </div>
-      <div v-for="(item, index) in 5" :key="index" class="tracking-parameter">
+      <div v-for="(item, index) in 4" :key="index" class="tracking-parameter">
         <div class="tracking-parameter__top">
           <p class="tracking-parameter__title">Вес</p>
           <i class="ti-more tracking-parameter__action-btn"></i>
@@ -39,28 +41,28 @@
 </template>
 
 <script>
-export default {}
+import AppBlockTitle from '@/components/basic/AppBlockTitle'
+export default {
+  components: {
+    AppBlockTitle
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/vars.scss";
 
 .tracking-params {
-  // max-width: 100%;
-  .tracking-params__block-title {
-    margin: 0 20px 14px 20px;
-    padding: 0 5px;
-    font-size: 18px;
-    font-weight: 500;
-  }
+  // border: 1px solid red;
+  margin-bottom: 20px;
   .tracking-params__scrolling-items {
     // border: 1px solid red;
     display: flex;
     // margin-top: 10px;
-    // max-width: 100%;
-    // overflow: hidden;
+    // max-width: calc(100% - 440px);
+    overflow: hidden;
     .tracking-parameter {
-      margin-right: 20px;
+      margin-right: 10px;
       padding: 10px;
       min-width: 200px;
       background: $white;
@@ -84,9 +86,9 @@ export default {}
         display: flex;
         justify-content: space-between;
         margin-top: 10px;
-        .tracking-parameter__chart {
-          // border: 1px solid red;
-        }
+        // .tracking-parameter__chart {
+        //   border: 1px solid red;
+        // }
         .tracking-parameter__last-value {
           // border: 1px solid red;
           .last-value {
@@ -121,19 +123,19 @@ export default {}
       }
     }
     .tracking-parameter--active {
-      background: $green;
-      color: $white;
-      border: 1px solid transparent;
-      .tracking-parameter__bottom {
-        .tracking-parameter__last-value {
-          .chenge-percent__icon {
-            color: $white;
-          }
-          .chenge-percent__value {
-            color: $white;
-          }
-        }
-      }
+      // background: $green;
+      // color: $white;
+      border: 2px solid $green;
+      // .tracking-parameter__bottom {
+      //   .tracking-parameter__last-value {
+      //     .chenge-percent__icon {
+      //       color: $white;
+      //     }
+      //     .chenge-percent__value {
+      //       color: $white;
+      //     }
+      //   }
+      // }
     }
   }
 }

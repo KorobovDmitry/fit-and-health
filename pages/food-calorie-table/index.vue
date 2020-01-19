@@ -1,26 +1,24 @@
 <template>
   <div class="food-calorie-table">
+    <app-page-title>Таблица калорийности продуктов</app-page-title>
     <div class="food-calorie-table__content">
-
-      <p class="food-calorie-table__page-title">Таблица калорийности продуктов</p>
-
       <page-info />
-
       <div class="food-calorie-table__filters-and-table">
-        <!-- <sorting-filters /> -->
+        <sorting-filters />
         <product-table />
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
+import AppPageTitle from '@/components/basic/AppPageTitle'
 import PageInfo from '@/components/foodCalorieTable/PageInfo'
 import SortingFilters from '@/components/foodCalorieTable/SortingFilters'
 import ProductTable from '@/components/foodCalorieTable/ProductTable'
 export default {
   components: {
+    AppPageTitle,
     PageInfo,
     SortingFilters,
     ProductTable
@@ -36,7 +34,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
   .food-calorie-table__content {
@@ -45,11 +43,6 @@ export default {
     flex-direction: column;
     width: 100%;
     max-width: 1700px;
-    .food-calorie-table__page-title {
-      margin-bottom: 40px;
-      text-align: center;
-      font-size: 28px;
-    }
     .food-calorie-table__filters-and-table {
       display: flex;
     }

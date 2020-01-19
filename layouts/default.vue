@@ -2,7 +2,7 @@
   <div class="layout-default">
 
     <app-navbar />
-    <app-header />
+    <!-- <app-header /> -->
 
     <nuxt />
 

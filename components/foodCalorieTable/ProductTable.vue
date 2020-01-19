@@ -1,9 +1,9 @@
 <template>
   <div class="product-table">
 
-    <p class="product-table__block-title">Продукты</p>
+    <app-block-title>Продукты</app-block-title>
 
-    <app-search-block filters />
+    <app-search-block :filters="false" />
 
     <div class="food-table">
       <div class="food-table__header">
@@ -38,9 +38,11 @@
 </template>
 
 <script>
+import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import AppSearchBlock from '@/components/basic/AppSearchBlock'
 export default {
   components: {
+    AppBlockTitle,
     AppSearchBlock
   }
 }
@@ -52,13 +54,7 @@ export default {
 .product-table {
   // border: 1px solid red;
   flex: 1 1 auto;
-  // margin-left: 40px;
-  .product-table__block-title {
-    margin: 0 20px 14px 20px;
-    padding: 0 5px;
-    font-size: 18px;
-    font-weight: 500;
-  }
+  margin-left: 40px;
   .food-table {
     margin-top: 20px;
     .food-table__header {

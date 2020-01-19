@@ -11,7 +11,7 @@
       <div class="filter-group__list-block">
         <ul class="filter-group__list">
           <li v-for="(item, index) in valueList" :key="index" class="filter-group__list-item">
-            <app-input-checkbox-with-border
+            <app-input-checkbox
               v-model="checkedValue"
               :label="item"
               :value="item"
@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import AppInputCheckboxWithBorder from '@/components/basic/AppInputCheckboxWithBorder.vue'
+import AppInputCheckbox from '@/components/basic/AppInputCheckbox'
 export default {
   components: {
-    AppInputCheckboxWithBorder
+    AppInputCheckbox
   },
   props: {
     groupTitle: String,

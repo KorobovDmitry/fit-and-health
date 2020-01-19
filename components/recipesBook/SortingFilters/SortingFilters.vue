@@ -3,15 +3,17 @@
 
     <p class="sorting-filters__block-title">Фильтры</p>
 
+    <!-- {{ filters }} -->
+
     <filter-radio-group
-      groupTitle="Сортировка по"
+      headerTitle="Сортировать по ..."
       :valueList="sotringOptions"
       :defaultValue="sotringDefault"
       @inputGroupValueChanged="filters.sorting = $event"
     />
 
-    <filter-check-group
-      groupTitle="Время приема пищи"
+    <filter-checkbox-group
+      headerTitle="Время приема пищи"
       :valueList="mealtimeOptions"
       :defaultValue="mealtimeOptions"
       @inputGroupValueChanged="filters.mealtime = $event"
@@ -30,39 +32,35 @@
       @limitValueChanged="filters.cookingTimeLimit = $event"
     />
 
-    <filter-check-group
-      groupTitle="Сложность приготовления"
+    <filter-checkbox-group
+      headerTitle="Сложность приготовления"
       :valueList="cookingDifficultyOptions"
       :defaultValue="cookingDifficultyOptions"
     />
 
-    <filter-check-group
-      groupTitle="Доп. предпочтения"
+    <filter-checkbox-group
+      headerTitle="Доп. предпочтения"
       :valueList="preferenceOptions"
       :defaultValue="[]"
     />
 
-    <filter-check-group
-      groupTitle="Содержит продукты"
+    <filter-checkbox-group
+      headerTitle="Содержит продукты"
       :valueList="productsOptions"
       :defaultValue="[]"
     />
-
-    {{ filters }}
 
   </div>
 </template>
 
 <script>
-import FilterRadioGroup from '@/components/recipesBook/SortingFilters/FilterRadioGroup'
-import FilterCheckGroup from '@/components/recipesBook/SortingFilters/FilterCheckGroup'
-// import FilterRangeGroup from '@/components/recipesBook/SortingFilters/FilterRangeGroup'
+import FilterRadioGroup from '@/components/basic/FilterRadioGroup'
+import FilterCheckboxGroup from '@/components/basic/FilterCheckboxGroup'
 import FilterLimitGroup from '@/components/recipesBook/SortingFilters/FilterLimitGroup'
 export default {
   components: {
     FilterRadioGroup,
-    FilterCheckGroup,
-    // FilterRangeGroup
+    FilterCheckboxGroup,
     FilterLimitGroup
   },
   data () {

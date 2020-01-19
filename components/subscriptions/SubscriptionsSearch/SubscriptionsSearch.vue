@@ -1,7 +1,7 @@
 <template>
   <div class="subscriptions-search">
 
-    <p class="subscriptions-search__block-title">Интересные страницы</p>
+    <p class="subscriptions-search__block-title">Поиск по подпискам</p>
 
     <app-search-block small filters mb20>
       <template v-slot:searchFilters>

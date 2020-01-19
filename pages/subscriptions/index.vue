@@ -1,5 +1,6 @@
 <template>
   <div class="subscriptions-page">
+    <app-page-title>Интересные страницы</app-page-title>
     <div class="subscriptions-page__content">
       <subscriptions-search />
       <subscriptions-overview />
@@ -8,10 +9,12 @@
 </template>
 
 <script>
+import AppPageTitle from '@/components/basic/AppPageTitle'
 import SubscriptionsSearch from '@/components/subscriptions/SubscriptionsSearch/SubscriptionsSearch'
 import SubscriptionsOverview from '@/components/subscriptions/SubscriptionsOverview/SubscriptionsOverview'
 export default {
   components: {
+    AppPageTitle,
     SubscriptionsSearch,
     SubscriptionsOverview
   }
@@ -26,7 +29,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
   .subscriptions-page__content {

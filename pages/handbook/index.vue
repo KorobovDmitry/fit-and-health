@@ -1,5 +1,6 @@
 <template>
   <div class="handbook">
+    <app-page-title>Справочник</app-page-title>
     <div class="handbook__content">
       handbook
     </div>
@@ -7,8 +8,11 @@
 </template>
 
 <script>
+import AppPageTitle from '@/components/basic/AppPageTitle'
 export default {
-  
+  components: {
+    AppPageTitle
+  }
 }
 </script>
 
@@ -20,7 +24,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
   .handbook__content {

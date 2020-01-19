@@ -1,6 +1,6 @@
 <template>
   <label class="input__label">
-    <input class="input__value-field" type="checkbox" :checked="shouldBeChecked" :value="value" @change="updateInput">
+    <input class="input__value-field" type="checkbox" :checked="shouldBeChecked" :value="value" @change="updateInput($event)">
     <p class="input__visible-switch"></p>
     <p class="input__text">{{ label }}</p>
   </label>
@@ -44,7 +44,7 @@ export default {
     }
   },
   methods: {
-    updateInput (event) {
+    updateInput ($event) {
       let isChecked = event.target.checked
 
       if (this.modelValue instanceof Array) {
@@ -74,13 +74,11 @@ export default {
   align-items: center;
 
   .input__value-field {
-    // border: 1px solid red;
     // visibility: hidden;
     display: none;
   }
   .input__value-field:checked + .input__visible-switch:after {
     background: $green;
-    left: 15px;
   }
   .input__value-field:checked ~ .input__text {
     color: $green;
@@ -89,30 +87,28 @@ export default {
   .input__visible-switch {
     // border: 1px solid red;
     position: relative;
-    height: 14px;
-    width: 35px;
-    // background: $green;
-    background: rgba(0,0,0,.2);
-    border-radius: 10px;
+    height: 20px;
+    width: 20px;
+    border: 2px solid #6EB63B;
+    border-radius: 4px;
   }
   .input__visible-switch:after {
     // border: 1px solid red;
     position: absolute;
     top: 0;
-    left: 0;
-    transform: translateY(calc(-50% + 7px));
+    left: 2px;
+    transform: translateY(calc(-50% + 8px));
     content: '';
-    height: 20px;
-    width: 20px;
-    // background: $gray-dark;
-    background: $red;
-    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    border-radius: 2px;
     transition: $tr-01;
   }
 
   .input__text {
     // border: 1px solid red;
-    margin-left: 10px;
+    position: relative;
+    margin-left: 12px;
     user-select: none;
     transition: $tr-01;
   }

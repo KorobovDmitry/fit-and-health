@@ -1,12 +1,8 @@
 <template>
-  <div class="recipes-book">
-    <app-page-title>Книга рецептов</app-page-title>
-    <div class="recipes-book__content">
-      <page-info />
-      <div class="recipes-book__filters-and-results">
-        <sorting-filters />
-        <search-results />
-      </div>
+  <div class="recipe">
+    <app-page-title>Рецепт "{{ recipeTitle }}"</app-page-title>
+    <div class="recipe__content">
+      recipe
     </div>
   </div>
 </template>
@@ -22,6 +18,11 @@ export default {
     PageInfo,
     SortingFilters,
     SearchResults
+  },
+  data () {
+    return {
+      recipeTitle: 'название рецепта'
+    }
   }
 }
 </script>
@@ -29,7 +30,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/vars.scss";
 
-.recipes-book {
+.recipe {
   // border: 1px solid red;
   display: flex;
   flex-direction: column;
@@ -37,15 +38,12 @@ export default {
   // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
-  .recipes-book__content {
+  .recipe__content {
     // border: 1px solid red;
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 1700px;
-    .recipes-book__filters-and-results {
-      display: flex;
-    }
   }
 }
 

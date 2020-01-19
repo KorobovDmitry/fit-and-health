@@ -1,7 +1,9 @@
 <template>
   <div class="meal-planer">
-    <div class="meal-planer__content">
 
+    <app-page-title>Дневник питания</app-page-title>
+
+    <div class="meal-planer__content">
       <div class="content__left-block">
         <meal-plan />
       </div>
@@ -10,12 +12,12 @@
         <nutrients-settings />
         <useful-pages />
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
+import AppPageTitle from '@/components/basic/AppPageTitle'
 import MealPlan from '@/components/mealPlaner/MealPlan/index'
 import NutrientsSettings from '@/components/mealPlaner/NutrientsSettings'
 import UsefulPages from '@/components/mealPlaner/UsefulPages'
@@ -25,6 +27,7 @@ export default {
     // await store.dispatch('mealPlaner/getCurrentDayMealPlanerInfo')
   },
   components: {
+    AppPageTitle,
     MealPlan,
     NutrientsSettings,
     UsefulPages
@@ -40,7 +43,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
   .meal-planer__content {

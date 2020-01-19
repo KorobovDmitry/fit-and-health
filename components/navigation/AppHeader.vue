@@ -41,6 +41,7 @@ export default {
   height: 60px;
   background: $white;
   border-bottom: 1px solid $blockBorder;
+  opacity: .3;
   .header-navbar__action-btn-wrapper {
     margin-left: auto;
     margin-right: 20px;

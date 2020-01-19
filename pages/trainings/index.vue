@@ -1,8 +1,8 @@
 <template>
   <div class="training-programs">
-    <div class="training-programs__content-wrapper">
-      <p class="training-programs__title">Тренировочные программы</p>
-      <overview-trainings />
+    <app-page-title>Тренировочные программы</app-page-title>
+    <div class="training-programs__content">
+      <page-info />
       <main-training-program />
       <training-programs-list />
     </div>
@@ -10,13 +10,15 @@
 </template>
 
 <script>
-import OverviewTrainings from '@/components/trainings/TrainingPrograms/OverviewTrainings.vue'
+import AppPageTitle from '@/components/basic/AppPageTitle'
+import PageInfo from '@/components/trainings/PageInfo'
 import MainTrainingProgram from '@/components/trainings/TrainingPrograms/MainTrainingProgram.vue'
 import TrainingProgramsList from '@/components/trainings/TrainingPrograms/TrainingProgramsList.vue'
 export default {
   middleware: ['user-auth'],
   components: {
-    OverviewTrainings,
+    AppPageTitle,
+    PageInfo,
     MainTrainingProgram,
     TrainingProgramsList
   },
@@ -34,18 +36,13 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
-  .training-programs__content-wrapper {
+  .training-programs__content {
     // border: 1px solid red;
     width: 100%;
     max-width: 1700px;
-    .training-programs__title {
-      // border: 1px solid red;
-      text-align: center;
-      font-size: 26px;
-    }
   }
 }
 

@@ -43,7 +43,7 @@ export default {
   display: flex;
   // flex-wrap: wrap;
   flex-direction: column;
-  // margin-bottom: -74px;
+  margin-bottom: -73px;
   padding: 10px;
   // min-width: 300px;
   // max-width: 800px;

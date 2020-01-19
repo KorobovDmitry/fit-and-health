@@ -1,5 +1,6 @@
 <template>
   <div class="challenge-page">
+    <app-page-title>Вызовы</app-page-title>
     <div class="callenge-page__content">
       challenge
     </div>
@@ -7,8 +8,11 @@
 </template>
 
 <script>
+import AppPageTitle from '@/components/basic/AppPageTitle'
 export default {
-
+  components: {
+    AppPageTitle
+  }
 }
 </script>
 
@@ -20,7 +24,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
   .callenge-page__content {

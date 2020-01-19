@@ -1,5 +1,6 @@
 <template>
   <div class="media-page">
+    <app-page-title>Фото и видео</app-page-title>
     <div class="media-page__content">
       media
     </div>
@@ -7,8 +8,11 @@
 </template>
 
 <script>
+import AppPageTitle from '@/components/basic/AppPageTitle'
 export default {
-  
+  components: {
+    AppPageTitle
+  }
 }
 </script>
 
@@ -20,7 +24,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
   .media-page__content {

@@ -59,13 +59,7 @@ export default {
 @import "@/assets/scss/vars.scss";
 
 .meal-part {
-  // display: flex;
-  // align-items: flex-start;
   margin-bottom: 20px;
-  // padding: 10px 20px;
-  // background: $white;
-  // border: 1px solid $blockBorder;
-  // border-radius: 6px;
   .meal-part__block-title {
     margin: 0 20px 14px 20px;
     padding: 0 5px;
