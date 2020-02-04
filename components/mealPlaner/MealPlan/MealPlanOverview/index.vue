@@ -1,86 +1,90 @@
 <template>
-  <div class="meal-plan-desc">
-
-      <div class="meal-plan-desc__img-and-social">
-        <div class="meal-plan-desc__img-wrapper">
-          <img class="meal-plan-desc__img" src="https://s1.1zoom.me/big3/131/Baking_Powidl_492158.jpg" alt="meal-plan-img">
+  <div class="meal-plan-overview">
+    <div class="meal-plan-overview__img-and-social">
+      <div class="meal-plan-overview__img-wrapper">
+        <img
+          class="meal-plan-overview__img"
+          src="https://s1.1zoom.me/big3/131/Baking_Powidl_492158.jpg"
+          alt="meal-plan-img"
+        />
+      </div>
+      <div class="meal-plan-overview__social-btn-wrapper">
+        <div class="social-btn">
+          <i class="ti-heart social-btn__icon"></i>
+          <p class="social-btn__amount">28</p>
         </div>
-        <div class="meal-plan-desc__social-btn-wrapper">
-          <div class="social-btn">
-            <i class="ti-heart social-btn__icon"></i>
-            <p class="social-btn__amount">28</p>
-          </div>
-          <div class="social-btn">
-            <i class="ti-heart-broken"></i>
-            <p class="social-btn__amount">8</p>
-          </div>
-          <div class="social-btn">
-            <i class="ti-share"></i>
-            <p class="social-btn__amount">56</p>
-          </div>
+        <div class="social-btn">
+          <i class="ti-heart-broken"></i>
+          <p class="social-btn__amount">8</p>
+        </div>
+        <div class="social-btn">
+          <i class="ti-share"></i>
+          <p class="social-btn__amount">56</p>
         </div>
       </div>
+    </div>
 
-      <div class="meal-plan-desc__description-and-mark">
+    <div class="meal-plan-overview__description-and-mark">
+      <div class="description__title">
+        <p class="block-title__text">Низкоуглеводное меню для снижения веса</p>
+        <i class="ti-more block-title__icon"></i>
+      </div>
 
-        <div class="description__title">
-          <p class="block-title__text">Низкоуглеводное меню для снижения веса</p>
-          <i class="ti-more block-title__icon"></i>
-        </div>
-
-        <div class="description-and-mark">
-          <div class="description">
-            <div class="description__meal-plan-info">
-              <div class="meal-plan-info__element">
-                <i class="ti-timer element__icon"></i>
-                <p class="element__amount">4</p>
-                <p class="element__text">приема пищи</p>
-              </div>
-              <div class="meal-plan-info__element">
-                <i class="ti-receipt element__icon"></i>
-                <p class="element__amount">3</p>
-                <p class="element__text">блюда</p>
-              </div>
-              <div class="meal-plan-info__element">
-                <i class="ti-pie-chart element__icon"></i>
-                <p class="element__amount">8</p>
-                <p class="element__text">продуктов</p>
-              </div>
+      <div class="description-and-mark">
+        <div class="description">
+          <div class="description__meal-plan-info">
+            <div class="meal-plan-info__element">
+              <i class="ti-timer element__icon"></i>
+              <p class="element__amount">4</p>
+              <p class="element__text">приема пищи</p>
             </div>
-
-            <div class="description__text-wrapper">
-              <p class="description__text-title">Описание</p>
-              <p class="description__text">Низкоуглеводный рацион на сутки для снижения веса. Увеличенное содержание белка для поддержания мышечной массы. Содержит глютен и может вызывать аллергическую реакцию на арахис.</p>
+            <div class="meal-plan-info__element">
+              <i class="ti-receipt element__icon"></i>
+              <p class="element__amount">3</p>
+              <p class="element__text">блюда</p>
+            </div>
+            <div class="meal-plan-info__element">
+              <i class="ti-pie-chart element__icon"></i>
+              <p class="element__amount">8</p>
+              <p class="element__text">продуктов</p>
             </div>
           </div>
 
-          <added-marks />
+          <div class="description__text-wrapper">
+            <p class="description__text-title">Описание</p>
+            <p
+              class="description__text"
+            >Низкоуглеводный рацион на сутки для снижения веса. Увеличенное содержание белка для поддержания мышечной массы. Содержит глютен и может вызывать аллергическую реакцию на арахис.</p>
+          </div>
         </div>
 
+        <added-marks />
       </div>
-
+    </div>
   </div>
 </template>
 
 <script>
-import AddedMarks from '@/components/mealPlaner/MealPlan/AddedMarks'
+import AddedMarks from "@/components/mealPlaner/MealPlan/MealPlanOverview/AddedMarks"
+
 export default {
   components: {
     AddedMarks
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/vars.scss";
 
-.meal-plan-desc {
+.meal-plan-overview {
   // border: 1px solid red;
   flex: 1 1 auto;
   display: flex;
-  .meal-plan-desc__img-and-social {
+  margin-bottom: 5px;
+  .meal-plan-overview__img-and-social {
     margin-right: 5px;
-    .meal-plan-desc__img-wrapper {
+    .meal-plan-overview__img-wrapper {
       margin-bottom: 5px;
       padding: 10px;
       width: 400px;
@@ -89,11 +93,11 @@ export default {
       background: $white;
       border: 1px solid $blockBorder;
       border-radius: 6px;
-      .meal-plan-desc__img {
+      .meal-plan-overview__img {
         border-radius: 6px;
       }
     }
-    .meal-plan-desc__social-btn-wrapper {
+    .meal-plan-overview__social-btn-wrapper {
       display: flex;
       align-items: center;
       justify-content: space-around;
@@ -116,7 +120,7 @@ export default {
       }
     }
   }
-  .meal-plan-desc__description-and-mark {
+  .meal-plan-overview__description-and-mark {
     // border: 1px solid red;
     flex: 1 1 auto;
     display: flex;
@@ -199,5 +203,4 @@ export default {
     }
   }
 }
-
 </style>

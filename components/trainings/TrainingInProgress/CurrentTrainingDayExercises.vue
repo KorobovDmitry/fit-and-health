@@ -327,15 +327,18 @@ export default {
   }
   .training-day__exercises-step-list {
     // border: 1px solid red;
+    margin: 0 5px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
     background: rgba(0,0,0,.1);
-    border-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
     .training-day__exercises-step-list-item {
       display: flex;
       align-items: center;
+      justify-content: space-around;
       margin-bottom: 5px;
       padding: 10px 40px;
       background: $white;

@@ -1,6 +1,6 @@
 <template>
   <div class="training-in-progress">
-    <div class="training-in-progress__content-wrapper">
+    <div class="training-in-progress__content">
       <p class="training-in-progress__title">Новая тренировка</p>
       <current-training-overview />
       <div class="training-in-progress__main-data">
@@ -33,14 +33,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  .training-in-progress__content-wrapper {
+  // margin-top: 60px;
+  margin-left: 80px;
+  padding: 40px;
+  .training-in-progress__content {
     // border: 1px solid red;
     display: flex;
     flex-direction: column;
-    margin-top: 60px;
-    padding: 40px;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1700px;
     .training-in-progress__title {
       text-align: center;
       font-size: 26px;

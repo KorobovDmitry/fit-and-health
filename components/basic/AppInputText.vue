@@ -1,17 +1,17 @@
 <template>
-  <div class="input__wrapper">
+  <div class="input-text" :class="[{'input-text__flex-direction-column': titleOnTop}]">
     <p
-      class="input__text"
+      class="input-text__title"
       :class="[
-        {'input__text-align-right': textAlignRight},
-        {'input__text-align-center': textAlignCenter},
-        {'input__text-align-left': textAlignLeft},
-        {'input__text-transform-uppercase': textUppercase}
+        {'input-text__text-align-right': textAlignRight},
+        {'input-text__text-align-center': textAlignCenter},
+        {'input-text__text-align-left': textAlignLeft},
+        {'input-text__text-transform-uppercase': textUppercase}
       ]"
     >{{ infoText }}</p>
-    <label class="input__label">
+    <label class="input-text__label">
       <input
-        class="input__value-field"
+        class="input-text__value-field"
         type="text"
         :placeholder="placeholderText"
         @input="changeInputValue"
@@ -30,7 +30,8 @@ export default {
     textAlignLeft: Boolean,
     textAlignRight: Boolean,
     textAlignCenter: Boolean,
-    textUppercase: Boolean
+    textUppercase: Boolean,
+    titleOnTop: Boolean
   },
   data () {
     return {
@@ -48,56 +49,56 @@ export default {
 <style lang="scss">
 @import '@/assets/scss/vars.scss';
 
-.input__wrapper {
+.input-text {
   // border: 1px solid red;
   display: flex;
-  align-items: center;
-  margin: 10px 0;
-  .input__text {
+  flex-direction: column;
+  margin-bottom: 10px;
+  .input-text__title {
     // border: 1px solid red;
-    padding-top: 2px;
+    padding: 0 10px;
+    margin-bottom: 5px;
     min-width: 200px;
-    // width: 100%;
-    font-size: 16px;
-    // color: $gray-dark;
+    font-size: 14px;
+    font-weight: 500;
   }
-  .input__label {
+  .input-text__label {
     // border: 1px solid red;
     width: 100%;
-    .input__value-field {
-      padding: 6px 16px;
+    .input-text__value-field {
+      padding: 5px 10px;
       width: 100%;
       min-width: 200px;
-      // color: $gray-dark;
+      color: $black;
       font-family: $fontMontserrat;
-      font-size: 16px;
+      font-size: 14px;
       border: 1px solid $blockBorder;
       border-radius: 6px;
       outline: none;
       transition: $tr-02;
     }
-    .input__value-field:focus {
+    .input-text__value-field:focus {
       border: 1px solid $green;
       transition: $tr-02;
     }
-    .input__value-field::placeholder {
+    .input-text__value-field::placeholder {
       color: $gray-light;
     }
   }
 }
 
-.input__text-transform-uppercase {
+.input-text__text-transform-uppercase {
   text-transform: uppercase;
 }
 
-.input__text-align-left {
+.input-text__text-align-left {
   text-align: left;
 }
-.input__text-align-right {
+.input-text__text-align-right {
   text-align: right;
   padding-right: 20px;
 }
-.input__text-align-center {
+.input-text__text-align-center {
   text-align: center;
 }
 

@@ -15,26 +15,27 @@
         ]"
         @click="toggleVisibility($event)"
       >{{ selectValue }}</p>
-      <i class="select__icon ti-angle-down" @click="toggleVisibility($event)"></i>
+      <i class="select__icon ti-angle-double-down" @click="toggleVisibility($event)"></i>
+
+      <ul
+        ref="listOptions"
+        class="select__list"
+        :class="[
+          {'select__list-opened': listOpened},
+          {'select__list-left': alignListLeft},
+          {'select__list-right': alignListRight},
+          {'select__list-center': alignListCenter}
+        ]"
+      >
+        <li
+          v-for="(item, index) in selectOptionsList"
+          :key="index"
+          class="select__list-item"
+          @click="toggleVisibility($event)"
+        >{{ item }}</li>
+      </ul>
     </div>
 
-    <ul
-      ref="listOptions"
-      class="select__list"
-      :class="[
-        {'select__list-opened': listOpened},
-        {'select__list-left': alignListLeft},
-        {'select__list-right': alignListRight},
-        {'select__list-center': alignListCenter}
-      ]"
-    >
-      <li
-        v-for="(item, index) in selectOptionsList"
-        :key="index"
-        class="select__list-item"
-        @click="toggleVisibility($event)"
-      >{{ item }}</li>
-    </ul>
   </div>
 </template>
 
@@ -115,6 +116,7 @@ export default {
   }
   .select__default-value-wrapper {
     // border: 1px solid red;
+    position: relative;
     display: flex;
     align-items: center;
     .select__default-value {
@@ -146,43 +148,44 @@ export default {
       border-bottom-right-radius: 6px;
       cursor: pointer;
     }
-  }
-  .select__list {
-    // border: 1px solid red;
-    position: absolute;
-    top: 0px;
-    right: 35px;
-    background: $white;
-    font-size: 14px;
-    border: 1px solid rgba(52,40,104,.2);
-    border-radius: 6px;
-    box-shadow: 0 2px 6px 1px rgba(123, 115, 158, 0.2);
-    opacity: 0;
-    visibility: hidden;
-    z-index: 2;
-    transition: $tr-02;
-    .select__list-item {
+    .select__list {
       // border: 1px solid red;
-      padding: 8px 10px;
-      white-space: nowrap;
-      user-select: none;
-      cursor: pointer;
+      position: absolute;
+      top: 0px;
+      // left: 0px;
+      right: 35px;
+      background: $white;
+      font-size: 14px;
+      border: 1px solid rgba(52,40,104,.2);
+      border-radius: 6px;
+      box-shadow: 0 2px 6px 1px rgba(123, 115, 158, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      z-index: 2;
+      transition: $tr-02;
+      .select__list-item {
+        // border: 1px solid red;
+        padding: 8px 10px;
+        white-space: nowrap;
+        user-select: none;
+        cursor: pointer;
+      }
+      .select__list-item:hover {
+        background: rgba(52,40,104,.04);
+      }
+      .select__list-item:first-child {
+        margin-top: 4px;
+      }
+      .select__list-item:last-child {
+        margin-bottom: 4px;
+      }
     }
-    .select__list-item:hover {
-      background: rgba(52,40,104,.04);
+    .select__list-opened {
+      top: 38px;
+      opacity: 1;
+      visibility: visible;
+      transition: $tr-02;
     }
-    .select__list-item:first-child {
-      margin-top: 4px;
-    }
-    .select__list-item:last-child {
-      margin-bottom: 4px;
-    }
-  }
-  .select__list-opened {
-    top: 38px;
-    opacity: 1;
-    visibility: visible;
-    transition: $tr-02;
   }
 }
 

@@ -1,32 +1,29 @@
 <template>
   <div class="meal-plan">
-    <p class="meal-plan__block-title">Рацион на сутки</p>
+    <app-block-title>Рацион на сутки</app-block-title>
 
-    <div class="meal-plan__overview">
-      <meal-plan-description />
-    </div>
-
+    <meal-plan-overview />
     <nutrients-calculate />
 
-    <meal-part />
+    <meal-parts />
     <meal-editor />
-
   </div>
 </template>
 
 <script>
-import AppButton from '@/components/basic/AppButton'
-import MealPlanDescription from '@/components/mealPlaner/MealPlan/MealPlanDescription'
-import MealPart from '@/components/mealPlaner/MealPlan/MealPart'
-import MealEditor from '@/components/mealPlaner/MealPlan/MealEditor'
-import NutrientsCalculate from '@/components/mealPlaner/MealPlan/NutrientsCalculate'
+import AppBlockTitle from '@/components/basic/AppBlockTitle'
+import MealPlanOverview from '@/components/mealPlaner/MealPlan/MealPlanOverview/index'
+import NutrientsCalculate from '@/components/mealPlaner/MealPlan/MealPlanOverview/NutrientsCalculate'
+import MealParts from '@/components/mealPlaner/MealPlan/MealParts/index'
+import MealEditor from '@/components/mealPlaner/MealPlan/MealEditor/index'
+
 export default {
   components: {
-    AppButton,
-    MealPlanDescription,
-    MealPart,
-    MealEditor,
-    NutrientsCalculate
+    AppBlockTitle,
+    MealPlanOverview,
+    NutrientsCalculate,
+    MealParts,
+    MealEditor
   }
 }
 </script>
@@ -38,17 +35,6 @@ export default {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  .meal-plan__block-title {
-    margin: 0 20px 14px 20px;
-    padding: 0 5px;
-    font-size: 18px;
-    font-weight: 500;
-  }
-  .meal-plan__overview {
-    // border: 1px solid red;
-    display: flex;
-    margin-bottom: 5px;
-  }
 }
 
 </style>

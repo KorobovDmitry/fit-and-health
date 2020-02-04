@@ -3,11 +3,10 @@
 
     <app-block-title>Фильтры</app-block-title>
 
-    {{ test }}
-
     <div class="sorting-filters__elements">
 
       <filter-radio-group
+        :filterGroupOpened="false"
         headerTitle="Сортировать по ..."
         :valueList="sortingBy"
         defaultValue="Названию (от А до Я)"
@@ -15,6 +14,7 @@
       />
 
       <filter-radio-group
+        :filterGroupOpened="false"
         headerTitle="Продукты"
         :valueList="productType"
         defaultValue="Все продукты"
@@ -22,6 +22,7 @@
       />
 
       <filter-checkbox-group
+        :filterGroupOpened="false"
         headerTitle="Категории"
         :valueList="productCategory"
         :defaultValue="selectedProductCategory"

@@ -12,11 +12,11 @@
 <script>
 export default {
   props: {
-    accordioneMode: String
+    isOpened: Boolean
   },
   data () {
     return {
-      isVisible: false
+      isVisible: this.isOpened
     }
   },
   methods: {
@@ -33,10 +33,18 @@ export default {
     }
   },
   mounted () {
-    this.$refs.accordion.style.height = this.$refs.header.getBoundingClientRect().height + 'px'
-    setTimeout(() => {
-      this.$refs.accordion.style.transition = 'all .2s linear'
-    }, 0)
+    if (this.isOpened) {
+      this.$refs.accordion.style.height = this.$refs.header.getBoundingClientRect().height + this.$refs.hiddenContent.getBoundingClientRect().height + 'px'
+      setTimeout(() => {
+        this.$refs.accordion.style.transition = 'all .2s linear'
+      }, 0)
+    } else {
+      this.$refs.accordion.style.height = this.$refs.header.getBoundingClientRect().height + 'px'
+      setTimeout(() => {
+        this.$refs.accordion.style.transition = 'all .2s linear'
+      }, 0)
+    }
+
   }
 }
 </script>
@@ -53,10 +61,6 @@ export default {
     user-select: none;
     cursor: pointer;
   }
-  // .accordion__hidden-content {
-    // border: 1px solid green;
-    // user-select: none;
-  // }
 }
 
 </style>

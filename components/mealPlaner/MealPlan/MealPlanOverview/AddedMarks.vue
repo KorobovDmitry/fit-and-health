@@ -41,12 +41,9 @@ export default {
 
 .added-marks {
   display: flex;
-  // flex-wrap: wrap;
   flex-direction: column;
   margin-bottom: -73px;
   padding: 10px;
-  // min-width: 300px;
-  // max-width: 800px;
   background: $white;
   border: 1px solid $blockBorder;
   border-radius: 6px;
@@ -60,19 +57,16 @@ export default {
     white-space: nowrap;
   }
   .added-marks__elements {
-    // display: flex;
-    // flex-wrap: wrap;
     padding: 0 10px;
     margin-bottom: 15px;
     .element {
-      // margin: 0 10px 5px 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-right: 5px;
       margin-bottom: 5px;
       padding: 5px 10px;
-      background: $gray-light;
+      background: $hiddenBlockBG;
       border-radius: 6px;
       .element__text {
         font-size: 14px;
@@ -92,12 +86,8 @@ export default {
     align-items: center;
     margin-top: auto;
     width: 100%;
-    // border-top: 1px dashed $blockBorder;
-    // padding-top: 12px;
     .added-marks__input {
-      // margin-top: 5px;
       padding: 5px 5px;
-      // margin-right: 10px;
       width: 100%;
       color: $black;
       font-family: $fontMontserrat;
@@ -114,7 +104,6 @@ export default {
       background: $green;
       color: $white;
       width: 50px;
-      // height: 100%;
       padding: 7px;
       border-top-right-radius: 6px;
       border-bottom-right-radius: 6px;

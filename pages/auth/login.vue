@@ -6,14 +6,14 @@
         <i class="auth-page__icon ti-unlock"></i>
 
         <form class="auth-page__form">
-          <app-input-valid
+          <app-input-text-valid
             title="Email"
             placeholder=""
             :error="emailError"
             @inputValueChanged="loginEmail = $event"
             @blur="$v.loginEmail.$touch()"
           />
-          <app-input-valid
+          <app-input-text-valid
             title="Пароль"
             placeholder=""
             native-type="password"
@@ -47,12 +47,12 @@
 
 <script>
 import AppButton from '@/components/basic/AppButton'
-import AppInputValid from '@/components/basic/AppInputValid'
+import AppInputTextValid from '@/components/basic/AppInputTextValid'
 export default {
   layout: 'empty',
   components: {
     AppButton,
-    AppInputValid
+    AppInputTextValid
   },
   data () {
     return {

@@ -100,14 +100,6 @@ export default {
         padding: 10px 0px 10px 20px;
       }
     }
-    // .search__input:focus {
-    //   border: 1px solid $green;
-    //   border-right: none;
-    // }
-    // .search__input:focus + .search__action-btn {
-    //   border-top: 1px solid $green;
-    //   border-bottom: 1px solid $green;
-    // }
     .search__action-btn {
       // border: 1px solid red;
       display: flex;
@@ -154,6 +146,7 @@ export default {
     margin: 5px 0 20px 0;
     padding: 10px 20px;
     background: $white;
+    // background: $hiddenBlockBG;
     border: 1px solid $blockBorder;
     border-radius: 6px;
   }

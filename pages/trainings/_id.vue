@@ -1,7 +1,7 @@
 <template>
   <div class="training-program-full-view">
 
-    <div class="training-program-full-view__content-wrapper">
+    <div class="training-program-full-view__content">
       <p class="training-program-full-view__title">Название программы тренировок</p>
       <overview-current-training />
       <div class="exercises">
@@ -45,14 +45,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  .training-program-full-view__content-wrapper {
+  // margin-top: 60px;
+  margin-left: 80px;
+  padding: 40px;
+  .training-program-full-view__content {
     // border: 1px solid red;
     display: flex;
     flex-direction: column;
-    margin-top: 60px;
-    padding: 40px;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1700px;
     .training-program-full-view__title {
       text-align: center;
       font-size: 26px;

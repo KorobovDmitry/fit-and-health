@@ -86,12 +86,12 @@
 
 <script>
 import AppButton from '@/components/basic/AppButton'
-import AppInputValid from '@/components/basic/AppInputValid'
+import AppInputTextValid from '@/components/basic/AppInputTextValid'
 export default {
   layout: 'empty',
   components: {
     AppButton,
-    AppInputValid
+    AppInputTextValid
   },
   data () {
     return {

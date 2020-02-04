@@ -1,5 +1,6 @@
 // Здесь задаются основные стили приложения
 
+// Файл с переменными для стилей
 @import '@/assets/scss/vars.scss';
 
 // Подключение шрифта Montserrat всех вариаций
@@ -20,4 +21,11 @@ body {
   height: 100vh;
   width: 100%;
   overflow: hidden;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+.ml10 {
+  margin-left: 10px;
 }

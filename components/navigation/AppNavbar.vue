@@ -70,8 +70,6 @@
       active-class="navbar__page-link--active"
     ></nuxt-link>
 
-
-
     <!-- <i class="ti-export navbar__page-link logout" @click="logout()"></i> -->
   </nav>
 </template>
@@ -117,6 +115,7 @@ export default {
   }
   .navbar__page-link {
     // border: 1px solid red;
+    position: relative;
     margin: 5px 0;
     padding: 10px;
     text-align: center;
