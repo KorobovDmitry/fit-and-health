@@ -78,6 +78,11 @@ export default {
 @import "@/assets/scss/vars.scss";
 
 .main-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+  min-width: 400px;
+  max-width: 400px;
   .trainings-stats {
     // border: 1px solid red;
     margin-bottom: 20px;

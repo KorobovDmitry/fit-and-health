@@ -75,7 +75,7 @@ export default {
     top: 20px;
     left: 0;
     padding: 10px 20px;
-    color: $gray-light;
+    color: $gray;
     font-size: 18px;
     user-select: none;
     transition: $tr-02;
@@ -94,23 +94,22 @@ export default {
     background: none;
     border: none;
     outline: none;
-    // border-top: 1px solid #000;
-    border-bottom: 2px solid $gray-dark;
+    border-bottom: 1px solid $gray-dark;
     z-index: 2;
     transition: $tr-02;
   }
   .input--fill {
-    border-bottom: 2px solid $green;
+    border-bottom: 1px solid $green;
   }
   .input--error {
-    border-bottom: 2px solid $red;
+    border-bottom: 1px solid $red;
   }
   .input__title--active {
     padding: 2px 20px;
     top: 0px;
     left: 0px;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
   }
   .input__title--fill {
     color: $green;
@@ -121,7 +120,7 @@ export default {
     left: 0px;
     color: $red;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 

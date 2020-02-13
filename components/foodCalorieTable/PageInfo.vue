@@ -21,14 +21,32 @@
     <div class="add-product-btn__wrapper">
       <app-button sizeXL uppercase right @click.native="openModal()">ДОБАВИТЬ ПРОДУКТ</app-button>
     </div>
+
+    <app-modal
+      :isActive="modalIsVisible"
+      v-show="modalIsVisible"
+      @close="modalIsVisible = false"
+    >
+      <template v-slot:modalContent>
+        test
+      </template>
+    </app-modal>
   </div>
 </template>
 
 <script>
 import AppButton from '@/components/basic/AppButton'
+import AppModal from '@/components/basic/AppModal'
+
 export default {
   components: {
-    AppButton
+    AppButton,
+    AppModal
+  },
+  data () {
+    return {
+      modalIsVisible: false
+    }
   },
   computed: {
     totalProductsAmount () {
@@ -60,7 +78,7 @@ export default {
   },
   methods: {
     openModal() {
-      this.$store.commit('products/setProductsModalActive')
+      this.modalIsVisible = true
     },
     // addUserProduct () {
     //   const product = {

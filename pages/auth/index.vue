@@ -4,6 +4,7 @@
 <script>
 export default {
   layout: 'empty',
+  middleware: ['userAuth'],
   beforeCreate () {
     this.$router.push('/auth/login')
   }

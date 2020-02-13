@@ -23,7 +23,6 @@ import MessageHistory from '@/components/messages/MessageHistory'
 import NewMessage from '@/components/messages/NewMessage'
 import AttachedMaterials from '@/components/messages/AttachedMaterials'
 export default {
-  middleware: ['user-auth'],
   components: {
     AppPageTitle,
     OpenedDialogs,

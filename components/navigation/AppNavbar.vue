@@ -25,7 +25,7 @@
     ></nuxt-link>
     <nuxt-link
       to="/meal-planer"
-      exact
+      :exact="false"
       no-prefetch
       class="ti-agenda navbar__page-link"
       active-class="navbar__page-link--active"
@@ -55,13 +55,13 @@
 
 
 
-    <nuxt-link
+    <!-- <nuxt-link
       to="/search"
       exact
       no-prefetch
       class="ti-search navbar__page-link"
       active-class="navbar__page-link--active"
-    ></nuxt-link>
+    ></nuxt-link> -->
     <nuxt-link
       to="/settings"
       exact
@@ -70,7 +70,7 @@
       active-class="navbar__page-link--active"
     ></nuxt-link>
 
-    <!-- <i class="ti-export navbar__page-link logout" @click="logout()"></i> -->
+    <i class="ti-export navbar__page-link logout" @click="logout()"></i>
   </nav>
 </template>
 
@@ -138,6 +138,9 @@ export default {
     color: $white;
     background: $green;
     border-radius: 6px;
+  }
+  .logout {
+    transform: rotate(90deg);
   }
 }
 

@@ -1,17 +1,9 @@
 <template>
   <div class="meal-planer">
-
     <app-page-title>Дневник питания</app-page-title>
-
     <div class="meal-planer__content">
-      <div class="content__left-block">
-        <meal-plan />
-      </div>
-
-      <div class="content__right-block">
-        <nutrients-settings />
-        <useful-pages />
-      </div>
+      <meal-plan />
+      <meal-planer-settings />
     </div>
   </div>
 </template>
@@ -19,18 +11,20 @@
 <script>
 import AppPageTitle from '@/components/basic/AppPageTitle'
 import MealPlan from '@/components/mealPlaner/MealPlan/index'
-import NutrientsSettings from '@/components/mealPlaner/NutrientsSettings'
-import UsefulPages from '@/components/mealPlaner/UsefulPages'
+import MealPlanerSettings from '@/components/mealPlaner/MealPlanerSettings/index'
+
 export default {
-  middleware: ['user-auth'],
-  async fetch ({ store }) {
-    // await store.dispatch('mealPlaner/getCurrentDayMealPlanerInfo')
+  head: {
+    title: 'Fit and Heath - Дневник питания'
+  },
+  // middleware: ['userAuth'],
+  async fetch ({isDev, route, store, env, params, query, req, res, redirect, error}) {
+    await store.dispatch('mealPlaner/fetchMealPlanerInfo', query)
   },
   components: {
     AppPageTitle,
     MealPlan,
-    NutrientsSettings,
-    UsefulPages
+    MealPlanerSettings
   }
 }
 </script>
@@ -43,7 +37,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
   .meal-planer__content {
@@ -51,17 +44,6 @@ export default {
     display: flex;
     width: 100%;
     max-width: 1700px;
-    .content__left-block {
-      margin-right: 40px;
-      flex: 1 1 auto;
-    }
-    .content__right-block {
-      display: flex;
-      flex-direction: column;
-      width: 400px;
-      max-width: 400px;
-      min-width: 400px;
-    }
   }
 }
 

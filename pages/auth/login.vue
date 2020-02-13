@@ -48,8 +48,10 @@
 <script>
 import AppButton from '@/components/basic/AppButton'
 import AppInputTextValid from '@/components/basic/AppInputTextValid'
+
 export default {
   layout: 'empty',
+  // middleware: ['userAuth'],
   components: {
     AppButton,
     AppInputTextValid
@@ -72,6 +74,9 @@ export default {
     toRegisterPage () {
       this.$router.push('/auth/register')
     },
+    redirectToIndexPage () {
+      this.$router.push('/')
+    },
     async login () {
       // добавить валидацию перед диспатчем
       try {
@@ -80,7 +85,7 @@ export default {
           password: this.loginPassword
         }
         await this.$store.dispatch('auth/login', formData)
-        this.$router.push('/')
+        this.redirectToIndexPage()
       } catch (e) {
         console.log(e)
       }
@@ -106,7 +111,6 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // margin-top: 60px;
     padding: 40px;
     width: 100%;
     height: 100vh;
@@ -131,10 +135,7 @@ export default {
         // border: 1px solid red;
         display: flex;
         flex-direction: column;
-        // justify-content: center;
-        // align-items: center;
         width: 100%;
-        // margin-bottom: 50px;
       }
       .auth-page__question {
         margin-top: 10px;

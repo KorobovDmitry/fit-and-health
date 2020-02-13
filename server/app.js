@@ -1,31 +1,25 @@
 const express= require('express')
 const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
-const passport = require('passport')
+const sequelize = require('./utils/dbConnect')
+// const passport = require('passport')
 const cors = require('cors')
-const morgan = require('morgan')
-const keys = require('./keys')
-
-const authRoutes = require('./routes/auth')
-const userProfileRoutes = require('./routes/userProfile')
-const nutritionDiaryRoutes = require('./routes/nutritionDiary')
+// const morgan = require('morgan')
+const authRoutes = require('./routes/authRoutes')
+const mealPlanerRoutes = require('./routes/mealPlanerRoutes')
+const foodCalorieTableRoutes = require('./routes/foodCalorieTableRoutes')
 
 const app = express()
 
-//Подключение к локальной базе mongoDB
-mongoose.connect(keys.mongo_URI, {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-  useCreateIndex: true,
-  useUnifiedTopology: true
-})
-  .then(() => console.log('MongoDB has been connected :)'))
-  .catch(err => console.log(err))
+// Подключение к базе MySQL
+// Параметр {force: true} перезапишет данные таблицы, если такая таблица цже есть
+sequelize.sync()
+  .then(() => console.log('MySQL has been connected :)'))
+
 
 // Инициализация passport.js
-app.use(passport.initialize())
+// app.use(passport.initialize())
 // Подключение модуля с настройками passport, который возвращает функцию, которую мы вызываем и передаем в неепеременную в которой лежит сам модуль паспорта. Л-логика...
-require('./middleware/passport.js')(passport)
+// require('./middleware/passport.js')(passport)
 
 // выводит в консоль информацию о запросах пришедших на сервер
 // app.use(morgan('dev'))
@@ -40,8 +34,10 @@ app.use(cors())
 // localhost:3000/uploads/названиеКартинки.png
 app.use('/uploads', express.static('uploads'))
 
+// Routes
 app.use('/api/auth', authRoutes)
-app.use('/api/user-profile', userProfileRoutes)
-app.use('/api/nutrition-diary', nutritionDiaryRoutes)
+app.use('/api/meal-planer', mealPlanerRoutes)
+app.use('/api/food-calorie-table', foodCalorieTableRoutes)
+
 
 module.exports = app

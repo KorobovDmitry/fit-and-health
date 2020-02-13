@@ -15,7 +15,6 @@ import PageInfo from '@/components/trainings/PageInfo'
 import MainTrainingProgram from '@/components/trainings/TrainingPrograms/MainTrainingProgram.vue'
 import TrainingProgramsList from '@/components/trainings/TrainingPrograms/TrainingProgramsList.vue'
 export default {
-  middleware: ['user-auth'],
   components: {
     AppPageTitle,
     PageInfo,

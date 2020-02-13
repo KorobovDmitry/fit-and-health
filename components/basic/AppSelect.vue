@@ -59,6 +59,11 @@ export default {
       selectValue: this.defaultValue
     }
   },
+  watch: {
+    defaultValue () {
+      this.selectValue = this.defaultValue
+    }
+  },
   methods: {
     toggleVisibility ($event) {
       if (!this.listOpened) {

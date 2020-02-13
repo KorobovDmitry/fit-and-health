@@ -5,18 +5,21 @@
       <p class="news-visibility__param-btn news-visibility__param-btn--active">Все записи</p>
       <p class="news-visibility__param-btn">Только мои записи</p>
     </div>
-
     <user-new-post />
+    <user-stories />
     <user-post v-for="(item, index) in 1" :key="index"/>
   </div>
 </template>
 
 <script>
-import UserNewPost from '@/components/home/Activity/UserNewPost'
-import UserPost from '@/components/home/Activity/UserPost'
+import UserNewPost from '@/components/home/UserActivity/UserNewPost'
+import UserStories from '@/components/home/UserActivity/UserStories'
+import UserPost from '@/components/home/UserActivity/UserPost'
+
 export default {
   components: {
     UserNewPost,
+    UserStories,
     UserPost
   }
 }
@@ -26,6 +29,8 @@ export default {
 @import '@/assets/scss/vars.scss';
 
 .user-activity {
+  flex: 1 1 auto;
+  margin-left: 40px;
   .user-activity__news-visibility {
     display: flex;
     align-items: center;

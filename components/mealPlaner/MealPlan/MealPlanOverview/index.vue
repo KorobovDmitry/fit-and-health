@@ -26,8 +26,10 @@
 
     <div class="meal-plan-overview__description-and-mark">
       <div class="description__title">
-        <p class="block-title__text">Низкоуглеводное меню для снижения веса</p>
-        <i class="ti-more block-title__icon"></i>
+        <p class="title__text">Низкоуглеводное меню для снижения веса</p>
+        <app-button-with-actions
+          :actions="btnActions"
+        />
       </div>
 
       <div class="description-and-mark">
@@ -66,10 +68,41 @@
 
 <script>
 import AddedMarks from "@/components/mealPlaner/MealPlan/MealPlanOverview/AddedMarks"
+import AppButtonWithActions from '@/components/basic/AppButtonWithActions'
 
 export default {
   components: {
-    AddedMarks
+    AddedMarks,
+    AppButtonWithActions
+  },
+  data () {
+    return {
+      btnActions: [
+        {
+          title: 'Редактировать',
+          doFunc: this.editMealPlan
+        },
+        {
+          title: 'Сохарнить',
+          doFunc: this.saveMealPlan
+        },
+        {
+          title: 'Очистить',
+          doFunc: this.removeMealPlanInfo
+        }
+      ]
+    }
+  },
+  methods: {
+    editMealPlan () {
+      console.log('editMealPlan')
+    },
+    saveMealPlan () {
+      console.log('saveMealPlan')
+    },
+    removeMealPlanInfo () {
+      console.log('removeMealPlanInfo')
+    }
   }
 };
 </script>
@@ -84,16 +117,23 @@ export default {
   margin-bottom: 5px;
   .meal-plan-overview__img-and-social {
     margin-right: 5px;
+    // flex: 1 1 auto;
     .meal-plan-overview__img-wrapper {
       margin-bottom: 5px;
       padding: 10px;
-      width: 400px;
-      min-width: 450px;
-      max-width: 450px;
+      width: 100%;
+      // width: 450px;
+      // min-width: 450px;
+      // max-width: 450px;
+      // height: 322px;
       background: $white;
       border: 1px solid $blockBorder;
       border-radius: 6px;
+      overflow: hidden;
       .meal-plan-overview__img {
+        min-width: 430px;
+        height: 322px;
+        object-fit: cover;
         border-radius: 6px;
       }
     }
@@ -122,26 +162,25 @@ export default {
   }
   .meal-plan-overview__description-and-mark {
     // border: 1px solid red;
-    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     .description__title {
       display: flex;
+      align-items: center;
       justify-content: center;
       margin-bottom: 5px;
-      padding: 10px 20px;
+      padding: 0 20px;
       background: $white;
       border: 1px solid $blockBorder;
       border-radius: 6px;
-      .block-title__text {
-        margin-left: auto;
+      .title__text {
+        // border: 1px solid red;
+        padding: 10px;
+        flex: 1 1 auto;
+        text-align: center;
         font-weight: 500;
       }
-      .block-title__icon {
-        margin-left: auto;
-      }
     }
-
     .description-and-mark {
       // border: 1px solid red;
       display: flex;

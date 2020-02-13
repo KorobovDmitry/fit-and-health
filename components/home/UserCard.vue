@@ -7,7 +7,7 @@
       </div>
 
       <div class="main-card__bottom">
-        <p class="user-card__user-name">{{ firstName }} {{ lastName }}</p>
+        <p class="user-card__user-name">Дмитрий Коробов</p>
         <p class="user-card__user-followers">40 517 подписчиков</p>
         <p class="user-card__user-status">Online</p>
       </div>
@@ -101,6 +101,9 @@ export default {
 @import "@/assets/scss/vars.scss";
 
 .user-card {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
   min-width: 400px;
   max-width: 400px;
   .user-card__main-card {
@@ -122,8 +125,8 @@ export default {
     .main-card__bottom {
       margin: 10px;
       .user-card__user-name {
-        font-size: 24px;
-        font-weight: 700;
+        font-size: 20px;
+        font-weight: 600;
       }
       .user-card__user-followers {
         margin-top: 5px;

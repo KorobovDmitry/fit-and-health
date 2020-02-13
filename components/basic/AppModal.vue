@@ -19,15 +19,28 @@
 </template>
 
 <script>
-import AppButton from '@/components/basic/AppButton'
 export default {
-  components: {
-    AppButton
-  },
   props: {
-    title: String,
-    subtitle: String,
-    saveFunc: Function
+    isActive: Boolean
+  },
+  watch: {
+    isActive: {
+      handler: function () {
+        if (this.isActive) {
+          document.querySelector('#__nuxt').style.marginTop = `-${window.pageYOffset}px`
+          document.querySelector('body').classList.add('body-overflow')
+        } else {
+          const currentScroll = parseFloat(document.querySelector('#__nuxt').style.marginTop) * -1
+          document.querySelector('#__nuxt').style.marginTop = '0px'
+          document.querySelector('body').classList.remove('body-overflow')
+          window.scrollTo(0, currentScroll)
+        }
+      },
+      // Коллбэк (handler) будет вызываться каждый раз, когда изменяется любое из свойств наблюдаемого объекта, независимо от глубины их вложенности
+      deep: true,
+      // коллбэк (handler) будет вызван сразу же после начала наблюдения если свойство установленно true
+      immediate: false
+    }
   },
   methods: {
     closeModal () {

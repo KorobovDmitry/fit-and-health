@@ -22,6 +22,9 @@ export default {
     PageInfo,
     SortingFilters,
     ProductTable
+  },
+  async fetch ({ store }) {
+    await store.dispatch('foodCalorieTable/getAllProducts')
   }
 }
 </script>
@@ -34,7 +37,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
   .food-calorie-table__content {

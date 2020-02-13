@@ -21,12 +21,12 @@
       </div>
     </div>
 
-    <div class="added-marks__input-wrapper">
+    <!-- <div class="added-marks__input-wrapper">
       <input class="added-marks__input" type="text">
       <div class="added-marks__action-btn">
         <i class="ti-plus"></i>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -80,36 +80,36 @@ export default {
     }
   }
 
-  .added-marks__input-wrapper {
-    // border: 1px solid red;
-    display: flex;
-    align-items: center;
-    margin-top: auto;
-    width: 100%;
-    .added-marks__input {
-      padding: 5px 5px;
-      width: 100%;
-      color: $black;
-      font-family: $fontMontserrat;
-      font-size: 14px;
-      outline: none;
-      border: 1px solid $blockBorder;
-      border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
-    }
-    .added-marks__action-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: $green;
-      color: $white;
-      width: 50px;
-      padding: 7px;
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
-      cursor: pointer;
-    }
-  }
+  // .added-marks__input-wrapper {
+  //   // border: 1px solid red;
+  //   display: flex;
+  //   align-items: center;
+  //   margin-top: auto;
+  //   width: 100%;
+  //   .added-marks__input {
+  //     padding: 5px 5px;
+  //     width: 100%;
+  //     color: $black;
+  //     font-family: $fontMontserrat;
+  //     font-size: 14px;
+  //     outline: none;
+  //     border: 1px solid $blockBorder;
+  //     border-top-left-radius: 6px;
+  //     border-bottom-left-radius: 6px;
+  //   }
+  //   .added-marks__action-btn {
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     background: $green;
+  //     color: $white;
+  //     width: 50px;
+  //     padding: 7px;
+  //     border-top-right-radius: 6px;
+  //     border-bottom-right-radius: 6px;
+  //     cursor: pointer;
+  //   }
+  // }
 }
 
 </style>

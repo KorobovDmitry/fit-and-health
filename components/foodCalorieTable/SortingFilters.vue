@@ -10,7 +10,8 @@
         headerTitle="Сортировать по ..."
         :valueList="sortingBy"
         defaultValue="Названию (от А до Я)"
-        @inputGroupValueChanged="test = $event"
+        :applyFunc="applyFilters"
+        @inputGroupValueChanged="selectedFilters.sortingBy = $event"
       />
 
       <filter-radio-group
@@ -18,7 +19,7 @@
         headerTitle="Продукты"
         :valueList="productType"
         defaultValue="Все продукты"
-        @inputGroupValueChanged="test = $event"
+        @inputGroupValueChanged="selectedFilters.productType = $event"
       />
 
       <filter-checkbox-group
@@ -26,7 +27,7 @@
         headerTitle="Категории"
         :valueList="productCategory"
         :defaultValue="selectedProductCategory"
-        @inputGroupValueChanged="test = $event"
+        @inputGroupValueChanged="selectedFilters.productCategory = $event"
       >
         <template v-slot:btnWrapper>
           <app-button size14px uppercase>Очистить</app-button>
@@ -35,7 +36,7 @@
       </filter-checkbox-group>
 
     </div>
-
+<!-- {{ selectedFilters }} -->
   </div>
 </template>
 
@@ -53,7 +54,11 @@ export default {
   },
   data () {
     return {
-      test: '',
+      selectedFilters: {
+        sortingBy: 'Названию (от А до Я)',
+        productType: 'Все продукты',
+        productCategory: ['Мясо', 'Рыба', 'Морепродукты', 'Яйца, яичные продукты', 'Молоко, молочные продукты', 'Соя, соевые продукты', 'Овощи, овощные продукты', 'Зелень, травы, листья, салаты', 'Фрукты, ягоды, сухофрукты', 'Грибы', 'Жиры, масла', 'Орехи', 'Крупы, злаки', 'Семена', 'Специи, пряности', 'Мука, продукты из муки', 'Напитки, соки']
+      },
       sortingBy: [
         'Названию (от А до Я)',
         'Названию (от Я до А)',
@@ -68,7 +73,13 @@ export default {
         'Избранное'
       ],
       productCategory: ['Мясо', 'Рыба', 'Морепродукты', 'Яйца, яичные продукты', 'Молоко, молочные продукты', 'Соя, соевые продукты', 'Овощи, овощные продукты', 'Зелень, травы, листья, салаты', 'Фрукты, ягоды, сухофрукты', 'Грибы', 'Жиры, масла', 'Орехи', 'Крупы, злаки', 'Семена', 'Специи, пряности', 'Мука, продукты из муки', 'Напитки, соки'],
-      selectedProductCategory: ['Мясо', 'Орехи', 'Крупы, злаки', 'Семена', 'Специи, пряности', 'Мука, продукты из муки', 'Напитки, соки']
+      selectedProductCategory: ['Мясо', 'Рыба', 'Морепродукты', 'Яйца, яичные продукты', 'Молоко, молочные продукты', 'Соя, соевые продукты', 'Овощи, овощные продукты', 'Зелень, травы, листья, салаты', 'Фрукты, ягоды, сухофрукты', 'Грибы', 'Жиры, масла', 'Орехи', 'Крупы, злаки', 'Семена', 'Специи, пряности', 'Мука, продукты из муки', 'Напитки, соки']
+    }
+  },
+  methods: {
+    applyFilters () {
+      // отфильтровать продукты в сторе и перерендорить страницу
+      console.log('apply filters from parent')
     }
   }
 }

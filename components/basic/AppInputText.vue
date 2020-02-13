@@ -1,5 +1,5 @@
 <template>
-  <div class="input-text" :class="[{'input-text__flex-direction-column': titleOnTop}]">
+  <div class="input-text">
     <p
       class="input-text__title"
       :class="[
@@ -30,8 +30,7 @@ export default {
     textAlignLeft: Boolean,
     textAlignRight: Boolean,
     textAlignCenter: Boolean,
-    textUppercase: Boolean,
-    titleOnTop: Boolean
+    textUppercase: Boolean
   },
   data () {
     return {

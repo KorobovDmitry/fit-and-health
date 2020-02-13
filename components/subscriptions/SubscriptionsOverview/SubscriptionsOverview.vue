@@ -3,7 +3,7 @@
 
     <div class="subscriptions-overview__left-side">
       <selected-user-main-info />
-      <user-all-time-stats />
+      <main-info />
     </div>
 
     <div class="subscriptions-overview__right-side">
@@ -14,14 +14,14 @@
 </template>
 
 <script>
-import UserAllTimeStats from '@/components/home/MainInfo/UserAllTimeStats'
+import MainInfo from '@/components/home/MainInfo'
 import SelectedUserMainInfo from '@/components/subscriptions/SubscriptionsOverview/SelectedUserMainInfo'
 import SelectedUserLastEvents from '@/components/subscriptions/SubscriptionsOverview/SelectedUserLastEvents'
 export default {
   components: {
     SelectedUserMainInfo,
     SelectedUserLastEvents,
-    UserAllTimeStats
+    MainInfo
   }
 }
 </script>

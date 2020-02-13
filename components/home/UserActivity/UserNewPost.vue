@@ -1,9 +1,6 @@
 <template>
   <div class="new-post">
     <div class="new-post__user-message-wrapper">
-      <!-- <div class="new-post__user-avatar-wrapper">
-        <img src="https://pic.sport.ua/media/images/Foto%202.jpg" alt="" class="new-post__user-avatar">
-      </div> -->
       <textarea class="new-post__message" placeholder="Поделитесь своими достижениями или новостями..."></textarea>
     </div>
     <div class="new-post__attach-and-send">
@@ -37,35 +34,16 @@ export default {
     // border: 1px solid red;
     display: flex;
     align-items: flex-start;
-    // .new-post__user-avatar-wrapper {
-    //   margin: 20px 20px 0px 20px;
-    //   min-width: 60px;
-    //   max-width: 60px;
-    //   height: 60px;
-    //   border: 1px solid $blockBorder;
-    //   border-radius: 6px;
-    //   overflow-x: hidden;
-    //   .new-post__user-avatar {
-    //     width: 100%;
-    //     height: 100%;
-    //     object-fit: cover;
-    //   }
-    // }
     .new-post__message {
       margin: 20px;
-      // margin-top: 20px;
-      // margin-right: 20px;
       padding: 10px;
       width: 100%;
-      height: 80px;
+      height: 40px;
       color: $black;
       resize: none;
       outline: none;
-      // background: rgba(0, 0, 0, .02);
       border: 1px solid $inputBorder;
-      // border: none;
       border-radius: 6px;
-      // box-shadow: inset 0 0 4px 1px rgba(0,0,0,.1);
     }
   }
   .new-post__attach-and-send {

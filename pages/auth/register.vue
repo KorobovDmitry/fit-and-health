@@ -89,6 +89,7 @@ import AppButton from '@/components/basic/AppButton'
 import AppInputTextValid from '@/components/basic/AppInputTextValid'
 export default {
   layout: 'empty',
+  // middleware: ['userAuth'],
   components: {
     AppButton,
     AppInputTextValid
@@ -100,35 +101,24 @@ export default {
         message: 'ошибки нет'
       },
       email: 'test',
-      password: 'test',
-      lastName: 'test',
-      firstName: 'test',
-      middleName: 'test',
-      birthday: 'test',
-      phoneNumber: 111,
-      gender: 'test',
-      activity: 'test'
+      password: 'test'
     }
   },
   methods: {
     toLoginPage () {
       this.$router.push('/auth/login')
     },
+    redirectToIndexPage () {
+      this.$router.push('/')
+    },
     async createUser () {
       try {
         const newUser = {
           email: this.email,
-          password: this.password,
-          lastName: this.lastName,
-          firstName: this.firstName,
-          middleName: this.middleName,
-          birthday: this.birthday,
-          phoneNumber: this.phoneNumber,
-          gender: this.gender,
-          activity: this.activity
+          password: this.password
         }
         await this.$store.dispatch('auth/createUser', newUser)
-        // this.$router.push('/')
+        this.redirectToIndexPage()
       } catch (e) {
         console.log(e)
       }

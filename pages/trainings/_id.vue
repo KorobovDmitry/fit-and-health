@@ -18,7 +18,7 @@ import ExercisesList from '@/components/trainings/TrainingProgramFullView/Exerci
 import CurrentTrainingExercises from '@/components/trainings/TrainingProgramFullView/CurrentTrainingExercises.vue'
 import OverviewCurrentTraining from '@/components/trainings/TrainingProgramFullView/OverviewCurrentTraining.vue'
 export default {
-  middleware: ['user-auth'],
+  // middleware: ['userAuth'],
   components: {
     ExercisesList,
     CurrentTrainingExercises,

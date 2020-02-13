@@ -16,7 +16,7 @@ import CurrentTrainingOverview from '@/components/trainings/TrainingInProgress/C
 import CurrentTrainingInfo from '@/components/trainings/TrainingInProgress/CurrentTrainingInfo.vue'
 import CurrentTrainingDayExercises from '@/components/trainings/TrainingInProgress/CurrentTrainingDayExercises.vue'
 export default {
-  middleware: ['user-auth'],
+  // middleware: ['userAuth'],
   components: {
     CurrentTrainingOverview,
     CurrentTrainingInfo,
