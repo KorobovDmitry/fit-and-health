@@ -18,21 +18,18 @@
     ></nuxt-link>
     <nuxt-link
       to="/trainings"
-      exact
       no-prefetch
       class="ti-timer navbar__page-link"
       active-class="navbar__page-link--active"
     ></nuxt-link>
     <nuxt-link
       to="/meal-planer"
-      :exact="false"
       no-prefetch
       class="ti-agenda navbar__page-link"
       active-class="navbar__page-link--active"
     ></nuxt-link>
     <nuxt-link
       to="/challenge"
-      exact
       no-prefetch
       class="ti-cup navbar__page-link"
       active-class="navbar__page-link--active"
@@ -100,6 +97,7 @@ export default {
   height: 100%;
   background: $white;
   border-right: 1px solid $blockBorder;
+  z-index: 9000;
   .navbar__logo {
     // border: 1px solid red;
     display: flex;

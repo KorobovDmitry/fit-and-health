@@ -66,7 +66,7 @@ export default {
     padding: 10px;
     background: $hiddenBlockBG;
     border-radius: 6px;
-    height: 520px;
+    height: 480px;
   }
 }
 

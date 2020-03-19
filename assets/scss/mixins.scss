@@ -3,7 +3,7 @@
   @media screen and (max-width: $width + 'px') {
     @content
   }
-}
+};
 
 // Пример использования
 // @include for (800) {

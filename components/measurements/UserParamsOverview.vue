@@ -10,15 +10,15 @@
     <div class="user-parameters">
       <div class="user-parameters__general">
         <div class="general__element">
-          <p class="element__text">Возраст</p>
+          <p class="element__text">Возраст:</p>
           <p class="element__value">30</p>
         </div>
         <div class="general__element">
-          <p class="element__text">Вес</p>
+          <p class="element__text">Вес:</p>
           <p class="element__value">80</p>
         </div>
         <div class="general__element">
-          <p class="element__text">Рост</p>
+          <p class="element__text">Рост:</p>
           <p class="element__value">174</p>
         </div>
         <!-- <div class="general__element">
@@ -29,23 +29,23 @@
   
       <div class="user-parameters__additional">
         <div class="additional__element">
-          <p class="element__text">Мышечной ткани</p>
+          <p class="element__text">Мышечной ткани:</p>
           <p class="element__value">0 %</p>
         </div>
         <div class="additional__element">
-          <p class="element__text">Жировой ткани</p>
+          <p class="element__text">Жировой ткани:</p>
           <p class="element__value">0 %</p>
         </div>
         <div class="additional__element">
-          <p class="element__text">Воды в организме</p>
+          <p class="element__text">Воды в организме:</p>
           <p class="element__value">0 %</p>
         </div>
         <div class="additional__element">
-          <p class="element__text">Костной ткани</p>
+          <p class="element__text">Костной ткани:</p>
           <p class="element__value">0 %</p>
         </div>
         <div class="additional__element">
-          <p class="element__text">ИМТ</p>
+          <p class="element__text">ИМТ:</p>
           <p class="element__value">25</p>
         </div>
       </div>

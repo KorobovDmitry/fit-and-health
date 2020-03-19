@@ -5,7 +5,7 @@
     </div>
     <ul class="meal-customizer__meal-list">
       <recipe-item />
-      <product-item />
+      <product-item v-for="(item, index) in 2" :key="index" />
     </ul>
   </div>
 </template>
@@ -31,18 +31,22 @@ export default {
     padding: 10px 20px;
     background: $white;
     border: 1px solid $blockBorder;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    border-radius: 6px;
+    // border-top-left-radius: 6px;
+    // border-top-right-radius: 6px;
     .block-title__text {
       text-align: center;
       font-weight: 500;
     }
   }
   .meal-customizer__meal-list {
+    margin-top: 10px;
     padding: 10px;
+    height: 480px;
     background: $hiddenBlockBG;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
+    border-radius: 6px;
+    // border-bottom-left-radius: 6px;
+    // border-bottom-right-radius: 6px;
   }
 }
 

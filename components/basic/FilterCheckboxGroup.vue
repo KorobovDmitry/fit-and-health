@@ -20,9 +20,9 @@
             </li>
           </ul>
           <div class="footer__btn-wrapper">
-            <app-button size12px uppercase mt5 @click.native="removeAllValue()">Очистить все</app-button>
-            <app-button size12px uppercase mt5 @click.native="selectAllValue()">Выбрать все</app-button>
-            <app-button size12px uppercase mt5 @click.native="applyFilter()">Применить</app-button>
+            <app-button size12px uppercase mt10 @click.native="removeAllValue()">Очистить все</app-button>
+            <app-button size12px uppercase mt10 @click.native="selectAllValue()">Выбрать все</app-button>
+            <app-button size12px uppercase mt10 @click.native="applyFilter()">Применить</app-button>
           </div>
         </div>
       </template>

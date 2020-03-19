@@ -78,7 +78,7 @@
           </app-tooltip>
         </div>
         <div class="target__element">
-          <p class="element__text">Углеводы:</p>
+          <p class="element__text">Желаемый вес:</p>
           <div class="element__value">
             <p class="value__number">{{ targetWeight }}</p>
             <input

@@ -110,6 +110,7 @@ export default {
         cursor: pointer;
         .item__text {
           text-align: center;
+          font-size: 14px;
           white-space: nowrap;
         }
       }

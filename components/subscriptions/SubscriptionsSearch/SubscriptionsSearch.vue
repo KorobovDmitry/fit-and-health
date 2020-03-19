@@ -1,6 +1,5 @@
 <template>
   <div class="subscriptions-search">
-
     <p class="subscriptions-search__block-title">Поиск по подпискам</p>
 
     <app-search-block small filters mb20>
@@ -21,60 +20,70 @@
     </app-search-block>
 
     <div class="subscriptions-search__found-section">
-      <div class="found-section__bottom-block">
-        <div class="founding-users">
-          <div class="founding-user-card founding-user-card--active">
-            <div class="founding-user-card__avatar-wrapper">
-              <img class="founding-user-card__avatar-img" src="https://pic.sport.ua/media/images/Foto%202.jpg" alt="user-img">
-            </div>
-            <div class="founding-user-card__main-user-info">
-              <div class="main-user-info__left-block">
-                <p class="main-user-info__user-name">Дмитрий Коробов</p>
-                <p class="main-user-info__user-location">г. Самара</p>
-                <div class="main-user-info__user-status">
-                  <div class="user-status__dot"></div>
-                  <p class="user-status__text">offline</p>
+      <app-scroll-block>
+        <template v-slot:scrollContent>
+          <div class="found-section__bottom-block">
+            <div class="founding-users">
+              <div class="founding-user-card founding-user-card--active">
+                <div class="founding-user-card__avatar-wrapper">
+                  <img
+                    class="founding-user-card__avatar-img"
+                    src="https://pic.sport.ua/media/images/Foto%202.jpg"
+                    alt="user-img"
+                  />
+                </div>
+                <div class="founding-user-card__main-user-info">
+                  <div class="main-user-info__left-block">
+                    <p class="main-user-info__user-name">Дмитрий Коробов</p>
+                    <p class="main-user-info__user-location">г. Самара</p>
+                    <div class="main-user-info__user-status">
+                      <div class="user-status__dot"></div>
+                      <p class="user-status__text">offline</p>
+                    </div>
+                  </div>
+                  <div class="main-user-info__right-block">
+                    <i class="ti-more main-user-info__action-btn-icon"></i>
+                  </div>
                 </div>
               </div>
-              <div class="main-user-info__right-block">
-                <i class="ti-more main-user-info__action-btn-icon"></i>
+              <div v-for="(item, index) in 4" :key="index" class="founding-user-card">
+                <div class="founding-user-card__avatar-wrapper">
+                  <img
+                    class="founding-user-card__avatar-img"
+                    src="https://pic.sport.ua/media/images/Foto%202.jpg"
+                    alt="user-img"
+                  />
+                </div>
+                <div class="founding-user-card__main-user-info">
+                  <div class="main-user-info__left-block">
+                    <p class="main-user-info__user-name">John Doe</p>
+                    <p class="main-user-info__user-location">Moscow city</p>
+                    <div class="main-user-info__user-status main-user-info__user-status--active">
+                      <div class="user-status__dot"></div>
+                      <p class="user-status__text">online</p>
+                    </div>
+                  </div>
+                  <div class="main-user-info__right-block">
+                    <i class="ti-more main-user-info__action-btn-icon"></i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
-          <div v-for="(item, index) in 4" :key="index" class="founding-user-card">
-            <div class="founding-user-card__avatar-wrapper">
-              <img class="founding-user-card__avatar-img" src="https://pic.sport.ua/media/images/Foto%202.jpg" alt="user-img">
-            </div>
-            <div class="founding-user-card__main-user-info">
-              <div class="main-user-info__left-block">
-                <p class="main-user-info__user-name">John Doe</p>
-                <p class="main-user-info__user-location">Moscow city</p>
-                <div class="main-user-info__user-status main-user-info__user-status--active">
-                  <div class="user-status__dot"></div>
-                  <p class="user-status__text">online</p>
-                </div>
-              </div>
-              <div class="main-user-info__right-block">
-                <i class="ti-more main-user-info__action-btn-icon"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- <app-button size14px uppercase center>Показать еще</app-button> -->
-      </div>
+        </template>
+      </app-scroll-block>
     </div>
-
   </div>
 </template>
 
 <script>
-import AppButton from '@/components/basic/AppButton'
-import AppSearchBlock from '@/components/basic/AppSearchBlock'
+import AppSearchBlock from "@/components/basic/AppSearchBlock"
+import AppScrollBlock from "@/components/basic/AppScrollBlock"
+
 export default {
   components: {
-    AppButton,
-    AppSearchBlock
+    AppSearchBlock,
+    AppScrollBlock
   }
 }
 </script>
@@ -95,8 +104,12 @@ export default {
     white-space: nowrap;
   }
   .subscriptions-search__found-section {
+    height: calc(100vh - 242px);
+    padding: 10px;
+    background: $hiddenBlockBG;
+    border-radius: 6px;
     .found-section__bottom-block {
-      margin-bottom: 20px;
+      // margin-bottom: 20px;
       .founding-users {
         display: flex;
         flex-wrap: wrap;
@@ -110,10 +123,6 @@ export default {
           border: 1px solid $blockBorder;
           border-radius: 6px;
           .founding-user-card__avatar-wrapper {
-            // padding: 5px;
-            // background: $white;
-            // border: 1px solid $blockBorder;
-            // border-radius: 6px;
             .founding-user-card__avatar-img {
               height: 80px;
               border: 1px solid $blockBorder;
@@ -124,22 +133,15 @@ export default {
             flex: 1 1 auto;
             display: flex;
             justify-content: space-between;
-            // margin-left: 5px;
-            // padding: 10px 20px;
-            // background: $white;
-            // border: 1px solid $blockBorder;
-            // border-radius: 6px;
             .main-user-info__left-block {
               display: flex;
               flex-direction: column;
               justify-content: center;
               margin-left: 20px;
               .main-user-info__user-name {
-                // font-size: 18px;
                 font-weight: 600;
               }
               .main-user-info__user-location {
-                // margin-top: 5px;
                 font-size: 14px;
                 font-weight: 500;
               }
@@ -188,7 +190,6 @@ export default {
             // border: 2px solid $green;
           }
           .founding-user-card__main-user-info {
-            // border: 2px solid $green;
             .main-user-info__left-block {
               .main-user-info__user-name {
                 color: $green;
@@ -203,5 +204,4 @@ export default {
     }
   }
 }
-
 </style>

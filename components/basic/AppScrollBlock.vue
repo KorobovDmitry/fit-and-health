@@ -118,7 +118,7 @@ export default {
   overflow: hidden;
   visibility: hidden;
   .scroll-block__content {
-    border: 1px solid red;
+    // border: 1px solid red;
     // transition: all .01s linear;
   }
   .scroll-block__scroll-line {

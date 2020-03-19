@@ -14,7 +14,7 @@
         <div class="training-info__statistics">
           <div class="statistics__elements">
             <div class="element">
-              <p class="element__value">14 февраля 2020</p>
+              <p class="element__value">14 - 02 - 2020</p>
               <p class="element__text">Последняя тренировка</p>
             </div>
             <div class="element">
@@ -36,12 +36,14 @@
           </div>
         </div>
         <div class="training-info__actions-btn">
-          <app-button
-            class="link-btn"
-            size16px
-            uppercase
-            fillArea
-          >Начать тренировку</app-button>
+          <router-link tag="div" to="trainings/training-in-progress?training-programm=4-day-split">
+            <app-button
+              class="link-btn"
+              size16px
+              uppercase
+              fillArea
+            >Начать тренировку</app-button>
+          </router-link>
           <router-link tag="div" to="trainings/4-day-split">
             <app-button
               class="link-btn"
@@ -143,7 +145,7 @@ export default {
       }
       .training-info__actions-btn {
         // border: 1px solid red;
-        margin-top: 5px;
+        margin-top: 50px;
       }
     }
   }

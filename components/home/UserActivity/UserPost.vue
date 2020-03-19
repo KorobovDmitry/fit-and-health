@@ -15,7 +15,6 @@
       </div>
 
       <div class="post__message">
-        <!-- <p class="post__message-title">Заголовок поста</p> -->
         <div class="post__info">
           <div class="info__user-avatar-wrapper">
             <img class="user-avatar" src="https://pic.sport.ua/media/images/Foto%202.jpg" alt="user-avatar">
@@ -158,14 +157,6 @@ export default {}
       flex-direction: column;
       flex: 0 10000 auto;
       min-width: 350px;
-      // .post__message-title {
-      //   background: $white;
-      //   border: 1px solid $blockBorder;
-      //   border-radius: 6px;
-      //   padding: 10px 40px;
-      //   font-size: 18px;
-      //   font-weight: 600;
-      // }
       .post__message-text {
         flex: 1 1 auto;
         margin-top: 5px;

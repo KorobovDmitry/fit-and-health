@@ -57,23 +57,23 @@
           alt
         />
         <div class="item__nutrient">
-          <p class="nutrient__tite">Масса</p>
+          <!-- <p class="nutrient__tite">Масса</p> -->
           <p class="nutrient__value">48.7</p>
         </div>
         <div class="item__nutrient">
-          <p class="nutrient__tite">Белки</p>
+          <!-- <p class="nutrient__tite">Белки</p> -->
           <p class="nutrient__value">16.5</p>
         </div>
         <div class="item__nutrient">
-          <p class="nutrient__tite">Жиры</p>
+          <!-- <p class="nutrient__tite">Жиры</p> -->
           <p class="nutrient__value">8.4</p>
         </div>
         <div class="item__nutrient">
-          <p class="nutrient__tite">Углеводы</p>
+          <!-- <p class="nutrient__tite">Углеводы</p> -->
           <p class="nutrient__value">56.7</p>
         </div>
         <div class="item__nutrient">
-          <p class="nutrient__tite">Ккал</p>
+          <!-- <p class="nutrient__tite">Ккал</p> -->
           <p class="nutrient__value">284.9</p>
         </div>
         <i class="ti-close item__action-btn"></i>
@@ -180,11 +180,11 @@ export default {
       }
       .item__nutrient {
         text-align: center;
-        .nutrient__tite {
-          margin-bottom: 2px;
-          font-size: 12px;
-          // font-weight: 500;
-        }
+        // .nutrient__tite {
+        //   margin-bottom: 2px;
+        //   font-size: 12px;
+        //   // font-weight: 500;
+        // }
         .nutrient__value {
           color: $green;
           font-size: 14px;

@@ -2,12 +2,17 @@
   <div class="user-activity">
     <div class="user-activity__news-visibility">
       <p class="news-visibility__block-title">Лента новостей</p>
-      <p class="news-visibility__param-btn news-visibility__param-btn--active">Все записи</p>
-      <p class="news-visibility__param-btn">Только мои записи</p>
+      <filter-radio-text-group
+        :valueList="['Все записи', 'Только мои записи']"
+        :defaultValue="feed"
+        size18px
+        @inputGroupValueChanged="feed = $event"
+      />
     </div>
     <user-new-post />
     <user-stories />
-    <user-post v-for="(item, index) in 1" :key="index"/>
+    <user-post/>
+    <user-post-image-slider/>
   </div>
 </template>
 
@@ -15,12 +20,21 @@
 import UserNewPost from '@/components/home/UserActivity/UserNewPost'
 import UserStories from '@/components/home/UserActivity/UserStories'
 import UserPost from '@/components/home/UserActivity/UserPost'
+import UserPostImageSlider from '@/components/home/UserActivity/UserPostImageSlider'
+import FilterRadioTextGroup from '@/components/basic/FilterRadioTextGroup'
 
 export default {
   components: {
     UserNewPost,
     UserStories,
-    UserPost
+    UserPost,
+    UserPostImageSlider,
+    FilterRadioTextGroup
+  },
+  data () {
+    return {
+      feed: 'Все записи'
+    }
   }
 }
 </script>
@@ -41,23 +55,6 @@ export default {
       font-size: 18px;
       font-weight: 500;
       border-bottom: 2px solid transparent;
-    }
-    .news-visibility__param-btn {
-      margin-left: 20px;
-      padding: 2px 5px;
-      font-size: 18px;
-      font-weight: 500;
-      border-bottom: 2px solid transparent;
-      cursor: pointer;
-      transition: $tr-02;
-    }
-    .news-visibility__param-btn:hover {
-      color: $green;
-    }
-    .news-visibility__param-btn--active {
-      color: $green;
-      // font-weight: 500;
-      border-bottom: 2px solid $green;
     }
   }
 }

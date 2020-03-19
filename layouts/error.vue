@@ -2,6 +2,13 @@
   <div class="not-found-page">
     <p>404</p>
 
+    <!-- <filter-radio-text-group
+      :valueList="['test', '1', '23']"
+      :defaultValue="filterRadioCheckedValue"
+      @inputGroupValueChanged="filterRadioCheckedValue = $event"
+    />
+    
+    {{ filterRadioCheckedValue }} -->
     <hr>
 
     <!-- <app-tooltip>
@@ -68,43 +75,12 @@
       </template>
     </app-scroll-block-old> -->
 
-    <hr>
-
-    <app-scroll-block>
-      <template v-slot:scrollContent>
-        <p>scroll content</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <br>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <br>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <br>
-        <p>test</p>
-        <br>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-      </template>
-    </app-scroll-block>
 
   </div>
 </template>
 
 <script>
+import FilterRadioTextGroup from '@/components/basic/FilterRadioTextGroup'
 import AppAccordion from '@/components/basic/AppAccordion'
 import AppAccordionList from '@/components/basic/AppAccordionList'
 import AppScrollBlockOld from '@/components/basic/AppScrollBlockOld'
@@ -117,6 +93,7 @@ export default {
   },
   layout: 'empty',
   components: {
+    FilterRadioTextGroup,
     AppAccordion,
     AppAccordionList,
     AppScrollBlockOld,
@@ -125,6 +102,7 @@ export default {
   },
   data () {
     return {
+      filterRadioCheckedValue: 'test',
       accordionList: [
         {
           header: 'first',

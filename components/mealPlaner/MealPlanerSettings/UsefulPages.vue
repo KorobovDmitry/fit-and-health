@@ -3,21 +3,21 @@
     <p class="useful-pages__block-title">Полезные страницы</p>
     <div class="useful-pages__elements">
       <nuxt-link
-        to="/meal-plans"
+        to="meal-planer/meal-plans"
         class="element"
       >
         <i class="ti-write element__icon"></i>
         <p class="element__text">Сохраненные<br>рационы</p>
       </nuxt-link>
       <nuxt-link
-        to="/recipes-book"
+        to="meal-planer/recipes-book"
         class="element"
       >
         <i class="ti-book element__icon"></i>
         <p class="element__text">Книга<br>рецептов</p>
       </nuxt-link>
       <nuxt-link
-        to="/food-calorie-table"
+        to="meal-planer/food-calorie-table"
         class="element"
       >
         <i class="ti-view-list-alt element__icon"></i>

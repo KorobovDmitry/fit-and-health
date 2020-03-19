@@ -21,8 +21,8 @@
         <li v-for="(item, index) in baseProducts" :key="index" class="product-list__item">
           <div class="item__element">
             <i
-              class="ti-heart element__fovorite-product"
-              :class="[{'element__fovorite-product--active': item.favorite}]"
+              class="ti-heart element__favorite-product"
+              :class="[{'element__favorite-product--active': item.favorite}]"
               @click="setProductFavorite()"
             ></i>
           </div>
@@ -183,17 +183,17 @@ export default {
           .element__value {
             font-size: 16px;
           }
-          .element__fovorite-product {
+          .element__favorite-product {
             // border: 1px solid red;
             padding: 5px;
             opacity: .3;
             cursor: pointer;
           }
-          .element__fovorite-product:hover {
+          .element__favorite-product:hover {
             color: $green;
             opacity: 1;
           }
-          .element__fovorite-product--active {
+          .element__favorite-product--active {
             padding: 5px;
             color: $green;
             opacity: 1;

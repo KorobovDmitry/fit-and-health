@@ -1,3 +1,4 @@
+// Сброс стилей и шрифты подключаются в nuxt.config.js в разделе css
 // Здесь задаются основные стили приложения
 
 // Файл с переменными для стилей
@@ -6,6 +7,7 @@
 // Подключение шрифта Montserrat всех вариаций
 @import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese');
 
+// BASE app style
 body {
   background-color: $app-background;
 }
@@ -14,18 +16,51 @@ body {
   font-family: $fontMontserrat;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $app-background;
   color: $black;
 }
 
+// body overflow style FOR MODAL WINDOW
 .body-overflow {
   height: 100vh;
   width: 100%;
   overflow: hidden;
 }
 
-.mt10 {
+// Standart MARGIN styles
+.mt-5 {
+  margin-top: 5px;
+}
+.mt-10 {
   margin-top: 10px;
 }
-.ml10 {
+.mt-20 {
+  margin-top: 20px;
+}
+.mb-5 {
+  margin-bottom: 5px;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+.ml-5 {
+  margin-left: 5px;
+}
+.ml-10 {
   margin-left: 10px;
+}
+.ml-20 {
+  margin-left: 20px;
+}
+.mr-5 {
+  margin-right: 5px;
+}
+.mr-10 {
+  margin-right: 10px;
+}
+.mr-20 {
+  margin-right: 20px;
 }
