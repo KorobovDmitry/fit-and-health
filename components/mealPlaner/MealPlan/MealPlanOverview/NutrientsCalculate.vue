@@ -47,7 +47,6 @@ export default {
   display: flex;
   justify-content: space-around;
   margin-right: 238px;
-  margin-bottom: 20px;
   padding: 10px;
   background: $white;
   border: 1px solid $blockBorder;

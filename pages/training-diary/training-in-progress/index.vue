@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import CurrentTrainingOverview from '@/components/trainings/TrainingInProgress/CurrentTrainingOverview.vue'
-import CurrentTrainingInfo from '@/components/trainings/TrainingInProgress/CurrentTrainingInfo.vue'
-import CurrentTrainingDayExercises from '@/components/trainings/TrainingInProgress/CurrentTrainingDayExercises.vue'
+import CurrentTrainingOverview from '@/components/training-diary/TrainingInProgress/CurrentTrainingOverview.vue'
+import CurrentTrainingInfo from '@/components/training-diary/TrainingInProgress/CurrentTrainingInfo.vue'
+import CurrentTrainingDayExercises from '@/components/training-diary/TrainingInProgress/CurrentTrainingDayExercises.vue'
 export default {
   // middleware: ['userAuth'],
   components: {

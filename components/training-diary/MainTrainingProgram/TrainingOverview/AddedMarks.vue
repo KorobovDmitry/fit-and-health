@@ -1,7 +1,6 @@
 <template>
   <div class="added-marks">
     <p class="added-marks__title">Добавленные отметки</p>
-
     <div class="added-marks__elements">
       <div class="element">
         <p class="element__text">Низкоуглеводное</p>
@@ -20,14 +19,11 @@
         <i class="ti-close element__icon"></i>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-export default {
-  
-}
+export default {}
 </script>
 
 <style lang="scss" scoped>
@@ -36,7 +32,8 @@ export default {
 .added-marks {
   display: flex;
   flex-direction: column;
-  margin-bottom: -73px;
+  margin-left: 5px;
+  // margin-bottom: -73px;
   padding: 10px;
   background: $white;
   border: 1px solid $blockBorder;

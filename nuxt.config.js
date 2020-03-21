@@ -8,6 +8,9 @@ module.exports = {
   ** Headers of the page
   */
   head: {
+    htmlAttrs: {
+      lang: 'ru'
+    },
     title: pkg.name,
     meta: [
       { charset: 'utf-8' },

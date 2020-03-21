@@ -1,19 +1,14 @@
 <template>
-  <div class="training-programs">
-    <app-page-title>Дневник тренировок</app-page-title>
-    <div class="training-programs__content">
-      <!-- <page-info /> -->
+  <div class="training-diary">
 
-      <!-- <div class="left">
-        <p>Календарь тренировок</p>
-        <meal-planer-calendar />
-      </div>-->
+    <app-page-title>Дневник тренировок</app-page-title>
+
+    <div class="training-diary__content">
+
       <div class="center">
         <main-training-program />
-        <div class="best-results">
-          <app-block-title>Лучшие результаты по отслеживаемым упражнениям</app-block-title>
-        </div>
       </div>
+
       <div class="right">
         <app-block-title>Календарь тренировок</app-block-title>
         <meal-planer-calendar />
@@ -21,63 +16,52 @@
         <div class="useful-pages">
           <app-block-title>Полезные страницы</app-block-title>
           <div class="useful-pages__elements">
-            
-            <nuxt-link tag="a" to="/trainings/#" class="element">
-              <i class="ti-book element__icon"></i>
-              <p class="element__text">Справочник<br>по упражнениям</p>
-            </nuxt-link>
-            <nuxt-link tag="a" to="/trainings/#" class="element">
+            <nuxt-link tag="a" to="/training-diary/training-programs" class="element">
               <i class="ti-clipboard element__icon"></i>
               <p class="element__text">Тренировочные<br>программы</p>
             </nuxt-link>
-            <nuxt-link tag="a" to="/trainings/#" class="element">
-              <i class="ti-pulse element__icon"></i>
-              <p class="element__text">Пульс</p>
+            <nuxt-link tag="a" to="/training-diary/exercise-guide" class="element">
+              <i class="ti-book element__icon"></i>
+              <p class="element__text">Справочник<br>по упражнениям</p>
             </nuxt-link>
           </div>
         </div>
       </div>
 
-      <!-- <training-programs-list /> -->
     </div>
+    
   </div>
 </template>
 
 <script>
 import AppPageTitle from "@/components/basic/AppPageTitle"
 import AppBlockTitle from "@/components/basic/AppBlockTitle"
-import PageInfo from "@/components/trainings/PageInfo"
-import MainTrainingProgram from "@/components/trainings/TrainingPrograms/MainTrainingProgram.vue"
-import TrainingProgramsList from "@/components/trainings/TrainingPrograms/TrainingProgramsList.vue"
+// import PageInfo from "@/components/training-diary/PageInfo"
+import MainTrainingProgram from "@/components/training-diary/MainTrainingProgram/index"
 import MealPlanerCalendar from "@/components/mealPlaner/MealPlanerSettings/MealPlanerCalendar"
 
 export default {
   components: {
     AppPageTitle,
     AppBlockTitle,
-    PageInfo,
+    // PageInfo,
     MainTrainingProgram,
-    TrainingProgramsList,
     MealPlanerCalendar
-  },
-  beforeCreate() {
-    this.$store.commit("nutritionDiary/closeSidebar")
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/vars.scss";
 
-.training-programs {
+.training-diary {
   // border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
-  // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
-  .training-programs__content {
+  .training-diary__content {
     // border: 1px solid red;
     display: flex;
     width: 100%;
@@ -97,10 +81,6 @@ export default {
       max-width: 400px;
     }
   }
-}
-
-.best-results {
-  margin-top: 20px;
 }
 
 .useful-pages {

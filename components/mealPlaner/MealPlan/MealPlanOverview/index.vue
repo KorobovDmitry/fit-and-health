@@ -117,15 +117,10 @@ export default {
   margin-bottom: 5px;
   .meal-plan-overview__img-and-social {
     margin-right: 5px;
-    // flex: 1 1 auto;
     .meal-plan-overview__img-wrapper {
       margin-bottom: 5px;
       padding: 10px;
       width: 100%;
-      // width: 450px;
-      // min-width: 450px;
-      // max-width: 450px;
-      // height: 322px;
       background: $white;
       border: 1px solid $blockBorder;
       border-radius: 6px;

@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import ExercisesList from '@/components/trainings/TrainingProgramFullView/ExercisesList.vue'
-import CurrentTrainingExercises from '@/components/trainings/TrainingProgramFullView/CurrentTrainingExercises.vue'
-import OverviewCurrentTraining from '@/components/trainings/TrainingProgramFullView/OverviewCurrentTraining.vue'
+import ExercisesList from '@/components/training-diary/TrainingProgramEditor/ExercisesList.vue'
+import CurrentTrainingExercises from '@/components/training-diary/TrainingProgramEditor/CurrentTrainingExercises.vue'
+import OverviewCurrentTraining from '@/components/training-diary/TrainingProgramEditor/OverviewCurrentTraining.vue'
 export default {
   // middleware: ['userAuth'],
   components: {

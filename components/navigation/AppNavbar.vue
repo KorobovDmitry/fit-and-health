@@ -17,7 +17,7 @@
       active-class="navbar__page-link--active"
     ></nuxt-link>
     <nuxt-link
-      to="/trainings"
+      to="/training-diary"
       no-prefetch
       class="ti-timer navbar__page-link"
       active-class="navbar__page-link--active"

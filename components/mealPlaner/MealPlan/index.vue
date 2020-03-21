@@ -4,6 +4,17 @@
 
     <meal-plan-overview />
     <nutrients-calculate />
+    <div class="overview__action-btn">
+      <app-button size16px uppercase class="action-btn">Очистить план питания на сегодня</app-button>
+
+      <router-link tag="a" to="training-diary/training-program-editor">
+        <app-button size16px uppercase class="action-btn">Редактировать</app-button>
+      </router-link>
+
+      <router-link tag="a" to="training-diary/training-in-progress?training-programm=4-day-split">
+        <app-button size16px uppercase class="action-btn">Сохранить как...</app-button>
+      </router-link>
+    </div>
 
     <meal-parts />
     <meal-editor />
@@ -16,6 +27,7 @@ import MealPlanOverview from '@/components/mealPlaner/MealPlan/MealPlanOverview/
 import NutrientsCalculate from '@/components/mealPlaner/MealPlan/MealPlanOverview/NutrientsCalculate'
 import MealParts from '@/components/mealPlaner/MealPlan/MealParts/index'
 import MealEditor from '@/components/mealPlaner/MealPlan/MealEditor/index'
+import AppButton from "@/components/basic/AppButton.vue"
 
 export default {
   components: {
@@ -23,7 +35,8 @@ export default {
     MealPlanOverview,
     NutrientsCalculate,
     MealParts,
-    MealEditor
+    MealEditor,
+    AppButton
   }
 }
 </script>
@@ -35,6 +48,19 @@ export default {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
+  .overview__action-btn {
+    // border: 1px solid red;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    min-width: 300px;
+    .action-btn:first-child {
+      margin-right: auto;
+    }
+    .action-btn:last-child {
+      margin-left: 10px;
+    }
+  }
 }
 
 </style>
