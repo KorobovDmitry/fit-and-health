@@ -2,18 +2,18 @@
   <div class="training-programs">
     <app-page-title>Тренировочные программы</app-page-title>
     <div class="training-programs__content">
-      <training-programs-list />
+      <training-programs />
     </div>
   </div>
 </template>
 
 <script>
 import AppPageTitle from "@/components/basic/AppPageTitle"
-import TrainingProgramsList from "@/components/training-diary/TrainingProgramsList.vue"
+import TrainingPrograms from "@/components/training-diary/TrainingPrograms/index"
 
 export default {
   components: {
-    TrainingProgramsList,
+    TrainingPrograms,
     AppPageTitle
   }
 }
@@ -32,6 +32,7 @@ export default {
   .training-programs__content {
     // border: 1px solid red;
     display: flex;
+    align-items: flex-start;
     width: 100%;
     max-width: 1700px;
   }

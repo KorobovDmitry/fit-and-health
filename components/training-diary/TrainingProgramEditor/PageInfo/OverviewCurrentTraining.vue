@@ -74,7 +74,7 @@ export default {
   },
   methods: {
     startTraining () {
-      this.$router.push('/trainings/training-in-progress?training-programm=4-day-split')
+      this.$router.push('/training-diary/training-in-progress?training-programm=4-day-split')
     },
     saveChanges () {},
     setCurrent () {},
@@ -90,11 +90,8 @@ export default {
   // border: 1px solid red;
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
-  // margin-bottom: 40px;
   .overview-top-block {
     display: flex;
-    // flex-wrap: wrap;
     align-items: center;
     width: 100%;
     .info-block {

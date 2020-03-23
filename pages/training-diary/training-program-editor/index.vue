@@ -1,38 +1,21 @@
 <template>
-  <div class="training-program-full-view">
-
-    <div class="training-program-full-view__content">
-      <p class="training-program-full-view__title">Название программы тренировок</p>
-      <overview-current-training />
-      <div class="exercises">
-        <exercises-list />
-        <current-training-exercises />
-      </div>
+  <div class="training-program-editor">
+    <app-page-title>Редактор тренировочной программы</app-page-title>
+    <div class="training-program-editor__content">
+      <editor />
     </div>
-
   </div>
 </template>
 
 <script>
-import ExercisesList from '@/components/training-diary/TrainingProgramEditor/ExercisesList.vue'
-import CurrentTrainingExercises from '@/components/training-diary/TrainingProgramEditor/CurrentTrainingExercises.vue'
-import OverviewCurrentTraining from '@/components/training-diary/TrainingProgramEditor/OverviewCurrentTraining.vue'
+import AppPageTitle from '@/components/basic/AppPageTitle'
+import Editor from '@/components/training-diary/TrainingProgramEditor/Editor/index'
+
 export default {
   // middleware: ['userAuth'],
   components: {
-    ExercisesList,
-    CurrentTrainingExercises,
-    OverviewCurrentTraining
-  },
-  data () {
-    return {
-      programName: this.$route.params['name']
-    }
-  },
-  watch: {
-    $route (toR) {
-      this.programName = toR.params['name']
-    }
+    AppPageTitle,
+    Editor
   }
 }
 </script>
@@ -40,29 +23,20 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/vars.scss";
 
-.training-program-full-view {
+.training-program-editor {
   // border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
-  // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
-  .training-program-full-view__content {
+  .training-program-editor__content {
     // border: 1px solid red;
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
     max-width: 1700px;
-    .training-program-full-view__title {
-      text-align: center;
-      font-size: 26px;
-    }
   }
-}
-
-.exercises {
-  display: flex;
 }
 
 </style>

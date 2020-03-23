@@ -14,6 +14,8 @@ export default {}
 
 .training-description {
   flex: 1 1 auto;
+  margin-top: 5px;
+  margin-left: 5px;
   padding: 10px;
   background: $white;
   border: 1px solid $blockBorder;

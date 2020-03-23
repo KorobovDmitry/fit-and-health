@@ -1,6 +1,9 @@
 <template>
   <div class="training-programs-list">
-    <p class="training-programs-list__title">Найти тренировочную программу</p>
+    <page-info />
+
+    <app-block-title>Тренировочные программы</app-block-title>
+
     <app-search-block />
 
     <div class="training-programs-list__wrapper">
@@ -51,11 +54,16 @@
 </template>
 
 <script>
+import PageInfo from '@/components/training-diary/TrainingPrograms/PageInfo'
+import AppBlockTitle from '@/components/basic/AppBlockTitle'
+
 import AppButton from '@/components/basic/AppButton.vue'
 import AppSearchBlock from '@/components/basic/AppSearchBlock.vue'
 import AppPagination from '@/components/basic/AppPagination.vue'
 export default {
   components: {
+    PageInfo,
+    AppBlockTitle,
     AppButton,
     AppSearchBlock,
     AppPagination
@@ -75,18 +83,13 @@ export default {
 @import '@/assets/scss/vars.scss';
 
 .training-programs-list {
-  .training-programs-list__title {
-    margin: 40px 0 20px 20px;
-    color: $green;
-    font-size: 24px;
-    font-weight: 600;
-  }
+  // border: 1px solid red;
+  flex: 1 1 auto;
+
   .training-programs-list__wrapper {
     display: flex;
     // flex-direction: column;
     margin-top: 20px;
-    padding-top: 20px;
-    border-top: 2px dashed rgba(0,0,0,.2);
     .training-programs-list__overview {
       display: flex;
       align-items: center;
@@ -101,7 +104,6 @@ export default {
         flex-direction: column;
         margin-right: auto;
         .training-programs-list__program-title {
-          // margin: 20px 20px 5px 20px;
           font-size: 24px;
           font-weight: 600;
         }
@@ -111,7 +113,6 @@ export default {
           font-size: 12px;
         }
         .training-programs-list__date {
-          // margin: 0 20px;
           font-size: 12px;
         }
       }

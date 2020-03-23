@@ -1,0 +1,217 @@
+<template>
+  <div class="current-training-exercises">
+    <app-block-title>Редактор тренировочной программы</app-block-title>
+
+    <div v-for="(item, index) in 4" :key="index" class="training-day">
+      <app-accordion :isOpened="true">
+        <template v-slot:accordionHeader>
+          <div class="training-day__header">
+            <div class="header__title">
+              <p class="header__title-text">День 1. Ноги и плечи</p>
+              <p class="header__last-training-text">Последняя тренировка:</p>
+              <p class="header__last-training-date">суббота, 10 декабря 2019</p>
+            </div>
+            <div class="header__info-block">
+              <div class="info-block__item">
+                <p class="item__info-count">1 час 02 мин.</p>
+                <p class="item__info-text">Время последней тренировки</p>
+              </div>
+              <div class="info-block__item">
+                <p class="item__info-count">1869 кг.</p>
+                <p class="item__info-text">Тоннаж последней тренировки</p>
+              </div>
+            </div>
+            <i class="ti-angle-double-down header-icon"></i>
+          </div>
+        </template>
+        <template v-slot:accordionHiddenContent>
+          <ul class="training-day__exercises-list">
+            <li v-for="(item, index) in 4" :key="index" class="exercises-list__list-item">
+              <div class="list-item__drag-drop-btn">
+                <i class="ti-exchange-vertical"></i>
+              </div>
+              <p class="list-item__title">Присядания со штангой в тренажере Смитта</p>
+              <div class="list-item__parameter">
+                <p class="parameter__text">подходы</p>
+                <p class="parameter__value">4</p>
+              </div>
+              <div class="list-item__parameter">
+                <p class="parameter__text">повторений</p>
+                <p class="parameter__value">10 - 12</p>
+              </div>
+              <div class="list-item__parameter">
+                <p class="parameter__text">Отягощение</p>
+                <p class="parameter__value">45 кг.</p>
+              </div>
+              <div class="list-item__edit-btn">
+                <i class="ti-pencil"></i>
+                <i class="ti-save"></i>
+              </div>
+              <div class="list-item__delete-btn">
+                <i class="ti-close"></i>
+              </div>
+            </li>
+          </ul>
+        </template>
+      </app-accordion>
+    </div>
+
+    <app-button size16px uppercase right>Добавить тренировочный день</app-button>
+  </div>
+</template>
+
+<script>
+import AppBlockTitle from "@/components/basic/AppBlockTitle"
+import AppAccordion from '@/components/basic/AppAccordion'
+import AppButton from "@/components/basic/AppButton"
+
+export default {
+  components: {
+    AppBlockTitle,
+    AppAccordion,
+    AppButton
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "@/assets/scss/vars.scss";
+
+.current-training-exercises {
+  // border: 1px solid red;
+  margin-left: 40px;
+  width: 100%;
+
+
+  .training-day {
+    margin-bottom: 20px;
+    .training-day__header {
+      // border: 1px solid red;
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+        background: $white;
+        border: 1px solid $blockBorder;
+        border-radius: 6px;
+      .header__title {
+        // flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+        .header__title-text {
+          font-size: 20px;
+          font-weight: 600;
+        }
+        .header__last-training-text {
+          margin-top: 5px;
+          text-transform: uppercase;
+          font-size: 12px;
+        }
+        .header__last-training-date {
+          font-size: 12px;
+        }
+      }
+      .header__info-block {
+        // border: 1px solid red;
+        display: flex;
+        margin-left: auto;
+        .info-block__item {
+          padding: 10px;
+          width: 180px;
+          min-width: 180px;
+          text-align: center;
+          border-left: 1px solid $blockBorder;
+          .item__info-count {
+            font-size: 18px;
+            font-weight: 600;
+          }
+          .item__info-text {
+            font-size: 12px;
+          }
+        }
+        .info-block__item:last-child {
+          border-right: 1px solid $blockBorder;
+        }
+      }
+      .header-icon {
+        margin: 0 20px;
+      }
+    }
+    .training-day__exercises-list {
+      // border: 1px solid red;
+      margin: 0 5px;
+          padding: 10px;
+          background: rgba(0, 0, 0, 0.08);
+          border-bottom-left-radius: 6px;
+          border-bottom-right-radius: 6px;
+      .exercises-list__list-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px 20px;
+        background: $white;
+        border: 1px solid $blockBorder;
+        border-radius: 6px;
+        .list-item__drag-drop-btn {
+          // border: 1px solid red;
+          display: flex;
+          align-items: center;
+          margin-right: 20px;
+          cursor: pointer;
+          transition: $tr-02;
+        }
+        .list-item__drag-drop-btn:hover {
+          color: $green;
+        }
+        .list-item__title {
+          // border: 1px solid red;
+          font-size: 18px;
+          font-weight: 600;
+          margin-right: auto;
+        }
+        .list-item__parameter {
+          // border: 1px solid red;
+          margin-left: 10px;
+          text-align: center;
+          // width: 140px;
+          min-width: 140px;
+          .parameter__text {
+            text-transform: uppercase;
+            font-size: 8px;
+          }
+          .parameter__value {
+            margin-top: 5px;
+            font-size: 18px;
+            font-weight: 600;
+          }
+        }
+        .list-item__edit-btn {
+          // border: 1px solid red;
+          display: flex;
+          align-items: center;
+          // margin-left: 20px;
+          cursor: pointer;
+          transition: $tr-02;
+        }
+        .list-item__edit-btn:hover {
+          color: $green;
+        }
+        .list-item__delete-btn {
+          // border: 1px solid red;
+          display: flex;
+          align-items: center;
+          margin-left: 20px;
+          cursor: pointer;
+          transition: $tr-02;
+        }
+        .list-item__delete-btn:hover {
+          color: $green;
+        }
+      }
+      .exercises-list__list-item:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+</style>

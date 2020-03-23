@@ -30,8 +30,10 @@ export default {}
 @import "@/assets/scss/vars.scss";
 
 .added-marks {
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  margin-top: 5px;
   margin-left: 5px;
   // margin-bottom: -73px;
   padding: 10px;
