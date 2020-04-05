@@ -2,18 +2,18 @@
   <div class="training-programs">
     <app-page-title>Тренировочные программы</app-page-title>
     <div class="training-programs__content">
-      <training-programs />
+      <training-programs-book />
     </div>
   </div>
 </template>
 
 <script>
 import AppPageTitle from "@/components/basic/AppPageTitle"
-import TrainingPrograms from "@/components/training-diary/TrainingPrograms/index"
+import TrainingProgramsBook from "@/components/training-diary/TrainingProgramsBook/index"
 
 export default {
   components: {
-    TrainingPrograms,
+    TrainingProgramsBook,
     AppPageTitle
   }
 }

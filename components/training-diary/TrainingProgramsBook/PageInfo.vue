@@ -2,7 +2,7 @@
   <div class="overview-products">
     <div class="info__wrapper">
       <div class="info__element">
-        <p class="info__element-text">Тренировочных программ</p>
+        <p class="info__element-text">Всего программ</p>
         <p class="info__element-value">12</p>
       </div>
       <div class="info__element">
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="add-product-btn__wrapper">
-      <app-button sizeXL uppercase right @click.native="openModal()">Добавить тренировочую программу</app-button>
+      <app-button sizeXL uppercase right @click.native="openModal()">Добавить программу</app-button>
     </div>
   </div>
 </template>
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     openModal() {
-      this.$store.commit('products/setProductsModalActive')
+      // this.$store.commit('products/setProductsModalActive')
     },
     // addUserProduct () {
     //   const product = {

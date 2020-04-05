@@ -1,25 +1,26 @@
 <template>
   <div class="editor">
-
     <overview-current-training />
-    
     <div class="exercises">
-      <exercises-list />
+      <training-days />
       <current-training-exercises />
+      <exercises-list />
     </div>
   </div>
 </template>
 
 <script>
-import OverviewCurrentTraining from '@/components/training-diary/TrainingProgramEditor/PageInfo/OverviewCurrentTraining'
+import OverviewCurrentTraining from '@/components/training-diary/TrainingProgramEditor/TrainingOverview'
 import ExercisesList from '@/components/training-diary/TrainingProgramEditor/Editor/ExercisesList/index'
 import CurrentTrainingExercises from '@/components/training-diary/TrainingProgramEditor/Editor/CurrentTrainingExercises/index'
+import TrainingDays from '@/components/training-diary/TrainingProgramEditor/TrainingDays'
 
 export default {
   components: {
     OverviewCurrentTraining,
     ExercisesList,
-    CurrentTrainingExercises
+    CurrentTrainingExercises,
+    TrainingDays
   }
 }
 </script>

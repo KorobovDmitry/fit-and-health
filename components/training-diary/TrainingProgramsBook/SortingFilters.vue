@@ -3,9 +3,8 @@
 
     <app-block-title>Фильтры</app-block-title>
 
-    <!-- {{ filters }} -->
-
     <filter-radio-group
+      :filterGroupOpened="true"
       headerTitle="Сортировать по ..."
       :valueList="sotringOptions"
       :defaultValue="sotringDefault"
@@ -13,41 +12,11 @@
     />
 
     <filter-checkbox-group
+      :filterGroupOpened="true"
       headerTitle="Время приема пищи"
       :valueList="mealtimeOptions"
       :defaultValue="mealtimeOptions"
       @inputGroupValueChanged="filters.mealtime = $event"
-    />
-
-    <filter-limit-group
-      groupTitle="Калорийность на 100 гр."
-      :startValue="0" :endValue="99999"
-      @limitValueChanged="filters.kkalLimit = $event"
-    />
-
-    <filter-limit-group
-      groupTitle="Время приготовления, мин."
-      :startValue="0"
-      :endValue="9999"
-      @limitValueChanged="filters.cookingTimeLimit = $event"
-    />
-
-    <filter-checkbox-group
-      headerTitle="Сложность приготовления"
-      :valueList="cookingDifficultyOptions"
-      :defaultValue="cookingDifficultyOptions"
-    />
-
-    <filter-checkbox-group
-      headerTitle="Доп. предпочтения"
-      :valueList="preferenceOptions"
-      :defaultValue="[]"
-    />
-
-    <filter-checkbox-group
-      headerTitle="Содержит продукты"
-      :valueList="productsOptions"
-      :defaultValue="[]"
     />
 
   </div>
@@ -57,13 +26,12 @@
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import FilterRadioGroup from '@/components/basic/FilterRadioGroup'
 import FilterCheckboxGroup from '@/components/basic/FilterCheckboxGroup'
-import FilterLimitGroup from '@/components/recipesBook/SortingFilters/FilterLimitGroup'
+
 export default {
   components: {
     AppBlockTitle,
     FilterRadioGroup,
-    FilterCheckboxGroup,
-    FilterLimitGroup
+    FilterCheckboxGroup
   },
   data () {
     return {
@@ -89,17 +57,9 @@ export default {
 
 .sorting-filters {
   // border: 1px solid red;
-  // margin-top: 40px;
-  // margin-bottom: 40px;
   width: 400px;
   min-width: 400px;
   max-width: 400px;
-  .sorting-filters__block-title {
-    margin: 0 20px 14px 20px;
-    padding: 0 5px;
-    font-size: 18px;
-    font-weight: 500;
-  }
 }
 
 </style>

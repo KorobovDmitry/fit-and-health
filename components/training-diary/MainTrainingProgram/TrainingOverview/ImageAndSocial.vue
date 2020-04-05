@@ -42,7 +42,6 @@ export default {
       border-radius: 6px;
     }
   }
-  
 }
 
 </style>

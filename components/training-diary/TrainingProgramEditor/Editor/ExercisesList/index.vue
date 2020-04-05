@@ -5,8 +5,6 @@
     <div class="exercises-list__content">
       <app-search-block small />
 
-      <app-button size16px uppercase fillArea mt20>Добавить новое упражнение в базу</app-button>
-
       <div class="categories">
 
         <div v-for="(item, index) in 3" :key="index" class="category__item">
@@ -40,6 +38,9 @@
         </div>
 
       </div>
+
+      <app-button size16px uppercase fillArea >Добавить новое упражнение в базу</app-button>
+
     </div>
   </div>
 </template>
@@ -74,7 +75,7 @@ export default {
     flex-direction: column;
     .categories {
       // border: 1px solid red;
-      margin-top: 20px;
+      margin: 20px 0;
       .category__item {
         // border: 1px solid red;
         margin-bottom: 10px;
@@ -134,6 +135,9 @@ export default {
             margin-bottom: 0;
           }
         }
+      }
+      .category__item:last-child {
+        margin-bottom: 0;
       }
     }
   }

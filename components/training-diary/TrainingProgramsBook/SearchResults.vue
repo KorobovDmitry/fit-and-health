@@ -1,12 +1,39 @@
 <template>
-  <div class="training-programs-list">
-    <page-info />
-
+  <div class="search-results">
     <app-block-title>Тренировочные программы</app-block-title>
-
     <app-search-block />
 
-    <div class="training-programs-list__wrapper">
+    <div class="filter-by">
+      <filter-radio-text-group
+        :valueList="['Все', 'Фото', 'Видео']"
+        :defaultValue="filters.media"
+        uppercase
+        size14px
+        @inputGroupValueChanged="filters.media = $event"
+      />
+      <p class="filter-by__divider">|</p>
+      <filter-radio-text-group
+        :valueList="['Все', 'Домашние', 'Спортзал']"
+        :defaultValue="filters.foodOrDrink"
+        uppercase
+        size14px
+        @inputGroupValueChanged="filters.foodOrDrink = $event"
+      />
+      <p class="filter-by__divider">|</p>
+      <filter-radio-text-group
+        :valueList="['Все', 'Мои программы']"
+        :defaultValue="filters.type"
+        uppercase
+        size14px
+        @inputGroupValueChanged="filters.type = $event"
+      />
+    </div>
+
+    <div class="found-programs">
+      <found-program v-for="(item, index) in 5" :key="index" />
+    </div>
+
+    <!-- <div class="training-programs-list__wrapper">
       <div class="training-programs-list__overview">
         <div class="training-programs-list__training-info">
           <p class="training-programs-list__program-title">Crossfit</p>
@@ -39,41 +66,43 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="training-programs-list__btn-wrapper">
+    <!-- <div class="training-programs-list__btn-wrapper">
       <app-button class="training-programs-list__btn" size16px uppercase fillArea>Удалить тренировочную программу</app-button>
       <app-button class="training-programs-list__btn" size16px uppercase fillArea>Сделать основной</app-button>
       <app-button class="training-programs-list__btn" size16px uppercase fillArea>Редактировать</app-button>
       <app-button class="training-programs-list__btn" size16px uppercase fillArea>Начать тренировку</app-button>
-    </div>
+    </div> -->
 
     <app-pagination />
-
   </div>
 </template>
 
 <script>
-import PageInfo from '@/components/training-diary/TrainingPrograms/PageInfo'
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
-
 import AppButton from '@/components/basic/AppButton.vue'
 import AppSearchBlock from '@/components/basic/AppSearchBlock.vue'
+import FilterRadioTextGroup from '@/components/basic/FilterRadioTextGroup'
+import FoundProgram from '@/components/training-diary/TrainingProgramsBook/FoundProgram'
 import AppPagination from '@/components/basic/AppPagination.vue'
+
 export default {
   components: {
-    PageInfo,
     AppBlockTitle,
     AppButton,
     AppSearchBlock,
+    FilterRadioTextGroup,
+    FoundProgram,
     AppPagination
   },
   data () {
-    return {}
-  },
-  methods: {
-    test () {
-      console.log('test');
+    return {
+      filters: {
+        media: 'Все',
+        foodOrDrink: 'Все',
+        type: 'Все'
+      }
     }
   }
 }
@@ -82,10 +111,31 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/vars.scss';
 
-.training-programs-list {
+.search-results {
   // border: 1px solid red;
   flex: 1 1 auto;
+  margin-left: 40px;
+  .filter-by {
+    // border: 1px solid red;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .filter-by__divider {
+      // border: 1px solid red;
+      margin: 0 20px;
+      color: rgba(0,0,0,.2);
+      user-select: none;
+    }
+  }
+  .found-programs {
+    // border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
+
+
+  // Требуется рефакторинг классов и структуры
   .training-programs-list__wrapper {
     display: flex;
     // flex-direction: column;
