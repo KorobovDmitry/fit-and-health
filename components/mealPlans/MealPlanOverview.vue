@@ -65,6 +65,7 @@ export default {
     padding: 10px;
     background: $hiddenBlockBG;
     border-radius: 6px;
+    box-shadow: $btnHoverShadow;
     .description__meal-plan-title {
       display: flex;
       align-items: center;

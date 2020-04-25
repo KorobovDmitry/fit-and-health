@@ -113,6 +113,7 @@ export default {
           background: rgba(0, 0, 0, 0.08);
           border-bottom-left-radius: 6px;
           border-bottom-right-radius: 6px;
+          // box-shadow: $btnHoverShadow;
           .exercises-list__list-item {
             display: flex;
             align-items: center;
@@ -121,6 +122,7 @@ export default {
             background: $white;
             border: 1px solid $blockBorder;
             border-radius: 6px;
+            // box-shadow: $btnHoverShadow;
             .list-item__exercises-drag-drop-btn {
               margin-right: 10px;
             }

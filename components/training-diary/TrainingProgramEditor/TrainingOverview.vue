@@ -17,26 +17,28 @@
           <p class="element__title">Название тренировочной программы</p>
           <app-input-text placeholderText="Название" />
         </div>
-
         <div class="element">
           <p class="element__title">Короткое описание</p>
           <app-textarea />
         </div>
-
-        <div class="element">
-          <p class="element__title">Добавленные отметки</p>
-          <app-input-text placeholderText="добавленные отметки" />
+        <div>
+          выбрать дни недели для занятий (горизонтальная линия с днями недели в которой можно выбрать дни для тренировок и установить конкретный тренировочный день)
         </div>
-
-        <br />график круговой показывает смещение акцента в тренировках (выносливость, сила, кардио)
-        <br />выбрать дни недели для занятий (горизонтальная линия с днями недели в которой можно выбрать дни для тренировок и установить конкретный тренировочный день)
       </div>
       <div class="test">
-        <app-button uppercase fillArea>Начать тренировку</app-button>
-        <app-button uppercase fillArea mt10>Сохранить изменения</app-button>
-        <app-button uppercase fillArea mt10>Сделать основной</app-button>
-        <app-button uppercase fillArea mt10>Удалить тренировочную программу</app-button>
+        <div>
+          добавленные отметки
+        </div>
+        <div>
+          график круговой показывает смещение акцента в тренировках (выносливость, сила, кардио)
+        </div>
       </div>
+    </div>
+    <div class="training-overview__action-btns">
+      <app-button uppercase >Удалить тренировочную программу</app-button>
+      <app-button uppercase >Сделать основной</app-button>
+      <app-button uppercase >Сохранить изменения</app-button>
+      <app-button uppercase >Начать тренировку</app-button>
     </div>
   </div>
 </template>
@@ -67,19 +69,24 @@ export default {
   margin-bottom: 40px;
   .training-overview__content {
     display: flex;
+    padding: 10px;
+    background: $hiddenBlockBG;
+    border-radius: 6px;
+    box-shadow: $btnHoverShadow;
     .img-and-social {
       // width: 400px;
       .img__wrapper {
         // margin-bottom: 5px;
         padding: 10px;
-        width: 400px;
-        // height: 342px;
+        width: 300px;
+        min-width: 300px;
+        max-width: 300px;
         background: $white;
         border: 1px solid $blockBorder;
         border-radius: 6px;
         overflow: hidden;
         .img {
-          min-width: 380px;
+          min-width: 280px;
           // object-fit: cover;
           border: 1px solid $blockBorder;
           border-radius: 6px;
@@ -100,11 +107,19 @@ export default {
         }
       }
     }
-    .test {
-      margin-left: 40px;
-      width: 400px;
-      min-width: 400px;
-      max-width: 400px;
+    
+  }
+  .training-overview__action-btns {
+    // border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    .btn-wrapper {
+      margin-left: 10px;
+    }
+    .btn-wrapper:first-child {
+      margin-left: 0;
+      margin-right: auto;
     }
   }
 }

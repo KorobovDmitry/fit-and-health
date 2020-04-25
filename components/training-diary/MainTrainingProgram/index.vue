@@ -37,6 +37,10 @@ export default {
   .main-training-program__overview {
     // border: 1px solid red;
     display: flex;
+    padding: 10px;
+    background: $hiddenBlockBG;
+    border-radius: 6px;
+    box-shadow: $btnHoverShadow;
   }
 }
 </style>

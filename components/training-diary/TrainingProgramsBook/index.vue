@@ -1,6 +1,10 @@
 <template>
   <div class="training-programs-book">
-    <page-info />
+    <app-page-info
+      :infoElements="pageInfoElements"
+      btnTitle="Добавить программу"
+      @btnAction="openModal()"
+    />
     <div class="training-programs-book__filters-and-results">
       <sorting-filters />
       <search-results />
@@ -9,18 +13,38 @@
 </template>
 
 <script>
-import PageInfo from '@/components/training-diary/TrainingProgramsBook/PageInfo'
+import AppPageInfo from '@/components/basic/AppPageInfo'
 import SortingFilters from '@/components/training-diary/TrainingProgramsBook/SortingFilters'
 import SearchResults from '@/components/training-diary/TrainingProgramsBook/SearchResults'
 
 export default {
   components: {
-    PageInfo,
+    AppPageInfo,
     SortingFilters,
     SearchResults,
   },
   data () {
-    return {}
+    return {
+      pageInfoElements: [
+        {
+          title: 'Всего программ',
+          value: 12
+        },
+        {
+          title: 'Избранное',
+          value: 5
+        },
+        {
+          title: 'Мои программы',
+          value: 3
+        }
+      ]
+    }
+  },
+  methods: {
+    openModal () {
+      console.log('Открыть модальное окно "Добавить программу тренировок"')
+    }
   }
 }
 </script>

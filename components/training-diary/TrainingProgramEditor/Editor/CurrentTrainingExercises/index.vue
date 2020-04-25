@@ -3,14 +3,61 @@
     <app-block-title>Редактор упражнений</app-block-title>
 
     <div class="training-day">
-      <app-accordion :isOpened="true">
+      <div class="training-day__header">
+        <div class="header__title">
+          <p class="header__title-text">Название</p>
+          <input type="text" value="День 1. Ноги и плечи">
+          <!-- <p class="header__last-training-text">Последняя тренировка:</p> -->
+          <!-- <p class="header__last-training-date">суббота, 10 декабря 2019</p> -->
+        </div>
+        <div class="header__info-block">
+          <div class="info-block__item">
+            <p class="item__info-text">Время последней тренировки</p>
+            <p class="item__info-count">1 час 02 мин.</p>
+          </div>
+          <div class="info-block__item">
+            <p class="item__info-text">Тоннаж последней тренировки</p>
+            <p class="item__info-count">1869 кг.</p>
+          </div>
+        </div>
+        <i class="ti-angle-double-down header-icon"></i>
+      </div>
+      <ul class="training-day__exercises-list">
+        <li v-for="(item, index) in 4" :key="index" class="exercises-list__list-item">
+          <div class="list-item__drag-drop-btn">
+            <i class="ti-exchange-vertical"></i>
+          </div>
+          <p class="list-item__title">Присядания со штангой в тренажере Смитта</p>
+          <div class="list-item__parameter">
+            <p class="parameter__text">подходы</p>
+            <p class="parameter__value">4</p>
+          </div>
+          <div class="list-item__parameter">
+            <p class="parameter__text">повторений</p>
+            <p class="parameter__value">10 - 12</p>
+          </div>
+          <div class="list-item__parameter">
+            <p class="parameter__text">Отягощение</p>
+            <p class="parameter__value">45 кг.</p>
+          </div>
+          <div class="list-item__edit-btn">
+            <i class="ti-pencil"></i>
+            <i class="ti-save"></i>
+          </div>
+          <div class="list-item__delete-btn">
+            <i class="ti-close"></i>
+          </div>
+        </li>
+      </ul>
+
+
+
+      <!-- <app-accordion :isOpened="true">
         <template v-slot:accordionHeader>
           <div class="training-day__header">
             <div class="header__title">
               <p class="header__title-text">Название</p>
               <input type="text" value="День 1. Ноги и плечи">
-              <!-- <p class="header__last-training-text">Последняя тренировка:</p> -->
-              <!-- <p class="header__last-training-date">суббота, 10 декабря 2019</p> -->
             </div>
             <div class="header__info-block">
               <div class="info-block__item">
@@ -54,7 +101,7 @@
             </li>
           </ul>
         </template>
-      </app-accordion>
+      </app-accordion> -->
     </div>
 
     <!-- <app-button size16px uppercase right>Добавить тренировочный день</app-button> -->
@@ -63,13 +110,13 @@
 
 <script>
 import AppBlockTitle from "@/components/basic/AppBlockTitle"
-import AppAccordion from '@/components/basic/AppAccordion'
+// import AppAccordion from '@/components/basic/AppAccordion'
 // import AppButton from "@/components/basic/AppButton"
 
 export default {
   components: {
     AppBlockTitle,
-    AppAccordion,
+    // AppAccordion,
     // AppButton
   }
 }
@@ -145,6 +192,7 @@ export default {
       background: $hiddenBlockBG;
       border-bottom-left-radius: 6px;
       border-bottom-right-radius: 6px;
+      box-shadow: $btnHoverShadow;
       .exercises-list__list-item {
         display: flex;
         align-items: center;

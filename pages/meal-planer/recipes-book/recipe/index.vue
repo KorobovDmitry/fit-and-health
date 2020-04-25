@@ -9,13 +9,11 @@
 
 <script>
 import AppPageTitle from '@/components/basic/AppPageTitle'
-import PageInfo from '@/components/recipesBook/PageInfo'
 import SortingFilters from '@/components/recipesBook/SortingFilters/SortingFilters'
 import SearchResults from '@/components/recipesBook/SearchResults/SearchResults'
 export default {
   components: {
     AppPageTitle,
-    PageInfo,
     SortingFilters,
     SearchResults
   },

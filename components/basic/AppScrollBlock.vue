@@ -18,10 +18,10 @@ export default {
     return {
       currentScroll: 0,
       targetScroll: 0,
-      moveStep: 10,
-      targetStep: 80,
+      moveStep: 5,
+      targetStep: 100,
       isMove: false,
-      framesPerSecond: 60
+      framesPerSecond: 340
     }
   },
   methods: {

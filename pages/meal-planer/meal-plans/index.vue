@@ -3,7 +3,11 @@
     <app-page-title>Сохраненные рационы</app-page-title>
     <div class="meal-plans__content">
 
-      <page-info />
+      <app-page-info
+        :infoElements="pageInfoElements"
+        btnTitle="Добавить рацион"
+        @btnAction="openModal()"
+      />
 
       <div class="meal-plans__search-and-overview">
         <meal-plan-search />
@@ -16,15 +20,39 @@
 
 <script>
 import AppPageTitle from '@/components/basic/AppPageTitle'
-import PageInfo from '@/components/mealPlans/PageInfo'
+import AppPageInfo from '@/components/basic/AppPageInfo'
 import MealPlanSearch from '@/components/mealPlans/MealPlanSearch'
 import MealPlanOverview from '@/components/mealPlans/MealPlanOverview'
+
 export default {
   components: {
     AppPageTitle,
-    PageInfo,
+    AppPageInfo,
     MealPlanSearch,
     MealPlanOverview
+  },
+  data () {
+    return {
+      pageInfoElements: [
+        {
+          title: 'Всего рационов',
+          value: 14
+        },
+        {
+          title: 'Избранное',
+          value: 2
+        },
+        {
+          title: 'Мои рационы',
+          value: 4
+        }
+      ]
+    }
+  },
+  methods: {
+    openModal () {
+      console.log('Открыть модальное окно "Добавить рацион"')
+    }
   }
 }
 </script>

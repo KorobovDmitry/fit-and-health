@@ -90,9 +90,9 @@ export default {}
   margin-bottom: 20px;
   width: 100%;
   transition: $tr-02;
-  // cursor: pointer;
   background: $hiddenBlockBG;
   border-radius: 6px;
+  box-shadow: $btnHoverShadow;
   .found-program__main-info {
     display: flex;
     flex-direction: column;
@@ -263,12 +263,6 @@ export default {}
 }
 
 .found-program:hover {
-  box-shadow: $btnHoverShadow;
-  // .found-program__main-info {
-  //   box-shadow: $btnHoverShadow;
-  // }
-  // .found-program__added-marks {
-  //   box-shadow: $btnHoverShadow;
-  // }
+  // box-shadow: $btnHoverShadow;
 }
 </style>

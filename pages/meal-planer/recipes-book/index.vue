@@ -2,7 +2,11 @@
   <div class="recipes-book">
     <app-page-title>Книга рецептов</app-page-title>
     <div class="recipes-book__content">
-      <page-info />
+      <app-page-info
+        :infoElements="pageInfoElements"
+        btnTitle="Добавить рецепт"
+        @btnAction="openModal()"
+      />
       <div class="recipes-book__filters-and-results">
         <sorting-filters />
         <search-results />
@@ -13,15 +17,38 @@
 
 <script>
 import AppPageTitle from '@/components/basic/AppPageTitle'
-import PageInfo from '@/components/recipesBook/PageInfo'
+import AppPageInfo from '@/components/basic/AppPageInfo'
 import SortingFilters from '@/components/recipesBook/SortingFilters/SortingFilters'
 import SearchResults from '@/components/recipesBook/SearchResults/SearchResults'
 export default {
   components: {
     AppPageTitle,
-    PageInfo,
+    AppPageInfo,
     SortingFilters,
     SearchResults
+  },
+  data () {
+    return {
+      pageInfoElements: [
+        {
+          title: 'Всего рецептов',
+          value: 952
+        },
+        {
+          title: 'Избранное',
+          value: 2
+        },
+        {
+          title: 'Мои рецепты',
+          value: 14
+        }
+      ]
+    }
+  },
+  methods: {
+    openModal () {
+      console.log('Открыть модальное окно "Добавить рецепт"')
+    }
   }
 }
 </script>
