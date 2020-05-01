@@ -2,7 +2,7 @@
   <div class="meal-planer-settings">
     <app-block-title>Цель на сегодня</app-block-title>
     <meal-planer-calendar />
-    <nutrients-settings />
+    <!-- <nutrients-settings /> -->
     <useful-pages />
   </div>
 </template>
@@ -10,14 +10,14 @@
 <script>
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import MealPlanerCalendar from '@/components/mealPlaner/MealPlanerSettings/MealPlanerCalendar'
-import NutrientsSettings from '@/components/mealPlaner/MealPlanerSettings/NutrientsSettings'
+// import NutrientsSettings from '@/components/mealPlaner/MealPlanerSettings/NutrientsSettings'
 import UsefulPages from '@/components/mealPlaner/MealPlanerSettings/UsefulPages'
 
 export default {
   components: {
     AppBlockTitle,
     MealPlanerCalendar,
-    NutrientsSettings,
+    // NutrientsSettings,
     UsefulPages
   }
 }

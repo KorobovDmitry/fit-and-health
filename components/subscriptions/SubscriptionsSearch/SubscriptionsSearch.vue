@@ -2,7 +2,25 @@
   <div class="subscriptions-search">
     <p class="subscriptions-search__block-title">Поиск по подпискам</p>
 
-    <app-search-block small filters mb20>
+    <!-- <app-search-block small filters mb20>
+      <template v-slot:searchFilters>
+        <div class="filter-element">
+          <p>пол</p>
+          <p>мужской</p>
+        </div>
+        <div class="filter-element">
+          <p>возраст</p>
+          <p>20-30</p>
+        </div>
+        <div class="filter-element">
+          <p>город</p>
+          <p>любой</p>
+        </div>
+      </template>
+    </app-search-block> -->
+
+    <div class="subscriptions-search__found-section">
+      <app-search-block small filters mb20>
       <template v-slot:searchFilters>
         <div class="filter-element">
           <p>пол</p>
@@ -18,8 +36,6 @@
         </div>
       </template>
     </app-search-block>
-
-    <div class="subscriptions-search__found-section">
       <app-scroll-block>
         <template v-slot:scrollContent>
           <div class="found-section__bottom-block">
@@ -104,10 +120,11 @@ export default {
     white-space: nowrap;
   }
   .subscriptions-search__found-section {
-    height: calc(100vh - 242px);
+    height: calc(100vh - 200px);
     padding: 10px;
     background: $hiddenBlockBG;
     border-radius: 6px;
+    box-shadow: $btnHoverShadow;
     .found-section__bottom-block {
       // margin-bottom: 20px;
       .founding-users {

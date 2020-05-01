@@ -15,7 +15,7 @@ import MealPlanerSettings from '@/components/mealPlaner/MealPlanerSettings/index
 
 export default {
   head: {
-    title: 'Fit and Heath - Дневник питания'
+    title: 'Fit and Health - Дневник питания'
   },
   // middleware: ['userAuth'],
   async fetch ({isDev, route, store, env, params, query, req, res, redirect, error}) {

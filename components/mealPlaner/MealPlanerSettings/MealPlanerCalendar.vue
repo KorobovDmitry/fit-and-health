@@ -204,7 +204,7 @@ export default {
 
 .meal-planer-calendar {
   position: relative;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
   .meal-planer-calendar__target-date {
     display: flex;
     align-items: center;

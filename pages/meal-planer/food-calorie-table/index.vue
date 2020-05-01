@@ -2,11 +2,7 @@
   <div class="food-calorie-table">
     <app-page-title>Таблица калорийности продуктов</app-page-title>
     <div class="food-calorie-table__content">
-      <app-page-info
-        :infoElements="pageInfoElements"
-        btnTitle="Добавить продукт"
-        @btnAction="openModal()"
-      />
+      <page-info />
       <div class="food-calorie-table__filters-and-table">
         <sorting-filters />
         <product-table />
@@ -17,7 +13,7 @@
 
 <script>
 import AppPageTitle from '@/components/basic/AppPageTitle'
-import AppPageInfo from '@/components/basic/AppPageInfo'
+import PageInfo from '@/components/foodCalorieTable/PageInfo'
 import SortingFilters from '@/components/foodCalorieTable/SortingFilters'
 import ProductTable from '@/components/foodCalorieTable/ProductTable'
 
@@ -27,36 +23,9 @@ export default {
   },
   components: {
     AppPageTitle,
-    AppPageInfo,
+    PageInfo,
     SortingFilters,
     ProductTable
-  },
-  data () {
-    return {
-      pageInfoElements: [
-        {
-          title: 'Всего продуктов',
-          value: 235
-        },
-        {
-          title: 'Категорий',
-          value: 14
-        },
-        {
-          title: 'Избранное',
-          value: 42
-        },
-        {
-          title: 'Мои продукты',
-          value: 12
-        }
-      ]
-    }
-  },
-  methods: {
-    openModal () {
-      console.log('Открыть модальное окно "Добавить продукт"')
-    }
   }
 }
 </script>

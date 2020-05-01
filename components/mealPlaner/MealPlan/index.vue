@@ -2,22 +2,22 @@
   <div class="meal-plan">
     <app-block-title>Рацион на сутки</app-block-title>
 
-    <meal-plan-overview />
-    <nutrients-calculate />
+    <div class="meal-plan__content-wrapper">
+      <meal-plan-overview />
+      <nutrients-calculate />
+    </div>
+
     <div class="overview__action-btn">
       <app-button size16px uppercase class="action-btn">Очистить план питания на сегодня</app-button>
 
-      <router-link tag="a" to="training-diary/training-program-editor">
+      <router-link tag="a" to="meal-planer/meal-plan-editor">
         <app-button size16px uppercase class="action-btn">Редактировать</app-button>
       </router-link>
 
-      <router-link tag="a" to="training-diary/training-in-progress?training-programm=4-day-split">
-        <app-button size16px uppercase class="action-btn">Сохранить как...</app-button>
+      <router-link tag="a" to="meal-planer">
+        <app-button size16px uppercase class="action-btn">Добавить в избранное</app-button>
       </router-link>
     </div>
-
-    <meal-parts />
-    <meal-editor />
   </div>
 </template>
 
@@ -25,8 +25,6 @@
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import MealPlanOverview from '@/components/mealPlaner/MealPlan/MealPlanOverview/index'
 import NutrientsCalculate from '@/components/mealPlaner/MealPlan/MealPlanOverview/NutrientsCalculate'
-import MealParts from '@/components/mealPlaner/MealPlan/MealParts/index'
-import MealEditor from '@/components/mealPlaner/MealPlan/MealEditor/index'
 import AppButton from "@/components/basic/AppButton.vue"
 
 export default {
@@ -34,8 +32,6 @@ export default {
     AppBlockTitle,
     MealPlanOverview,
     NutrientsCalculate,
-    MealParts,
-    MealEditor,
     AppButton
   }
 }
@@ -48,6 +44,12 @@ export default {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
+  .meal-plan__content-wrapper {
+    padding: 10px;
+    background: $hiddenBlockBG;
+    border-radius: 6px;
+    box-shadow: $btnHoverShadow;
+  }
   .overview__action-btn {
     // border: 1px solid red;
     margin-top: 10px;

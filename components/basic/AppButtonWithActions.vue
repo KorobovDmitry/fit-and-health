@@ -12,7 +12,7 @@
         ]"
       >
         <li v-for="(action, index) in actions" :key="index" class="actions-list__item">
-          <p class="item__text" @click="action.doFunc">{{ action.title }}</p>
+          <p class="item__text" @click="action.doFunc(requiredParams.productId, requiredParams.isFavorite)">{{ action.title }}</p>
         </li>
       </ul>
     </button>
@@ -22,7 +22,8 @@
 <script>
 export default {
   props: {
-    actions: Array
+    actions: Array,
+    requiredParams: Object
   },
   data () {
     return {

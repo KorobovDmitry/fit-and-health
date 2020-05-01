@@ -6,7 +6,7 @@
     <div class="sorting-filters__elements">
 
       <filter-radio-group
-        :filterGroupOpened="false"
+        :filterGroupOpened="true"
         headerTitle="Сортировать по ..."
         :valueList="sortingBy"
         defaultValue="Названию (от А до Я)"
@@ -15,7 +15,7 @@
       />
 
       <filter-radio-group
-        :filterGroupOpened="false"
+        :filterGroupOpened="true"
         headerTitle="Продукты"
         :valueList="productType"
         defaultValue="Все продукты"
@@ -23,7 +23,7 @@
       />
 
       <filter-checkbox-group
-        :filterGroupOpened="false"
+        :filterGroupOpened="true"
         headerTitle="Категории"
         :valueList="productCategory"
         :defaultValue="selectedProductCategory"

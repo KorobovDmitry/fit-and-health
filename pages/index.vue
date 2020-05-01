@@ -17,8 +17,32 @@ import UserActivity from '@/components/home/UserActivity/index'
 
 export default {
   name: 'index',
-  head: {
-    title: 'Fit and Health - Профиль'
+  head () {
+    return {
+      title: 'Fit and Health - Профиль',
+      __dangerouslyDisableSanitizers: ['script'],
+      script: [
+        { // МИКРОРАЗМЕТКА
+          innerHTML: `{
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "url": "https://website.com",
+            "name": "Website",
+            "description": "This website is awesome.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Website",
+              "alternateName": "SiteWeb",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://someimage.com/image"
+              }
+            }
+          }`,
+          type: 'application/ld+json'
+        }
+      ]
+    }
   },
   // middleware: ['userAuth'],
   components: {

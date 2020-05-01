@@ -20,6 +20,13 @@ body {
   color: $black;
 }
 
+input, textarea, a, button {
+  font-family: $fontMontserrat;
+  color: $black;
+  outline: none;
+}
+
+
 // body overflow style FOR MODAL WINDOW
 .body-overflow {
   height: 100vh;

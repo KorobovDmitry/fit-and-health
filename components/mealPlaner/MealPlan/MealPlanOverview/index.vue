@@ -62,6 +62,26 @@
 
         <added-marks />
       </div>
+
+      <div class="wrapper">
+        <div class="chart">
+          круговой график показывающий распределение в процентах БЖУ при наведении видно установленное значение (в курге меняется надпись "Белки 2 гр/кг" или по умолчания Ккал 1928)
+        </div>
+        <div class="meal-parts">
+          приемы пищи <br>
+          приемы пищи <br>
+          приемы пищи <br>
+          приемы пищи <br>
+          приемы пищи <br>
+          приемы пищи <br>
+          приемы пищи <br>
+          приемы пищи <br>
+        </div>
+        
+      </div>
+
+
+
     </div>
   </div>
 </template>
@@ -70,10 +90,12 @@
 import AddedMarks from "@/components/mealPlaner/MealPlan/MealPlanOverview/AddedMarks"
 import AppButtonWithActions from '@/components/basic/AppButtonWithActions'
 
+
 export default {
   components: {
     AddedMarks,
-    AppButtonWithActions
+    AppButtonWithActions,
+
   },
   data () {
     return {
@@ -114,9 +136,9 @@ export default {
   // border: 1px solid red;
   flex: 1 1 auto;
   display: flex;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   .meal-plan-overview__img-and-social {
-    margin-right: 5px;
+    margin-right: 10px;
     .meal-plan-overview__img-wrapper {
       margin-bottom: 5px;
       padding: 10px;
@@ -136,6 +158,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: space-around;
+      margin-bottom: 10px;
       padding: 10px;
       background: $white;
       border: 1px solid $blockBorder;
@@ -163,7 +186,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
       padding: 0 20px;
       background: $white;
       border: 1px solid $blockBorder;
@@ -183,7 +206,7 @@ export default {
       .description {
         display: flex;
         flex-direction: column;
-        margin-right: 5px;
+        margin-right: 10px;
         .description__meal-plan-info {
           display: flex;
           align-items: center;
@@ -218,8 +241,9 @@ export default {
           }
         }
         .description__text-wrapper {
-          flex: 1 1 auto;
+          // flex: 1 1 auto;
           // margin-bottom: 45px;
+          min-height: 295px;
           padding: 10px;
           background: $white;
           border: 1px solid $blockBorder;
@@ -237,4 +261,27 @@ export default {
     }
   }
 }
+
+.wrapper {
+  display: flex;
+}
+.meal-parts {
+  flex: 1 1 auto;
+  margin-top: 10px;
+  
+  padding: 10px;
+  background: $white;
+  border: 1px solid $blockBorder;
+  border-radius: 6px;
+}
+.chart {
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 230px;
+  padding: 10px;
+  background: $white;
+  border: 1px solid $blockBorder;
+  border-radius: 6px;
+}
+
 </style>

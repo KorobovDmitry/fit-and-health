@@ -106,10 +106,12 @@ export default {
     // min-width: 700px;
     // max-width: 600px;
     // height: 300px;
-    background: $white;
-    border: 1px solid $blockBorder;
+    background: $hiddenBlockBG;
+    // border: 1px solid $blockBorder;
     border-radius: 6px;
+    box-shadow: $btnHoverShadow;
     overflow: hidden;
+    
     .user-avatar__img {
       margin-right: 10px;
       height: 250px;

@@ -23,7 +23,7 @@
             <i
               class="ti-heart element__favorite-product"
               :class="[{'element__favorite-product--active': item.favorite}]"
-              @click="setProductFavorite()"
+              @click="changeFavoriteParam(item.id, item.favorite)"
             ></i>
           </div>
           <div class="item__element">
@@ -61,7 +61,13 @@
             <p class="element__value">{{ item.kkal }}</p>
           </div>
           <div class="item__element">
-            <app-button-with-actions :actions="btnActions" />
+            <app-button-with-actions
+              :requiredParams="{
+                productId: item.id,
+                isFavorite: item.favorite
+              }"
+              :actions="btnActions"
+            />
           </div>
         </li>
       </ul>
@@ -87,12 +93,16 @@ export default {
     return {
       btnActions: [
         {
-          title: 'Подробнее',
-          doFunc: this.btnActionsFunc
+          title: 'Редактировать',
+          doFunc: this.editProduct
         },
         {
           title: 'Добавить в избранное',
-          doFunc: this.btnActionsFunc
+          doFunc: this.changeFavoriteParam
+        },
+        {
+          title: 'Удалить',
+          doFunc: this.removeProduct
         }
       ],
       productWeight: 100
@@ -107,11 +117,15 @@ export default {
     setFocus ($event) {
       $event.target.select()
     },
-    setProductFavorite () {
-      console.log('setProductFavorite')
+    editProduct (productId) {
+      this.$store.dispatch('foodCalorieTable/editProduct', {productId: productId, newParams: {protein: 24}})
+      // Передавать в newParams новый объект продукта со ВСЕМИ параметрами из модального окна (редактирование)
     },
-    btnActionsFunc () {
-      console.log('btnActionsFunc')
+    changeFavoriteParam (productId, isFavorite) {
+      this.$store.dispatch('foodCalorieTable/changeFavoriteParam', {productId: productId, newParam: {favorite: !isFavorite}})
+    },
+    removeProduct (productId) {
+      this.$store.dispatch('foodCalorieTable/removeProduct', {product: productId})
     }
   }
 }

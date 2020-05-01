@@ -1,5 +1,5 @@
 <template>
-  <div class="modal__wrapper" @click="closeModal()">
+  <div v-show="isActive" class="modal__wrapper" @click="closeModal()">
     <div class="modal__content-wrapper" @click.stop>
 
       <div class="modal__header">
@@ -54,6 +54,7 @@ export default {
 @import '@/assets/scss/vars.scss';
 
 .modal__wrapper {
+  // border: 1px solid red;
   position: fixed;
   top: 0;
   left: 0;
@@ -73,21 +74,24 @@ export default {
     border-radius: 6px;
     overflow: hidden;
     .modal__header {
-      padding: 0 20px 20px 20px;
-      border-bottom: 1px dashed $gray-light;
+      // border: 1px solid red;
+      padding: 0 10px 20px 10px;
+      border-bottom: 1px dashed $blockBorder;
     }
     .modal__content {
       // border: 1px solid red;
-      padding: 20px;
-      min-height: calc(100% - 138px);
-      max-height: calc(100% - 140px);
+      padding: 20px 10px 20px 10px;
+      // рассчитывать максимальную высоту javascript'ом
+      // min-height: calc(100% - 138px);
+      // max-height: calc(100% - 140px);
       overflow: auto;
     }
     .modal__button {
+      // border: 1px solid red;
       display: flex;
       justify-content: center;
-      padding: 20px 20px 0 20px;
-      border-top: 1px dashed $gray-light;
+      padding: 20px 10px 0 10px;
+      border-top: 1px dashed $blockBorder;
     }
   }
 }

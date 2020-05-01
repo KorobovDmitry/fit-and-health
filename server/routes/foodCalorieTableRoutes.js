@@ -8,5 +8,9 @@ const router = express.Router()
 
 // http://localhost:3000/api/food-calorie-table
 router.get('/', controller.getAllProducts)
+router.post('/saveNewProduct', controller.saveNewProduct)
+router.post('/removeProduct', controller.removeProduct)
+router.post('/editProduct', controller.editProduct)
+router.post('/changeFavoriteParam', controller.changeFavoriteParam)
 
 module.exports = router

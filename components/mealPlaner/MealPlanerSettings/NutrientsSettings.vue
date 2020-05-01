@@ -183,8 +183,8 @@ export default {
 
 .nutrients-settings {
   // border: 1px solid red;
-  margin-bottom: 20px;
-  width: 100%;
+  // margin-bottom: 20px;
+
   .nutrients-settings__nutrients {
     display: flex;
     .nutrients__target {
