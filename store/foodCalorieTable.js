@@ -14,7 +14,33 @@ export const state = () => ({
       userId: null
     }
   ],
-  modalActive: false
+  modalActive: false,
+  notifications: [
+    // {
+    //   id: 1,
+    //   type: 'success',
+    //   message: 'Продукт успешно добавлен.',
+    //   timeToShow: 3000
+    // },
+    // {
+    //   id: 2,
+    //   type: 'warning',
+    //   message: 'В базе данных уже содержится продукт с такими параметрами. Воспользуйтесь поиском, чтобы найти его в списке продуктов.',
+    //   timeToShow: 2000
+    // },
+    // {
+    //   id: 3,
+    //   type: 'info',
+    //   message: 'Возможная дополнительна информация о дейсвиях',
+    //   timeToShow: 5000
+    // },
+    // {
+    //   id: 4,
+    //   type: 'alert',
+    //   message: 'При сохранении произошла ошибка. Попробуйте позже или свяжитесь с нами по E-mail: support@fh.ru',
+    //   timeToShow: 1000
+    // }
+  ]
 })
 
 export const getters = {
@@ -23,6 +49,9 @@ export const getters = {
   },
   getModalActive (state) {
     return state.modalActive
+  },
+  getNotifications (state) {
+    return state.notifications
   }
 }
 
@@ -44,6 +73,31 @@ export const mutations = {
     }
     state.products.splice(targetProduct, 1)
   },
+  addNewNotice (state, notice) {
+    state.notifications.push(notice)
+  },
+  removeNotice (state, noticeId) {
+    // let targetNotice = null
+    // for (let i = 0; i < state.products.length; i++) {
+    //   if (state.notifications[i].id === noticeId) {
+    //     targetNotice = i
+    //     console.log(state.notifications[i])
+    //     break
+    //   }
+    // }
+    // state.notifications.splice(targetNotice, 1)
+
+    // TODO удалять оповещения, когда у всех истекло время показа
+    // for (let i = 0; i < state.notifications.length; i++) {
+    //   if (state.notifications[i].isActive === true) {
+    //     break
+    //   } else {
+    //     state.notifications = []
+    //   }
+    // }
+
+    // console.log(state.notifications)
+  },
   setModalActive (state, isActive) {
     state.modalActive = isActive
   }
@@ -61,8 +115,15 @@ export const actions = {
   async saveNewProduct ({ commit }, product) {
     try {
       const newProduct = await this.$axios.$post('http://localhost:3000/api/food-calorie-table/saveNewProduct', product)
-      commit('addNewProduct', newProduct)
-      console.log(newProduct)
+      await commit('addNewProduct', newProduct)
+
+      const notice = {
+        id: Date.now(),
+        type: 'success',
+        message: 'Продукт успешно добавлен.',
+        timeToShow: 2000
+      }
+      await commit('addNewNotice', notice)
     } catch (err) {
       console.log(err)
     }
@@ -71,7 +132,15 @@ export const actions = {
     try {
       const remove = await this.$axios.$post('http://localhost:3000/api/food-calorie-table/removeProduct', product)
       if (remove) {
-        commit('deleteProduct', product)
+        await commit('deleteProduct', product)
+
+        const notice = {
+          id: Date.now(),
+          type: 'warning',
+          message: 'Продукт удален из базы данных.',
+          timeToShow: 3000
+        }
+        await commit('addNewNotice', notice)
       } else {
         console.log('Удалить продукт не удалось')
       }

@@ -1,84 +1,116 @@
 <template>
   <div class="page-info">
     <app-page-info
-        :infoElements="pageInfoElements"
-        btnTitle="Добавить продукт"
-        @btnAction="openModal()"
-      />
+      :infoElements="pageInfoElements"
+      btnTitle="Добавить продукт"
+      @btnAction="openModal()"
+    />
 
-      <app-modal :isActive="modalActive" @close="closeModal()">
-        <template v-slot:modalHeader>
-          <p class="header__title">Добавить продукт</p>
-          <div class="header__description">
-            <p class="description__text">Заполните форму и нажмите "сохранить продукт", что бы добавить новый продукт в общую базу.</p>
-            <p class="description__text">Новый продукт будет доступен только для вас.</p>
-          </div>
-        </template>
-        <template v-slot:modalContent>
-          <div class="content__add-product-form">
-
-            <div class="form-group">
-              <div class="form-field">
-                <p class="field__title">Название</p>
-                <input v-model="newProduct.title" class="field__input" type="text" placeholder="Название продукта">
-              </div>
-
-              <div class="form-field">
-                <p class="field__title">Категория</p>
-                <input v-model="newProduct.category" class="field__input" type="text" placeholder="Категория продукта">
-              </div>
-
-              <div class="form-field">
-                <div class="checkbox-group">
-                  <app-input-checkbox
-                    label="Добавить в избранное"
-                    class="checkbox-group__checkbox"
-                    @change="newProduct.favoriteProduct = $event"
-                  />
-                </div>
-                
-              </div>
+    <app-modal :isActive="modalActive" @close="closeModal()">
+      <template v-slot:modalHeader>
+        <p class="header__title">Добавить продукт</p>
+        <div class="header__description">
+          <p
+            class="description__text"
+          >Заполните форму и нажмите "сохранить продукт", что бы добавить новый продукт в общую базу.</p>
+          <p class="description__text">Новый продукт будет доступен только для вас.</p>
+        </div>
+      </template>
+      <template v-slot:modalContent>
+        <div class="content__add-product-form">
+          <div class="form-group">
+            <div class="form-field">
+              <p class="field__title">Название</p>
+              <input
+                v-model="newProduct.title"
+                class="field__input"
+                type="text"
+                placeholder="Название продукта"
+              />
             </div>
 
-            <div class="form-group">
-              <div class="form-field">
-                <p class="field__title">Белки</p>
-                <input v-model="newProduct.protein" class="field__input" type="text" placeholder="Кол-во">
-              </div>
-
-              <div class="form-field">
-                <p class="field__title">Жиры</p>
-                <input v-model="newProduct.fats" class="field__input" type="text" placeholder="Кол-во">
-              </div>
-
-              <div class="form-field">
-                <p class="field__title">Углеводы</p>
-                <input v-model="newProduct.carb" class="field__input" type="text" placeholder="Кол-во">
-              </div>
-
-              <div class="form-field">
-                <p class="field__title">Калорийность</p>
-                <input v-model="newProduct.kkal" class="field__input" type="text" placeholder="Кол-во">
-              </div>
+            <div class="form-field">
+              <p class="field__title">Категория</p>
+              <input
+                v-model="newProduct.category"
+                class="field__input"
+                type="text"
+                placeholder="Категория продукта"
+              />
             </div>
 
-            
-
+            <div class="form-field">
+              <div class="checkbox-group">
+                <app-input-checkbox
+                  label="Добавить в избранное"
+                  class="checkbox-group__checkbox"
+                  @change="newProduct.favoriteProduct = $event"
+                />
+              </div>
+            </div>
           </div>
-        </template>
-        <template v-slot:modalButton>
-          <app-button uppercase size14px @click.native="closeModal()">Отмена</app-button>
-          <app-button uppercase size14px class="modal-action-btn" @click.native="saveNewUserProduct()">Сохранить продукт</app-button>
-        </template>
-      </app-modal>
+
+          <div class="form-group">
+            <div class="form-field">
+              <p class="field__title">Белки</p>
+              <input
+                v-model="newProduct.protein"
+                class="field__input"
+                type="text"
+                placeholder="Кол-во"
+              />
+            </div>
+
+            <div class="form-field">
+              <p class="field__title">Жиры</p>
+              <input
+                v-model="newProduct.fats"
+                class="field__input"
+                type="text"
+                placeholder="Кол-во"
+              />
+            </div>
+
+            <div class="form-field">
+              <p class="field__title">Углеводы</p>
+              <input
+                v-model="newProduct.carb"
+                class="field__input"
+                type="text"
+                placeholder="Кол-во"
+              />
+            </div>
+
+            <div class="form-field">
+              <p class="field__title">Калорийность</p>
+              <input
+                v-model="newProduct.kkal"
+                class="field__input"
+                type="text"
+                placeholder="Кол-во"
+              />
+            </div>
+          </div>
+        </div>
+      </template>
+      <template v-slot:modalButton>
+        <app-button uppercase size14px @click.native="closeModal()">Отмена</app-button>
+        <app-button
+          uppercase
+          size14px
+          class="modal-action-btn"
+          @click.native="saveNewUserProduct()"
+        >Сохранить продукт</app-button>
+      </template>
+    </app-modal>
   </div>
 </template>
 
 <script>
-import AppPageInfo from '@/components/basic/AppPageInfo'
-import AppModal from '@/components/basic/AppModal'
-import AppInputCheckbox from '@/components/basic/AppInputCheckbox'
-import AppButton from '@/components/basic/AppButton'
+import AppPageInfo from "@/components/basic/AppPageInfo"
+import AppModal from "@/components/basic/AppModal"
+import AppInputCheckbox from "@/components/basic/AppInputCheckbox"
+import AppButton from "@/components/basic/AppButton"
 
 export default {
   components: {
@@ -87,61 +119,57 @@ export default {
     AppInputCheckbox,
     AppButton
   },
-  data () {
+  data() {
     return {
-      // madalActive: false,
       pageInfoElements: [
         {
-          title: 'Всего продуктов',
+          title: "Всего продуктов",
           value: 235
         },
         {
-          title: 'Категорий',
+          title: "Категорий",
           value: 14
         },
         {
-          title: 'Избранное',
+          title: "Избранное",
           value: 42
         },
         {
-          title: 'Мои продукты',
+          title: "Мои продукты",
           value: 12
         }
       ],
       newProduct: {
-        title: '',
+        title: "",
         weight: 100,
         protein: null,
         fats: null,
         carb: null,
         kkal: null,
-        category: 'qwerty',
+        category: "qwerty",
         favoriteProduct: false,
         userProduct: true,
         userId: 1
       }
-    }
+    };
   },
   computed: {
-    modalActive () {
-      return this.$store.getters['foodCalorieTable/getModalActive']
+    modalActive() {
+      return this.$store.getters["foodCalorieTable/getModalActive"];
     }
   },
   methods: {
-    openModal () {
-      // this.madalActive = true
-      this.$store.commit('foodCalorieTable/setModalActive', true)
+    openModal() {
+      this.$store.commit("foodCalorieTable/setModalActive", true);
     },
-    closeModal () {
-      // this.madalActive = false
-      this.$store.commit('foodCalorieTable/setModalActive', false)
+    closeModal() {
+      this.$store.commit("foodCalorieTable/setModalActive", false);
     },
-    saveNewUserProduct () {
-      console.log('save new user product')
-      this.$store.dispatch('foodCalorieTable/saveNewProduct', this.newProduct)
+    saveNewUserProduct() {
+      this.$store.dispatch("foodCalorieTable/saveNewProduct", this.newProduct);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -149,14 +177,12 @@ export default {
 
 .page-info {
   .header__title {
-    // text-align: center;
     font-size: 20px;
     font-weight: 500;
   }
   .header__description {
     margin-top: 5px;
     .description__text {
-      // text-align: center;
       font-size: 14px;
     }
   }
@@ -174,7 +200,6 @@ export default {
         // border: 1px solid red;
         display: flex;
         flex-direction: column;
-        // align-items: center;
         margin-bottom: 10px;
         .field__title {
           margin-left: 10px;
@@ -216,5 +241,4 @@ export default {
     margin-left: auto;
   }
 }
-
 </style>

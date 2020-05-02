@@ -8,6 +8,7 @@
         <product-table />
       </div>
     </div>
+    <app-notifications />
   </div>
 </template>
 
@@ -17,6 +18,8 @@ import PageInfo from '@/components/foodCalorieTable/PageInfo'
 import SortingFilters from '@/components/foodCalorieTable/SortingFilters'
 import ProductTable from '@/components/foodCalorieTable/ProductTable'
 
+import AppNotifications from '@/components/basic/AppNotifications'
+
 export default {
   async fetch ({ store }) {
     await store.dispatch('foodCalorieTable/getAllProducts')
@@ -25,7 +28,8 @@ export default {
     AppPageTitle,
     PageInfo,
     SortingFilters,
-    ProductTable
+    ProductTable,
+    AppNotifications
   }
 }
 </script>
