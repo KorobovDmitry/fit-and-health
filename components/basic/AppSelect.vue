@@ -126,7 +126,7 @@ export default {
     align-items: center;
     .select__default-value {
       position: relative;
-      padding: 8px 10px;
+      padding: 5px 10px;
       font-size: 14px;
       background: $white;
       border: 1px solid rgba(52,40,104,.2);
@@ -140,10 +140,10 @@ export default {
     }
     .select__icon {
       // border: 1px solid red;
-      padding: 10px 10px;
+      padding: 8px 10px;
       background: $white;
       font-family: $fontThemify;
-      font-size: 14px;
+      font-size: 12px;
       font-style: normal;
       border: 1px solid rgba(52,40,104,.2);
       border-left: none;

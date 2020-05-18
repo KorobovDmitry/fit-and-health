@@ -31,11 +31,13 @@
 
             <div class="form-field">
               <p class="field__title">Категория</p>
-              <input
-                v-model="newProduct.category"
-                class="field__input"
-                type="text"
-                placeholder="Категория продукта"
+              <app-select
+                minWidth="236px"
+                :selectOptionsList="productCategories"
+                defaultValue="Мясо"
+                alignListLeft
+                alignSelectedValueLeft
+                @selectValueChanged="newProduct.category = $event"
               />
             </div>
 
@@ -110,6 +112,7 @@
 import AppPageInfo from "@/components/basic/AppPageInfo"
 import AppModal from "@/components/basic/AppModal"
 import AppInputCheckbox from "@/components/basic/AppInputCheckbox"
+import AppSelect from "@/components/basic/AppSelect"
 import AppButton from "@/components/basic/AppButton"
 
 export default {
@@ -117,28 +120,11 @@ export default {
     AppPageInfo,
     AppModal,
     AppInputCheckbox,
+    AppSelect,
     AppButton
   },
   data() {
     return {
-      pageInfoElements: [
-        {
-          title: "Всего продуктов",
-          value: 235
-        },
-        {
-          title: "Категорий",
-          value: 14
-        },
-        {
-          title: "Избранное",
-          value: 42
-        },
-        {
-          title: "Мои продукты",
-          value: 12
-        }
-      ],
       newProduct: {
         title: "",
         weight: 100,
@@ -155,18 +141,41 @@ export default {
   },
   computed: {
     modalActive() {
-      return this.$store.getters["foodCalorieTable/getModalActive"];
+      return this.$store.getters["foodCalorieTable/getModalActive"]
+    },
+    pageInfoElements () {
+      return [
+        {
+          title: "Всего продуктов",
+          value: this.$store.getters["foodCalorieTable/getProductsAmount"]
+        },
+        {
+          title: "Категорий",
+          value: this.$store.getters["foodCalorieTable/getCategoriesAmount"]
+        },
+        {
+          title: "Избранное",
+          value: this.$store.getters["foodCalorieTable/getFavoriteAmount"]
+        },
+        {
+          title: "Мои продукты",
+          value: this.$store.getters["foodCalorieTable/getUserProductsAmount"]
+        }
+      ]
+    },
+    productCategories () {
+      return this.$store.getters['foodCalorieTable/getProductCategories']
     }
   },
   methods: {
     openModal() {
-      this.$store.commit("foodCalorieTable/setModalActive", true);
+      this.$store.commit("foodCalorieTable/setModalActive", true)
     },
     closeModal() {
-      this.$store.commit("foodCalorieTable/setModalActive", false);
+      this.$store.commit("foodCalorieTable/setModalActive", false)
     },
     saveNewUserProduct() {
-      this.$store.dispatch("foodCalorieTable/saveNewProduct", this.newProduct);
+      this.$store.dispatch("foodCalorieTable/saveNewProduct", this.newProduct)
     }
   }
 };

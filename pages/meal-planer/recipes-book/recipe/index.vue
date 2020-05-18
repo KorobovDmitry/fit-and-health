@@ -1,26 +1,23 @@
 <template>
   <div class="recipe">
-    <app-page-title>Рецепт "{{ recipeTitle }}"</app-page-title>
+    <app-page-title>Рецепт название</app-page-title>
     <div class="recipe__content">
-      recipe
+      <recipe-overview />
+      <recipe-author />
     </div>
   </div>
 </template>
 
 <script>
-import AppPageTitle from '@/components/basic/AppPageTitle'
-import SortingFilters from '@/components/recipesBook/SortingFilters/SortingFilters'
-import SearchResults from '@/components/recipesBook/SearchResults/SearchResults'
+import AppPageTitle from "@/components/basic/AppPageTitle";
+import RecipeOverview from '@/components/recipe/RecipeOverview/index'
+import RecipeAuthor from '@/components/recipe/RecipeAuthor/index'
+
 export default {
   components: {
     AppPageTitle,
-    SortingFilters,
-    SearchResults
-  },
-  data () {
-    return {
-      recipeTitle: 'название рецепта'
-    }
+    RecipeOverview,
+    RecipeAuthor
   }
 }
 </script>
@@ -33,13 +30,11 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  // margin-top: 60px;
   margin-left: 80px;
   padding: 40px;
   .recipe__content {
     // border: 1px solid red;
     display: flex;
-    flex-direction: column;
     width: 100%;
     max-width: 1700px;
   }

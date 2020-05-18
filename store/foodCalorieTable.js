@@ -1,4 +1,5 @@
 export const state = () => ({
+  productCategories: ['Мясо', 'Рыба', 'Морепродукты', 'Яйца, яичные продукты', 'Молоко, молочные продукты', 'Соя, соевые продукты', 'Овощи, овощные продукты', 'Зелень, травы, листья, салаты', 'Фрукты, ягоды, сухофрукты', 'Грибы', 'Жиры, масла', 'Орехи', 'Крупы, злаки', 'Семена', 'Специи, пряности', 'Мука, продукты из муки', 'Напитки, соки'],
   products: [
     {
       id: null,
@@ -9,7 +10,7 @@ export const state = () => ({
       carb: null,
       kkal: null,
       category: '',
-      favoriteProduct: false,
+      favorite: false,
       userProduct: false,
       userId: null
     }
@@ -44,12 +45,44 @@ export const state = () => ({
 })
 
 export const getters = {
+  // Getters для блока PageInfo страницы food calorie table
+  getProductsAmount (state) {
+    return state.products.length
+  },
+  getCategoriesAmount (state) {
+    return state.productCategories.length
+  },
+  getFavoriteAmount (state) {
+    let favoriteAmount = 0
+    for (let i = 0; i < state.products.length; i++) {
+      if (state.products[i].favorite) {
+        favoriteAmount += 1
+      }
+    }
+    return favoriteAmount
+  },
+  getUserProductsAmount (state) {
+    let userProducts = 0
+    for (let i = 0; i < state.products.length; i++) {
+      if (state.products[i].userProduct) {
+        userProducts += 1
+      }
+    }
+    return userProducts
+  },
+  // getter для выпадающего списка категорий в модальном окне "добавить продукт"
+  getProductCategories (state) {
+    return state.productCategories
+  },
+  // Для формирования списка продуктов в таблице
   getProducts (state) {
     return state.products
   },
+  // getter для работы модально окна "добавить продукт"
   getModalActive (state) {
     return state.modalActive
   },
+  // getter для работы с оповещениями на странице food calorie table
   getNotifications (state) {
     return state.notifications
   }
@@ -77,6 +110,7 @@ export const mutations = {
     state.notifications.push(notice)
   },
   removeNotice (state, noticeId) {
+
     // let targetNotice = null
     // for (let i = 0; i < state.products.length; i++) {
     //   if (state.notifications[i].id === noticeId) {
@@ -87,7 +121,7 @@ export const mutations = {
     // }
     // state.notifications.splice(targetNotice, 1)
 
-    // TODO удалять оповещения, когда у всех истекло время показа
+    // TODO удалять оповещения, когда у всех истекло время показа у всех notice
     // for (let i = 0; i < state.notifications.length; i++) {
     //   if (state.notifications[i].isActive === true) {
     //     break
@@ -98,9 +132,12 @@ export const mutations = {
 
     // console.log(state.notifications)
   },
+  cleanNotifications (state) {
+    state.notifications = []
+  },
   setModalActive (state, isActive) {
     state.modalActive = isActive
-  }
+  },
 }
 
 export const actions = {

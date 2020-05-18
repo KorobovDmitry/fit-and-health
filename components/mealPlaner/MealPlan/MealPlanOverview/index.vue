@@ -139,6 +139,9 @@ export default {
   margin-bottom: 10px;
   .meal-plan-overview__img-and-social {
     margin-right: 10px;
+    width: 400px;
+    min-width: 400px;
+    max-width: 400px;
     .meal-plan-overview__img-wrapper {
       margin-bottom: 5px;
       padding: 10px;
@@ -148,8 +151,8 @@ export default {
       border-radius: 6px;
       overflow: hidden;
       .meal-plan-overview__img {
-        min-width: 430px;
-        height: 322px;
+        // min-width: 430px;
+        // height: 322px;
         object-fit: cover;
         border-radius: 6px;
       }

@@ -124,11 +124,11 @@ export default {
 }
 
 .size12px {
-  padding: 8px 16px;
+  padding: 6px 10px;
   font-size: 12px;
 }
 .size14px {
-  padding: 8px 16px;
+  padding: 8px 14px;
   font-size: 14px;
 }
 .size16px {

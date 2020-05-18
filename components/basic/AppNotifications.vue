@@ -14,13 +14,11 @@
 import AppNotice from '@/components/basic/AppNotice'
 
 export default {
+  props: {
+    notifications: Array
+  },
   components: {
     AppNotice
-  },
-  computed: {
-    notifications () {
-      return this.$store.getters['foodCalorieTable/getNotifications']
-    }
   }
 }
 </script>

@@ -8,7 +8,7 @@
         <product-table />
       </div>
     </div>
-    <app-notifications />
+    <app-notifications :notifications="notifications" />
   </div>
 </template>
 
@@ -30,6 +30,15 @@ export default {
     SortingFilters,
     ProductTable,
     AppNotifications
+  },
+  computed: {
+    notifications () {
+      return this.$store.getters['foodCalorieTable/getNotifications']
+    }
+  },
+  beforeMount () {
+    // очищать массив с оповещениями перед откртием страницы "таблица калорийности продуктов"
+    this.$store.commit('foodCalorieTable/cleanNotifications')
   }
 }
 </script>

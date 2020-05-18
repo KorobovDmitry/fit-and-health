@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link tag="a" :to="'/recipes-book/recipe?id=' + recipeId" class="found-recipe">
+  <nuxt-link tag="a" :to="'/meal-planer/recipes-book/recipe?id=' + recipeId" class="found-recipe">
 
     <img class="found-recipe__img" src="http://bientasty.ru/wp-content/uploads/2017/04/1491022672_maxresdefault.jpg" alt="">
     <p class="found-recipe__title">Рождественский кекс</p>
