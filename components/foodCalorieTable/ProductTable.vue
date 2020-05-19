@@ -18,7 +18,7 @@
         <p class="header__column-title"><i class="ti-pencil"></i></p>
       </div>
       <ul class="food-table__product-list">
-        <li v-for="(item, index) in baseProducts" :key="index" class="product-list__item">
+        <li v-for="(item, index) in sortedProducts" :key="index" class="product-list__item">
           <div class="item__element">
             <i
               class="ti-heart element__favorite-product"
@@ -109,8 +109,8 @@ export default {
     }
   },
   computed: {
-    baseProducts () {
-      return this.$store.getters['foodCalorieTable/getProducts']
+    sortedProducts () {
+      return this.$store.getters['foodCalorieTable/getSortedProducts']
     }
   },
   methods: {
@@ -201,12 +201,13 @@ export default {
             // border: 1px solid red;
             padding: 5px;
             opacity: .3;
+            transition: $tr-02;
             cursor: pointer;
           }
-          .element__favorite-product:hover {
-            color: $green;
-            opacity: 1;
-          }
+          // .element__favorite-product:hover {
+          //   color: $green;
+          //   opacity: 1;
+          // }
           .element__favorite-product--active {
             padding: 5px;
             color: $green;

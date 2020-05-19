@@ -66,7 +66,8 @@ export default {
       this.checkedValue = this.defaultValue
     },
     applyFilter () {
-      console.log('applyFilter')
+      // console.log('applyFilter')
+      this.$emit('applyFunc')
     }
   }
 }

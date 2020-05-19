@@ -21,7 +21,7 @@
           </ul>
           <div class="footer__btn-wrapper">
             <app-button size12px uppercase mt10 @click.native="setDefaultValue()">значение по умолчанию</app-button>
-            <app-button size12px uppercase mt10 @click.native="applyFunc()">Применить</app-button>
+            <app-button size12px uppercase mt10 @click.native="applyFilter()">Применить</app-button>
           </div>
         </div>
       </template>
@@ -45,8 +45,7 @@ export default {
     headerTitle: String,
     valueList: Array,
     defaultValue: String,
-    filterGroupOpened: Boolean,
-    applyFunc: Function
+    filterGroupOpened: Boolean
   },
   data () {
     return {
@@ -63,6 +62,9 @@ export default {
     setDefaultValue () {
       console.log('set Default Value')
       this.checkedValue = this.defaultValue
+    },
+    applyFilter () {
+      this.$emit('applyFunc')
     }
   }
 }

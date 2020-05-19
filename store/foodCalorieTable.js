@@ -15,6 +15,7 @@ export const state = () => ({
       userId: null
     }
   ],
+  sortedProducts: [],
   modalActive: false,
   notifications: [
     // {
@@ -70,13 +71,17 @@ export const getters = {
     }
     return userProducts
   },
-  // getter для выпадающего списка категорий в модальном окне "добавить продукт"
+  // getter для выпадающего списка категорий в модальном окне "добавить продукт" и в фильтрах "Категория"
   getProductCategories (state) {
     return state.productCategories
   },
   // Для формирования списка продуктов в таблице
-  getProducts (state) {
-    return state.products
+  // getProducts (state) {
+  //   return state.products
+  // },
+  // Для формирования списка продуктов в таблице на странице food calorie table
+  getSortedProducts (state) {
+    return state.sortedProducts
   },
   // getter для работы модально окна "добавить продукт"
   getModalActive (state) {
@@ -89,13 +94,17 @@ export const getters = {
 }
 
 export const mutations = {
+  // Установить значение массива продуктов, полученное в ходе выборки из БД (базовые и пользовательские продукты)
   setProducts (state, products) {
     state.products = products
+    state.sortedProducts = products
   },
+  // Добавить продукт в массив всех продуктов на старнице food calorie table
   addNewProduct (state, newProduct) {
     state.products.push(newProduct)
     state.modalActive = false
   },
+  // Удалить продукт из массива всех продуктов на старнице food calorie table
   deleteProduct (state, product) {
     let targetProduct = null
     for (let i = 0; i < state.products.length; i++) {
@@ -106,9 +115,55 @@ export const mutations = {
     }
     state.products.splice(targetProduct, 1)
   },
+  // Обновить значение свойства favorite у продукта в массиве продуктов страницы food calorie table
+  updateFavoriteProduct (state, product) {
+    for (let i = 0; i < state.products.length; i++) {
+      if (state.products[i].id === product.productId) {
+        state.products[i].favorite = product.newParam.favorite
+        break
+      }
+    }
+  },
+  // Сортировка продуктов
+  sortProducts (state, selectedFilters) {
+    // state.sortedProducts = [...state.products].sort()
+
+    let newSortedProducts = []
+
+    // Фильтрация по типу продуктов (все, мои, избранное)
+    if (selectedFilters.productType === 'Мои продукты') {
+      // console.log('Мои продукты')
+      state.products.filter( product => {
+        if (product.userProduct) {
+          newSortedProducts.push(product)
+        }
+      })
+      state.sortedProducts = [...newSortedProducts]
+    } else if (selectedFilters.productType === 'Избранное') {
+      // console.log('Избранное')
+      state.products.filter(product => {
+        if (product.favorite === true) {
+          newSortedProducts.push(product)
+        }
+      })
+      state.sortedProducts = [...newSortedProducts]
+    } else {
+      // console.log('Все продукты')
+      state.sortedProducts = [...state.products]
+    }
+
+    // Фильтрайия по категориям
+
+    // Фильтрация по колонкам (название, б, ж, у, к)
+  },
+  // Добавить notice в массив с оповещениями для страницы food calorie table
   addNewNotice (state, notice) {
+    // Переписать на общий для всего сайта
+    // commit работает в любом модуле
+    // this.commit('foodCalorieTable/setModalActive', true)
     state.notifications.push(notice)
   },
+  // Удалить notice из массива с оповещениями для страницы food calorie table
   removeNotice (state, noticeId) {
 
     // let targetNotice = null
@@ -132,9 +187,11 @@ export const mutations = {
 
     // console.log(state.notifications)
   },
+  // Очистить список notifications перед рендерингом страницы (beforeMount на главном компоненте страницы food calorie table)
   cleanNotifications (state) {
     state.notifications = []
   },
+  // Изменить значение флага isActive для модального окна "Добавить продукт"
   setModalActive (state, isActive) {
     state.modalActive = isActive
   },
@@ -197,8 +254,10 @@ export const actions = {
   async changeFavoriteParam ({ commit }, productParam) {
     try {
       const updatedProduct = await this.$axios.$post('http://localhost:3000/api/food-calorie-table/changeFavoriteParam', productParam)
-      // commit('updateProduct', productParam)
-      console.log(updatedProduct)
+      if (updatedProduct) {
+        commit('updateFavoriteProduct', productParam)
+      }
+      // console.log(updatedProduct)
     } catch (err) {
       console.log(err)
     }

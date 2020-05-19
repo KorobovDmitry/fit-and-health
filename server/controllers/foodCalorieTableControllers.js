@@ -62,11 +62,12 @@ module.exports.editProduct = async function (req, res) {
   })
 }
 
+// Изменение поля favorit у продукта
 module.exports.changeFavoriteParam = async function (req, res) {
   Products.update(
     req.body.newParam, // должно быть в виде { title: 'foooo', fats: 'baaaaaar'}
     {where: { id: req.body.productId }}
   ).then(product => {
-    res.status(200).json(product)
+    res.status(200).json(product[0])
   })
 }

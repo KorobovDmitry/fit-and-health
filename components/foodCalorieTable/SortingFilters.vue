@@ -9,9 +9,9 @@
         :filterGroupOpened="true"
         headerTitle="Сортировать по ..."
         :valueList="sortingBy"
-        defaultValue="Названию (от А до Я)"
-        :applyFunc="applyFilters"
-        @inputGroupValueChanged="selectedFilters.sortingBy = $event"
+        defaultValue="Названию"
+        @applyFunc="applyFilters"
+        @inputGroupValueChanged="applyFilters($event, 'sortingBy')"
       />
 
       <filter-radio-group
@@ -19,7 +19,8 @@
         headerTitle="Продукты"
         :valueList="productType"
         defaultValue="Все продукты"
-        @inputGroupValueChanged="selectedFilters.productType = $event"
+        @applyFunc="applyFilters"
+        @inputGroupValueChanged="applyFilters($event, 'productType')"
       />
 
       <filter-checkbox-group
@@ -27,7 +28,8 @@
         headerTitle="Категории"
         :valueList="productCategory"
         :defaultValue="selectedProductCategory"
-        @inputGroupValueChanged="selectedFilters.productCategory = $event"
+        @applyFunc="applyFilters"
+        @inputGroupValueChanged="applyFilters($event, 'productCategory')"
       >
         <template v-slot:btnWrapper>
           <app-button size14px uppercase>Очистить</app-button>
@@ -36,7 +38,7 @@
       </filter-checkbox-group>
 
     </div>
-<!-- {{ selectedFilters }} -->
+
   </div>
 </template>
 
@@ -55,13 +57,12 @@ export default {
   data () {
     return {
       selectedFilters: {
-        sortingBy: 'Названию (от А до Я)',
+        sortingBy: 'Названию',
         productType: 'Все продукты',
-        productCategory: ['Мясо', 'Рыба', 'Морепродукты', 'Яйца, яичные продукты', 'Молоко, молочные продукты', 'Соя, соевые продукты', 'Овощи, овощные продукты', 'Зелень, травы, листья, салаты', 'Фрукты, ягоды, сухофрукты', 'Грибы', 'Жиры, масла', 'Орехи', 'Крупы, злаки', 'Семена', 'Специи, пряности', 'Мука, продукты из муки', 'Напитки, соки']
+        productCategory: this.$store.getters['foodCalorieTable/getProductCategories']
       },
       sortingBy: [
-        'Названию (от А до Я)',
-        'Названию (от Я до А)',
+        'Названию',
         'Белкам',
         'Жирам',
         'Углеводам',
@@ -72,14 +73,27 @@ export default {
         'Мои продукты',
         'Избранное'
       ],
-      productCategory: ['Мясо', 'Рыба', 'Морепродукты', 'Яйца, яичные продукты', 'Молоко, молочные продукты', 'Соя, соевые продукты', 'Овощи, овощные продукты', 'Зелень, травы, листья, салаты', 'Фрукты, ягоды, сухофрукты', 'Грибы', 'Жиры, масла', 'Орехи', 'Крупы, злаки', 'Семена', 'Специи, пряности', 'Мука, продукты из муки', 'Напитки, соки'],
-      selectedProductCategory: ['Мясо', 'Рыба', 'Морепродукты', 'Яйца, яичные продукты', 'Молоко, молочные продукты', 'Соя, соевые продукты', 'Овощи, овощные продукты', 'Зелень, травы, листья, салаты', 'Фрукты, ягоды, сухофрукты', 'Грибы', 'Жиры, масла', 'Орехи', 'Крупы, злаки', 'Семена', 'Специи, пряности', 'Мука, продукты из муки', 'Напитки, соки']
+      productCategory: this.$store.getters['foodCalorieTable/getProductCategories'],
+      selectedProductCategory: this.$store.getters['foodCalorieTable/getProductCategories']
     }
   },
   methods: {
-    applyFilters () {
-      // отфильтровать продукты в сторе и перерендорить страницу
-      console.log('apply filters from parent')
+    applyFilters ($event, filterGroup) {
+      switch (filterGroup) {
+        case 'sortingBy':
+          this.selectedFilters.sortingBy = $event
+          break
+        case 'productType':
+          this.selectedFilters.productType = $event
+          break
+        case 'productCategory':
+          this.selectedFilters.productCategory = $event
+          break
+        default:
+          break
+      }
+      // отфильтровать продукты в store и перерендорить страницу
+      this.$store.commit('foodCalorieTable/sortProducts', this.selectedFilters)
     }
   }
 }

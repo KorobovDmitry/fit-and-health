@@ -1,119 +1,49 @@
 <template>
   <div class="not-found-page">
-    <p>404</p>
-
-    <!-- <filter-radio-text-group
-      :valueList="['test', '1', '23']"
-      :defaultValue="filterRadioCheckedValue"
-      @inputGroupValueChanged="filterRadioCheckedValue = $event"
-    />
-    
-    {{ filterRadioCheckedValue }} -->
-    <hr>
-
-    <!-- <app-tooltip>
-      <template v-slot:tooltipElement>
-        <p>заголовок аккордиона</p>
-      </template>
-      <template v-slot:tooltipText>
-        <p>Текст подсказки в несколько строк</p>
-      </template>
-    </app-tooltip> -->
+    <h1 v-if="error.statusCode === 404">Page not found --- 404</h1>
+    <h1 v-else>An error occurred ---> {{ error.statusCode }}</h1>
 
     <hr>
 
-    <!-- <app-accordion>
-      <template v-slot:accordionHeader>
-        <p>заголовок аккордиона</p>
-      </template>
-      <template v-slot:accordionHiddenContent>
-        <p>Скрытый контент</p>
-      </template>
-    </app-accordion> -->
-
-    <hr>
-
-    <!-- <app-accordion-list v-for="(item, index) in accordionList" :key="index">
-      <template v-slot:accordionHeader>
-        <p :data-target-header="index" >заголовок аккордиона: {{ item.header }}</p>
-      </template>
-      <template v-slot:accordionHiddenContent>
-        <p :data-target-hiddeb-content="index">Скрытый контент: {{ item.hiddenContent }}</p>
-      </template>
-    </app-accordion-list> -->
-
-    <hr>
-
-    <!-- <app-scroll-block-old>
-      <template v-slot:scrollContent>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <br>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <br>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <br>
-        <p>test</p>
-        <br>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-      </template>
-    </app-scroll-block-old> -->
-
+    <NuxtLink to="/">Home page</NuxtLink>
 
   </div>
 </template>
 
 <script>
-import FilterRadioTextGroup from '@/components/basic/FilterRadioTextGroup'
-import AppAccordion from '@/components/basic/AppAccordion'
-import AppAccordionList from '@/components/basic/AppAccordionList'
-import AppScrollBlockOld from '@/components/basic/AppScrollBlockOld'
-import AppScrollBlock from '@/components/basic/AppScrollBlock'
-import AppTooltip from '@/components/basic/AppTooltip'
-
 export default {
-  head: {
-    title: 'Fit and Health - 404 ошибка'
-  },
-  layout: 'empty',
-  components: {
-    FilterRadioTextGroup,
-    AppAccordion,
-    AppAccordionList,
-    AppScrollBlockOld,
-    AppScrollBlock,
-    AppTooltip
-  },
-  data () {
+  head () {
     return {
-      filterRadioCheckedValue: 'test',
-      accordionList: [
-        {
-          header: 'first',
-          hiddenContent: 'first block hidden content'
-        },
-        {
-          header: 'second',
-          hiddenContent: 'second block content'
+      title: `Fit and Health - ${this.error.statusCode} ошибка`,
+      __dangerouslyDisableSanitizers: ['script'],
+      script: [
+        { // МИКРОРАЗМЕТКА
+          innerHTML: `{
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "url": "https://website.com",
+            "name": "Website",
+            "description": "This website is awesome.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Website",
+              "alternateName": "SiteWeb",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://someimage.com/image"
+              }
+            }
+          }`,
+          type: 'application/ld+json'
         }
       ]
     }
+  },
+  layout: 'empty',
+  props: ['error'],
+  components: {},
+  data () {
+    return {}
   }
 }
 </script>
