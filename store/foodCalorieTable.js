@@ -16,6 +16,7 @@ export const state = () => ({
     }
   ],
   sortedProducts: [],
+  searchString: '',
   modalActive: false,
   notifications: [
     // {
@@ -124,37 +125,50 @@ export const mutations = {
       }
     }
   },
+  // Изменение переменной поисковой строки при изменении v-model
+  setSearchString (state, searchString) {
+    state.searchString = searchString
+  },
   // Сортировка продуктов
   sortProducts (state, selectedFilters) {
-    // state.sortedProducts = [...state.products].sort()
-
-    let newSortedProducts = []
 
     // Фильтрация по типу продуктов (все, мои, избранное)
     if (selectedFilters.productType === 'Мои продукты') {
       // console.log('Мои продукты')
-      state.products.filter( product => {
-        if (product.userProduct) {
-          newSortedProducts.push(product)
-        }
-      })
-      state.sortedProducts = [...newSortedProducts]
+      state.sortedProducts = [...state.products.filter(product => product.userProduct !== false)]
     } else if (selectedFilters.productType === 'Избранное') {
       // console.log('Избранное')
-      state.products.filter(product => {
-        if (product.favorite === true) {
-          newSortedProducts.push(product)
-        }
-      })
-      state.sortedProducts = [...newSortedProducts]
+      state.sortedProducts = [...state.products.filter(product => product.favorite !== false)]
     } else {
       // console.log('Все продукты')
       state.sortedProducts = [...state.products]
     }
 
-    // Фильтрайия по категориям
+    // Фильтрация по строке поиска
+    let sortedBySearchString =[]
+    for (let i = 0; i < state.sortedProducts.length; i++) {
+      if (state.sortedProducts[i].title.toLowerCase().includes(state.searchString.toLowerCase())) {
+        sortedBySearchString.push(state.sortedProducts[i])
+      }
+    }
+    state.sortedProducts = [...sortedBySearchString]
 
-    // Фильтрация по колонкам (название, б, ж, у, к)
+    // Фильтрация по категориям
+    let sortedByCategory = []
+    for (let i = 0; i < state.sortedProducts.length; i++) {
+      // проверка на совпадение выбранных категорий у продукта в массиве state.sortedProducts
+      // console.log(selectedFilters.productCategory);
+      selectedFilters.productCategory.forEach(item => {
+        if (item === state.sortedProducts[i].category) {
+          sortedByCategory.push(state.sortedProducts[i])
+        }
+      })
+    }
+    state.sortedProducts = [...sortedByCategory]
+
+    // Сортировка по колонкам (название, б, ж, у, к)
+
+    
   },
   // Добавить notice в массив с оповещениями для страницы food calorie table
   addNewNotice (state, notice) {

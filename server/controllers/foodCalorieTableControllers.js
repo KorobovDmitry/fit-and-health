@@ -8,7 +8,7 @@ module.exports.getAllProducts = async function (req, res) {
   // SELECT * FROM products WHERE userProduct = null OR userId = 12;
   Products.findAll({
     where: {
-      [Op.or]: [{userProduct: null}, {userId: 1}]
+      [Op.or]: [{userProduct: 0}, {userId: 1}]
     }
   }).then(products => {
     res.status(200).json(products)

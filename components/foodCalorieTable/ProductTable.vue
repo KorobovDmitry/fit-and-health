@@ -3,7 +3,11 @@
 
     <app-block-title>Продукты</app-block-title>
 
-    <app-search-block :filters="false" />
+    <app-search-block
+      :filters="false"
+      @searchStringChanged="searchString = $event"
+    />
+    {{searchString}}
 
     <div class="food-table">
       <div class="food-table__header">
@@ -35,7 +39,7 @@
                 <img class="element__img" src="https://st3.depositphotos.com/4562487/15839/v/950/depositphotos_158398124-stock-illustration-meat-icon-illustration.jpg" alt="категория">
               </template>
               <template v-slot:tooltipText>
-                <p class="element__tooltip-text">Мясо и мясные продукты</p>
+                <p class="element__tooltip-text">{{ item.category }}</p>
               </template>
             </app-tooltip>
           </div>
@@ -105,7 +109,13 @@ export default {
           doFunc: this.removeProduct
         }
       ],
-      productWeight: 100
+      productWeight: 100,
+      searchString: ''
+    }
+  },
+  watch: {
+    searchString () {
+      this.$store.commit('foodCalorieTable/setSearchString', this.searchString)
     }
   },
   computed: {
