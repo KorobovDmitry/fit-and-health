@@ -14,7 +14,7 @@
         class="search__input"
         type="text"
         placeholder="Поиск по названия"
-        value
+        v-model="searchString"
       >
       <div class="search__action-btn">
         <i class="search__action-btn-icon ti-close" @click="resetSearchInputValue()" />
@@ -43,7 +43,13 @@ export default {
   },
   data () {
     return {
-      isVisible: false
+      isVisible: false,
+      searchString: ''
+    }
+  },
+  watch: {
+    searchString () {
+      this.$emit('searchStringChanged', this.searchString)
     }
   },
   methods: {
