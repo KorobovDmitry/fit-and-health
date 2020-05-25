@@ -16,7 +16,11 @@ export const state = () => ({
     }
   ],
   sortedProducts: [],
-  searchString: '',
+  selectedFilters: {
+    sortingBy: 'Названию',
+    productType: 'Все продукты',
+    productCategory: ['Мясо', 'Рыба', 'Морепродукты', 'Яйца, яичные продукты', 'Молоко, молочные продукты', 'Соя, соевые продукты', 'Овощи, овощные продукты', 'Зелень, травы, листья, салаты', 'Фрукты, ягоды, сухофрукты', 'Грибы', 'Жиры, масла', 'Орехи', 'Крупы, злаки', 'Семена', 'Специи, пряности', 'Мука, продукты из муки', 'Напитки, соки']
+  },
   modalActive: false,
   notifications: [
     // {
@@ -127,16 +131,28 @@ export const mutations = {
   },
   // Изменение переменной поисковой строки при изменении v-model
   setSearchString (state, searchString) {
-    state.searchString = searchString
+    state.selectedFilters.searchString = searchString
+  },
+  // Изменение фильтра "Сортировать по..." для продуктов
+  setSortingByFilter (state, SortingBy) {
+    state.selectedFilters.sortingBy = SortingBy
+  },
+  // Изменение фильтра "Продукты" (типо продуктов) для продуктов
+  setProductTypeFilter (state, ProductType) {
+    state.selectedFilters.productType = ProductType
+  },
+  // Изменение фильтра "Категории" для продуктов
+  setProductCategory (state, ProductCategory) {
+    state.selectedFilters.productCategory = ProductCategory
   },
   // Сортировка продуктов
-  sortProducts (state, selectedFilters) {
+  sortProducts (state) {
 
     // Фильтрация по типу продуктов (все, мои, избранное)
-    if (selectedFilters.productType === 'Мои продукты') {
+    if (state.selectedFilters.productType === 'Мои продукты') {
       // console.log('Мои продукты')
       state.sortedProducts = [...state.products.filter(product => product.userProduct !== false)]
-    } else if (selectedFilters.productType === 'Избранное') {
+    } else if (state.selectedFilters.productType === 'Избранное') {
       // console.log('Избранное')
       state.sortedProducts = [...state.products.filter(product => product.favorite !== false)]
     } else {
@@ -147,7 +163,7 @@ export const mutations = {
     // Фильтрация по строке поиска
     let sortedBySearchString =[]
     for (let i = 0; i < state.sortedProducts.length; i++) {
-      if (state.sortedProducts[i].title.toLowerCase().includes(state.searchString.toLowerCase())) {
+      if (state.sortedProducts[i].title.toLowerCase().includes(state.selectedFilters.searchString.toLowerCase())) {
         sortedBySearchString.push(state.sortedProducts[i])
       }
     }
@@ -158,7 +174,7 @@ export const mutations = {
     for (let i = 0; i < state.sortedProducts.length; i++) {
       // проверка на совпадение выбранных категорий у продукта в массиве state.sortedProducts
       // console.log(selectedFilters.productCategory);
-      selectedFilters.productCategory.forEach(item => {
+      state.selectedFilters.productCategory.forEach(item => {
         if (item === state.sortedProducts[i].category) {
           sortedByCategory.push(state.sortedProducts[i])
         }

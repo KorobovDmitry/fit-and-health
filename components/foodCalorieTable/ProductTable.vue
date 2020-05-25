@@ -7,7 +7,6 @@
       :filters="false"
       @searchStringChanged="searchString = $event"
     />
-    {{searchString}}
 
     <div class="food-table">
       <div class="food-table__header">
@@ -116,6 +115,7 @@ export default {
   watch: {
     searchString () {
       this.$store.commit('foodCalorieTable/setSearchString', this.searchString)
+      this.$store.commit('foodCalorieTable/sortProducts')
     }
   },
   computed: {

@@ -56,11 +56,7 @@ export default {
   },
   data () {
     return {
-      selectedFilters: {
-        sortingBy: 'Названию',
-        productType: 'Все продукты',
-        productCategory: this.$store.getters['foodCalorieTable/getProductCategories']
-      },
+      // selectedFilters: this.$store.getters['foodCalorieTable/get'],
       sortingBy: [
         'Названию',
         'Белкам',
@@ -81,19 +77,19 @@ export default {
     applyFilters ($event, filterGroup) {
       switch (filterGroup) {
         case 'sortingBy':
-          this.selectedFilters.sortingBy = $event
+          this.$store.commit('foodCalorieTable/setSortingByFilter', $event)
           break
         case 'productType':
-          this.selectedFilters.productType = $event
+          this.$store.commit('foodCalorieTable/setProductTypeFilter', $event)
           break
         case 'productCategory':
-          this.selectedFilters.productCategory = $event
+          this.$store.commit('foodCalorieTable/setProductCategory', $event)
           break
         default:
           break
       }
       // отфильтровать продукты в store и перерендорить страницу
-      this.$store.commit('foodCalorieTable/sortProducts', this.selectedFilters)
+      this.$store.commit('foodCalorieTable/sortProducts')
     }
   }
 }
