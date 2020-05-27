@@ -187,6 +187,13 @@ export const mutations = {
 
     
   },
+  // Изменение веса продукта для рассчета БЖУК в таблице калорийности продуктов
+  changeProductWeight (state, {index, newWeight}) {
+    let product = {...state.sortedProducts[index]}
+    product.weight = newWeight
+
+    state.sortedProducts.splice(index, 1, product)
+  },
   // Добавить notice в массив с оповещениями для страницы food calorie table
   addNewNotice (state, notice) {
     // Переписать на общий для всего сайта

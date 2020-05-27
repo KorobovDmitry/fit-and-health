@@ -47,22 +47,23 @@
             <input
               class="element__weight-input"
               type="text"
-              v-model="item.weight"
+              :value="item.weight"
+              @input="changeProductWeight($event, index)"
               @focus="setFocus($event)"
             >
             <span class="element__weight-scale">гр.</span>
           </div>
           <div class="item__element">
-            <p class="element__value">{{ item.protein / 100 * item.weight }}</p>
+            <p class="element__value">{{ Math.round( (item.protein / 100 * item.weight) * 100) / 100 }}</p>
           </div>
           <div class="item__element">
-            <p class="element__value">{{ item.fats / 100 * item.weight }}</p>
+            <p class="element__value">{{ Math.round( (item.fats / 100 * item.weight) * 100) / 100 }}</p>
           </div>
           <div class="item__element">
-            <p class="element__value">{{ item.carb / 100 * item.weight }}</p>
+            <p class="element__value">{{ Math.round( (item.carb / 100 * item.weight) * 100) / 100 }}</p>
           </div>
           <div class="item__element">
-            <p class="element__value">{{ item.kkal / 100 * item.weight }}</p>
+            <p class="element__value">{{ Math.round( (item.kkal / 100 * item.weight) * 100) / 100 }}</p>
           </div>
           <div class="item__element">
             <app-button-with-actions
@@ -129,6 +130,9 @@ export default {
   methods: {
     setFocus ($event) {
       $event.target.select()
+    },
+    changeProductWeight ($event, index) {
+      this.$store.commit('foodCalorieTable/changeProductWeight', {index, newWeight: $event.target.value})
     },
     editProduct (productId) {
       this.$store.dispatch('foodCalorieTable/editProduct', {productId: productId, newParams: {protein: 24}})
