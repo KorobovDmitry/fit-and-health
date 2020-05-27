@@ -9,6 +9,7 @@
       headerTitle="Сортировать по ..."
       :valueList="sotringOptions"
       :defaultValue="sotringDefault"
+      :filterGroupOpened="false"
       @inputGroupValueChanged="filters.sorting = $event"
     />
 
@@ -16,12 +17,15 @@
       headerTitle="Время приема пищи"
       :valueList="mealtimeOptions"
       :defaultValue="mealtimeOptions"
+      :filterGroupOpened="false"
       @inputGroupValueChanged="filters.mealtime = $event"
     />
 
     <filter-limit-group
       groupTitle="Калорийность на 100 гр."
-      :startValue="0" :endValue="99999"
+      :startValue="0"
+      :endValue="99999"
+      :filterGroupOpened="true"
       @limitValueChanged="filters.kkalLimit = $event"
     />
 
@@ -29,6 +33,7 @@
       groupTitle="Время приготовления, мин."
       :startValue="0"
       :endValue="9999"
+      :filterGroupOpened="true"
       @limitValueChanged="filters.cookingTimeLimit = $event"
     />
 
@@ -36,18 +41,21 @@
       headerTitle="Сложность приготовления"
       :valueList="cookingDifficultyOptions"
       :defaultValue="cookingDifficultyOptions"
+      :filterGroupOpened="true"
     />
 
     <filter-checkbox-group
       headerTitle="Доп. предпочтения"
       :valueList="preferenceOptions"
       :defaultValue="[]"
+      :filterGroupOpened="true"
     />
 
     <filter-checkbox-group
       headerTitle="Содержит продукты"
       :valueList="productsOptions"
       :defaultValue="[]"
+      :filterGroupOpened="true"
     />
 
   </div>
@@ -57,7 +65,8 @@
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import FilterRadioGroup from '@/components/basic/FilterRadioGroup'
 import FilterCheckboxGroup from '@/components/basic/FilterCheckboxGroup'
-import FilterLimitGroup from '@/components/recipesBook/SortingFilters/FilterLimitGroup'
+import FilterLimitGroup from '@/components/basic/FilterLimitGroup'
+
 export default {
   components: {
     AppBlockTitle,

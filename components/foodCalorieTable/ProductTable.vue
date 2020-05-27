@@ -35,7 +35,8 @@
           <div class="item__element">
             <app-tooltip>
               <template v-slot:tooltipElement>
-                <img class="element__img" src="https://st3.depositphotos.com/4562487/15839/v/950/depositphotos_158398124-stock-illustration-meat-icon-illustration.jpg" alt="категория">
+                <category-icon :icon="item.category" />
+                <!-- <img class="element__img" src="https://st3.depositphotos.com/4562487/15839/v/950/depositphotos_158398124-stock-illustration-meat-icon-illustration.jpg" :alt="item.category"> -->
               </template>
               <template v-slot:tooltipText>
                 <p class="element__tooltip-text">{{ item.category }}</p>
@@ -52,16 +53,16 @@
             <span class="element__weight-scale">гр.</span>
           </div>
           <div class="item__element">
-            <p class="element__value">{{ item.protein }}</p>
+            <p class="element__value">{{ item.protein / 100 * item.weight }}</p>
           </div>
           <div class="item__element">
-            <p class="element__value">{{ item.fats }}</p>
+            <p class="element__value">{{ item.fats / 100 * item.weight }}</p>
           </div>
           <div class="item__element">
-            <p class="element__value">{{ item.carb }}</p>
+            <p class="element__value">{{ item.carb / 100 * item.weight }}</p>
           </div>
           <div class="item__element">
-            <p class="element__value">{{ item.kkal }}</p>
+            <p class="element__value">{{ item.kkal / 100 * item.weight }}</p>
           </div>
           <div class="item__element">
             <app-button-with-actions
@@ -84,13 +85,15 @@ import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import AppSearchBlock from '@/components/basic/AppSearchBlock'
 import AppTooltip from '@/components/basic/AppTooltip'
 import AppButtonWithActions from '@/components/basic/AppButtonWithActions'
+import CategoryIcon from '@/components/foodCalorieTable/CategoryIcon'
 
 export default {
   components: {
     AppBlockTitle,
     AppSearchBlock,
     AppTooltip,
-    AppButtonWithActions
+    AppButtonWithActions,
+    CategoryIcon
   },
   data () {
     return {
