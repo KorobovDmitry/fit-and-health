@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op;
-const errorHandler = require('../utils/errorHandler.js')
+// const errorHandler = require('../utils/errorHandler.js')
 const Products = require('../models/Products')
 
 module.exports.getAllProducts = async function (req, res) {

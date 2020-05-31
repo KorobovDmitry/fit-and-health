@@ -44,6 +44,11 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    openModal () {
+      console.log('добавить вызов')
+    }
   }
 }
 </script>

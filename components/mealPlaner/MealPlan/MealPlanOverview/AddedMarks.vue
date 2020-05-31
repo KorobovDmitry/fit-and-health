@@ -36,9 +36,11 @@ export default {
 .added-marks {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
-  // margin-bottom: -78px;
+  margin-left: 5px;
   padding: 10px;
+  width: 240px;
+  min-width: 240px;
+  max-width: 240px;
   background: $white;
   border: 1px solid $blockBorder;
   border-radius: 6px;

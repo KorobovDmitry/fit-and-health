@@ -6,6 +6,7 @@
 meal-plan-editor
 
 <nutrients-settings />
+<nutrients-calculate />
 <br>
 <br>
 <br>
@@ -22,13 +23,15 @@ import AppPageTitle from '@/components/basic/AppPageTitle'
 import NutrientsSettings from '@/components/mealPlaner/MealPlanerSettings/NutrientsSettings'
 import MealParts from '@/components/mealPlaner/MealPlan/MealParts/index'
 import MealEditor from '@/components/mealPlaner/MealPlan/MealEditor/index'
+import NutrientsCalculate from '@/components/mealPlaner/MealPlan/MealPlanOverview/NutrientsCalculate'
 
 export default {
   components: {
     AppPageTitle,
     MealParts,
     MealEditor,
-    NutrientsSettings
+    NutrientsSettings,
+    NutrientsCalculate
   }
 }
 </script>

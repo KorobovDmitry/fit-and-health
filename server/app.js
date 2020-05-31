@@ -7,6 +7,8 @@ const cors = require('cors')
 const authRoutes = require('./routes/authRoutes')
 const mealPlanerRoutes = require('./routes/mealPlanerRoutes')
 const foodCalorieTableRoutes = require('./routes/foodCalorieTableRoutes')
+const recipesBookRoutes = require('./routes/recipesBookRoutes')
+const recipeRoutes = require('./routes/recipeRoutes')
 
 const app = express()
 
@@ -38,6 +40,8 @@ app.use('/uploads', express.static('uploads'))
 app.use('/api/auth', authRoutes)
 app.use('/api/meal-planer', mealPlanerRoutes)
 app.use('/api/food-calorie-table', foodCalorieTableRoutes)
+app.use('/api/recipe-book', recipesBookRoutes)
+app.use('/api/recipe', recipeRoutes)
 
 
 module.exports = app

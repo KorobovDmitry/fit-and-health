@@ -14,6 +14,9 @@ import RecipeOverview from '@/components/recipe/RecipeOverview/index'
 import RecipeAuthor from '@/components/recipe/RecipeAuthor/index'
 
 export default {
+  // async fetch ({ store }) {
+  //   await store.dispatch('recipe/fetchRecipe')
+  // },
   components: {
     AppPageTitle,
     RecipeOverview,

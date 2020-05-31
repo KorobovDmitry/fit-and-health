@@ -20,7 +20,11 @@ import AppPageTitle from '@/components/basic/AppPageTitle'
 import AppPageInfo from '@/components/basic/AppPageInfo'
 import SortingFilters from '@/components/recipesBook/SortingFilters/SortingFilters'
 import SearchResults from '@/components/recipesBook/SearchResults/SearchResults'
+
 export default {
+  async fetch ({ store }) {
+    await store.dispatch('recipesBook/fetchRecipes')
+  },
   components: {
     AppPageTitle,
     AppPageInfo,

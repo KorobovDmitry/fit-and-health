@@ -2,10 +2,7 @@
   <div class="meal-plan">
     <app-block-title>Рацион на сутки</app-block-title>
 
-    <div class="meal-plan__content-wrapper">
-      <meal-plan-overview />
-      <nutrients-calculate />
-    </div>
+    <meal-plan-overview />
 
     <div class="overview__action-btn">
       <app-button size16px uppercase class="action-btn">Очистить план питания на сегодня</app-button>
@@ -24,14 +21,12 @@
 <script>
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import MealPlanOverview from '@/components/mealPlaner/MealPlan/MealPlanOverview/index'
-import NutrientsCalculate from '@/components/mealPlaner/MealPlan/MealPlanOverview/NutrientsCalculate'
 import AppButton from "@/components/basic/AppButton.vue"
 
 export default {
   components: {
     AppBlockTitle,
     MealPlanOverview,
-    NutrientsCalculate,
     AppButton
   }
 }
@@ -44,12 +39,6 @@ export default {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  .meal-plan__content-wrapper {
-    padding: 10px;
-    background: $hiddenBlockBG;
-    border-radius: 6px;
-    box-shadow: $btnHoverShadow;
-  }
   .overview__action-btn {
     // border: 1px solid red;
     margin-top: 10px;

@@ -9,7 +9,7 @@
       headerTitle="Сортировать по ..."
       :valueList="sotringOptions"
       :defaultValue="sotringDefault"
-      :filterGroupOpened="false"
+      :filterGroupOpened="true"
       @inputGroupValueChanged="filters.sorting = $event"
     />
 
@@ -17,7 +17,7 @@
       headerTitle="Время приема пищи"
       :valueList="mealtimeOptions"
       :defaultValue="mealtimeOptions"
-      :filterGroupOpened="false"
+      :filterGroupOpened="true"
       @inputGroupValueChanged="filters.mealtime = $event"
     />
 
@@ -82,8 +82,8 @@ export default {
         cookingTimeLimit: {},
         kkalLimit: {}
       },
-      sotringOptions: ['Названию (от А до Я)', 'Названию (от Я до А)', 'Просмотрам', 'Времени приготовления', 'Лайкам', 'Калорийности'],
-      sotringDefault: 'Названию (от А до Я)',
+      sotringOptions: ['Названию', 'Просмотрам', 'Времени приготовления', 'Лайкам', 'Калорийности'],
+      sotringDefault: 'Названию',
       mealtimeOptions: ['Завтрак', 'Обед', 'Ланч', 'Ужин', 'Перекус'],
       cookingDifficultyOptions: ['Легкая', 'Средняя', 'Высокая', 'Очень высокая'],
       preferenceOptions: ['Низкокалорийние', 'Веганские', 'Вегетариантские'],

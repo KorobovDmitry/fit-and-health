@@ -32,7 +32,11 @@
     </div>
 
     <div class="found-recipes">
-      <found-recipe v-for="(item, index) in 9" :key="index" />
+      <found-recipe
+        v-for="(recipe, index) in recipes"
+        :key="index"
+        :recipe="recipe"
+      />
     </div>
 
     <app-button sizeSM uppercase center>Загрузить еще</app-button>
@@ -63,7 +67,12 @@ export default {
         type: 'Все'
       }
     }
-  }
+  },
+  computed: {
+    recipes () {
+      return this.$store.getters['recipesBook/getRecipes']
+    }
+  },
 }
 </script>
 
