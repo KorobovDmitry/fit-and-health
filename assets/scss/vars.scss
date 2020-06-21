@@ -6,9 +6,29 @@ $fontThemify: 'themify';
 
 // COLORS
 $app-background: #FCFCFC;
-$hiddenBlockBG: rgba(0,0,0,.08);
-$white: #FFFFFF;
-$black: #565859;
+
+$white: rgba(255,255,255,1);
+$white10: rgba(255,255,255,.1);
+$white20: rgba(255,255,255,.2);
+$white30: rgba(255,255,255,.3);
+$white40: rgba(255,255,255,.4);
+$white50: rgba(255,255,255,.5);
+$white60: rgba(255,255,255,.6);
+$white70: rgba(255,255,255,.7);
+$white80: rgba(255,255,255,.8);
+$white90: rgba(255,255,255,.9);
+
+$black: rgba(86,88,89,1);
+$black10: rgba(86,88,89,.1);
+$black20: rgba(86,88,89,.2);
+$black30: rgba(86,88,89,.3);
+$black40: rgba(86,88,89,.4);
+$black50: rgba(86,88,89,.5);
+$black60: rgba(86,88,89,.6);
+$black70: rgba(86,88,89,.7);
+$black80: rgba(86,88,89,.8);
+$black90: rgba(86,88,89,.9);
+
 $gray-dark: #909497;
 $gray: #B6BFC6;
 $gray-light: rgba(0,0,0,.06);
@@ -20,6 +40,8 @@ $blue-light: #37CCDB;
 $violet: #795BF4;
 $yellow: #FFD700;
 $yellow-light: #FFE85D;
+
+$hiddenBlockBG: rgba(0,0,0,.08);
 $blockBorder: rgba(0,0,0,.2);
 $inputBorder: rgba(0,0,0,.1);
 

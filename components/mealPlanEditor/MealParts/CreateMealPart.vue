@@ -143,7 +143,8 @@ export default {}
   }
 }
 .create-meal-part:hover {
-  border: 1px dashed $blockBorder;
+  // border: 1px dashed $blockBorder;
+  box-shadow: $boxShadow;
   .create-meal-part__overview {
     .overview__img {
       .img__add-icon {

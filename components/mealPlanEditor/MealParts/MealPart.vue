@@ -1,5 +1,5 @@
 <template>
-  <div class="meal-part meal-part--active">
+  <div class="meal-part">
     <div class="meal-part__header">
       <p class="header__title">Title</p>
       <i class="ti-more"></i>
@@ -57,6 +57,7 @@ export default {
   background: $white;
   border: 1px solid $blockBorder;
   border-radius: 6px;
+  box-shadow: $boxShadow;
   .meal-part__header {
     display: flex;
     align-items: center;
@@ -132,9 +133,6 @@ export default {
       border: none;
     }
   }
-}
-.meal-part--active {
-  border: 2px solid $green;
 }
 
 </style>

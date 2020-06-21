@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const sequelize = require('../utils/dbConnect')
 
 // Описание модели таблицы в БД MySQL
-const Recipes = sequelize.define('recipes', {
+const TrainingPrograms = sequelize.define('training_programs', {
   title: {
     type: Sequelize.STRING,
     allowNull: true
@@ -11,22 +11,42 @@ const Recipes = sequelize.define('recipes', {
     type: Sequelize.STRING,
     allowNull: true
   },
-  products: {
+  trainingDays: {
     type: Sequelize.STRING,
     allowNull: true
   },
-  cookingTimes: {
+
+  addedMarks: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+
+  likes: {
     type: Sequelize.INTEGER,
     allowNull: true
   },
-  cookingSkill: {
+  dislikes: {
     type: Sequelize.INTEGER,
     allowNull: true
   },
+  shares: {
+    type: Sequelize.INTEGER,
+    allowNull: true
+  },
+  // comments: {},
+  views: {
+    type: Sequelize.INTEGER,
+    allowNull: true
+  },
+  addToFavorite: {
+    type: Sequelize.INTEGER,
+    allowNull: true
+  },
+
   userId: {
     type: Sequelize.INTEGER,
     allowNull: true
   }
 })
 
-module.exports = Recipes
+module.exports = TrainingPrograms

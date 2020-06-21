@@ -13,8 +13,8 @@
 
 <script>
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
-import MealPart from '@/components/mealPlaner/MealPlan/MealParts/MealPart'
-import CreateMealPart from '@/components/mealPlaner/MealPlan/MealParts/CreateMealPart'
+import MealPart from '@/components/mealPlanEditor/MealParts/MealPart'
+import CreateMealPart from '@/components/mealPlanEditor/MealParts/CreateMealPart'
 
 
 
@@ -34,12 +34,11 @@ export default {
   margin-bottom: 20px;
   .meal-parts__wrapper {
     display: flex;
-    // padding: 10px;
-    // padding-bottom: 20px;
-    // background: $hiddenBlockBG;
-    // background: $white;
-    // border: 1px solid $blockBorder;
-    // border-radius: 6px;
+    padding: 10px;
+    background: $white;
+    border-radius: 6px;
+    border: 1px solid $blockBorder;
+    // box-shadow: 0 1px 4px 0px rgba(52, 40, 104, 0.4);
   }
 }
 

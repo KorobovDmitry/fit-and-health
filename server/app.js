@@ -9,6 +9,7 @@ const mealPlanerRoutes = require('./routes/mealPlanerRoutes')
 const foodCalorieTableRoutes = require('./routes/foodCalorieTableRoutes')
 const recipesBookRoutes = require('./routes/recipesBookRoutes')
 const recipeRoutes = require('./routes/recipeRoutes')
+const trainingDiaryRoutes = require('./routes/trainingDiaryRoutes')
 
 const app = express()
 
@@ -40,8 +41,9 @@ app.use('/uploads', express.static('uploads'))
 app.use('/api/auth', authRoutes)
 app.use('/api/meal-planer', mealPlanerRoutes)
 app.use('/api/food-calorie-table', foodCalorieTableRoutes)
-app.use('/api/recipe-book', recipesBookRoutes)
+app.use('/api/recipes-book', recipesBookRoutes)
 app.use('/api/recipe', recipeRoutes)
+app.use('/api/training-diary', trainingDiaryRoutes)
 
 
 module.exports = app

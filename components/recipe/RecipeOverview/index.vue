@@ -6,7 +6,7 @@
       <div class="top">
         <div class="overview__images-and-main-info">
           <recipe-images />
-          <social-btns />
+          <social-btns :btnsInfo="{like: 0, dislike: 0, share: 0}" />
         </div>
         <recipe-main-info />
       </div>

@@ -11,7 +11,10 @@
             alt="meal-plan-img"
           />
         </div>
-        <div class="social-btn-wrapper">
+        <social-btns
+          :btnsInfo="{like: 5, dislike: 2, share: 16}"
+        />
+        <!-- <div class="social-btn-wrapper">
           <div class="social-btn">
             <i class="ti-heart social-btn__icon"></i>
             <p class="social-btn__amount">28</p>
@@ -24,7 +27,7 @@
             <i class="ti-share"></i>
             <p class="social-btn__amount">56</p>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="description">
@@ -63,16 +66,19 @@
             <p>круговой график показывающий распределение в процентах БЖУ при наведении видно установленное значение (в курге меняется надпись "Белки 2 гр/кг" или по умолчания Ккал 1928)</p>
           </div>
           <div class="meal-parts">
-            приемы пищи
-            <br />приемы пищи
-            <br />приемы пищи
-            <br />приемы пищи
-            <br />приемы пищи
-            <br />приемы пищи
-            <br />приемы пищи
-            <br />приемы пищи
-            <br />
+            <div class="slider">
+              <!-- <meal-part /> -->
+            </div>
           </div>
+        </div>
+
+        <div class="action-btns">
+          <social-additional-info
+            :socialAdditionalInfo="{views: 258, comments: 4, addToFavorite: 154}"
+          />
+          <router-link tag="a" to="meal-planer/meal-plan-editor" class="edit-btn">
+            <p>Редактировать</p>
+          </router-link>
         </div>
 
       </div>
@@ -81,44 +87,25 @@
 </template>
 
 <script>
-import AddedMarks from "@/components/mealPlaner/MealPlan/MealPlanOverview/AddedMarks";
-import AppButtonWithActions from "@/components/basic/AppButtonWithActions";
+import AddedMarks from '@/components/mealPlaner/MealPlan/MealPlanOverview/AddedMarks'
+import AppButtonWithActions from '@/components/basic/AppButtonWithActions'
+// import MealPart from '@/components/mealPlaner/MealPlan/MealParts/MealPart'
+import SocialAdditionalInfo from '@/components/basic/SocialAdditionalInfo'
+import SocialBtns from '@/components/basic/SocialBtns'
 
 export default {
   components: {
     AddedMarks,
-    AppButtonWithActions
+    AppButtonWithActions,
+    // MealPart,
+    SocialAdditionalInfo,
+    SocialBtns
   },
   data() {
-    return {
-      btnActions: [
-        {
-          title: "Редактировать",
-          doFunc: this.editMealPlan
-        },
-        {
-          title: "Сохарнить",
-          doFunc: this.saveMealPlan
-        },
-        {
-          title: "Очистить",
-          doFunc: this.removeMealPlanInfo
-        }
-      ]
-    };
+    return {}
   },
-  methods: {
-    editMealPlan() {
-      console.log("editMealPlan");
-    },
-    saveMealPlan() {
-      console.log("saveMealPlan");
-    },
-    removeMealPlanInfo() {
-      console.log("removeMealPlanInfo");
-    }
-  }
-};
+  methods: {}
+}
 </script>
 
 <style lang="scss" scoped>
@@ -128,7 +115,7 @@ export default {
   // border: 1px solid red;
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
   padding: 10px;
   background: $hiddenBlockBG;
   border-radius: 6px;
@@ -263,11 +250,16 @@ export default {
         margin-top: 5px;
         .meal-parts {
           flex: 1 1 auto;
+          display: flex;
+          flex-direction: column;
           margin-left: 5px;
           padding: 10px;
           background: $white;
           border: 1px solid $blockBorder;
           border-radius: 6px;
+          .slider {
+            display: flex;
+          }
         }
         .nutrients {
           width: 240px;
@@ -278,6 +270,24 @@ export default {
           background: $white;
           border: 1px solid $blockBorder;
           border-radius: 6px;
+        }
+      }
+      .action-btns {
+        display: flex;
+        margin-top: 5px;
+        box-sizing: border-box;
+        .edit-btn {
+          flex: 1 1 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          text-align: center;
+          margin-left: 5px;
+          padding: 10px;
+          background: $white;
+          border: 1px solid $blockBorder;
+          border-radius: 6px;
+          cursor: pointer;
         }
       }
     }

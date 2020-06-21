@@ -1,3 +1,5 @@
+import { BASE_URL } from '../keys/settings'
+
 export const state = () => ({
   productCategories: ['Мясо', 'Морепродукты', 'Яйца, яичные продукты', 'Молоко, молочные продукты', 'Соя, соевые продукты', 'Овощи, овощные продукты', 'Зелень, травы, листья, салаты', 'Фрукты, ягоды, сухофрукты', 'Грибы', 'Жиры, масла', 'Орехи', 'Крупы, злаки', 'Семена', 'Специи, пряности', 'Мука, продукты из муки', 'Напитки, соки'],
   products: [
@@ -238,7 +240,7 @@ export const mutations = {
 export const actions = {
   async getAllProducts ({ commit } ) {
     try {
-      const products = await this.$axios.$get('http://localhost:3000/api/food-calorie-table')
+      const products = await this.$axios.$get(`${BASE_URL}/api/food-calorie-table`)
       commit('setProducts', products)
     } catch (err) {
       console.log(err)
@@ -246,7 +248,7 @@ export const actions = {
   },
   async saveNewProduct ({ commit }, product) {
     try {
-      const newProduct = await this.$axios.$post('http://localhost:3000/api/food-calorie-table/saveNewProduct', product)
+      const newProduct = await this.$axios.$post(`${BASE_URL}/api/food-calorie-table/saveNewProduct`, product)
       await commit('addNewProduct', newProduct)
 
       const notice = {
@@ -262,7 +264,7 @@ export const actions = {
   },
   async removeProduct ({ commit }, product) {
     try {
-      const remove = await this.$axios.$post('http://localhost:3000/api/food-calorie-table/removeProduct', product)
+      const remove = await this.$axios.$post(`${BASE_URL}/api/food-calorie-table/removeProduct`, product)
       if (remove) {
         await commit('deleteProduct', product)
 
@@ -282,7 +284,7 @@ export const actions = {
   },
   async editProduct ({ commit }, product) {
     try {
-      const editedProduct = await this.$axios.$post('http://localhost:3000/api/food-calorie-table/editProduct', product)
+      const editedProduct = await this.$axios.$post(`${BASE_URL}/api/food-calorie-table/editProduct`, product)
       // commit('updateProduct', editedProduct)
       console.log(editedProduct)
     } catch (err) {
@@ -291,7 +293,7 @@ export const actions = {
   },
   async changeFavoriteParam ({ commit }, productParam) {
     try {
-      const updatedProduct = await this.$axios.$post('http://localhost:3000/api/food-calorie-table/changeFavoriteParam', productParam)
+      const updatedProduct = await this.$axios.$post(`${BASE_URL}/api/food-calorie-table/changeFavoriteParam`, productParam)
       if (updatedProduct) {
         commit('updateFavoriteProduct', productParam)
       }

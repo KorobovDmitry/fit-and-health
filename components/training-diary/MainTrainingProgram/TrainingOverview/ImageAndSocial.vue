@@ -7,7 +7,9 @@
         alt="training-program-img"
       />
     </div>
-    <social-btns />
+    <social-btns
+      :btnsInfo="{like: 0, dislike: 0, share: 0}"
+    />
   </div>
 </template>
 

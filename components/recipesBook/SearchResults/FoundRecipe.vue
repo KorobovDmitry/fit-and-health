@@ -12,59 +12,92 @@
     <div class="found-recipe__info">
       <div class="info__element">
         <i class="ti-timer element__icon"></i>
-        <p class="element__count">25 мин.</p>
+        <p class="element__count">{{ recipe.cookingTimes }} мин.</p>
       </div>
       <div class="info__element">
         <i class="ti-pie-chart element__icon"></i>
-        <p class="element__count">8 продуктов</p>
+        <p class="element__count">{{ recipe.products.length }} продуктов</p>
       </div>
     </div>
 
     <div class="found-recipe__nutrients">
       <div class="nutrient">
         <p class="nutrient__text">Белки</p>
-        <p class="nutrient__value">56.4</p>
+        <p class="nutrient__value">{{ protein }}</p>
       </div>
       <div class="nutrient">
         <p class="nutrient__text">Жиры</p>
-        <p class="nutrient__value">10</p>
+        <p class="nutrient__value">{{ fats }}</p>
       </div>
       <div class="nutrient">
         <p class="nutrient__text">Углеводы</p>
-        <p class="nutrient__value">78,5</p>
+        <p class="nutrient__value">{{ carb }}</p>
       </div>
       <div class="nutrient">
         <p class="nutrient__text">Ккал</p>
-        <p class="nutrient__value">348</p>
+        <p class="nutrient__value">{{ kkal }}</p>
       </div>
     </div>
 
     <div class="found-recipe__cook-skill">
       <p class="cook-skill__text">Сложность приготовления</p>
-      <div class="cook-skill__level-view">
-        <i class="ti-crown level-view__icon level-view__icon--active"></i>
-        <i class="ti-crown level-view__icon level-view__icon--active"></i>
-        <i class="ti-crown level-view__icon"></i>
-        <i class="ti-crown level-view__icon"></i>
-        <i class="ti-crown level-view__icon"></i>
-      </div>
+      <app-rating :rating="recipe.cookingSkill" />
     </div>
 
     <div class="found-recipe__favorite-mark">
       <p class="ti-flag-alt favorite-mark__icon"></p>
     </div>
 
+<!-- <pre>
+{{recipe}}
+</pre> -->
+
   </nuxt-link>
 </template>
 
 <script>
+import AppRating from '@/components/basic/AppRating'
+
 export default {
   props: {
     recipe: Object
   },
+  components: {
+    AppRating
+  },
   data () {
     return {
       recipeTitle: 'some-title'
+    }
+  },
+  computed: {
+    protein () {
+      let amount = 0
+      for (let i = 0; i < this.recipe.products.length; i++) {
+        amount += this.recipe.products[i].protein / 100 * this.recipe.products[i].weightInRecipe
+      }
+      return Math.round(amount * 100) / 100
+    },
+    fats () {
+      let amount = 0
+      for (let i = 0; i < this.recipe.products.length; i++) {
+        amount += this.recipe.products[i].fats / 100 * this.recipe.products[i].weightInRecipe
+      }
+      return Math.round(amount * 100) / 100
+    },
+    carb () {
+      let amount = 0
+      for (let i = 0; i < this.recipe.products.length; i++) {
+        amount += this.recipe.products[i].carb / 100 * this.recipe.products[i].weightInRecipe
+      }
+      return Math.round(amount * 100) / 100
+    },
+    kkal () {
+      let amount = 0
+      for (let i = 0; i < this.recipe.products.length; i++) {
+        amount += this.recipe.products[i].kkal / 100 * this.recipe.products[i].weightInRecipe
+      }
+      return Math.round(amount * 100) / 100
     }
   }
 }
@@ -171,20 +204,13 @@ export default {
       font-size: 14px;
       font-weight: 500;
     }
-    .cook-skill__level-view {
-      .level-view__icon {
-        color: $gray;
-        font-size: 14px;
-      }
-      .level-view__icon--active {
-        color: $green;
-      }
-    }
   }
 }
 .found-recipe:hover {
   // border: 1px solid $green;
-  box-shadow: $btnHoverShadow;
+  // margin-top: -10px;
+  // margin-bottom: 10px;
+  box-shadow: $boxShadow;
 }
 
 </style>

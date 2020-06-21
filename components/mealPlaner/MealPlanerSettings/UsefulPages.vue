@@ -68,6 +68,7 @@
     }
     .element:last-child {
       width: 100%;
+      margin-bottom: 0;
     }
     .element:hover {
       color: $green;

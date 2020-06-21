@@ -5,12 +5,55 @@
       <app-page-info
         :infoElements="pageInfoElements"
         btnTitle="Добавить рецепт"
-        @btnAction="openModal()"
+        @btnAction="toggleModal()"
       />
       <div class="recipes-book__filters-and-results">
         <sorting-filters />
         <search-results />
       </div>
+
+      <app-modal :isActive="modalActive" @close="toggleModal()">
+        <template v-slot:modalHeader>
+          <p class="modal__title">Добавить рецепт</p>
+          <p class="modal__description">Заполните форму и нажмите "сохранить рецепт", что бы добавить новый рецепт в общую базу.</p>
+        </template>
+
+        <template v-slot:modalContent>
+          <div>
+            <div class="item">
+              <p>Title:</p>
+              <input type="text">
+            </div>
+
+            <div class="item">
+              <p>Description:</p>
+              <input type="text">
+            </div>
+
+            <div class="item">
+              <p>Products:</p>
+              <input type="text">
+            </div>
+
+            <div class="item">
+              <p>CookingTime:</p>
+              <input type="text">
+            </div>
+
+            <div class="item">
+              <p>CookingSkill:</p>
+              <input type="text">
+            </div>
+          </div>
+        </template>
+
+        <template v-slot:modalButton>
+          <div class="modal__action-btns">
+            <app-button uppercase @click.native="toggleModal()" >Отмена</app-button>
+            <app-button uppercase >Сохранить рецепт</app-button>
+          </div>
+        </template>
+      </app-modal>
     </div>
   </div>
 </template>
@@ -20,6 +63,8 @@ import AppPageTitle from '@/components/basic/AppPageTitle'
 import AppPageInfo from '@/components/basic/AppPageInfo'
 import SortingFilters from '@/components/recipesBook/SortingFilters/SortingFilters'
 import SearchResults from '@/components/recipesBook/SearchResults/SearchResults'
+import AppModal from '@/components/basic/AppModal'
+import AppButton from '@/components/basic/AppButton'
 
 export default {
   async fetch ({ store }) {
@@ -29,7 +74,9 @@ export default {
     AppPageTitle,
     AppPageInfo,
     SortingFilters,
-    SearchResults
+    SearchResults,
+    AppModal,
+    AppButton
   },
   data () {
     return {
@@ -46,12 +93,13 @@ export default {
           title: 'Мои рецепты',
           value: 14
         }
-      ]
+      ],
+      modalActive: true
     }
   },
   methods: {
-    openModal () {
-      console.log('Открыть модальное окно "Добавить рецепт"')
+    toggleModal () {
+      this.modalActive = !this.modalActive
     }
   }
 }
@@ -76,6 +124,20 @@ export default {
     max-width: 1700px;
     .recipes-book__filters-and-results {
       display: flex;
+    }
+    .modal__title {
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .modal__description {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+    .modal__action-btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
     }
   }
 }

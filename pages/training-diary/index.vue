@@ -47,6 +47,9 @@ export default {
     // PageInfo,
     MainTrainingProgram,
     MealPlanerCalendar
+  },
+  fetch () {
+    this.$store.dispatch('trainingDiary/fetchMainTrainingProgram')
   }
 }
 </script>
