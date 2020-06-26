@@ -35,11 +35,11 @@ export default {
 @import "@/assets/scss/vars.scss";
 
 .socila-additional-info {
-  flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 10px;
+  width: 100%;
   background: $white;
   border: 1px solid $blockBorder;
   border-radius: 6px;

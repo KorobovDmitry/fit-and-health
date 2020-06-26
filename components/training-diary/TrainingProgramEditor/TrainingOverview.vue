@@ -1,6 +1,7 @@
 <template>
   <div class="training-overview">
     <app-block-title>Основная информация о тренировке</app-block-title>
+
     <div class="training-overview__content">
       <div class="img-and-social">
         <div class="img__wrapper">
@@ -10,31 +11,86 @@
             alt="training-program-img"
           />
         </div>
-        <social-btns
-          :btnsInfo="{like: 0, dislike: 0, share: 0}"
-        />
+        <social-btns class="mt-5" :btnsInfo="{like: 0, dislike: 0, share: 0}" />
       </div>
-      <div class="main-tarining-info__elements">
-        <div class="element">
-          <p class="element__title">Название тренировочной программы</p>
-          <app-input-text placeholderText="Название" />
+
+      <div class="stats-and-info">
+        <div class="training-stats">
+          <div class="training-stats__element">
+            <i class="ti-timer element__icon"></i>
+            <p class="element__amount">4</p>
+            <p class="element__text">тренировочных дня</p>
+          </div>
+          <div class="training-stats__element">
+            <i class="ti-check-box element__icon"></i>
+            <p class="element__amount">27</p>
+            <p class="element__text">завершенных тренировок</p>
+          </div>
         </div>
-        <div class="element">
-          <p class="element__title">Короткое описание</p>
-          <app-textarea />
+
+        <div class="main-info">
+          <div class="element">
+            <p class="element__title">Название тренировочной программы</p>
+            <app-input-text placeholder="Название" @valueChanged="test = $event" />
+          </div>
+          <div class="element">
+            <p class="element__title">Короткое описание</p>
+            <app-textarea placeholder="Описание" @valueChanged="test = $event" />
+          </div>
         </div>
-        <div>
-          выбрать дни недели для занятий (горизонтальная линия с днями недели в которой можно выбрать дни для тренировок и установить конкретный тренировочный день)
+
+        <div class="training-days">
+          <div class="training-days__block-title">
+            <p class="block-title">Тренировочные дни</p>
+            <i class="ti-more"></i>
+            <!-- каждый 3 день с момента первой тренировки -->
+            <!-- указанные -->
+            <!-- ежедневно -->
+            <!-- в будни -->
+          </div>
+          <div class="calendar-row">
+            <div class="element" v-for="(item, index) in 7" :key="index">
+              <p class="element__title">пн</p>
+              <p class="element__value">01</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="test">
-        <div>
-          добавленные отметки
-        </div>
-        <div>
+      
+
+      <app-add-marks-form
+        :marks="['mark 1']"
+        @addMark="addMark($event)"
+        @removeMark="removeMark($event)"
+      />
+
+
+      <div class="training-focus">
+        <p class="training-focus__block-title">Акцент тренировок</p>
+        <div class="training-focus__chart">
           график круговой показывает смещение акцента в тренировках (выносливость, сила, кардио)
         </div>
+        <div class="training-focus__percents">
+          <div class="percents__element">
+            <p class="element__title">Сила:</p>
+            <div class="element__value">60%</div>
+          </div>
+          <div class="percents__element">
+            <p class="element__title">Выносливость:</p>
+            <div class="element__value">20%</div>
+          </div>
+          <div class="percents__element">
+            <p class="element__title">Гибкость:</p>
+            <div class="element__value">5%</div>
+          </div>
+          <div class="percents__element">
+            <p class="element__title">Кардио:</p>
+            <div class="element__value">5%</div>
+          </div>
+        </div>
       </div>
+
+
     </div>
     <div class="training-overview__action-btns">
       <app-button uppercase >Удалить тренировочную программу</app-button>
@@ -51,6 +107,7 @@ import SocialBtns from '@/components/basic/SocialBtns'
 import AppInputText from "@/components/basic/AppInputText"
 import AppTextarea from "@/components/basic/AppTextarea"
 import AppButton from "@/components/basic/AppButton.vue"
+import AppAddMarksForm from '@/components/basic/AppAddMarksForm'
 
 export default {
   components: {
@@ -58,7 +115,16 @@ export default {
     AppInputText,
     AppTextarea,
     SocialBtns,
-    AppButton
+    AppButton,
+    AppAddMarksForm
+  },
+  methods: {
+    addMark ($event) {
+      console.log($event)
+    },
+    removeMark ($event) {
+      console.log($event)
+    }
   }
 }
 </script>
@@ -95,21 +161,140 @@ export default {
         }
       }
     }
-    .main-tarining-info__elements {
-      // border: 1px solid red;
+    .stats-and-info {
+      display: flex;
+      flex-direction: column;
       margin-left: 5px;
-      padding: 10px;
-      background: $white;
-      border: 1px solid $blockBorder;
-      border-radius: 6px;
-      .element {
-        .element__title {
-          margin: 0 20px;
-          font-weight: 500;
+      width: 100%;
+      .training-stats {
+        display: flex;
+        padding: 10px;
+        background: $white;
+        border: 1px solid $blockBorder;
+        border-radius: 6px;
+        .training-stats__element {
+          flex: 1 1 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-right: 1px solid $blockBorder;
+          .element__amount {
+            margin-left: 10px;
+            font-size: 14px;
+            font-weight: 600;
+          }
+          .element__text {
+            margin-left: 5px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+          }
+        }
+        .training-stats__element:last-child {
+          border-right: none;
+        }
+      }
+      .main-info {
+        // border: 1px solid red;
+        flex: 1 1 auto;
+        margin-top: 5px;
+        padding: 10px;
+        background: $white;
+        border: 1px solid $blockBorder;
+        border-radius: 6px;
+        .element {
+          margin-bottom: 10px;
+          .element__title {
+            margin-bottom: 5px;
+            padding: 0 10px;
+            font-weight: 500;
+          }
+        }
+      }
+      .training-days {
+        margin-top: 5px;
+        padding: 10px;
+        background: $white;
+        border: 1px solid $blockBorder;
+        border-radius: 6px;
+        .training-days__block-title {
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 10px;
+          border-bottom: 1px dashed $blockBorder;
+          .block-title {
+            padding: 0 10px;
+            font-weight: 500;
+          }
+        }
+        .calendar-row {
+          // border: 1px solid red;
+          display: flex;
+          align-items: center;
+          margin: 10px 0;
+          .element {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px 10px;
+            border-right: 1px solid $blockBorder;
+            .element__title {
+              // text-transform: uppercase;
+              font-size: 12px;
+              font-weight: 600;
+            }
+            .element__value {
+              margin-top: 5px;
+              color: $green;
+              font-size: 18px;
+              font-weight: 600;
+            }
+          }
         }
       }
     }
     
+    .training-focus {
+      display: flex;
+      flex-direction: column;
+      margin-left: 5px;
+      width: 300px;
+      min-width: 300px;
+      padding: 10px;
+      background: $white;
+      border: 1px solid $blockBorder;
+      border-radius: 6px;
+      .training-focus__block-title {
+        text-align: center;
+        font-weight: 500;
+        padding-bottom: 10px;
+        border-bottom: 1px dashed $blockBorder;
+      }
+      .training-focus__chart {
+        // border: 1px solid red;
+        margin-top: 40px;
+      }
+      .training-focus__percents {
+        margin-top: auto;
+        .percents__element {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 5px;
+          .element__title {
+            // font-weight: 500;
+          }
+          .element__value {
+            color: $green;
+            font-weight: 600;
+          }
+        }
+        .percents__element:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
   }
   .training-overview__action-btns {
     // border: 1px solid red;

@@ -1,6 +1,6 @@
 <template>
   <div class="meal-plan__overview">
-    <p class="overview__title">Низкоуглеводное меню для снижения веса</p>
+    <!-- <p class="overview__title">Низкоуглеводное меню для снижения веса</p> -->
 
     <div class="overview__content">
       <div class="img-and-social">
@@ -11,26 +11,11 @@
             alt="meal-plan-img"
           />
         </div>
-        <social-btns
-          :btnsInfo="{like: 5, dislike: 2, share: 16}"
-        />
-        <!-- <div class="social-btn-wrapper">
-          <div class="social-btn">
-            <i class="ti-heart social-btn__icon"></i>
-            <p class="social-btn__amount">28</p>
-          </div>
-          <div class="social-btn">
-            <i class="ti-heart-broken"></i>
-            <p class="social-btn__amount">8</p>
-          </div>
-          <div class="social-btn">
-            <i class="ti-share"></i>
-            <p class="social-btn__amount">56</p>
-          </div>
-        </div> -->
+        <social-btns :btnsInfo="{like: 5, dislike: 2, share: 16}" />
       </div>
 
       <div class="description">
+        <p class="overview__title">Низкоуглеводное меню для снижения веса</p>
         <div class="main-info-and-mark">
           <div class="main-info">
             <div class="description__meal-plan-info">
@@ -72,14 +57,10 @@
           </div>
         </div>
 
-        <div class="action-btns">
-          <social-additional-info
-            :socialAdditionalInfo="{views: 258, comments: 4, addToFavorite: 154}"
-          />
-          <router-link tag="a" to="meal-planer/meal-plan-editor" class="edit-btn">
-            <p>Редактировать</p>
-          </router-link>
-        </div>
+        <!-- <div class="action-btns">
+          <social-btns :btnsInfo="{like: 5, dislike: 2, share: 16}" />
+          <social-additional-info :socialAdditionalInfo="{views: 258, comments: 4, addToFavorite: 154}" />
+        </div> -->
 
       </div>
     </div>
@@ -88,17 +69,17 @@
 
 <script>
 import AddedMarks from '@/components/mealPlaner/MealPlan/MealPlanOverview/AddedMarks'
-import AppButtonWithActions from '@/components/basic/AppButtonWithActions'
+// import AppButtonWithActions from '@/components/basic/AppButtonWithActions'
 // import MealPart from '@/components/mealPlaner/MealPlan/MealParts/MealPart'
-import SocialAdditionalInfo from '@/components/basic/SocialAdditionalInfo'
+// import SocialAdditionalInfo from '@/components/basic/SocialAdditionalInfo'
 import SocialBtns from '@/components/basic/SocialBtns'
 
 export default {
   components: {
     AddedMarks,
-    AppButtonWithActions,
+    // AppButtonWithActions,
     // MealPart,
-    SocialAdditionalInfo,
+    // SocialAdditionalInfo,
     SocialBtns
   },
   data() {
@@ -140,7 +121,7 @@ export default {
       width: 400px;
       min-width: 400px;
       max-width: 400px;
-      // height: 560px;
+      height: 620px;
       .img-wrapper {
         flex: 1 1 auto;
         display: flex;
@@ -187,8 +168,18 @@ export default {
       flex-direction: column;
       flex: 1 1 auto;
       margin-left: 5px;
+      .overview__title {
+        text-align: center;
+        font-weight: 500;
+        padding: 10px;
+        background: $white;
+        border: 1px solid $blockBorder;
+        border-radius: 6px;
+      }
       .main-info-and-mark {
+        flex: 1 1 auto;
         display: flex;
+        margin-top: 5px;
         .main-info {
           display: flex;
           flex-direction: column;
@@ -226,8 +217,7 @@ export default {
             }
           }
           .description__text-wrapper {
-            // flex: 1 1 auto;
-            // margin-bottom: 45px;
+            flex: 1 1 auto;
             min-height: 295px;
             padding: 10px;
             background: $white;

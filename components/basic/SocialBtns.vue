@@ -41,8 +41,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 5px;
   padding: 10px;
+  width: 100%;
   background: $white;
   border: 1px solid $blockBorder;
   border-radius: 6px;

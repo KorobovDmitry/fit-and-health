@@ -23,6 +23,7 @@ body {
 
 input, textarea, a, button {
   font-family: $fontMontserrat;
+  font-size: 16px;
   color: $black;
   outline: none;
 }
@@ -71,4 +72,18 @@ input, textarea, a, button {
 }
 .mr-20 {
   margin-right: 20px;
+}
+
+// Максимальные отступы для flex элементов внутри flex контейнера
+.mt-auto {
+  margin-top: auto;
+}
+.mb-auto {
+  margin-bottom: auto;
+}
+.ml-auto {
+  margin-left: auto;
+}
+.mr-auto {
+  margin-right: auto;
 }
