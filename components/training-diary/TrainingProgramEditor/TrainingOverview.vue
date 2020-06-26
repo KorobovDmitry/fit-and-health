@@ -34,27 +34,16 @@
             <app-input-text placeholder="Название" @valueChanged="test = $event" />
           </div>
           <div class="element">
-            <p class="element__title">Короткое описание</p>
+            <p class="element__title">Описание тренировочной программы</p>
             <app-textarea placeholder="Описание" @valueChanged="test = $event" />
           </div>
         </div>
 
-        <div class="training-days">
-          <div class="training-days__block-title">
-            <p class="block-title">Тренировочные дни</p>
-            <i class="ti-more"></i>
-            <!-- каждый 3 день с момента первой тренировки -->
-            <!-- указанные -->
-            <!-- ежедневно -->
-            <!-- в будни -->
-          </div>
-          <div class="calendar-row">
-            <div class="element" v-for="(item, index) in 7" :key="index">
-              <p class="element__title">пн</p>
-              <p class="element__value">01</p>
-            </div>
-          </div>
+        <div class="training-skill">
+          <p class="training-skill__block-title">Сложность тренировочной программы:</p>
+          <app-rating :rating="5" />
         </div>
+
       </div>
       
 
@@ -93,7 +82,7 @@
 
     </div>
     <div class="training-overview__action-btns">
-      <app-button uppercase >Удалить тренировочную программу</app-button>
+      <app-button uppercase >Удалить программу</app-button>
       <app-button uppercase >Сделать основной</app-button>
       <app-button uppercase >Сохранить изменения</app-button>
       <app-button uppercase >Начать тренировку</app-button>
@@ -108,6 +97,7 @@ import AppInputText from "@/components/basic/AppInputText"
 import AppTextarea from "@/components/basic/AppTextarea"
 import AppButton from "@/components/basic/AppButton.vue"
 import AppAddMarksForm from '@/components/basic/AppAddMarksForm'
+import AppRating from '@/components/basic/AppRating'
 
 export default {
   components: {
@@ -116,7 +106,8 @@ export default {
     AppTextarea,
     SocialBtns,
     AppButton,
-    AppAddMarksForm
+    AppAddMarksForm,
+    AppRating
   },
   methods: {
     addMark ($event) {
@@ -211,56 +202,69 @@ export default {
           }
         }
       }
-      .training-days {
+      .training-skill {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         margin-top: 5px;
-        padding: 10px;
+        padding: 10px 20px;
         background: $white;
         border: 1px solid $blockBorder;
         border-radius: 6px;
-        .training-days__block-title {
-          display: flex;
-          justify-content: space-between;
-          padding-bottom: 10px;
-          border-bottom: 1px dashed $blockBorder;
-          .block-title {
-            padding: 0 10px;
-            font-weight: 500;
-          }
-        }
-        .calendar-row {
-          // border: 1px solid red;
-          display: flex;
-          align-items: center;
-          margin: 10px 0;
-          .element {
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 5px 10px;
-            border-right: 1px solid $blockBorder;
-            .element__title {
-              // text-transform: uppercase;
-              font-size: 12px;
-              font-weight: 600;
-            }
-            .element__value {
-              margin-top: 5px;
-              color: $green;
-              font-size: 18px;
-              font-weight: 600;
-            }
-          }
+        .training-skill__block-title {
+          font-weight: 500;
         }
       }
+      // .training-days {
+      //   margin-top: 5px;
+      //   padding: 10px;
+      //   background: $white;
+      //   border: 1px solid $blockBorder;
+      //   border-radius: 6px;
+      //   .training-days__block-title {
+      //     display: flex;
+      //     justify-content: space-between;
+      //     padding-bottom: 10px;
+      //     border-bottom: 1px dashed $blockBorder;
+      //     .block-title {
+      //       padding: 0 10px;
+      //       font-weight: 500;
+      //     }
+      //   }
+      //   .calendar-row {
+      //     // border: 1px solid red;
+      //     display: flex;
+      //     align-items: center;
+      //     margin: 10px 0;
+      //     .element {
+      //       flex: 1 1 auto;
+      //       display: flex;
+      //       flex-direction: column;
+      //       align-items: center;
+      //       padding: 5px 10px;
+      //       border-right: 1px solid $blockBorder;
+      //       .element__title {
+      //         // text-transform: uppercase;
+      //         font-size: 12px;
+      //         font-weight: 600;
+      //       }
+      //       .element__value {
+      //         margin-top: 5px;
+      //         color: $green;
+      //         font-size: 18px;
+      //         font-weight: 600;
+      //       }
+      //     }
+      //   }
+      // }
     }
     
     .training-focus {
       display: flex;
       flex-direction: column;
       margin-left: 5px;
-      width: 300px;
-      min-width: 300px;
+      width: 260px;
+      min-width: 260px;
       padding: 10px;
       background: $white;
       border: 1px solid $blockBorder;

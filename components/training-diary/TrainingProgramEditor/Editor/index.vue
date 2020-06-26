@@ -2,9 +2,12 @@
   <div class="editor">
     <overview-current-training />
     <div class="exercises">
-      <training-days />
-      <current-training-exercises />
+      
       <exercises-list />
+
+      <!-- <training-days /> -->
+      <current-training-exercises />
+      
     </div>
   </div>
 </template>

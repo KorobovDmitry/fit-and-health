@@ -47,7 +47,8 @@ export default {
   flex-direction: column;
   margin-left: 5px;
   padding: 10px;
-  min-width: 300px;
+  width: 260px;
+  min-width: 260px;
   background: $white;
   border: 1px solid $blockBorder;
   border-radius: 6px;
@@ -90,13 +91,13 @@ export default {
     margin-top: auto;
     .input {
       padding: 5px 10px;
-      width: calc(100% - 58px);
+      width: calc(100% - 38px);
       border: 1px solid $blockBorder;
       border-top-left-radius: 6px;
       border-bottom-left-radius: 6px;
     }
     .action-btn {
-      padding: 5px 20px;
+      padding: 5px 10px;
       background: $green;
       color: $white;
       border: 1px solid $green;

@@ -2,13 +2,30 @@
   <div class="current-training-exercises">
     <app-block-title>Редактор упражнений</app-block-title>
 
-    <div class="training-day">
+    <div class="wrapper">
+      <div class="tabs">
+        <div
+          v-for="(item, index) in 4"
+          :key="index"
+          class="tab"
+          :style=" `z-index: ${4 - index}` "
+          @click="toggleActiveTab()"
+        >
+          <p class="tab__title">День {{ index + 1 }}. Ноги и плечи</p>
+        </div>
+        <div class="add-tab">
+          <i class="ti-plus"></i>
+        </div>
+      </div>
+
+      <div class="tab__content">
+        
       <div class="training-day__header">
         <div class="header__title">
           <p class="header__title-text">Название</p>
           <input type="text" value="День 1. Ноги и плечи">
-          <!-- <p class="header__last-training-text">Последняя тренировка:</p> -->
-          <!-- <p class="header__last-training-date">суббота, 10 декабря 2019</p> -->
+          <p class="header__last-training-text">Последняя тренировка:</p>
+          <p class="header__last-training-date">суббота, 10 декабря 2019</p>
         </div>
         <div class="header__info-block">
           <div class="info-block__item">
@@ -20,7 +37,7 @@
             <p class="item__info-count">1869 кг.</p>
           </div>
         </div>
-        <i class="ti-angle-double-down header-icon"></i>
+        <!-- <i class="ti-angle-double-down header-icon"></i> -->
       </div>
       <ul class="training-day__exercises-list">
         <li v-for="(item, index) in 4" :key="index" class="exercises-list__list-item">
@@ -51,73 +68,25 @@
       </ul>
 
 
-
-      <!-- <app-accordion :isOpened="true">
-        <template v-slot:accordionHeader>
-          <div class="training-day__header">
-            <div class="header__title">
-              <p class="header__title-text">Название</p>
-              <input type="text" value="День 1. Ноги и плечи">
-            </div>
-            <div class="header__info-block">
-              <div class="info-block__item">
-                <p class="item__info-text">Время последней тренировки</p>
-                <p class="item__info-count">1 час 02 мин.</p>
-              </div>
-              <div class="info-block__item">
-                <p class="item__info-text">Тоннаж последней тренировки</p>
-                <p class="item__info-count">1869 кг.</p>
-              </div>
-            </div>
-            <i class="ti-angle-double-down header-icon"></i>
-          </div>
-        </template>
-        <template v-slot:accordionHiddenContent>
-          <ul class="training-day__exercises-list">
-            <li v-for="(item, index) in 4" :key="index" class="exercises-list__list-item">
-              <div class="list-item__drag-drop-btn">
-                <i class="ti-exchange-vertical"></i>
-              </div>
-              <p class="list-item__title">Присядания со штангой в тренажере Смитта</p>
-              <div class="list-item__parameter">
-                <p class="parameter__text">подходы</p>
-                <p class="parameter__value">4</p>
-              </div>
-              <div class="list-item__parameter">
-                <p class="parameter__text">повторений</p>
-                <p class="parameter__value">10 - 12</p>
-              </div>
-              <div class="list-item__parameter">
-                <p class="parameter__text">Отягощение</p>
-                <p class="parameter__value">45 кг.</p>
-              </div>
-              <div class="list-item__edit-btn">
-                <i class="ti-pencil"></i>
-                <i class="ti-save"></i>
-              </div>
-              <div class="list-item__delete-btn">
-                <i class="ti-close"></i>
-              </div>
-            </li>
-          </ul>
-        </template>
-      </app-accordion> -->
+      </div>
     </div>
 
-    <!-- <app-button size16px uppercase right>Добавить тренировочный день</app-button> -->
+
   </div>
 </template>
 
 <script>
 import AppBlockTitle from "@/components/basic/AppBlockTitle"
-// import AppAccordion from '@/components/basic/AppAccordion'
-// import AppButton from "@/components/basic/AppButton"
 
 export default {
   components: {
-    AppBlockTitle,
-    // AppAccordion,
-    // AppButton
+    AppBlockTitle
+  },
+  methods: {
+    toggleActiveTab () {
+      console.log(this);
+      // this.classList.add('tab--active')
+    }
   }
 }
 </script>
@@ -128,138 +97,222 @@ export default {
 .current-training-exercises {
   // border: 1px solid red;
   margin-left: 40px;
-  margin-right: 40px;
+  // margin-right: 40px;
   width: 100%;
-  .training-day {
-    margin-bottom: 10px;
-    .training-day__header {
-      // border: 1px solid red;
+
+  .wrapper {
+    // border: 1px solid red;
+    margin-bottom: 40px;
+    // padding: 10px;
+    // background: $hiddenBlockBG;
+    // border-radius: 6px;
+    // box-shadow: $boxShadow;
+    .tabs {
       display: flex;
-      align-items: center;
-      padding: 10px 0;
-      background: $white;
-      border: 1px solid $blockBorder;
-      border-radius: 6px;
-      .header__title {
-        // flex: 1 1 auto;
-        display: flex;
-        flex-direction: column;
-        margin-left: 20px;
-        .header__title-text {
-          margin-left: 20px;
-          // font-size: 18px;
-          font-weight: 500;
-        }
-        // .header__last-training-text {
-        //   margin-top: 5px;
-        //   text-transform: uppercase;
-        //   font-size: 12px;
-        // }
-        // .header__last-training-date {
-        //   font-size: 12px;
-        // }
-      }
-      .header__info-block {
-        // border: 1px solid red;
-        display: flex;
-        margin-left: auto;
-        .info-block__item {
-          padding: 0 10px;
-          max-width: 180px;
-          text-align: center;
-          border-left: 1px solid $blockBorder;
-          .item__info-text {
-            font-size: 12px;
-          }
-          .item__info-count {
-            margin-top: 5px;
-            font-size: 16px;
-            font-weight: 500;
-          }
-        }
-        .info-block__item:last-child {
-          border-right: 1px solid $blockBorder;
-        }
-      }
-      .header-icon {
-        margin: 0 20px;
-      }
-    }
-    .training-day__exercises-list {
-      // border: 1px solid red;
-      margin: 0 5px;
-      padding: 10px;
-      background: $hiddenBlockBG;
-      border-bottom-left-radius: 6px;
-      border-bottom-right-radius: 6px;
-      box-shadow: $btnHoverShadow;
-      .exercises-list__list-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 5px;
+      .tab {
+        margin-left: -5px;
         padding: 10px 20px;
         background: $white;
         border: 1px solid $blockBorder;
-        border-radius: 6px;
-        .list-item__drag-drop-btn {
-          // border: 1px solid red;
-          display: flex;
-          align-items: center;
-          margin-right: 20px;
-          cursor: pointer;
-          transition: $tr-02;
-        }
-        .list-item__drag-drop-btn:hover {
-          color: $green;
-        }
-        .list-item__title {
-          // border: 1px solid red;
+        border-bottom: none;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        transition: $tr-02;
+        cursor: pointer;
+        .tab__title {
           // font-size: 16px;
-          font-weight: 500;
-          margin-right: auto;
-        }
-        .list-item__parameter {
-          // border: 1px solid red;
-          margin-left: 10px;
-          text-align: center;
-          // width: 140px;
-          min-width: 140px;
-          .parameter__text {
-            text-transform: uppercase;
-            font-size: 8px;
-          }
-          .parameter__value {
-            margin-top: 5px;
-            // font-size: 16px;
-            font-weight: 500;
-          }
-        }
-        .list-item__edit-btn {
-          // border: 1px solid red;
-          display: flex;
-          align-items: center;
-          cursor: pointer;
-          transition: $tr-02;
-        }
-        .list-item__edit-btn:hover {
-          color: $green;
-        }
-        .list-item__delete-btn {
-          // border: 1px solid red;
-          display: flex;
-          align-items: center;
-          margin-left: 20px;
-          cursor: pointer;
-          transition: $tr-02;
-        }
-        .list-item__delete-btn:hover {
-          color: $green;
+          // font-weight: 400;
         }
       }
-      .exercises-list__list-item:last-child {
-        margin-bottom: 0;
+      .tab:first-child {
+        margin-left: 0;
+      }
+      .tab:hover {
+        box-shadow: $boxShadow;
+      }
+      .tab--active {
+        // border: 1px solid $green;
+        // border-bottom: none;
+        z-index: 1000 !important;
+        .tab__title {
+          color: $green;
+          font-weight: 500;
+        }
+      }
+      .add-tab {
+        position: relative;
+        margin-left: 5px;
+        // margin-left: auto;
+        padding: 10px 20px;
+        background: $green;
+        // background: $hiddenBlockBG;
+        border: 1px solid transparent;
+        border-bottom: none;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        transition: $tr-02;
+        cursor: pointer;
+        i {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%) rotate(0deg);
+          color: $white;
+          font-size: 12px;
+          transition: $tr-04;
+          
+        }
+      }
+      .add-tab:hover {
+        // box-shadow: $boxShadow;
+        i {
+          font-size: 14px;
+          transform: translate(-50%,-50%) rotate(180deg);
+        }
+      }
+    }
+    .tab__content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      background: $white;
+      border: 1px solid $blockBorder;
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+      z-index: 1001;
+
+      .training-day__header {
+        // border: 1px solid red;
+        display: flex;
+        align-items: center;
+        // padding: 10px 0;
+        // background: $white;
+        // border: 1px solid $blockBorder;
+        // border-radius: 6px;
+        .header__title {
+          // flex: 1 1 auto;
+          display: flex;
+          flex-direction: column;
+          margin-left: 20px;
+          .header__title-text {
+            margin-left: 20px;
+            // font-size: 18px;
+            font-weight: 500;
+          }
+          .header__last-training-text {
+            margin-top: 5px;
+            text-transform: uppercase;
+            font-size: 12px;
+          }
+          .header__last-training-date {
+            font-size: 12px;
+          }
+        }
+        .header__info-block {
+          // border: 1px solid red;
+          display: flex;
+          margin-left: auto;
+          .info-block__item {
+            padding: 0 10px;
+            max-width: 180px;
+            text-align: center;
+            border-left: 1px solid $blockBorder;
+            .item__info-text {
+              font-size: 12px;
+            }
+            .item__info-count {
+              margin-top: 5px;
+              font-size: 16px;
+              font-weight: 500;
+            }
+          }
+          .info-block__item:last-child {
+            border-right: 1px solid $blockBorder;
+          }
+        }
+        .header-icon {
+          margin: 0 20px;
+        }
+        }
+      .training-day__exercises-list {
+        // border: 1px solid red;
+        // margin: 0 5px;
+        padding: 10px;
+        background: $hiddenBlockBG;
+        border-radius: 6px;
+        // border-bottom-left-radius: 6px;
+        // border-bottom-right-radius: 6px;
+        // box-shadow: $btnHoverShadow;
+        .exercises-list__list-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 5px;
+          padding: 10px 20px;
+          background: $white;
+          border: 1px solid $blockBorder;
+          border-radius: 6px;
+          .list-item__drag-drop-btn {
+            // border: 1px solid red;
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            cursor: pointer;
+            transition: $tr-02;
+          }
+          .list-item__drag-drop-btn:hover {
+            color: $green;
+          }
+          .list-item__title {
+            // border: 1px solid red;
+            // font-size: 16px;
+            font-weight: 500;
+            margin-right: auto;
+          }
+          .list-item__parameter {
+            // border: 1px solid red;
+            margin-left: 10px;
+            text-align: center;
+            // width: 140px;
+            min-width: 140px;
+            .parameter__text {
+              text-transform: uppercase;
+              font-size: 8px;
+            }
+            .parameter__value {
+              margin-top: 5px;
+              // font-size: 16px;
+              font-weight: 500;
+            }
+          }
+          .list-item__edit-btn {
+            // border: 1px solid red;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: $tr-02;
+          }
+          .list-item__edit-btn:hover {
+            color: $green;
+          }
+          .list-item__delete-btn {
+            // border: 1px solid red;
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            cursor: pointer;
+            transition: $tr-02;
+          }
+          .list-item__delete-btn:hover {
+            color: $green;
+          }
+        }
+        .exercises-list__list-item:last-child {
+          margin-bottom: 0;
+        }
       }
     }
   }
+
 }
 </style>
