@@ -137,9 +137,9 @@ export default {
       .img__wrapper {
         // margin-bottom: 5px;
         padding: 10px;
-        width: 300px;
-        min-width: 300px;
-        max-width: 300px;
+        width: 400px;
+        min-width: 400px;
+        max-width: 400px;
         background: $white;
         border: 1px solid $blockBorder;
         border-radius: 6px;
