@@ -1,26 +1,25 @@
 <template>
-  <div class="training-days">
-    <div class="training-day__settings">
-      <div class="settings__header">
-        <div class="header__title">
-          <p class="header__title-text">Название</p>
-          <input type="text" value="День 1. Ноги и плечи" />
-          <p class="header__last-training-text">Последняя тренировка:</p>
-          <p class="header__last-training-date">суббота, 10 декабря 2019</p>
+  <div class="training-day-info">
+
+    <p class="training-day-info__block-title">Редактор тренировочного дня</p>
+
+    <div class="base-info">
+      <p class="base-info__block-title">Основная информация</p>
+      <div class="base-info__elements">
+        <div class="base-info__element">
+          <p class="element__title">Название тренировочного дня:</p>
+          <app-input-text value="День 1. Ноги и плечи" />
         </div>
-        <div class="header__info-block">
-          <div class="info-block__item">
-            <p class="item__info-text">Время последней тренировки</p>
-            <p class="item__info-count">1 час 02 мин.</p>
-          </div>
-          <div class="info-block__item">
-            <p class="item__info-text">Тоннаж последней тренировки</p>
-            <p class="item__info-count">1869 кг.</p>
-          </div>
+        <div class="base-info__element">
+          <p class="element__title">Комментарий к тренеровочному дню:</p>
+          <app-textarea placeholder="Комментарий" />
         </div>
-        <i class="ti-angle-double-down header-icon"></i>
       </div>
-      <ul class="settings__exercises-list">
+    </div>
+
+    <div class="exercises">
+      <p class="exercises__block-title">Упражнения</p>
+      <ul class="exercises-list">
         <li v-for="(item, index) in 4" :key="index" class="exercises-list__list-item">
           <div class="list-item__drag-drop-btn">
             <i class="ti-exchange-vertical"></i>
@@ -40,7 +39,6 @@
           </div>
           <div class="list-item__edit-btn">
             <i class="ti-pencil"></i>
-            <i class="ti-save"></i>
           </div>
           <div class="list-item__delete-btn">
             <i class="ti-close"></i>
@@ -48,24 +46,45 @@
         </li>
       </ul>
     </div>
+
+    <div class="stats">
+      <div class="stats__item">
+        <p class="item__value">1 час 12 мин.</p>
+        <p class="item__text">Время последней тренировки</p>
+      </div>
+      <div class="stats__item">
+        <p class="item__value">1782 кг.</p>
+        <p class="item__text">Тоннаж последней тренировки</p>
+      </div>
+      <div class="stats__item">
+        <p class="item__value">Высокая</p>
+        <p class="item__text">Интенсивность последней тренировки</p>
+      </div>
+      <div class="stats__item">
+        <p class="item__value">+ 2.3%</p>
+        <p class="item__text">Общий прогресс тренировок</p>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
+import AppInputText from '@/components/basic/AppInputText'
+import AppTextarea from '@/components/basic/AppTextarea'
+
 export default {
-  methods: {
-    toggleActiveTab() {
-      console.log(this);
-      // this.classList.add('tab--active')
-    }
+  components: {
+    AppInputText,
+    AppTextarea
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/vars.scss";
 
-.training-days {
+.training-day-info {
   // border: 1px solid red;
   margin-left: 5px;
   padding: 10px;
@@ -73,77 +92,49 @@ export default {
   border: 1px solid $blockBorder;
   border-radius: 6px;
   width: 100%;
-  .training-day__settings {
-    // margin-left: 40px;
-    .settings__header {
-      // border: 1px solid red;
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      background: $hiddenBlockBG;
-      // background: $white;
-      // border: 1px solid $blockBorder;
+
+  .training-day-info__block-title {
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: 500;
+    border-bottom: 1px dashed $blockBorder;
+  }
+
+  .base-info {
+    .base-info__block-title {
+      padding: 10px 20px;
+      font-weight: 500;
+    }
+    .base-info__elements {
+      padding: 0 10px 10px 10px;
+      background: rgba(0,0,0,.05);
       border-radius: 6px;
-      .header__title {
-        // flex: 1 1 auto;
-        display: flex;
-        flex-direction: column;
-        margin-left: 20px;
-        .header__title-text {
-          margin-left: 20px;
-          // font-size: 18px;
+      .base-info__element {
+        .element__title {
+          padding: 10px;
           font-weight: 500;
         }
-        .header__last-training-text {
-          margin-top: 5px;
-          text-transform: uppercase;
-          font-size: 12px;
-        }
-        .header__last-training-date {
-          font-size: 12px;
-        }
-      }
-      .header__info-block {
-        // border: 1px solid red;
-        display: flex;
-        margin-left: auto;
-        .info-block__item {
-          padding: 0 10px;
-          max-width: 180px;
-          text-align: center;
-          border-left: 1px solid $blockBorder;
-          .item__info-text {
-            font-size: 12px;
-          }
-          .item__info-count {
-            margin-top: 5px;
-            font-size: 16px;
-            font-weight: 500;
-          }
-        }
-        .info-block__item:last-child {
-          border-right: 1px solid $blockBorder;
-        }
-      }
-      .header-icon {
-        margin: 0 20px;
       }
     }
-    .settings__exercises-list {
+  }
+
+  .exercises {
+    .exercises__block-title {
+      padding: 10px 20px;
+      font-weight: 500;
+    }
+    .exercises-list {
       // border: 1px solid red;
-      // margin: 0 5px;
-      margin-top: 5px;
       padding: 10px;
-      background: $hiddenBlockBG;
+      min-height: 450px;
+      // background: $hiddenBlockBG;
+      background: rgba(0,0,0,.05);
       border-radius: 6px;
-      // border-bottom-left-radius: 6px;
-      // border-bottom-right-radius: 6px;
-      // box-shadow: $btnHoverShadow;
       .exercises-list__list-item {
         display: flex;
         align-items: center;
         margin-bottom: 5px;
-        padding: 10px 20px;
+        padding: 10px;
         background: $white;
         border: 1px solid $blockBorder;
         border-radius: 6px;
@@ -151,7 +142,8 @@ export default {
           // border: 1px solid red;
           display: flex;
           align-items: center;
-          margin-right: 20px;
+          // margin-right: 20px;
+          padding: 10px;
           cursor: pointer;
           transition: $tr-02;
         }
@@ -160,7 +152,7 @@ export default {
         }
         .list-item__title {
           // border: 1px solid red;
-          // font-size: 16px;
+          margin-left: 10px;
           font-weight: 500;
           margin-right: auto;
         }
@@ -169,14 +161,13 @@ export default {
           margin-left: 10px;
           text-align: center;
           // width: 140px;
-          min-width: 140px;
+          min-width: 100px;
           .parameter__text {
             text-transform: uppercase;
             font-size: 8px;
           }
           .parameter__value {
             margin-top: 5px;
-            // font-size: 16px;
             font-weight: 500;
           }
         }
@@ -184,6 +175,8 @@ export default {
           // border: 1px solid red;
           display: flex;
           align-items: center;
+          // margin-left: 20px;
+          padding: 10px;
           cursor: pointer;
           transition: $tr-02;
         }
@@ -194,7 +187,8 @@ export default {
           // border: 1px solid red;
           display: flex;
           align-items: center;
-          margin-left: 20px;
+          // margin-left: 20px;
+          padding: 10px;
           cursor: pointer;
           transition: $tr-02;
         }
@@ -207,5 +201,35 @@ export default {
       }
     }
   }
+
+  .stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 10px 0;
+    // border-top: 1px dashed $blockBorder;
+    .stats__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      border-right: 1px solid $blockBorder;
+      .item__value {
+        font-weight: 500;
+      }
+      .item__text {
+        margin-top: 5px;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 12px;
+      }
+    }
+    .stats__item:last-child {
+      border-right: none;
+    }
+  }
+
+  
 }
 </style>
