@@ -30,7 +30,7 @@ export default {
 @import '@/assets/scss/vars.scss';
 
 .textarea {
-  padding: 5px 10px;
+  padding: 10px;
   width: 100%;
   min-height: 100px;
   background: $white;

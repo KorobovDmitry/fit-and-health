@@ -1,6 +1,6 @@
 <template>
   <div class="exercises-list">
-    <!-- <app-block-title>База упражнений</app-block-title> -->
+    <app-block-title>База упражнений</app-block-title>
 
     <div class="exercises-list__content">
       <app-search-block small />
@@ -39,24 +39,24 @@
 
       </div>
 
-      <!-- <app-button size16px uppercase fillArea >Добавить новое упражнение в базу</app-button> -->
+      <app-button size16px uppercase fillArea >Добавить новое упражнение в базу</app-button>
 
     </div>
   </div>
 </template>
 
 <script>
-// import AppBlockTitle from "@/components/basic/AppBlockTitle"
+import AppBlockTitle from "@/components/basic/AppBlockTitle"
 import AppSearchBlock from "@/components/basic/AppSearchBlock.vue"
 import AppAccordion from "@/components/basic/AppAccordion"
-// import AppButton from "@/components/basic/AppButton.vue"
+import AppButton from "@/components/basic/AppButton.vue"
 
 export default {
   components: {
-    // AppBlockTitle,
+    AppBlockTitle,
     AppSearchBlock,
     AppAccordion,
-    // AppButton
+    AppButton
   }
 }
 </script>
@@ -66,11 +66,6 @@ export default {
 
 .exercises-list {
   // border: 1px solid red;
-  padding: 10px;
-  background: $white;
-  border: 1px solid $blockBorder;
-  border-radius: 6px;
-  // box-shadow: inset $boxShadow;
   width: 400px;
   min-width: 400px;
   max-width: 400px;

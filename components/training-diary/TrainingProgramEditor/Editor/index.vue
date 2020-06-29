@@ -1,26 +1,35 @@
 <template>
   <div class="editor">
-    <overview-current-training />
-    <div class="exercises">
+    <app-block-title>Информация о тренировочной программе</app-block-title>
+    <div class="overview-and-training-days">
+      <training-overview />
 
-      <!-- <training-days /> -->
-      <current-training-exercises />
-      
+      <training-days />
+
+      <div class="exercises-list-and-training-day-info">
+        <exercises-list />
+        <training-day-info />
+      </div>
+
     </div>
   </div>
 </template>
 
 <script>
-import OverviewCurrentTraining from '@/components/training-diary/TrainingProgramEditor/TrainingOverview'
+import AppBlockTitle from '@/components/basic/AppBlockTitle'
+import TrainingOverview from '@/components/training-diary/TrainingProgramEditor/Editor/TrainingOverview/index'
+import TrainingDays from '@/components/training-diary/TrainingProgramEditor/Editor/TrainingDays'
 
-import CurrentTrainingExercises from '@/components/training-diary/TrainingProgramEditor/Editor/CurrentTrainingExercises/index'
-import TrainingDays from '@/components/training-diary/TrainingProgramEditor/TrainingDays'
+import TrainingDayInfo from '@/components/training-diary/TrainingProgramEditor/Editor/TrainingDayInfo'
+import ExercisesList from "@/components/training-diary/TrainingProgramEditor/Editor/ExercisesList/index";
 
 export default {
   components: {
-    OverviewCurrentTraining,
-    CurrentTrainingExercises,
-    TrainingDays
+    AppBlockTitle,
+    TrainingOverview,
+    TrainingDays,
+    TrainingDayInfo,
+    ExercisesList
   }
 }
 </script>
@@ -31,9 +40,17 @@ export default {
 .editor {
   // border: 1px solid red;
   flex: 1 1 auto;
-  .exercises {
+  .overview-and-training-days {
     display: flex;
-    margin-top: 20px;
+    flex-direction: column;
+    padding: 10px;
+    background: $hiddenBlockBG;
+    box-shadow: $boxShadow;
+    border-radius: 6px;
+    .exercises-list-and-training-day-info {
+      display: flex;
+      margin-top: 5px;
+    }
   }
 }
 

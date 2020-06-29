@@ -15,7 +15,7 @@
 
 <script>
 import AppPageInfo from "@/components/basic/AppPageInfo"
-import ExercisesList from "@/components/training-diary/TrainingProgramEditor/Editor/ExercisesList/index"
+import ExercisesList from "@/components/training-diary/ExerciseGuide/ExercisesList/index"
 import ExerciseOverview from '@/components/training-diary/ExerciseGuide/ExerciseDescription/ExerciseOverview/index'
 
 export default {
