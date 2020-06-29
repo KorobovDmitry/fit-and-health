@@ -109,6 +109,7 @@ export default {
       padding: 0 10px 10px 10px;
       background: rgba(0,0,0,.05);
       border-radius: 6px;
+      box-shadow: $insetBoxShadow;
       .base-info__element {
         .element__title {
           padding: 10px;
@@ -127,9 +128,9 @@ export default {
       // border: 1px solid red;
       padding: 10px;
       min-height: 450px;
-      // background: $hiddenBlockBG;
       background: rgba(0,0,0,.05);
       border-radius: 6px;
+      box-shadow: $insetBoxShadow;
       .exercises-list__list-item {
         display: flex;
         align-items: center;
