@@ -1,6 +1,6 @@
 <template>
   <div class="training-info">
-    <app-block-title>Общая информация</app-block-title>
+    <app-block-title>Тренировочные дни</app-block-title>
 
     <div class="training-info__content">
       <div class="training-days">
@@ -9,10 +9,34 @@
           <i class="ti-angle-double-down"></i>
         </div>
         <ul class="days">
-          <li class="day">День 1. Ноги и плечи</li>
-          <li class="day day--active">День 2. Спина и трицепс</li>
-          <li class="day">День 3. Ноги и плечи</li>
-          <li class="day">День 4. Грудь и бицепс</li>
+          <li class="day">
+            <p class="day__title">День 1. Ноги и плечи</p>
+            <div class="day__last-training">
+              <p class="last-training__text">Последняя тренировка:</p>
+              <p class="last-training__value">24.06.2020</p>
+            </div>
+          </li>
+          <li class="day day--active">
+            <p class="day__title">День 2. Спина и трицепс</p>
+            <div class="day__last-training">
+              <p class="last-training__text">Последняя тренировка:</p>
+              <p class="last-training__value">21.06.2020</p>
+            </div>
+          </li>
+          <li class="day">
+            <p class="day__title">День 3. Ноги и плечи</p>
+            <div class="day__last-training">
+              <p class="last-training__text">Последняя тренировка:</p>
+              <p class="last-training__value">20.06.2020</p>
+            </div>
+          </li>
+          <li class="day">
+            <p class="day__title">День 4. Грудь и бицепс</p>
+            <div class="day__last-training">
+              <p class="last-training__text">Последняя тренировка:</p>
+              <p class="last-training__value">18.06.2020</p>
+            </div>
+          </li>
         </ul>
       </div>
 
@@ -30,34 +54,7 @@
         </div>
       </div>
 
-      <div class="date">
-        <p class="date__text">Дата тренировки:</p>
-        <p class="date__value">четверг, 18 декабря 2019</p>
-      </div>
-
-      <div class="main-stats">
-        <div class="main-stats__overview">
-          <div class="overview__element">
-            <p class="element__title">Продолжительность тренировки</p>
-            <p class="element__value">0 мин.</p>
-          </div>
-
-          <div class="overview__element">
-            <p class="element__title">Общий тоннаж тренировки</p>
-            <p class="element__value">0 кг.</p>
-          </div>
-
-          <div class="overview__element">
-            <p class="element__title">Среднее время отдыха</p>
-            <p class="element__value">0 : 0</p>
-          </div>
-
-          <div class="overview__element">
-            <p class="element__title">Среднее время выполнения упражнения</p>
-            <p class="element__value">0 : 0</p>
-          </div>
-        </div>
-      </div>
+      
 
     </div>
   </div>
@@ -112,9 +109,25 @@ export default {
           border-radius: 6px;
           transition: $tr-02;
           cursor: pointer;
+          .day__title {
+            font-weight: 500;
+          }
+          .day__last-training {
+            margin-top: 5px;
+            .last-training__text {
+              text-transform: uppercase;
+              font-size: 12px;
+            }
+            .last-training__value {
+              font-size: 14px;
+            }
+          }
         }
         .day:hover {
           color: $green;
+        }
+        .day:last-child {
+          margin-bottom: 0;
         }
         .day--active {
           border: 2px solid $green;
@@ -123,63 +136,8 @@ export default {
         }
       }
     }
+
     
-    .date {
-      margin-top: 5px;
-      padding: 10px;
-      background: $white;
-      border: 1px solid $blockBorder;
-      border-radius: 6px;
-      .date__text {
-        font-weight: 500;
-      }
-      .date__value {
-        margin-top: 5px;
-        font-size: 14px;
-      }
-    }
-    .main-stats {
-      margin-top: 5px;
-      padding: 10px;
-      background: $white;
-      border: 1px solid $blockBorder;
-      border-radius: 6px;
-      
-      .main-stats__overview {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 10px;
-        .overview__element {
-          display: flex;
-          flex-direction: column;
-          padding: 10px;
-          width: 50%;
-          .element__title {
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            text-align: center;
-            font-size: 12px;
-            font-weight: 500;
-          }
-          .element__value {
-            margin-top: auto;
-            text-align: center;
-            font-size: 18px;
-            font-weight: 500;
-          }
-        }
-        .overview__element:nth-child(1) {
-          border-right: 1px solid $blockBorder;
-          border-bottom: 1px solid $blockBorder;
-        }
-        .overview__element:nth-child(2) {
-          border-bottom: 1px solid $blockBorder;
-        }
-        .overview__element:nth-child(3) {
-          border-right: 1px solid $blockBorder;
-        }
-      }
-    }
     .tabata-timer {
       margin-top: 5px;
       padding: 20px 10px;
@@ -189,7 +147,6 @@ export default {
       border-radius: 6px;
       .element__title {
         text-transform: uppercase;
-        // font-size: 12px;
         font-weight: 600;
       }
       .element__data {

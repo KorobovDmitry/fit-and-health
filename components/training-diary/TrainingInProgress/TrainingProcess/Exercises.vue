@@ -1,26 +1,5 @@
 <template>
   <div class="exercises">
-    <div class="exercises__title-block">
-      <!-- <p class="title-block__text">Тренировка</p> -->
-
-      <!-- <div class="timer">0 : 0 : 0</div> -->
-
-      <div class="title-block__action-btns">
-        <app-button size14px uppercase>
-          <i class="ti-control-stop"></i>
-        </app-button>
-        
-        <app-button class="ml-5" size14px uppercase>
-          <i class="ti-control-pause"></i>
-        </app-button>
-
-        <app-button class="ml-5" size14px uppercase>
-          <i class="ti-control-play"></i>
-        </app-button>
-      </div>
-
-      <div class="timer">00 : 00 : 00</div>
-    </div>
 
     <ul class="exercises-list">
       <li class="exercise">
@@ -47,8 +26,11 @@
         </div>
         <ul class="exercise__steps">
           <li v-for="(item, index) in 4" :key="index" class="step">
+            <div class="step__intensity">
+              <div class="intensity"></div>
+            </div>
             <div class="step__number">
-              <p class="number__title">Подход {{ index }}</p>
+              <p class="number__title">Подход {{ index + 1 }}</p>
             </div>
             <div class="step__element">
               <p class="element__text">Повторений</p>
@@ -71,6 +53,56 @@
             </div>
           </li>
         </ul>
+        <div class="actions">
+          <app-button size14px uppercase>добавить подход</app-button>
+        </div>
+      </li>
+
+      <li class="exercise">
+        <div class="exercise__header">
+          <div class="header__drag-drop-btn">
+            <i class="ti-exchange-vertical"></i>
+          </div>
+          <p class="header__title">Тяга верхнего блока</p>
+          <div class="header__parameter">
+            <p class="parameter__text">Подходы</p>
+            <p class="parameter__value">4</p>
+          </div>
+          <div class="header__parameter">
+            <p class="parameter__text">Повторений</p>
+            <p class="parameter__value">10 - 15</p>
+          </div>
+          <div class="header__parameter">
+            <p class="parameter__text">Отягощение</p>
+            <p class="parameter__value">5 кг.</p>
+          </div>
+          <div class="header__accrodion-btn">
+            <i class="ti-angle-double-down"></i>
+          </div>
+        </div>
+      </li>
+      <li class="exercise">
+        <div class="exercise__header">
+          <div class="header__drag-drop-btn">
+            <i class="ti-exchange-vertical"></i>
+          </div>
+          <p class="header__title">Тяга нижнего блока</p>
+          <div class="header__parameter">
+            <p class="parameter__text">Подходы</p>
+            <p class="parameter__value">4</p>
+          </div>
+          <div class="header__parameter">
+            <p class="parameter__text">Повторений</p>
+            <p class="parameter__value">10 - 15</p>
+          </div>
+          <div class="header__parameter">
+            <p class="parameter__text">Отягощение</p>
+            <p class="parameter__value">5 кг.</p>
+          </div>
+          <div class="header__accrodion-btn">
+            <i class="ti-angle-double-down"></i>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
@@ -90,33 +122,15 @@ export default {
 @import "@/assets/scss/vars.scss";
 
 .exercises {
-  // margin-top: 10px;
+  margin-top: 5px;
   padding: 10px;
   background: $white;
   border: 1px solid $blockBorder;
   border-radius: 6px;
-  .exercises__title-block {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 10px 10px 10px;
-    border-bottom: 1px dashed $blockBorder;
-    .title-block__text {
-      font-weight: 500;
-    }
-    .title-block__action-btns {
-      display: flex;
-    }
-  }
+
   .exercises-list {
-    margin-top: 10px;
-    // padding: 10px;
-    // background: rgba(0, 0, 0, 0.025);
-    // box-shadow: $insetBoxShadow;
-    // border-radius: 6px;
     .exercise {
-      margin-bottom: 5px;
-      // padding: 10px;
+      margin-bottom: 10px;
       background: $white;
       border: 1px solid $blockBorder;
       border-radius: 6px;
@@ -124,7 +138,6 @@ export default {
         display: flex;
         align-items: center;
         padding: 10px;
-        border-bottom: 1px solid $blockBorder;
         .header__drag-drop-btn {
           // border: 1px solid red;
           display: flex;
@@ -164,18 +177,29 @@ export default {
       .exercise__steps {
         display: flex;
         flex-direction: column;
-        margin-top: 10px;
+        background: rgba(0,0,0,.025);
+        border-top: 1px solid $blockBorder;
         .step {
           display: flex;
           align-items: center;
-          margin-bottom: 5px;
           padding: 10px;
-          background: $white;
           border-bottom: 1px dashed $blockBorder;
-          // border-radius: 6px;
+          .step__intensity {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 50px;
+            .intensity {
+              width: 16px;
+              height: 16px;
+              background: $red;
+              border-radius: 50%;
+            }
+          }
           .step__number {
+            margin-left: 10px;
             margin-right: auto;
-            // padding: 0 10px;
             .number__title {
               font-weight: 500;
             }
@@ -205,6 +229,9 @@ export default {
           border-bottom: none;
         }
       }
+    }
+    .exercise:last-child {
+      margin-bottom: 0;
     }
   }
 }
