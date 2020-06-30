@@ -1,26 +1,25 @@
 <template>
   <div class="training-in-progress">
+    <app-page-title>Новая тренировка</app-page-title>
+
     <div class="training-in-progress__content">
-      <p class="training-in-progress__title">Новая тренировка</p>
-      <current-training-overview />
-      <div class="training-in-progress__main-data">
-        <current-training-info />
-        <current-training-day-exercises />
-      </div>
+      <training-info />
+      <training-process />
     </div>
   </div>
 </template>
 
 <script>
-import CurrentTrainingOverview from '@/components/training-diary/TrainingInProgress/CurrentTrainingOverview.vue'
-import CurrentTrainingInfo from '@/components/training-diary/TrainingInProgress/CurrentTrainingInfo.vue'
-import CurrentTrainingDayExercises from '@/components/training-diary/TrainingInProgress/CurrentTrainingDayExercises.vue'
+import AppPageTitle from '@/components/basic/AppPageTitle'
+import TrainingInfo from '@/components/training-diary/TrainingInProgress/TrainingInfo'
+import TrainingProcess from '@/components/training-diary/TrainingInProgress/TrainingProcess/index'
+
 export default {
   // middleware: ['userAuth'],
   components: {
-    CurrentTrainingOverview,
-    CurrentTrainingInfo,
-    CurrentTrainingDayExercises
+    AppPageTitle,
+    TrainingInfo,
+    TrainingProcess
   }
 }
 </script>
@@ -39,16 +38,8 @@ export default {
   .training-in-progress__content {
     // border: 1px solid red;
     display: flex;
-    flex-direction: column;
     width: 100%;
     max-width: 1700px;
-    .training-in-progress__title {
-      text-align: center;
-      font-size: 26px;
-    }
-    .training-in-progress__main-data {
-      display: flex;
-    }
   }
 }
 
