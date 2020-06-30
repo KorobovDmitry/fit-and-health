@@ -7,8 +7,8 @@
       <training-days />
 
       <div class="exercises-list-and-training-day-info">
-        <exercises-list />
-        <training-day-info />
+        <!-- <exercises-list /> -->
+        <!-- <training-day-info /> -->
       </div>
 
     </div>
@@ -20,16 +20,16 @@ import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import TrainingOverview from '@/components/training-diary/TrainingProgramEditor/Editor/TrainingOverview/index'
 import TrainingDays from '@/components/training-diary/TrainingProgramEditor/Editor/TrainingDays'
 
-import TrainingDayInfo from '@/components/training-diary/TrainingProgramEditor/Editor/TrainingDayInfo'
-import ExercisesList from "@/components/training-diary/TrainingProgramEditor/Editor/ExercisesList/index";
+// import TrainingDayInfo from '@/components/training-diary/TrainingProgramEditor/Editor/TrainingDayInfo'
+// import ExercisesList from "@/components/training-diary/TrainingProgramEditor/Editor/ExercisesList/index";
 
 export default {
   components: {
     AppBlockTitle,
     TrainingOverview,
     TrainingDays,
-    TrainingDayInfo,
-    ExercisesList
+    // TrainingDayInfo,
+    // ExercisesList
   }
 }
 </script>

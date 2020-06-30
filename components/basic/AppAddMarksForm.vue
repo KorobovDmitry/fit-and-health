@@ -1,6 +1,6 @@
 <template>
   <div class="add-marks-form">
-    <div class="add-marks-form__block-title">Добавленные отмеки</div>
+    <div class="add-marks-form__block-title">Добавленные отметки</div>
 
     <div class="add-marks-form__marks">
       <div class="mark" v-for="(item, index) in marks" :key="index">

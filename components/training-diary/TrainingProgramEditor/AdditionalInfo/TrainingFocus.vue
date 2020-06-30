@@ -48,8 +48,7 @@ export default {
 
   .chart {
     // border: 1px solid red;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin: 160px 0;
   }
   .percents {
     margin-top: auto;

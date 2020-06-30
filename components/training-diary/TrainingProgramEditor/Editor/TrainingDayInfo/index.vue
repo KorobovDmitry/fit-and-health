@@ -1,19 +1,14 @@
 <template>
   <div class="training-day-info">
 
-    <p class="training-day-info__block-title">Редактор тренировочного дня</p>
-
     <div class="base-info">
-      <p class="base-info__block-title">Основная информация</p>
-      <div class="base-info__elements">
-        <div class="base-info__element">
-          <p class="element__title">Название тренировочного дня:</p>
-          <app-input-text value="День 1. Ноги и плечи" />
-        </div>
-        <div class="base-info__element">
-          <p class="element__title">Комментарий к тренеровочному дню:</p>
-          <app-textarea placeholder="Комментарий" />
-        </div>
+      <div class="base-info__element">
+        <p class="element__title">Название тренировочного дня:</p>
+        <app-input-text value="День 1. Ноги и плечи" />
+      </div>
+      <div class="base-info__element">
+        <p class="element__title">Комментарий к тренеровочному дню:</p>
+        <app-textarea placeholder="Комментарий" />
       </div>
     </div>
 
@@ -86,35 +81,17 @@ export default {
 
 .training-day-info {
   // border: 1px solid red;
-  margin-left: 5px;
-  padding: 10px;
-  background: $white;
-  border: 1px solid $blockBorder;
-  border-radius: 6px;
-  width: 100%;
-
-  .training-day-info__block-title {
-    padding-bottom: 10px;
-    text-align: center;
-    font-weight: 500;
-    border-bottom: 1px dashed $blockBorder;
-  }
+  margin-top: 10px;
 
   .base-info {
     .base-info__block-title {
       padding: 10px 20px;
       font-weight: 500;
     }
-    .base-info__elements {
-      padding: 0 10px 10px 10px;
-      background: rgba(0,0,0,.05);
-      border-radius: 6px;
-      box-shadow: $insetBoxShadow;
-      .base-info__element {
-        .element__title {
-          padding: 10px;
-          font-weight: 500;
-        }
+    .base-info__element {
+      .element__title {
+        padding: 10px;
+        font-weight: 500;
       }
     }
   }
@@ -126,11 +103,11 @@ export default {
     }
     .exercises-list {
       // border: 1px solid red;
-      padding: 10px;
+      // padding: 10px;
       min-height: 450px;
-      background: rgba(0,0,0,.05);
-      border-radius: 6px;
-      box-shadow: $insetBoxShadow;
+      // background: rgba(0,0,0,.05);
+      // border-radius: 6px;
+      // box-shadow: $insetBoxShadow;
       .exercises-list__list-item {
         display: flex;
         align-items: center;
@@ -209,8 +186,9 @@ export default {
     justify-content: space-between;
     margin-top: 10px;
     padding: 10px 0;
-    // border-top: 1px dashed $blockBorder;
+    border-top: 1px dashed $blockBorder;
     .stats__item {
+      flex: 1 1 auto;
       display: flex;
       flex-direction: column;
       align-items: center;

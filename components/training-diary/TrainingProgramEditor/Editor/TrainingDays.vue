@@ -9,6 +9,11 @@
           <p class="last-training__text">ПОСЛЕДНЯЯ ТРЕНИРОВКА:</p>
           <p class="last-training__value">суббота, 10 декабря 2019</p>
         </div>
+
+        <div class="chart">
+          <p>график прогресса или превью изображение</p>
+        </div>
+
         <div class="day__overview">
           <div class="overview__element">
             <i class="ti-rocket element__icon"></i>
@@ -23,12 +28,18 @@
         </div>
       </div>
     </div>
+
+    <training-day-info />
   </div>
 </template>
 
 <script>
+import TrainingDayInfo from '@/components/training-diary/TrainingProgramEditor/Editor/TrainingDayInfo'
+
 export default {
-  
+  components: {
+    TrainingDayInfo
+  }
 }
 </script>
 
@@ -42,7 +53,7 @@ export default {
   border: 1px solid $blockBorder;
   border-radius: 6px;
   .tarining-days__block-title {
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
     padding-bottom: 10px;
     text-align: center;
     font-weight: 500;
@@ -50,11 +61,15 @@ export default {
   }
   .days {
     display: flex;
+    padding: 20px 0;
+    border-bottom: 1px dashed $blockBorder;
     .day {
       display: flex;
       flex-direction: column;
       margin-right: 10px;
       padding: 10px;
+      width: 100%;
+      max-width: 300px;
       background: $white;
       border: 1px solid $blockBorder;
       border-radius: 6px;
@@ -74,8 +89,16 @@ export default {
           font-size: 12px;
         }
       }
+      .chart {
+        margin-top: 20px;
+        height: 150px;
+        background: rgba(0,0,0,0.02);
+        border: 1px solid $blockBorder;
+        border-radius: 6px;
+      }
       .day__overview {
         display: flex;
+        justify-content: center;
         margin-top: 20px;
         padding-top: 10px;
         border-top: 1px dashed $blockBorder;
@@ -84,7 +107,7 @@ export default {
           flex-wrap: wrap;
           align-items: center;
           justify-content: center;
-          padding: 5px 10px;
+          padding: 0 10px;
           border-right: 1px solid $blockBorder;
           .element__icon {}
           .element__count {

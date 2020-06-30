@@ -78,9 +78,9 @@ export default {
     display: flex;
     margin-top: 5px;
     .img-and-social {
-      width: 400px;
-      min-width: 400px;
-      max-width: 400px;
+      width: 300px;
+      min-width: 300px;
+      max-width: 300px;
       .img__wrapper {
         margin-bottom: 5px;
         padding: 10px;
