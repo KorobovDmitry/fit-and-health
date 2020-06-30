@@ -3,7 +3,6 @@
     <app-block-title>Процесс тренировки</app-block-title>
 
     <div class="training-process__content">
-      <training-days />
       <exercises />
     </div>
   </div>
@@ -11,13 +10,11 @@
 
 <script>
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
-import TrainingDays from '@/components/training-diary/TrainingInProgress/TrainingProcess/TrainingDays'
 import Exercises from '@/components/training-diary/TrainingInProgress/TrainingProcess/Exercises'
 
 export default {
   components: {
     AppBlockTitle,
-    TrainingDays,
     Exercises
   }
 }

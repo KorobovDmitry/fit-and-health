@@ -120,7 +120,7 @@ export default {
 @import "@/assets/scss/vars.scss";
 
 .exercises {
-  margin-top: 10px;
+  // margin-top: 10px;
   padding: 10px;
   background: $white;
   border: 1px solid $blockBorder;

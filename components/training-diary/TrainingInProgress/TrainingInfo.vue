@@ -3,11 +3,39 @@
     <app-block-title>Общая информация</app-block-title>
 
     <div class="training-info__content">
-      <div class="main-stats">
-        <div class="main-stats__date">
-          <p class="date__text">Дата тренировки:</p>
-          <p class="date__value">четверг, 18 декабря 2019</p>
+      <div class="training-days">
+        <div class="training-days__title-block">
+          <div class="title-block__text">Тренировочные дни</div>
+          <i class="ti-angle-double-down"></i>
         </div>
+        <ul class="days">
+          <li class="day">День 1. Ноги и плечи</li>
+          <li class="day day--active">День 2. Спина и трицепс</li>
+          <li class="day">День 3. Ноги и плечи</li>
+          <li class="day">День 4. Грудь и бицепс</li>
+        </ul>
+      </div>
+
+      <div class="tabata-timer">
+        <p class="element__title">Табата таймер</p>
+        <p class="element__data">00 : 00 : 00</p>
+        <div class="element__timer-btn-wrapper">
+          <i class="element__timer-btn ti-control-backward"></i>
+          <i class="element__timer-btn ti-control-play"></i>
+          <!-- <i class="element__timer-btn ti-control-record"></i> -->
+          <!-- <i class="element__timer-btn ti-control-pause"></i> -->
+          <i class="element__timer-btn ti-control-stop"></i>
+          <i class="element__timer-btn ti-control-forward"></i>
+          <!-- <i class="element__timer-btn ti-volume"></i> -->
+        </div>
+      </div>
+
+      <div class="date">
+        <p class="date__text">Дата тренировки:</p>
+        <p class="date__value">четверг, 18 декабря 2019</p>
+      </div>
+
+      <div class="main-stats">
         <div class="main-stats__overview">
           <div class="overview__element">
             <p class="element__title">Продолжительность тренировки</p>
@@ -31,19 +59,6 @@
         </div>
       </div>
 
-      <div class="tabata-timer">
-        <p class="element__title">Табата таймер</p>
-        <p class="element__data">00 : 00 : 00</p>
-        <div class="element__timer-btn-wrapper">
-          <i class="element__timer-btn ti-control-backward"></i>
-          <i class="element__timer-btn ti-control-play"></i>
-          <!-- <i class="element__timer-btn ti-control-record"></i> -->
-          <!-- <i class="element__timer-btn ti-control-pause"></i> -->
-          <i class="element__timer-btn ti-control-stop"></i>
-          <i class="element__timer-btn ti-control-forward"></i>
-          <!-- <i class="element__timer-btn ti-volume"></i> -->
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -73,22 +88,63 @@ export default {
     background: $hiddenBlockBG;
     box-shadow: $boxShadow;
     border-radius: 6px;
-    .main-stats {
+    .training-days {
       padding: 10px;
       background: $white;
       border: 1px solid $blockBorder;
       border-radius: 6px;
-      .main-stats__date {
+      .training-days__title-block {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 0 10px 10px 10px;
         border-bottom: 1px dashed $blockBorder;
-        .date__text {
+        .title-block__text {
           font-weight: 500;
         }
-        .date__value {
-          margin-top: 5px;
-          font-size: 14px;
+      }
+      .days {
+        margin-top: 10px;
+        .day {
+          margin-bottom: 10px;
+          padding: 10px;
+          border: 1px solid $blockBorder;
+          border-radius: 6px;
+          transition: $tr-02;
+          cursor: pointer;
+        }
+        .day:hover {
+          color: $green;
+        }
+        .day--active {
+          border: 2px solid $green;
+          color: $green;
+          font-weight: 500;
         }
       }
+    }
+    
+    .date {
+      margin-top: 5px;
+      padding: 10px;
+      background: $white;
+      border: 1px solid $blockBorder;
+      border-radius: 6px;
+      .date__text {
+        font-weight: 500;
+      }
+      .date__value {
+        margin-top: 5px;
+        font-size: 14px;
+      }
+    }
+    .main-stats {
+      margin-top: 5px;
+      padding: 10px;
+      background: $white;
+      border: 1px solid $blockBorder;
+      border-radius: 6px;
+      
       .main-stats__overview {
         display: flex;
         flex-wrap: wrap;
@@ -124,9 +180,6 @@ export default {
         }
       }
     }
-
-
-
     .tabata-timer {
       margin-top: 5px;
       padding: 20px 10px;
