@@ -3,7 +3,7 @@
     <app-page-title>Новая тренировка</app-page-title>
 
     <div class="training-in-progress__content">
-      <training-info />
+      <training-days />
       <training-process />
     </div>
   </div>
@@ -11,14 +11,14 @@
 
 <script>
 import AppPageTitle from '@/components/basic/AppPageTitle'
-import TrainingInfo from '@/components/training-diary/TrainingInProgress/TrainingInfo'
+import TrainingDays from '@/components/training-diary/TrainingInProgress/TrainingDays'
 import TrainingProcess from '@/components/training-diary/TrainingInProgress/TrainingProcess/index'
 
 export default {
   // middleware: ['userAuth'],
   components: {
     AppPageTitle,
-    TrainingInfo,
+    TrainingDays,
     TrainingProcess
   }
 }

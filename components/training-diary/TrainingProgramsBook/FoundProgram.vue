@@ -72,7 +72,7 @@
         </div>
       </div>
       <div class="chart-and-marks__bottom">
-        <nuxt-link to="training-programs/program-full-overview" class="open-program-btn">Открыть программу</nuxt-link>
+        <nuxt-link to="training-programs/program-123" class="open-program-btn">Открыть программу</nuxt-link>
       </div>
     </div>
   </div>

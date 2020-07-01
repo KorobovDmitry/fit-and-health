@@ -49,58 +49,22 @@
               <p class="element__value">00 : 01 : 12</p>
             </div>
             <div class="step__btn">
-              <i class="ti-pencil"></i>
+              <i class="ti-more"></i>
             </div>
           </li>
         </ul>
-        <div class="actions">
-          <app-button size14px uppercase>добавить подход</app-button>
-        </div>
-      </li>
-
-      <li class="exercise">
-        <div class="exercise__header">
-          <div class="header__drag-drop-btn">
-            <i class="ti-exchange-vertical"></i>
+        <div class="exercise__control">
+          <div class="control">
+            <i class="ti-plus control__icon"></i>
           </div>
-          <p class="header__title">Тяга верхнего блока</p>
-          <div class="header__parameter">
-            <p class="parameter__text">Подходы</p>
-            <p class="parameter__value">4</p>
+          <div class="control">
+            <i class="ti-control-stop control__icon"></i>
           </div>
-          <div class="header__parameter">
-            <p class="parameter__text">Повторений</p>
-            <p class="parameter__value">10 - 15</p>
+          <div class="control">
+            <i class="ti-control-pause control__icon"></i>
           </div>
-          <div class="header__parameter">
-            <p class="parameter__text">Отягощение</p>
-            <p class="parameter__value">5 кг.</p>
-          </div>
-          <div class="header__accrodion-btn">
-            <i class="ti-angle-double-down"></i>
-          </div>
-        </div>
-      </li>
-      <li class="exercise">
-        <div class="exercise__header">
-          <div class="header__drag-drop-btn">
-            <i class="ti-exchange-vertical"></i>
-          </div>
-          <p class="header__title">Тяга нижнего блока</p>
-          <div class="header__parameter">
-            <p class="parameter__text">Подходы</p>
-            <p class="parameter__value">4</p>
-          </div>
-          <div class="header__parameter">
-            <p class="parameter__text">Повторений</p>
-            <p class="parameter__value">10 - 15</p>
-          </div>
-          <div class="header__parameter">
-            <p class="parameter__text">Отягощение</p>
-            <p class="parameter__value">5 кг.</p>
-          </div>
-          <div class="header__accrodion-btn">
-            <i class="ti-angle-double-down"></i>
+          <div class="control">
+            <i class="ti-control-play control__icon"></i>
           </div>
         </div>
       </li>
@@ -122,6 +86,9 @@ export default {
 @import "@/assets/scss/vars.scss";
 
 .exercises {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
   margin-top: 5px;
   padding: 10px;
   background: $white;
@@ -129,6 +96,11 @@ export default {
   border-radius: 6px;
 
   .exercises-list {
+    flex: 1 1 auto;
+    padding: 10px;
+    background: rgba(0,0,0,.025);
+    box-shadow: $insetBoxShadow;
+    border-radius: 6px;
     .exercise {
       margin-bottom: 10px;
       background: $white;
@@ -148,7 +120,7 @@ export default {
         .header__title {
           flex: 1 1 auto;
           padding: 0 10px;
-          font-weight: 500;
+          font-weight: 600;
         }
         .header__parameter {
           // border: 1px solid red;
@@ -177,7 +149,7 @@ export default {
       .exercise__steps {
         display: flex;
         flex-direction: column;
-        background: rgba(0,0,0,.025);
+        // background: rgba(0,0,0,.025);
         border-top: 1px solid $blockBorder;
         .step {
           display: flex;
@@ -202,6 +174,7 @@ export default {
             margin-right: auto;
             .number__title {
               font-weight: 500;
+              white-space: nowrap;
             }
           }
           .step__element {
@@ -210,10 +183,10 @@ export default {
             align-items: center;
             padding: 0 10px;
             width: 100%;
-            max-width: 200px;
+            max-width: 150px;
             .element__text {
               text-transform: uppercase;
-              font-size: 12px;
+              font-size: 10px;
             }
             .element__value {
               margin-top: 5px;
@@ -227,6 +200,31 @@ export default {
         }
         .step:last-child {
           border-bottom: none;
+        }
+      }
+      .exercise__control {
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        border-top: 1px solid $blockBorder;
+        .control {
+          // border: 1px solid red;
+          margin-left: 10px;
+          padding: 10px;
+          cursor: pointer;
+          .control__icon {
+            font-size: 20px;
+            transition: $tr-02;
+          }
+        }
+        .control:first-child {
+          margin-left: 0;
+          margin-right: auto;
+        }
+        .control:hover {
+          .control__icon {
+            color: $green;
+          }
         }
       }
     }

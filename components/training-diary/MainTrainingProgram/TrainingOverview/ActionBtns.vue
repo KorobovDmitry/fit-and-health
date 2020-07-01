@@ -6,7 +6,11 @@
         <app-button size16px uppercase class="action-btn">Редактировать</app-button>
       </router-link>
 
-      <router-link tag="a" to="training-diary/training-in-progress?training-programm=4-day-split">
+      <router-link tag="a" to="training-diary/training-programs/prodram-123">
+        <app-button size16px uppercase class="action-btn">Подробнее</app-button>
+      </router-link>
+
+      <router-link tag="a" to="training-diary/training-in-progress">
         <app-button size16px uppercase class="action-btn">Начать тренировку</app-button>
       </router-link>
     </div>

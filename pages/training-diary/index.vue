@@ -1,10 +1,8 @@
 <template>
   <div class="training-diary">
-
     <app-page-title>Дневник тренировок</app-page-title>
 
     <div class="training-diary__content">
-
       <div class="center">
         <main-training-program />
       </div>
@@ -27,16 +25,14 @@
           </div>
         </div>
       </div>
-
     </div>
-    
+
   </div>
 </template>
 
 <script>
 import AppPageTitle from "@/components/basic/AppPageTitle"
 import AppBlockTitle from "@/components/basic/AppBlockTitle"
-// import PageInfo from "@/components/training-diary/PageInfo"
 import MainTrainingProgram from "@/components/training-diary/MainTrainingProgram/index"
 import MealPlanerCalendar from "@/components/mealPlaner/MealPlanerSettings/MealPlanerCalendar"
 
@@ -44,7 +40,6 @@ export default {
   components: {
     AppPageTitle,
     AppBlockTitle,
-    // PageInfo,
     MainTrainingProgram,
     MealPlanerCalendar
   },
@@ -70,7 +65,6 @@ export default {
     width: 100%;
     max-width: 1700px;
     .left {
-      // width: 100%;
       margin-right: 40px;
       width: 400px;
     }
