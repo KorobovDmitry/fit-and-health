@@ -4,10 +4,16 @@
     <div class="training-process__content">
       <main-stats />
       <div class="video-and-timer">
-        <div class="video">video</div>
+        <div class="video">video and training comment</div>
         <timer />
       </div>
+
       <exercises />
+
+      <div class="comment-and-player">
+        <comment />
+        <audio-player />
+      </div>
     </div>
   </div>
 </template>
@@ -16,6 +22,8 @@
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import MainStats from '@/components/training-diary/TrainingInProgress/TrainingProcess/MainStats'
 import Timer from '@/components/training-diary/TrainingInProgress/TrainingProcess/Timer'
+import Comment from '@/components/training-diary/TrainingInProgress/TrainingProcess/Comment'
+import AudioPlayer from '@/components/training-diary/TrainingInProgress/TrainingProcess/AudioPlayer'
 import Exercises from '@/components/training-diary/TrainingInProgress/TrainingProcess/Exercises'
 
 export default {
@@ -23,6 +31,8 @@ export default {
     AppBlockTitle,
     MainStats,
     Timer,
+    Comment,
+    AudioPlayer,
     Exercises
   }
 }
@@ -49,11 +59,15 @@ export default {
       .video {
         flex: 1 1 auto;
         padding: 10px;
-        height: 500px;
+        height: 600px;
         background: $white;
         border: 1px solid $blockBorder;
         border-radius: 6px;
       }
+    }
+    .comment-and-player {
+      display: flex;
+      margin-top: 5px;
     }
   }
 }

@@ -3,14 +3,8 @@
     <app-block-title>Информация о тренировочной программе</app-block-title>
     <div class="overview-and-training-days">
       <training-overview />
-
       <training-days />
-
-      <div class="exercises-list-and-training-day-info">
-        <!-- <exercises-list /> -->
-        <!-- <training-day-info /> -->
-      </div>
-
+      <training-day-settings />
     </div>
   </div>
 </template>
@@ -19,17 +13,14 @@
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import TrainingOverview from '@/components/training-diary/TrainingProgramEditor/Editor/TrainingOverview/index'
 import TrainingDays from '@/components/training-diary/TrainingProgramEditor/Editor/TrainingDays'
-
-// import TrainingDayInfo from '@/components/training-diary/TrainingProgramEditor/Editor/TrainingDayInfo'
-// import ExercisesList from "@/components/training-diary/TrainingProgramEditor/Editor/ExercisesList/index";
+import TrainingDaySettings from '@/components/training-diary/TrainingProgramEditor/Editor/TrainingDaySettings/index'
 
 export default {
   components: {
     AppBlockTitle,
     TrainingOverview,
     TrainingDays,
-    // TrainingDayInfo,
-    // ExercisesList
+    TrainingDaySettings
   }
 }
 </script>
@@ -47,10 +38,6 @@ export default {
     background: $hiddenBlockBG;
     box-shadow: $boxShadow;
     border-radius: 6px;
-    .exercises-list-and-training-day-info {
-      display: flex;
-      margin-top: 5px;
-    }
   }
 }
 

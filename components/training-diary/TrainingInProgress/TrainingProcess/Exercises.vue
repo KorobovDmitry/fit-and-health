@@ -101,6 +101,7 @@ export default {
     background: rgba(0,0,0,.025);
     box-shadow: $insetBoxShadow;
     border-radius: 6px;
+    min-height: 600px;
     .exercise {
       margin-bottom: 10px;
       background: $white;

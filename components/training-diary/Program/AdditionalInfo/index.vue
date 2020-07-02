@@ -10,6 +10,10 @@
 
       <div class="action-btns">
         <app-button class="mt-10" uppercase >
+          <i class="ti-bar-chart"></i>
+        </app-button>
+
+        <app-button class="ml-5 mt-10" uppercase >
           <i class="ti-pencil"></i>
         </app-button>
 
