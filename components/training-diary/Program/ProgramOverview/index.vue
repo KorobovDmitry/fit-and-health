@@ -27,19 +27,40 @@
       </div>
 
       <div class="training-days">
-        <p> тренировочные дни</p>
         <div class="days">
           <div v-for="(item, index) in 4" :key="index" class="day">
-            <div class="day__overview">
-              <div class="day__title">День {{ index + 1 }}. Название тренировочного дня</div>
-              <div>Описнаие / комментарий</div>
-              <div>статистика</div>
+            <div class="overview-and-video">
+              <div class="overview">
+                <div class="overview__title">День {{ index + 1 }}. Название тренировочного дня</div>
+                <div class="overview__comment">Описнаие / комментарий</div>
+              </div>
+              <div class="video">video</div>
             </div>
-            <div class="day__exercises">
+
+            <div class="exercises">
               <ul class="exercises__list">
                 <li class="list__item">exercise</li>
               </ul>
             </div>
+
+            <div class="stats">
+              <div class="stats__element">
+                <div class="element__text">Количество упражнений</div>
+                <div class="ti-rocket element__icon"></div>
+                <div class="element__value">4</div>
+              </div>
+              <div class="stats__element">
+                <div class="element__text">Завершено тренировок</div>
+                <div class="ti-check-box element__icon"></div>
+                <div class="element__value">12</div>
+              </div>
+              <div class="stats__element">
+                <div class="element__text">Интенсивность тренировок</div>
+                <div class="element__value">Высокая</div>
+              </div>
+            </div>
+
+            
           </div>
         </div>
       </div>
@@ -142,30 +163,72 @@ export default {
     }
 
     .training-days {
-      margin-top: 5px;
-      padding: 10px;
-      background: $white;
-      border: 1px solid $blockBorder;
-      border-radius: 6px;
+      
       .days {
         .day {
           display: flex;
-          margin-bottom: 10px;
-          padding-bottom: 10px;
-          border-bottom: 1px dashed $blockBorder;
-          .day__overview {
-            // border: 1px solid red;
-            flex: 1 1 auto;
-            width: 100%;
-            max-width: 400px;
-            .day__title {
-              font-weight: 500;
+          flex-direction: column;
+          margin-top: 5px;
+          padding: 10px;
+          background: $white;
+          border: 1px solid $blockBorder;
+          border-radius: 6px;
+          .overview-and-video {
+            display: flex;
+            .overview {
+              // border: 1px solid red;
+              margin-right: 10px;
+              width: 50%;
+              .overview__title {
+                padding: 10px;
+                font-weight: 500;
+              }
+              .overview__comment {
+                padding: 10px;
+                // margin-top: 10px;
+                height: 300px;
+              }
+            }
+            .video {
+              width: 50%;
+              border: 1px solid $blockBorder;
+              border-radius: 6px;
             }
           }
-          .day__exercises {
+
+          .stats {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed $blockBorder;
+            .stats__element {
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              justify-content: center;
+              padding: 10px 15px;
+              .element__text {
+                margin-bottom: 5px;
+                width: 100%;
+                text-transform: uppercase;
+                text-align: center;
+                font-size: 12px;
+              }
+              .element__icon {
+                margin-right: 10px;
+              }
+              .element__value {
+                font-weight: 500;
+              }
+            }
+          }
+
+          .exercises {
             // border: 1px solid red;
             flex: 1 1 auto;
-            margin-left: 20px;
+            margin-top: 10px;
             .exercises__list {
               padding: 10px;
               background: rgba(0,0,0,.025);
