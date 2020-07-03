@@ -9,25 +9,25 @@
 
       <div class="categories">
 
-        <div v-for="(item, index) in 3" :key="index" class="category__item">
+        <div v-for="(element, index) in exercises" :key="index" class="category__item">
           <app-accordion :isOpened="false">
             <template v-slot:accordionHeader>
               <div class="item__header">
                 <div class="header__title">
-                  <p class="title__text">Широчайшие</p>
-                  <p class="title__exercises-count">Кол-во упражнений 24</p>
+                  <p class="title__text">{{ element.category }}</p>
+                  <p class="title__exercises-count">Кол-во упражнений {{ element.exercises.length }}</p>
                 </div>
                 <i class="ti-angle-double-down header__icon"></i>
               </div>
             </template>
             <template v-slot:accordionHiddenContent>
               <ul class="item__exercises-list">
-                <li v-for="(item, index) in 4" :key="index" class="exercises-list__item">
+                <li v-for="(exercise, index) in element.exercises" :key="index" class="exercises-list__item">
                   <div class="item__exercises-image">
                     <img src="" alt="img" class="exercise-image">
                   </div>
                   <div class="item__exercise-title-and-type">
-                    <p class="exercises-title">Подтягивания широким хватом</p>
+                    <p class="exercises-title">{{ exercise.title }}</p>
                     <p class="exercise__target-muscles">Широчайшие, предплечья</p>
                   </div>
                 </li>

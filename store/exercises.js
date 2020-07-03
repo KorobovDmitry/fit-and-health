@@ -12,15 +12,25 @@ export const getters = {
 
 export const mutations = {
   setExercises (state, ExercisesList) {
+    // получаем массив возможных категорий
     let categories = []
-
     for (let i = 0; i < ExercisesList.length; i++) {
-
+      if (!categories.includes(ExercisesList[i].category)) {
+        categories.push(ExercisesList[i].category)
+      }
     }
-
-    console.log(categories)
-
-
+    // Формируем массив упражнений с категориями
+    categories.forEach(element => {
+      state.exercises.push({category: element, exercises: []})
+    })
+    // Распределяем упражнения по категориям в массиве exercises
+    for (let i = 0; i < ExercisesList.length; i++) {
+      state.exercises.forEach(element => {
+        if (ExercisesList[i].category === element.category) {
+          element.exercises.push(ExercisesList[i])
+        }
+      })
+    }
   },
   addNewExercises (state, savedExercise) {
     state.exercises.push(savedExercise)
