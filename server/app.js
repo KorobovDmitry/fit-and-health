@@ -10,6 +10,7 @@ const foodCalorieTableRoutes = require('./routes/foodCalorieTableRoutes')
 const recipesBookRoutes = require('./routes/recipesBookRoutes')
 const recipeRoutes = require('./routes/recipeRoutes')
 const trainingDiaryRoutes = require('./routes/trainingDiaryRoutes')
+const ExercisesRoutes = require('./routes/ExercisesRoutes')
 
 const app = express()
 
@@ -44,6 +45,7 @@ app.use('/api/food-calorie-table', foodCalorieTableRoutes)
 app.use('/api/recipes-book', recipesBookRoutes)
 app.use('/api/recipe', recipeRoutes)
 app.use('/api/training-diary', trainingDiaryRoutes)
+app.use('/api/exercises', ExercisesRoutes)
 
 
 module.exports = app

@@ -10,6 +10,9 @@ import AppPageTitle from '@/components/basic/AppPageTitle'
 import ExerciseDescription from '@/components/training-diary/ExerciseGuide/ExerciseDescription/index'
 
 export default {
+  async fetch ({ store }) {
+    await store.dispatch('exercises/fetchExercisesList')
+  },
   components: {
     AppPageTitle,
     ExerciseDescription
