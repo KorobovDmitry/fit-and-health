@@ -81,7 +81,7 @@ export default {
         flex-direction: column;
         .info-and-focus {
           display: flex;
-          margin-top: 10px;
+          margin-top: 5px;
         }
       }
       .main-info__right-block {
@@ -89,8 +89,8 @@ export default {
           display: flex;
           .btn {
             flex: 1 1 auto;
-            margin-top: 10px;
-            margin-left: 10px;
+            margin-top: 5px;
+            margin-left: 5px;
             padding: 10px 20px;
             background: $white;
             border: 1px solid $blockBorder;

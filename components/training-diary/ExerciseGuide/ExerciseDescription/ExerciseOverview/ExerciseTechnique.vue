@@ -14,7 +14,7 @@ export default {}
 
 .exercise-technique {
   flex: 1 1 auto;
-  margin-top: 10px;
+  margin-top: 5px;
   padding: 10px;
   background: $white;
   border: 1px solid $blockBorder;

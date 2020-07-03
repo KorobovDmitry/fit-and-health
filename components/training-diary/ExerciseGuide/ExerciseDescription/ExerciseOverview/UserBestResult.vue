@@ -14,7 +14,7 @@ export default {
 @import "@/assets/scss/vars.scss";
 
 .user-best-result {
-  margin-top: 10px;
+  margin-top: 5px;
   padding: 10px 20px;
   background: $white;
   border: 1px solid $blockBorder;

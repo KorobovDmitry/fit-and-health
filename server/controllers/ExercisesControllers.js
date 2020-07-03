@@ -1,13 +1,27 @@
 const Sequelize = require('sequelize')
 // const Op = Sequelize.Op;
 // const errorHandler = require('../utils/errorHandler.js')
-// const Products = require('../models/Products')
+const Exercises = require('../models/Exercises')
 
 module.exports.fetchExercisesList = async function (req, res) {
   try {
-    res.status(200).json({message: 'exercises fetched'})
+    const ExercisesList = await Exercises.findAll()
+    res.status(200).json(ExercisesList)
   } catch (err) {
     console.log(err)
   }
 
+}
+
+module.exports.saveNewExercise = async function (req, res) {
+  try {
+    const savedExercise = await Exercises.create({
+      title: req.body.title,
+      techniqueDescription: req.body.techniqueDescription,
+      category: req.body.category
+    })
+    res.status(200).json(savedExercise)
+  } catch (err) {
+    console.log(err)
+  }
 }

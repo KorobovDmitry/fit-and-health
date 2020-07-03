@@ -8,6 +8,6 @@ const router = express.Router()
 
 // http://localhost:3000/api/exercises
 router.get('/', controller.fetchExercisesList)
-
+router.post('/saveNewExercise', controller.saveNewExercise)
 
 module.exports = router

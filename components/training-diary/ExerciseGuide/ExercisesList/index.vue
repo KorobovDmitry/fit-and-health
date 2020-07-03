@@ -2,6 +2,8 @@
   <div class="exercises-list">
     <app-block-title>База упражнений</app-block-title>
 
+    <!-- <pre>{{ exercises }}</pre> -->
+
     <div class="exercises-list__content">
       <app-search-block small />
 
@@ -11,7 +13,7 @@
           <app-accordion :isOpened="false">
             <template v-slot:accordionHeader>
               <div class="item__header">
-                <img class="header__img" src alt="img" />
+                <!-- <img class="header__img" src alt="img" /> -->
                 <div class="header__title">
                   <p class="title__text">Широчайшие</p>
                   <p class="title__exercises-count">Кол-во упражнений 24</p>
@@ -21,15 +23,13 @@
             </template>
             <template v-slot:accordionHiddenContent>
               <ul class="item__exercises-list">
-                <li v-for="(item, index) in 4" :key="index" class="exercises-list__list-item">
-                  <div class="list-item__exercises-drag-drop-btn">
-                    <i class="ti-move"></i>
+                <li v-for="(item, index) in 4" :key="index" class="exercises-list__item">
+                  <div class="item__exercises-image">
+                    <img src="" alt="img" class="exercise-image">
                   </div>
-                  <div>
-                    <p class="list-item__exercises-title">Подтягивания широким хватом</p>
-                  </div>
-                  <div class="list-item__exercises-more-btn">
-                    <i class="ti-more"></i>
+                  <div class="item__exercise-title-and-type">
+                    <p class="exercises-title">Подтягивания широким хватом</p>
+                    <p class="exercise__target-muscles">Широчайшие, предплечья</p>
                   </div>
                 </li>
               </ul>
@@ -39,8 +39,6 @@
 
       </div>
 
-      <app-button size16px uppercase fillArea >Добавить новое упражнение в базу</app-button>
-
     </div>
   </div>
 </template>
@@ -49,14 +47,20 @@
 import AppBlockTitle from "@/components/basic/AppBlockTitle"
 import AppSearchBlock from "@/components/basic/AppSearchBlock.vue"
 import AppAccordion from "@/components/basic/AppAccordion"
-import AppButton from "@/components/basic/AppButton.vue"
 
 export default {
   components: {
     AppBlockTitle,
     AppSearchBlock,
-    AppAccordion,
-    AppButton
+    AppAccordion
+  },
+  data () {
+    return {}
+  },
+  computed: {
+    exercises () {
+      return this.$store.getters['exercises/getExercises']
+    }
   }
 }
 </script>
@@ -73,19 +77,25 @@ export default {
     // border: 1px solid red;
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    background: $hiddenBlockBG;
+    box-shadow: $boxShadow;
+    border-radius: 6px;
+    // height: 600px;
     .categories {
       // border: 1px solid red;
-      margin: 20px 0;
+      margin-top: 10px;
       .category__item {
         // border: 1px solid red;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
+        background: $white;
+        border: 1px solid $blockBorder;
+        border-radius: 6px;
         .item__header {
           display: flex;
           align-items: center;
           padding: 10px;
-          background: $white;
-          border: 1px solid $blockBorder;
-          border-radius: 6px;
+          
           .header__img {
             width: 60px;
             height: 60px;
@@ -108,33 +118,44 @@ export default {
           }
         }
         .item__exercises-list {
-          margin: 0 5px;
-          padding: 10px;
-          background: rgba(0, 0, 0, 0.08);
-          border-bottom-left-radius: 6px;
-          border-bottom-right-radius: 6px;
-          // box-shadow: $btnHoverShadow;
-          .exercises-list__list-item {
+          // border: 1px solid red;
+          border-top: 1px solid $blockBorder;
+          .exercises-list__item {
             display: flex;
             align-items: center;
             margin-bottom: 5px;
-            padding: 10px 20px;
-            background: $white;
-            border: 1px solid $blockBorder;
-            border-radius: 6px;
-            // box-shadow: $btnHoverShadow;
-            .list-item__exercises-drag-drop-btn {
-              margin-right: 10px;
+            padding: 10px;
+            border-bottom: 1px dashed $blockBorder;
+            user-select: none;
+            cursor: pointer;
+            .item__exercises-image {
+              border: 1px solid $blockBorder;
+              border-radius: 6px;
+              width: 60px;
+              height: 60px;
             }
-            .list-item__exercises-title {
-              font-weight: 500;
+            .item__exercise-title-and-type {
+              margin-left: 10px;
+              .exercises-title {
+                font-weight: 500;
+                transition: $tr-02;
+              }
+              .exercise__target-muscles {
+                margin-top: 5px;
+                text-transform: uppercase;
+                font-size: 10px;
+              }
             }
-            .list-item__exercises-more-btn {
-              margin-left: auto;
-            }
+            
           }
-          .exercises-list__list-item:last-child {
+          .exercises-list__item:last-child {
             margin-bottom: 0;
+            border-bottom: none;
+          }
+          .exercises-list__item:hover {
+            .exercises-title {
+              color: $green;
+            }
           }
         }
       }
