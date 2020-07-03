@@ -12,7 +12,15 @@ export const getters = {
 
 export const mutations = {
   setExercises (state, ExercisesList) {
-    state.exercises = ExercisesList
+    let categories = []
+
+    for (let i = 0; i < ExercisesList.length; i++) {
+
+    }
+
+    console.log(categories)
+
+
   },
   addNewExercises (state, savedExercise) {
     state.exercises.push(savedExercise)

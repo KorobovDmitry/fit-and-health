@@ -13,7 +13,6 @@
           <app-accordion :isOpened="false">
             <template v-slot:accordionHeader>
               <div class="item__header">
-                <!-- <img class="header__img" src alt="img" /> -->
                 <div class="header__title">
                   <p class="title__text">Широчайшие</p>
                   <p class="title__exercises-count">Кол-во упражнений 24</p>
@@ -95,13 +94,6 @@ export default {
           display: flex;
           align-items: center;
           padding: 10px;
-          
-          .header__img {
-            width: 60px;
-            height: 60px;
-            border: 1px solid $blockBorder;
-            border-radius: 6px;
-          }
           .header__title {
             margin-left: 10px;
             .title__text {
