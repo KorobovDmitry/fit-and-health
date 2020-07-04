@@ -10,7 +10,17 @@ module.exports.fetchExercisesList = async function (req, res) {
   } catch (err) {
     console.log(err)
   }
+}
 
+module.exports.fetchExerciseInfo = async function (req, res) {
+  try {
+    const ExerciseInfo = await Exercises.findOne({
+      where: {id: req.body.id}
+    })
+    res.status(200).json(ExerciseInfo)
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 module.exports.saveNewExercise = async function (req, res) {

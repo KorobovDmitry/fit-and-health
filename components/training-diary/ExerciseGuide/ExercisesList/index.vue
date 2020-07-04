@@ -22,7 +22,12 @@
             </template>
             <template v-slot:accordionHiddenContent>
               <ul class="item__exercises-list">
-                <li v-for="(exercise, index) in element.exercises" :key="index" class="exercises-list__item">
+                <li
+                  v-for="(exercise, index) in element.exercises"
+                  :key="index"
+                  class="exercises-list__item"
+                  @click="fetchExerciseInfo(exercise.id)"
+                >
                   <div class="item__exercises-image">
                     <img src="" alt="img" class="exercise-image">
                   </div>
@@ -30,6 +35,7 @@
                     <p class="exercises-title">{{ exercise.title }}</p>
                     <p class="exercise__target-muscles">Широчайшие, предплечья</p>
                   </div>
+                  <i class="ti-star item__favorite-icon"></i>
                 </li>
               </ul>
             </template>
@@ -59,6 +65,12 @@ export default {
   computed: {
     exercises () {
       return this.$store.getters['exercises/getExercises']
+    }
+  },
+  methods: {
+    fetchExerciseInfo (exercisesId) {
+      console.log(exercisesId)
+      this.$store.dispatch('exercises/fetchExerciseInfo', exercisesId)
     }
   }
 }
@@ -116,7 +128,7 @@ export default {
             display: flex;
             align-items: center;
             margin-bottom: 5px;
-            padding: 10px;
+            padding: 10px 20px;
             border-bottom: 1px dashed $blockBorder;
             user-select: none;
             cursor: pointer;
@@ -138,7 +150,11 @@ export default {
                 font-size: 10px;
               }
             }
-            
+            .item__favorite-icon {
+              align-self: flex-start;
+              margin-left: auto;
+              color: $green;
+            }
           }
           .exercises-list__item:last-child {
             margin-bottom: 0;

@@ -1,12 +1,16 @@
 <template>
   <div class="exercise-technique">
     <p class="exercise-technique__block-title">Техника выполнения упражнения:</p>
-    <p class="exercise-technique__text">Встаньте сбоку от платформы, левую ногу поставьте на середину платформы. Подпрыгните вверх и опуститесь правой ногой на платформу, а левой ногой на пол с другой стороны от платформы. Балансируйте руками, чтобы помочь вашим движениям. Продолжайте прыжки из стороны в сторону через платформу.</p>
+    <p class="exercise-technique__text">{{ techniqueDescription }}</p>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    techniqueDescription: String
+  }
+}
 </script>
 
 <style lang="scss" scoped>
