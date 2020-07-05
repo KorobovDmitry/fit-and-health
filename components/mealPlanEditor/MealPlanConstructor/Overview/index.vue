@@ -17,7 +17,7 @@
       </div>
 
     </div>
-    <nutrients-calculate />
+    <!-- <nutrients-calculate /> -->
   </div>
 </template>
 

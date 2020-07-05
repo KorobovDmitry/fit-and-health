@@ -3,7 +3,7 @@
     <app-block-title>Конструктор</app-block-title>
     <div class="meal-plan-contructor__content">
       <overview />
-      <editor />
+      <meal-parts />
     </div>
   </div>
 </template>
@@ -11,13 +11,13 @@
 <script>
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import Overview from '@/components/mealPlanEditor/MealPlanConstructor/Overview/index'
-import Editor from '@/components/mealPlanEditor/MealPlanConstructor/Editor/index'
+import MealParts from '@/components/mealPlanEditor/MealPlanConstructor/MealParts/index'
 
 export default {
   components: {
     AppBlockTitle,
     Overview,
-    Editor
+    MealParts
   }
 }
 </script>
