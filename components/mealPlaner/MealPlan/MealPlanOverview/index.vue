@@ -113,7 +113,6 @@ export default {
 
   .overview__content {
     display: flex;
-    margin-top: 5px;
     .img-and-social {
       // border: 1px solid red;
       display: flex;

@@ -46,8 +46,7 @@ export default {
 .nutrients-calculate {
   display: flex;
   justify-content: space-between;
-  // margin-right: 242px;
-  // margin-left: 460px;
+  margin-top: 5px;
   padding: 10px 0;
   background: $white;
   border: 1px solid $blockBorder;
@@ -60,7 +59,6 @@ export default {
     align-items: center;
     border-right: 1px solid $blockBorder;
     .element__title {
-      // font-size: 14px;
       font-weight: 500;
       margin-bottom: 5px;
     }

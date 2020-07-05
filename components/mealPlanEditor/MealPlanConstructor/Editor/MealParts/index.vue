@@ -13,8 +13,8 @@
 
 <script>
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
-import MealPart from '@/components/mealPlanEditor/MealParts/MealPart'
-import CreateMealPart from '@/components/mealPlanEditor/MealParts/CreateMealPart'
+import MealPart from '@/components/mealPlanEditor/MealPlanConstructor/Editor/MealParts/MealPart'
+import CreateMealPart from '@/components/mealPlanEditor/MealPlanConstructor/Editor/MealParts/CreateMealPart'
 
 
 

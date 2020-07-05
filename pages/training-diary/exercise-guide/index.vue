@@ -8,12 +8,11 @@
         btnTitle="Добавить упражнение"
         @btnAction="toggleModalVisibility()"
       />
-      <div class="exercises-list-and-description">
+
+      <div class="exercises-list-and-overview">
         <exercises-list />
-        <exercise-overview />
-        <!-- <div class="exercise-overview-empty">
-          <p>Выберите упражнение из списка, что бы получить подробную информацию</p>
-        </div> -->
+        <exercise-overview v-if="overviewFetched" />
+        <exercise-overview-empty v-else />
       </div>
     </div>
 
@@ -48,6 +47,7 @@ import AppButton from '@/components/basic/AppButton'
 import AppModal from '@/components/basic/AppModal'
 import ExercisesList from "@/components/training-diary/ExerciseGuide/ExercisesList/index"
 import ExerciseOverview from '@/components/training-diary/ExerciseGuide/ExerciseOverview/index'
+import ExerciseOverviewEmpty from '@/components/training-diary/ExerciseGuide/ExerciseOverviewEmpty/index'
 
 export default {
   async fetch ({ store }) {
@@ -59,7 +59,8 @@ export default {
     AppButton,
     AppModal,
     ExercisesList,
-    ExerciseOverview
+    ExerciseOverview,
+    ExerciseOverviewEmpty
   },
   data() {
     return {
@@ -83,6 +84,15 @@ export default {
         techniqueDescription: '',
         category: ''
       }
+    }
+  },
+  computed: {
+    overviewFetched () {
+      if (this.$store.getters['exercises/getExerciseInfo'].id) {
+        return true
+      }
+
+      return false
     }
   },
   methods: {
@@ -114,7 +124,7 @@ export default {
     flex-direction: column;
     width: 100%;
     max-width: 1700px;
-    .exercises-list-and-description {
+    .exercises-list-and-overview {
       display: flex;
     }
   }

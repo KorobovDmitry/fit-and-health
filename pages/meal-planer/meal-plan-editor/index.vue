@@ -3,16 +3,8 @@
     <app-page-title>Редактор рациона</app-page-title>
     <div class="meal-plan-editor__content">
 
-meal-plan-editor
-
-<nutrients-settings />
-<nutrients-calculate />
-<br>
-<br>
-<br>
-
-    <meal-parts />
-    <meal-editor />
+      <meal-plan-constructor />
+      <base-settings />
 
     </div>
   </div>
@@ -20,18 +12,15 @@ meal-plan-editor
 
 <script>
 import AppPageTitle from '@/components/basic/AppPageTitle'
-import NutrientsSettings from '@/components/mealPlaner/MealPlanerSettings/NutrientsSettings'
-import MealParts from '@/components/mealPlanEditor/MealParts/index'
-import MealEditor from '@/components/mealPlaner/MealPlan/MealEditor/index'
-import NutrientsCalculate from '@/components/mealPlaner/MealPlan/MealPlanOverview/NutrientsCalculate'
+import MealPlanConstructor from '@/components/mealPlanEditor/MealPlanConstructor/index'
+import BaseSettings from '@/components/mealPlanEditor/BaseSettings/index'
+
 
 export default {
   components: {
     AppPageTitle,
-    MealParts,
-    MealEditor,
-    NutrientsSettings,
-    NutrientsCalculate
+    MealPlanConstructor,
+    BaseSettings
   }
 }
 </script>
@@ -50,7 +39,7 @@ export default {
   .meal-plan-editor__content {
     // border: 1px solid red;
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
     max-width: 1700px;
   }
