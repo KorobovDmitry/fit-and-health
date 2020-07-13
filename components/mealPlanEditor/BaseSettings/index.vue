@@ -3,6 +3,7 @@
     <app-block-title>Базовые настройки</app-block-title>
     <div class="base-settings__content">
       <nutrients-settings />
+      <nutrients-calculate />
     </div>
   </div>
 </template>
@@ -10,11 +11,13 @@
 <script>
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import NutrientsSettings from '@/components/mealPlanEditor/BaseSettings/NutrientsSettings'
+import NutrientsCalculate from '@/components/mealPlanEditor/BaseSettings/NutrientsCalculate'
 
 export default {
   components: {
     AppBlockTitle,
-    NutrientsSettings
+    NutrientsSettings,
+    NutrientsCalculate
   }
 }
 </script>
