@@ -78,6 +78,9 @@ import AppButton from '@/components/basic/AppButton'
 export default {
   components: {
     AppButton
+  },
+  data () {
+    return {}
   }
 }
 </script>
@@ -90,6 +93,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin-top: 5px;
+  margin-left: 5px;
   padding: 10px;
   background: $white;
   border: 1px solid $blockBorder;

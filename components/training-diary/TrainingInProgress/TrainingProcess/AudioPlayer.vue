@@ -14,11 +14,11 @@ export default {
 @import "@/assets/scss/vars.scss";
 
 .audio-player {
-  margin-left: 5px;
+  margin-top: 5px;
   padding: 10px;
   width: 100%;
-  min-width: 400px;
-  max-width: 400px;
+  min-width: 300px;
+  max-width: 300px;
   background: $white;
   border: 1px solid $blockBorder;
   border-radius: 6px;

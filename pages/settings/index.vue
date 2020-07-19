@@ -3,6 +3,17 @@
     <app-page-title>Настройки</app-page-title>
     <div class="settings-page__content">
       settings
+
+      <p>upload 1 file</p>
+      <div>
+        <label>File
+          <!-- Загрузка 1 файла -->
+          <input type="file" name="file" ref="file" @change="handleFileUpload()"/>
+          <!-- Загрузка нескольких файлов -->
+          <!-- <input type="file" id="files" ref="files" multiple @change="handleFilesUpload()"/> -->
+        </label>
+        <button @click="submitFile()">Submit</button>
+      </div>
     </div>
   </div>
 </template>
@@ -15,9 +26,62 @@ export default {
     AppPageTitle
   },
   data () {
-    return {}
+    return {
+      file: null,
+      files: null
+    }
   },
-  methods: {}
+  methods: {
+    // загрузка одного файла
+    submitFile () {
+      let formData = new FormData()
+      formData.append('file', this.file)
+
+      this.$axios.$post( '/api/settings/single-file', formData,
+        {
+          headers: {
+              'Content-Type': 'multipart/form-data'
+          }
+        }
+      ).then(function(){
+        console.log('SUCCESS!!')
+      })
+      .catch(function(e){
+        console.log(e)
+      })
+    },
+    handleFileUpload () {
+      this.file = this.$refs.file.files[0]
+      // console.log(this.file)
+    },
+
+
+
+// Загрузка нескольких файлов
+    submitFiles(){
+      let formData = new FormData();
+      for( var i = 0; i < this.files.length; i++ ){
+        let file = this.files[i];
+        formData.append('files[' + i + ']', file);
+      }
+      axios.post( '/multiple-files',
+        formData,
+        {
+          headers: {
+              'Content-Type': 'multipart/form-data'
+          }
+        }
+      ).then(function(){
+        console.log('SUCCESS!!');
+      })
+      .catch(function(){
+        console.log('FAILURE!!');
+      });
+    },
+    handleFilesUpload(){
+      this.files = this.$refs.files.files;
+    }
+  }
 }
 </script>
 

@@ -22,8 +22,9 @@ export default {}
 @import "@/assets/scss/vars.scss";
 
 .timer {
-  // margin-top: 5px;
-  margin-left: 5px;
+  flex: 1 1 auto;
+  margin-top: 5px;
+  // margin-left: 5px;
   padding: 20px 10px;
   width: 300px;
   background: $white;

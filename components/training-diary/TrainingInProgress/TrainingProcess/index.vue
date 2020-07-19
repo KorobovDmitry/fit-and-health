@@ -2,18 +2,22 @@
   <div class="training-process">
     <app-block-title>Процесс тренировки</app-block-title>
     <div class="training-process__content">
+
       <main-stats />
-      <div class="video-and-timer">
+
+      <div class="video-and-comment">
         <div class="video">video and training comment</div>
-        <timer />
-      </div>
-
-      <exercises />
-
-      <div class="comment-and-player">
         <comment />
-        <audio-player />
       </div>
+
+      <div class="exercise-timer-audio">
+        <div class="timer-and-audio">
+          <timer />
+          <audio-player />
+        </div>
+        <exercises />
+      </div>
+
     </div>
   </div>
 </template>
@@ -53,21 +57,30 @@ export default {
     padding: 10px;
     background: $hiddenBlockBG;
     box-shadow: $boxShadow;
-    .video-and-timer {
+
+    .exercise-timer-audio {
+      display: flex;
+      .timer-and-audio {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+
+
+
+
+    .video-and-comment {
       display: flex;
       margin-top: 5px;
       .video {
         flex: 1 1 auto;
         padding: 10px;
-        height: 600px;
+        height: 500px;
         background: $white;
         border: 1px solid $blockBorder;
         border-radius: 6px;
       }
-    }
-    .comment-and-player {
-      display: flex;
-      margin-top: 5px;
     }
   }
 }
