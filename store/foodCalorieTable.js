@@ -186,8 +186,40 @@ export const mutations = {
     state.sortedProducts = [...sortedByCategory]
 
     // Сортировка по колонкам (название, б, ж, у, к)
+    if (state.selectedFilters.sortingBy === 'Названию') {
+      state.sortedProducts.sort(function (a, b) {
+        let first = a.title.toLowerCase(), second = b.title.toLowerCase()
+        if (first < second) return -1
+        if (first > second) return 1
+        return 0
+      })
+    } else {
+      let field = null
+      switch (state.selectedFilters.sortingBy) {
+        case 'Белкам':
+          field = 'protein'
+          console.log(field)
+          break
+        case 'Жирам':
+          field = 'fats'
+          break;
+        case 'Углеводам':
+          field = 'carb'
+          break;
+        case 'Калорийности':
+          field = 'kkal'
+          break
+        default:
+          break
+      }
 
-    
+      state.sortedProducts.sort(function (a, b) {
+        if (a[field] > b[field]) return -1
+        if (a[field] < b[field]) return 1
+        return 0
+      })
+    }
+
   },
   // Изменение веса продукта для рассчета БЖУК в таблице калорийности продуктов
   changeProductWeight (state, {index, newWeight}) {

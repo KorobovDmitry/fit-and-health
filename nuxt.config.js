@@ -8,6 +8,8 @@ module.exports = {
   //   host: '192.168.1.222' // default: localhost
   // },
 
+  telemetry: false,
+
   mode: 'universal',
 
   /*

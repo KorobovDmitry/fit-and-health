@@ -94,7 +94,7 @@ export default {
           value: 14
         }
       ],
-      modalActive: true
+      modalActive: false
     }
   },
   methods: {
