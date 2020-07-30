@@ -1,15 +1,10 @@
 <template>
   <div class="cooking-steps">
-              <p>этапы приготовления</p>
-              <p>1</p>
-              <p>1</p>
-              <p>1</p>
-              <p>1</p>
-              <p>1</p>
-              <p>1</p>
-              <p>1</p>
-              <p>1</p>
-            </div>
+    <p class="cooking-steps__block-title">Этапы приготовления</p>
+    <ul class="steps">
+      <li class="step">step</li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -22,12 +17,21 @@ export default {
 @import "@/assets/scss/vars.scss";
 
 .cooking-steps {
-          // flex: 1 1 auto;
-          margin-top: 10px;
-          padding: 10px;
-          background: $white;
-          border: 1px solid $blockBorder;
-          border-radius: 6px;
-        }
+  margin-top: 5px;
+  padding: 10px;
+  background: $white;
+  border: 1px solid $blockBorder;
+  border-radius: 6px;
+  .cooking-steps__block-title {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: 500;
+    border-bottom: 1px dashed $blockBorder;
+  }
+  .steps {
+    padding: 0 10px;
+  }
+}
 
 </style>

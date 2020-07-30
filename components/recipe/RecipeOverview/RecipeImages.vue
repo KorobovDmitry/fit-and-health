@@ -1,15 +1,5 @@
 <template>
   <div class="recipe-images">
-    <!-- <div class="stats">
-      <div class="element">
-        <i class="ti-timer"></i>
-        <p>25 мин.</p>
-      </div>
-      <div class="element">
-        <i class="ti-pie-chart"></i>
-        <p>8 продуктов</p>
-      </div>
-    </div> -->
     <img
       class="recipe-images__main"
       src="http://bientasty.ru/wp-content/uploads/2017/04/1491022672_maxresdefault.jpg"

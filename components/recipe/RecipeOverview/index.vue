@@ -6,7 +6,7 @@
       <div class="top">
         <div class="overview__images-and-main-info">
           <recipe-images />
-          <social-btns :btnsInfo="{like: 0, dislike: 0, share: 0}" />
+          <social-btns class="mt-5" :btnsInfo="{like: 0, dislike: 0, share: 0}" />
         </div>
         <recipe-main-info />
       </div>
@@ -14,7 +14,7 @@
         <div class="overview__ingredients-marks-steps">
           <div class="ingredients-marks">
             <recipe-ingredients />
-            <added-marks />
+            <nutrients-calc />
           </div>
           <recipe-cooking-steps />
         </div>
@@ -30,7 +30,7 @@ import RecipeImages from '@/components/recipe/RecipeOverview/RecipeImages'
 import RecipeMainInfo from '@/components/recipe/RecipeOverview/RecipeMainInfo'
 import RecipeIngredients from '@/components/recipe/RecipeOverview/RecipeIngredients'
 import RecipeCookingSteps from '@/components/recipe/RecipeOverview/RecipeCookingSteps'
-import AddedMarks from '@/components/recipe/RecipeOverview/AddedMarks'
+import NutrientsCalc from '@/components/recipe/RecipeOverview/NutrientsCalc'
 import SocialBtns from '@/components/basic/SocialBtns'
 
 export default {
@@ -38,7 +38,7 @@ export default {
     AppBlockTitle,
     RecipeImages,
     RecipeMainInfo,
-    AddedMarks,
+    NutrientsCalc,
     RecipeIngredients,
     RecipeCookingSteps,
     SocialBtns
@@ -64,7 +64,7 @@ export default {
       display: flex;
     }
     .bottom {
-      margin-top: 10px;
+      margin-top: 5px;
     }
     .overview__images-and-main-info {
       display: flex;
@@ -75,7 +75,6 @@ export default {
     }
     .overview__ingredients-marks-steps {
       flex: 1 1 auto;
-      // margin-left: 10px;
       .ingredients-marks {
         display: flex;
       }

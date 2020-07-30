@@ -3,16 +3,14 @@
 
     <div class="recipe-overview">
       <div class="element">
-        <i class="ti-timer"></i>
-        <p>25 мин.</p>
+        <i class="ti-pie-chart element__icon"></i>
+        <p class="element__amount">8</p>
+        <p class="element__text">продуктов</p>
       </div>
       <div class="element">
-        <i class="ti-pie-chart"></i>
-        <p>8 продуктов</p>
-      </div>
-      <div class="element">
-        <i class="ti-pie-chart"></i>
-        <p>8 продуктов</p>
+        <i class="ti-timer element__icon"></i>
+        <p class="element__amount">25</p>
+        <p class="element__text">мин.</p>
       </div>
     </div>
 
@@ -27,18 +25,20 @@
     </div>
 
     <div class="cooking-skill">
-      <p>Сложность приготовления:</p>
-      <i class="ti-crown"></i>
-      <i class="ti-crown"></i>
-      <i class="ti-crown"></i>
-      <i class="ti-crown"></i>
-      <i class="ti-crown"></i>
+      <p class="cooking-skill__block-title">Сложность приготовления:</p>
+      <app-rating class="ml-auto" :rating="2" />
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import AppRating from '@/components/basic/AppRating'
+
+export default {
+  components: {
+    AppRating
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -48,7 +48,7 @@ export default {}
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  margin-left: 10px;
+  margin-left: 5px;
   .recipe-overview {
     display: flex;
     padding: 10px;
@@ -60,6 +60,22 @@ export default {}
       display: flex;
       align-items: center;
       justify-content: center;
+      border-right: 1px solid $blockBorder;
+      .element__icon {}
+      .element__amount {
+        margin-left: 10px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .element__text {
+        margin-left: 5px;
+        font-size: 12px;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+    }
+    .element:last-child {
+      border-right: none;
     }
   }
   .description {
@@ -84,6 +100,7 @@ export default {}
       display: flex;
       flex-wrap: wrap;
       .mark {
+        // border: 1px solid red;
         margin-right: 5px;
         margin-top: 5px;
         padding: 5px 10px;
@@ -98,9 +115,12 @@ export default {}
     display: flex;
     margin-top: 5px;
     background: $white;
-    padding: 10px;
+    padding: 10px 20px;
     border: 1px solid $blockBorder;
     border-radius: 6px;
+    .cooking-skill__block-title {
+      font-weight: 500;
+    }
   }
 }
 
