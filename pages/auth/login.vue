@@ -51,7 +51,6 @@ import AppInputTextValid from '@/components/basic/AppInputTextValid'
 
 export default {
   layout: 'empty',
-  // middleware: ['userAuth'],
   components: {
     AppButton,
     AppInputTextValid

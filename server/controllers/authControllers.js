@@ -32,7 +32,11 @@ module.exports.register = async function (req, res) {
 
 module.exports.login = async function (req, res) {
 
-  const candidate = await Users.findOne({ where: {email: req.body.email} })
+  const candidate = await Users.findOne({
+    where: {
+      email: req.body.email
+    }
+  })
 
   if (candidate) {
     // Проверяем пароль, пользователь существует

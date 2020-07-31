@@ -3,8 +3,8 @@
 
 <script>
 export default {
+  name: 'auth',
   layout: 'empty',
-  middleware: ['userAuth'],
   beforeCreate () {
     this.$router.push('/auth/login')
   }

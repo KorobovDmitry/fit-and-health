@@ -1,10 +1,11 @@
 // Проверка, записан ли токен в стор.
 // Если токен в сторе есть, значит юзер залогинен и нужно перейти к главной странице.
 // Если токена нет значит юзер не залогинен и его нужно перенаправить на страницу авторизации.
-export default function ({store, redirect}) {
-  if (!store.getters['auth/isAuthenticated']) {
-    redirect('/auth')
+export default function ({ route, store, redirect }) {
+  if (store.getters['auth/isAuthenticated']) {
+    console.log('пользователь авторизован')
   } else {
-    redirect('/')
+    console.log('пользователь НЕ авторизован')
+    return redirect('/auth')
   }
 }
