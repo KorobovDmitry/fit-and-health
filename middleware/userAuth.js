@@ -3,9 +3,9 @@
 // Если токена нет значит юзер не залогинен и его нужно перенаправить на страницу авторизации.
 export default function ({ route, store, redirect }) {
   if (store.getters['auth/isAuthenticated']) {
-    console.log('пользователь авторизован')
+    // console.log('пользователь авторизован')
   } else {
-    console.log('пользователь НЕ авторизован')
+    // console.log('пользователь НЕ авторизован')
     return redirect('/auth')
   }
 }

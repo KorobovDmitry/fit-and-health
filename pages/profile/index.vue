@@ -1,21 +1,22 @@
 <template>
-  <div class="index-page">
-
-    <div class="index-page__content">
-      <app-block-title>Авторизация</app-block-title>
-      <nuxt-link to="/auth">Войти / Зарегистрировать</nuxt-link>
-      <br>
+  <div class="user-page">
+    <app-page-title>Профиль</app-page-title>
+    <div class="user-page__content">
+      <user-card />
+      <user-activity />
+      <main-info />
     </div>
-
   </div>
 </template>
 
 <script>
-import AppBlockTitle from '@/components/basic/AppBlockTitle'
+import AppPageTitle from '@/components/basic/AppPageTitle'
+import UserCard from '@/components/home/UserCard'
+import MainInfo from '@/components/home/MainInfo'
+import UserActivity from '@/components/home/UserActivity/index'
 
 export default {
-  layout: 'empty',
-  name: 'index',
+  name: 'user',
   head () {
     return {
       title: 'Fit and Health - Профиль',
@@ -43,10 +44,13 @@ export default {
       ]
     }
   },
-  // middleware: ['userAuth'],
+  middleware: ['userAuth'],
   components: {
-    AppBlockTitle
-  }
+    AppPageTitle,
+    UserCard,
+    UserActivity,
+    MainInfo
+  },
   // async fetch ({ store }) {
   //   await store.dispatch('userProfile/getUserInfo')
   // }
@@ -56,17 +60,17 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/vars.scss';
 
-.index-page {
+.user-page {
   // border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
-  // margin-left: 80px;
+  margin-left: 80px;
   padding: 40px;
-  .index-page__content {
+  .user-page__content {
     // border: 1px solid red;
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
     max-width: 1700px;
   }

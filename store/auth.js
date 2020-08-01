@@ -3,16 +3,7 @@ import cookie from 'js-cookie'
 
 export const state = () => ({
   token: null,
-  loginEmailError: {
-    exist: false,
-    status: 409,
-    message: 'ошибка 409'
-  },
-  loginPasswordError: {
-    exist: false,
-    status: 404,
-    message: 'ошибка 404'
-  }
+  activeForm: 'login',
 })
 
 export const getters = {
@@ -31,17 +22,14 @@ export const getters = {
 }
 
 export const mutations = {
+  setAuthAcitveForm (state, activeForm) {
+    state.activeForm = activeForm
+  },
   setToken (state, token) {
     state.token = token
   },
   clearToken (state) {
     state.token = null
-  },
-  setLoginEmailError (state, error) {
-    state.loginEmailError = error
-  },
-  setLoginPasswordError (state, error) {
-    state.loginPasswordError = error
   }
 }
 
@@ -50,27 +38,9 @@ export const actions = {
     try {
       const token = await this.$axios.$post('http://localhost:3000/api/auth/login', formData)
       await dispatch('setToken', token)
-
-      // Сбросить сообщения об ошибках если они были
-      await commit('setLoginEmailError', {exist: false, status: undefined, message: ''})
-      await commit('setLoginPasswordError', {exist: false, status: undefined, message: ''})
     } catch (e) {
       // получаем сообщение об ошибке которую возвращае axios
       console.log(e.response.status, e.response.data.message)
-      const error = {
-        exist: true,
-        status: e.response.status || 500,
-        message: e.response.data.message || 500
-      }
-      if (e.response.status === 404) {
-        commit('setLoginEmailError', error)
-        commit('setLoginPasswordError', {exist: false, status: undefined, message: ''})
-      } else if (e.response.status === 401) {
-        commit('setLoginEmailError', {exist: false, status: undefined, message: ''})
-        commit('setLoginPasswordError', error)
-      } else {
-        console.log(e)
-      }
     }
   },
   setToken ({commit}, token) {

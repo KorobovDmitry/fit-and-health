@@ -1,9 +1,11 @@
 <template>
   <nav class="navbar">
-    <div class="navbar__logo">FH</div>
+    <div class="navbar__logo">
+      <nuxt-link to="/" exact no-prefetch>FH</nuxt-link>
+    </div>
 
     <nuxt-link
-      to="/"
+      to="/profile"
       exact
       no-prefetch
       class="ti-home navbar__page-link"
@@ -50,33 +52,30 @@
       active-class="navbar__page-link--active"
     ></nuxt-link>
 
-
-
-    <!-- <nuxt-link
-      to="/search"
-      exact
-      no-prefetch
-      class="ti-search navbar__page-link"
-      active-class="navbar__page-link--active"
-    ></nuxt-link> -->
     <nuxt-link
       to="/settings"
       exact
       no-prefetch
-      class="ti-settings navbar__page-link logout"
+      class="ti-settings navbar__page-link"
       active-class="navbar__page-link--active"
     ></nuxt-link>
 
-    <i class="ti-export navbar__page-link logout" @click="logout()"></i>
+    <i
+      class="ti-export navbar__page-link logout"
+      @click="logout()"
+    ></i>
   </nav>
 </template>
 
 <script>
 export default {
+  data () {
+    return {}
+  },
   methods: {
     logout () {
       this.$store.dispatch('auth/logout')
-      this.$router.push('/auth/login')
+      this.$router.push('/auth')
     }
   }
 }
@@ -106,10 +105,11 @@ export default {
     width: 100%;
     height: 60px;
     background: $green;
-    color: $white;
-    font-size: 28px;
-    font-weight: 600;
-    cursor: pointer;
+    a {
+      color: $white;
+      font-size: 28px;
+      font-weight: 600;
+    }
   }
   .navbar__page-link {
     // border: 1px solid red;
