@@ -10,6 +10,10 @@ module.exports = {
 
   telemetry: false,
 
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
+
   mode: 'universal',
 
   /*

@@ -1,4 +1,4 @@
-import { BASE_URL } from '../keys/settings'
+const BASE_URL = process.env.baseUrl
 
 export const state = () => ({
   exercises: [],
