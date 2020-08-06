@@ -77,7 +77,7 @@ export default {
             // удалить notice из списка
             setTimeout( () => {
               // удалить notice из списка notifications в store
-              this.$store.commit('foodCalorieTable/removeNotice', this.notice.id)
+              this.$store.commit('notifications/removeNotice', this.notice.id)
             }, 400)
           }, 400)
         } else {

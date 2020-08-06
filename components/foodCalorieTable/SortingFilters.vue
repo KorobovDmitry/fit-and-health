@@ -26,8 +26,8 @@
       <filter-checkbox-group
         :filterGroupOpened="true"
         headerTitle="Категории"
-        :valueList="productCategory"
-        :defaultValue="selectedProductCategory"
+        :valueList="productCategories"
+        :defaultValue="selectedProductCategories"
         @applyFunc="applyFilters"
         @inputGroupValueChanged="applyFilters($event, 'productCategory')"
       >
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 import AppButton from '@/components/basic/AppButton'
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import FilterRadioGroup from '@/components/basic/FilterRadioGroup'
@@ -56,7 +57,6 @@ export default {
   },
   data () {
     return {
-      // selectedFilters: this.$store.getters['foodCalorieTable/get'],
       sortingBy: [
         'Названию',
         'Белкам',
@@ -68,28 +68,38 @@ export default {
         'Все продукты',
         'Мои продукты',
         'Избранное'
-      ],
-      productCategory: this.$store.getters['foodCalorieTable/getProductCategories'],
-      selectedProductCategory: this.$store.getters['foodCalorieTable/getProductCategories']
+      ]
     }
   },
+  computed: {
+    ...mapState({
+      productCategories: state => state.foodCalorieTable.productCategories,
+      selectedProductCategories: state => state.foodCalorieTable.productCategories
+    })
+  },
   methods: {
+    ...mapMutations({
+      setSortingByFilter: 'foodCalorieTable/setSortingByFilter',
+      setProductTypeFilter: 'foodCalorieTable/setProductTypeFilter',
+      setProductCategory: 'foodCalorieTable/setProductCategory',
+      sortProducts: 'foodCalorieTable/sortProducts',
+    }),
     applyFilters ($event, filterGroup) {
       switch (filterGroup) {
         case 'sortingBy':
-          this.$store.commit('foodCalorieTable/setSortingByFilter', $event)
+          this.setSortingByFilter($event)
           break
         case 'productType':
-          this.$store.commit('foodCalorieTable/setProductTypeFilter', $event)
+          this.setProductTypeFilter($event)
           break
         case 'productCategory':
-          this.$store.commit('foodCalorieTable/setProductCategory', $event)
+          this.setProductCategory($event)
           break
         default:
           break
       }
       // отфильтровать продукты в store и перерендорить страницу
-      this.$store.commit('foodCalorieTable/sortProducts')
+      this.sortProducts()
     }
   }
 }
@@ -101,6 +111,8 @@ export default {
 .sorting-filters {
   // border: 1px solid red;
   width: 400px;
+  min-width: 400px;
+  max-width: 400px;
 }
 
 </style>

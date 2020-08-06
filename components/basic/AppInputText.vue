@@ -1,13 +1,11 @@
 <template>
-
-<input
-  class="input-text"
-  type="text"
-  :placeholder="placeholder"
-  @input="changeInputValue"
-  v-model="inputValue"
->
-
+  <input
+    class="input-text"
+    type="text"
+    :placeholder="placeholder"
+    @input="changeInputValue"
+    v-model="inputValue"
+  >
 </template>
 
 <script>

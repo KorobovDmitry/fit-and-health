@@ -1,15 +1,24 @@
 <template>
-  <form class="login-form">
-    <p class="login-form__title">Авторизация</p>
-    <i class="login-form__icon ti-unlock"></i>
-    <br>
-    <input type="text" v-model="loginEmail">
-    <br>
-    <br>
-    <input type="text" v-model="loginPassword">
+  <div class="login__form-wrapper">
+    <p class="login__form-title">Авторизация</p>
+    <i class="login__form-icon ti-unlock"></i>
+
+    <form class="login__form">
+      <p class="form__input-title">Телефон или E-mail:</p>
+      <app-input-text
+        :value="email"
+        @valueChanged="email = $event"
+      />
+
+      <p class="form__input-title">Пароль</p>
+      <app-input-text
+        :value="password"
+        @valueChanged="password = $event"
+      />
+    </form>
 
     <app-button size16px uppercase center mt20 mb20 @click.native.prevent="login()">Войти</app-button>
-    <p class="login-form__question">
+    <p class="login__question">
       Забыли пароль?
       <span
         class="question__action-btn"
@@ -17,40 +26,51 @@
       >Восстановить.</span>
     </p>
 
-    <p class="login-form__question">Нет аккаунта?<span
+    <p class="login__question">Нет аккаунта?<span
       class="question__action-btn"
-      @click="changeForm('register')"
+      @click="changeForm()"
     >Зарегистрироваться.</span>
     </p>
-  </form>
+  </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import AppInputText from '@/components/basic/AppInputText'
 import AppButton from '@/components/basic/AppButton'
 
 export default {
   components: {
+    AppInputText,
     AppButton
   },
   data () {
     return {
-      loginEmail: 'test',
-      loginPassword: 'test'
+      email: 'test',
+      password: 'test'
     }
   },
+  computed: {
+    ...mapState({
+      token: state => state.auth.token,
+    })
+  },
   methods: {
-    changeForm (activeForm) {
-      this.$store.commit('auth/setAuthAcitveForm', activeForm)
+    changeForm () {
+      this.$emit('changeForm')
     },
     async login () {
       // добавить валидацию перед диспатчем
       try {
         const formData = {
-          email: this.loginEmail,
-          password: this.loginPassword
+          email: this.email,
+          password: this.password
         }
         await this.$store.dispatch('auth/login', formData)
-        this.$router.push('/profile')
+
+        if (this.token) {
+          this.$router.push('/profile')
+        }
       } catch (e) {
         console.log(e)
       }
@@ -65,23 +85,31 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/vars.scss';
 
-.login-form {
+.login__form-wrapper {
   // border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 400px;
-  .login-form__title {
+  .login__form-title {
     // border: 1px solid red;
     text-align: center;
     font-size: 26px;
   }
-  .login-form__icon {
+  .login__form-icon {
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 60px;
   }
-  .login-form__question {
+  .login__form {
+    // border: 1px solid red;
+    width: 100%;
+    .form__input-title {
+      padding: 10px 10px 5px 10px;
+      font-size: 14px;
+    }
+  }
+  .login__question {
     margin-top: 10px;
     align-self: center;
     font-size: 14px;

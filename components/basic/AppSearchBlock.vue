@@ -1,12 +1,5 @@
 <template>
-  <div
-    ref="search"
-    class="search"
-    :class="[
-      {'mb10': mb10},
-      {'mb20': mb20}
-    ]"
-  >
+  <div ref="search" class="search">
 
     <div ref="searchField" class="search-field">
       <input
@@ -37,9 +30,7 @@
 export default {
   props: {
     small: Boolean,
-    filters: Boolean,
-    mb10: Boolean,
-    mb20: Boolean
+    filters: Boolean
   },
   data () {
     return {
@@ -54,7 +45,7 @@ export default {
   },
   methods: {
     resetSearchInputValue () {
-      this.$refs.searchInput.value = ''
+      this.searchString = ''
     },
     toggleFiltersVisibility () {
       const searchFieldHeight = this.$refs.searchField.getBoundingClientRect().height
@@ -69,7 +60,7 @@ export default {
       }
     },
     searchProduct () {
-      // console.log('search product')
+      this.$emit('search')
     }
   },
   mounted () {
@@ -101,10 +92,7 @@ export default {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       outline: none;
-      transition: $tr-01;
-      @include for(580) {
-        padding: 10px 0px 10px 20px;
-      }
+      transition: $tr-02;
     }
     .search__action-btn {
       // border: 1px solid red;
@@ -116,7 +104,7 @@ export default {
       color: $green;
       border-top: 1px solid $blockBorder;
       border-bottom: 1px solid $blockBorder;
-      transition: $tr-01;
+      transition: $tr-02;
       .search__action-btn-icon {
         // border: 1px solid red;
         padding: 5px;
@@ -156,13 +144,6 @@ export default {
     border: 1px solid $blockBorder;
     border-radius: 6px;
   }
-}
-
-.mb10 {
-  margin-bottom: 10px;
-}
-.mb20 {
-  margin-bottom: 20px;
 }
 
 </style>

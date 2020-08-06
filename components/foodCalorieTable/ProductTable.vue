@@ -26,7 +26,7 @@
             <i
               class="ti-heart element__favorite-product"
               :class="[{'element__favorite-product--active': item.favorite}]"
-              @click="changeFavoriteParam(item.id, item.favorite)"
+              @click="changeFavoriteParam({productId: item.id, newParam: {favorite: !item.favorite}})"
             ></i>
           </div>
           <div class="item__element">
@@ -36,7 +36,6 @@
             <app-tooltip>
               <template v-slot:tooltipElement>
                 <category-icon :icon="item.category" />
-                <!-- <img class="element__img" src="https://st3.depositphotos.com/4562487/15839/v/950/depositphotos_158398124-stock-illustration-meat-icon-illustration.jpg" :alt="item.category"> -->
               </template>
               <template v-slot:tooltipText>
                 <p class="element__tooltip-text">{{ item.category }}</p>
@@ -48,7 +47,7 @@
               class="element__weight-input"
               type="text"
               :value="item.weight"
-              @input="changeProductWeight($event, index)"
+              @input="changeProductWeight({index, newWeight: $event.target.value})"
               @focus="setFocus($event)"
             >
             <span class="element__weight-scale">гр.</span>
@@ -67,11 +66,9 @@
           </div>
           <div class="item__element">
             <app-button-with-actions
-              :requiredParams="{
-                productId: item.id,
-                isFavorite: item.favorite
-              }"
               :actions="btnActions"
+              :params="{id: item.id, favorite: item.favorite}"
+              @actionHandler="productMoreAction($event)"
             />
           </div>
         </li>
@@ -82,6 +79,7 @@
 </template>
 
 <script>
+import { mapState, mapMutations, mapActions } from 'vuex'
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import AppSearchBlock from '@/components/basic/AppSearchBlock'
 import AppTooltip from '@/components/basic/AppTooltip'
@@ -98,51 +96,49 @@ export default {
   },
   data () {
     return {
-      btnActions: [
-        {
-          title: 'Редактировать',
-          doFunc: this.editProduct
-        },
-        {
-          title: 'Добавить в избранное',
-          doFunc: this.changeFavoriteParam
-        },
-        {
-          title: 'Удалить',
-          doFunc: this.removeProduct
-        }
-      ],
+      btnActions: ['Редактировать', 'Удалить'],
       productWeight: 100,
       searchString: ''
     }
   },
   watch: {
     searchString () {
-      this.$store.commit('foodCalorieTable/setSearchString', this.searchString)
-      this.$store.commit('foodCalorieTable/sortProducts')
+      this.setSearchString(this.searchString)
+      this.sortProducts()
     }
   },
   computed: {
-    sortedProducts () {
-      return this.$store.getters['foodCalorieTable/getSortedProducts']
-    }
+    ...mapState({
+      sortedProducts: state => state.foodCalorieTable.sortedProducts
+    })
   },
   methods: {
+    ...mapMutations({
+      setSearchString: 'foodCalorieTable/setSearchString',
+      sortProducts: 'foodCalorieTable/sortProducts',
+      changeProductWeight: 'foodCalorieTable/changeProductWeight'
+    }),
+    ...mapActions({
+      editProduct: 'foodCalorieTable/editProduct',
+      changeFavoriteParam: 'foodCalorieTable/changeFavoriteParam',
+      removeProduct: 'foodCalorieTable/removeProduct'
+    }),
     setFocus ($event) {
       $event.target.select()
     },
-    changeProductWeight ($event, index) {
-      this.$store.commit('foodCalorieTable/changeProductWeight', {index, newWeight: $event.target.value})
-    },
-    editProduct (productId) {
-      this.$store.dispatch('foodCalorieTable/editProduct', {productId: productId, newParams: {protein: 24}})
-      // Передавать в newParams новый объект продукта со ВСЕМИ параметрами из модального окна (редактирование)
-    },
-    changeFavoriteParam (productId, isFavorite) {
-      this.$store.dispatch('foodCalorieTable/changeFavoriteParam', {productId: productId, newParam: {favorite: !isFavorite}})
-    },
-    removeProduct (productId) {
-      this.$store.dispatch('foodCalorieTable/removeProduct', {product: productId})
+    productMoreAction ($event) {
+      // console.log('actionHandler', action)
+      switch ($event.action) {
+        case 'Редактировать':
+          console.log('Редактировать', $event.params)
+          // this.editProduct()
+          break
+        case 'Удалить':
+          this.removeProduct({product: $event.params.id})
+          break
+        default:
+          break
+      }
     }
   }
 }

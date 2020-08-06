@@ -2,11 +2,8 @@
   <div class="not-found-page">
     <h1 v-if="error.statusCode === 404">Page not found --- 404</h1>
     <h1 v-else>An error occurred ---> {{ error.statusCode }}</h1>
-
     <hr>
-
     <NuxtLink to="/">Home page</NuxtLink>
-
   </div>
 </template>
 
@@ -40,19 +37,6 @@ export default {
     }
   },
   layout: 'empty',
-  props: ['error'],
-  components: {},
-  data () {
-    return {}
-  }
+  props: ['error']
 }
 </script>
-
-<style lang="scss" scoped>
-@import '@/assets/scss/vars.scss';
-
-// .not-found-page {
-//   border: $redBorder;
-// }
-
-</style>

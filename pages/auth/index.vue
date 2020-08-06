@@ -1,8 +1,14 @@
 <template>
   <div class="auth-page">
     <div class="auth-page__content">
-      <app-login-form v-if="activeForm === 'login'" />
-      <app-register-form v-if="activeForm === 'register'" />
+      <app-login-form
+        v-if="loginForm"
+        @changeForm="loginForm = false"
+      />
+      <app-register-form
+        v-if="!loginForm"
+        @changeForm="loginForm = true"
+      />
     </div>
   </div>
 </template>
@@ -19,10 +25,10 @@ export default {
     AppLoginForm,
     AppRegisterForm
   },
-  computed: {
-    ...mapState({
-       activeForm: state => state.auth.activeForm
-    }),
+  data () {
+    return {
+      loginForm: true
+    }
   }
 }
 </script>

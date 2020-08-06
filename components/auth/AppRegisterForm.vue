@@ -1,19 +1,21 @@
 <template>
-  <form class="register-form">
-    <p class="register-form__title">Регистрация</p>
-    <i class="register-form__icon ti-user"></i>
+  <div class="register__form-wrapper">
+    <p class="register__form-title">Регистрация</p>
+    <i class="register__form-icon ti-user"></i>
 
-    <div>
-      <p>E-mail</p>
-      <input type="text" v-model="email">
-    </div>
-    <div>
-      <p>Password</p>
-      <input type="text" v-model="password">
-    </div>
+    <form class="register__form">
+      <p class="form__input-title">E-mail</p>
+      <app-input-text
+        :value="email"
+        @valueChanged="email = $event"
+      />
 
-    {{email}} --- {{password}}
-
+      <p class="form__input-title">Password</p>
+      <app-input-text
+        :value="password"
+        @valueChanged="password = $event"
+      />
+    </form>
 
     <app-button
       size16px
@@ -24,22 +26,25 @@
       @click.native.prevent="createUser()"
     >Создать аккаунт</app-button>
 
-    <p class="register-form__question">
+    <p class="register__question">
       Уже есть аккаунт?
       <span
         class="question__action-btn"
-        @click="changeForm('login')"
+        @click="changeForm()"
       >Войти.</span>
     </p>
 
-  </form>
+  </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import AppInputText from '@/components/basic/AppInputText'
 import AppButton from '@/components/basic/AppButton'
 
 export default {
   components: {
+    AppInputText,
     AppButton
   },
   data () {
@@ -48,9 +53,14 @@ export default {
       password: ''
     }
   },
+  computed: {
+    ...mapState({
+      token: state => state.auth.token,
+    })
+  },
   methods: {
-    changeForm (activeForm) {
-      this.$store.commit('auth/setAuthAcitveForm', activeForm)
+    changeForm () {
+      this.$emit('changeForm')
     },
     async createUser () {
       try {
@@ -59,7 +69,10 @@ export default {
           password: this.password
         }
         await this.$store.dispatch('auth/createUser', newUser)
-        this.$router.push('/profile')
+
+        if (this.token) {
+          this.$router.push('/profile')
+        }
       } catch (e) {
         console.log(e)
       }
@@ -71,23 +84,31 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/vars.scss';
 
-.register-form {
+.register__form-wrapper {
   // border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 400px;
-  .register-form__title {
+  .register__form-title {
     // border: 1px solid red;
     text-align: center;
     font-size: 26px;
   }
-  .register-form__icon {
+  .register__form-icon {
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 60px;
   }
-  .register-form__question {
+  .register__form {
+    // border: 1px solid red;
+    width: 100%;
+    .form__input-title {
+      padding: 10px 10px 5px 10px;
+      font-size: 14px;
+    }
+  }
+  .register__question {
     margin-top: 10px;
     align-self: center;
     font-size: 14px;

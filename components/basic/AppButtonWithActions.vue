@@ -11,8 +11,13 @@
           {'btn-with-actions__actions-list--left': leftSide}
         ]"
       >
-        <li v-for="(action, index) in actions" :key="index" class="actions-list__item">
-          <p class="item__text" @click="action.doFunc(requiredParams.productId, requiredParams.isFavorite)">{{ action.title }}</p>
+        <li
+          v-for="(action, index) in actions"
+          :key="index"
+          class="actions-list__item"
+          @click="actionHandler({action, params})"
+        >
+          <p class="item__text">{{ action }}</p>
         </li>
       </ul>
     </button>
@@ -23,7 +28,7 @@
 export default {
   props: {
     actions: Array,
-    requiredParams: Object
+    params: [Number,String,Array,Object]
   },
   data () {
     return {
@@ -62,6 +67,10 @@ export default {
     closeActionsList () {
       this.listOpened = false
       document.removeEventListener('click', this.closeActionsList)
+    },
+    actionHandler (action) {
+      // console.log(action)
+      this.$emit('actionHandler', action)
     }
   }
 }

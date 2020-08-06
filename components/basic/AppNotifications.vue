@@ -11,15 +11,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AppNotice from '@/components/basic/AppNotice'
 
 export default {
-  props: {
-    notifications: Array
-  },
   components: {
     AppNotice
-  }
+  },
+  computed: {
+    ...mapState({
+      notifications: state => state.notifications.notices,
+    })
+  },
 }
 </script>
 

@@ -21,11 +21,9 @@
           <div class="form-group">
             <div class="form-field">
               <p class="field__title">Название</p>
-              <input
-                v-model="newProduct.title"
-                class="field__input"
-                type="text"
-                placeholder="Название продукта"
+              <app-input-text
+                :value="newProduct.title"
+                @valueChanged="newProduct.title = $event"
               />
             </div>
 
@@ -45,7 +43,6 @@
               <div class="checkbox-group">
                 <app-input-checkbox
                   label="Добавить в избранное"
-                  class="checkbox-group__checkbox"
                   @change="newProduct.favoriteProduct = $event"
                 />
               </div>
@@ -55,41 +52,33 @@
           <div class="form-group">
             <div class="form-field">
               <p class="field__title">Белки</p>
-              <input
-                v-model="newProduct.protein"
-                class="field__input"
-                type="text"
-                placeholder="Кол-во"
+              <app-input-text
+                :value="newProduct.protein"
+                @valueChanged="newProduct.protein = $event"
               />
             </div>
 
             <div class="form-field">
               <p class="field__title">Жиры</p>
-              <input
-                v-model="newProduct.fats"
-                class="field__input"
-                type="text"
-                placeholder="Кол-во"
+              <app-input-text
+                :value="newProduct.fats"
+                @valueChanged="newProduct.fats = $event"
               />
             </div>
 
             <div class="form-field">
               <p class="field__title">Углеводы</p>
-              <input
-                v-model="newProduct.carb"
-                class="field__input"
-                type="text"
-                placeholder="Кол-во"
+              <app-input-text
+                :value="newProduct.carb"
+                @valueChanged="newProduct.carb = $event"
               />
             </div>
 
             <div class="form-field">
               <p class="field__title">Калорийность</p>
-              <input
-                v-model="newProduct.kkal"
-                class="field__input"
-                type="text"
-                placeholder="Кол-во"
+              <app-input-text
+                :value="newProduct.kkal"
+                @valueChanged="newProduct.kkal = $event"
               />
             </div>
           </div>
@@ -109,8 +98,10 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from 'vuex'
 import AppPageInfo from "@/components/basic/AppPageInfo"
 import AppModal from "@/components/basic/AppModal"
+import AppInputText from "@/components/basic/AppInputText"
 import AppInputCheckbox from "@/components/basic/AppInputCheckbox"
 import AppSelect from "@/components/basic/AppSelect"
 import AppButton from "@/components/basic/AppButton"
@@ -119,12 +110,14 @@ export default {
   components: {
     AppPageInfo,
     AppModal,
+    AppInputText,
     AppInputCheckbox,
     AppSelect,
     AppButton
   },
   data() {
     return {
+      modalActive: false,
       newProduct: {
         title: "",
         weight: 100,
@@ -132,50 +125,57 @@ export default {
         fats: null,
         carb: null,
         kkal: null,
-        category: "qwerty",
+        category: "",
         favoriteProduct: false,
         userProduct: true,
         userId: 1
       }
-    };
+    }
   },
   computed: {
-    modalActive() {
-      return this.$store.getters["foodCalorieTable/getModalActive"]
-    },
+    ...mapState({
+      productCategories: state => state.foodCalorieTable.productCategories,
+      productsAmount: state => state.foodCalorieTable.products.length,
+      categoriesAmount: state => state.foodCalorieTable.productCategories.length
+    }),
+    ...mapGetters({
+      favoriteAmount: 'foodCalorieTable/getFavoriteAmount',
+      userProductsAmount: 'foodCalorieTable/getUserProductsAmount'
+    }),
     pageInfoElements () {
       return [
         {
           title: "Всего продуктов",
-          value: this.$store.getters["foodCalorieTable/getProductsAmount"]
+          value: this.productsAmount
         },
         {
           title: "Категорий",
-          value: this.$store.getters["foodCalorieTable/getCategoriesAmount"]
+          value: this.categoriesAmount
         },
         {
           title: "Избранное",
-          value: this.$store.getters["foodCalorieTable/getFavoriteAmount"]
+          value: this.favoriteAmount
         },
         {
           title: "Мои продукты",
-          value: this.$store.getters["foodCalorieTable/getUserProductsAmount"]
+          value: this.userProductsAmount
         }
       ]
-    },
-    productCategories () {
-      return this.$store.getters['foodCalorieTable/getProductCategories']
     }
   },
   methods: {
+    ...mapActions({
+      saveNewProduct: 'foodCalorieTable/saveNewProduct'
+    }),
     openModal() {
-      this.$store.commit("foodCalorieTable/setModalActive", true)
+      this.modalActive = true
     },
     closeModal() {
-      this.$store.commit("foodCalorieTable/setModalActive", false)
+      this.modalActive = false
     },
     saveNewUserProduct() {
-      this.$store.dispatch("foodCalorieTable/saveNewProduct", this.newProduct)
+      this.saveNewProduct(this.newProduct)
+      this.closeModal()
     }
   }
 };
@@ -211,9 +211,8 @@ export default {
         flex-direction: column;
         margin-bottom: 10px;
         .field__title {
-          margin-left: 10px;
+          padding: 0 10px 5px 10px;
           font-size: 14px;
-          font-weight: 500;
         }
         .field__input {
           margin-top: 5px;
@@ -230,11 +229,10 @@ export default {
           border: 1px solid $green;
         }
         .checkbox-group {
+          // border: 1px solid red;
+          align-self: flex-start;
           margin-top: 10px;
           margin-left: 10px;
-          .checkbox-group__checkbox {
-            margin-bottom: 5px;
-          }
         }
       }
     }

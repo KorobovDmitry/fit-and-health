@@ -8,17 +8,15 @@
         <product-table />
       </div>
     </div>
-    <app-notifications :notifications="notifications" />
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AppPageTitle from '@/components/basic/AppPageTitle'
 import PageInfo from '@/components/foodCalorieTable/PageInfo'
 import SortingFilters from '@/components/foodCalorieTable/SortingFilters'
 import ProductTable from '@/components/foodCalorieTable/ProductTable'
-
-import AppNotifications from '@/components/basic/AppNotifications'
 
 export default {
   async fetch ({ store }) {
@@ -28,17 +26,7 @@ export default {
     AppPageTitle,
     PageInfo,
     SortingFilters,
-    ProductTable,
-    AppNotifications
-  },
-  computed: {
-    notifications () {
-      return this.$store.getters['foodCalorieTable/getNotifications']
-    }
-  },
-  beforeMount () {
-    // очищать массив с оповещениями перед откртием страницы "таблица калорийности продуктов"
-    this.$store.commit('foodCalorieTable/cleanNotifications')
+    ProductTable
   }
 }
 </script>
