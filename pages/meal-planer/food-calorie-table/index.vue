@@ -19,6 +19,7 @@ import SortingFilters from '@/components/foodCalorieTable/SortingFilters'
 import ProductTable from '@/components/foodCalorieTable/ProductTable'
 
 export default {
+  middleware: ['userAuth'],
   async fetch ({ store }) {
     await store.dispatch('foodCalorieTable/getAllProducts')
   },

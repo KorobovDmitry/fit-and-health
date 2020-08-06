@@ -1,18 +1,29 @@
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op;
-// const errorHandler = require('../utils/errorHandler.js')
 const Products = require('../models/Products')
+const jwt = require('jsonwebtoken')
+const keys = require('../keys')
+// const errorHandler = require('../utils/errorHandler.js')
 
 module.exports.getAllProducts = async function (req, res) {
-  // Получить все продукты (базовые и конкретного юзера с ID)
-  // SELECT * FROM products WHERE userProduct = null OR userId = 12;
-  Products.findAll({
-    where: {
-      [Op.or]: [{userProduct: 0}, {userId: 1}]
+  try {
+    if (req.headers.authorization) {
+      const token = req.headers.authorization.split(' ')[1]
+      const decodedToken = jwt.verify(token, keys.jwt)
+
+      const AllProducts = await Products.findAll({
+        where: {
+          [Op.or]: [{userProduct: 0}, {userId: decodedToken.userId}]
+        }
+      })
+
+      res.status(200).json(AllProducts)
+    } else {
+      res.status(401).json({message: 'Необходима авторизация'})
     }
-  }).then(products => {
-    res.status(200).json(products)
-  }).catch(err=>console.log(err));
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 module.exports.saveNewProduct = async function (req, res) {

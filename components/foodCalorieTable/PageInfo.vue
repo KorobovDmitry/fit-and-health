@@ -128,7 +128,7 @@ export default {
         category: "",
         favoriteProduct: false,
         userProduct: true,
-        userId: 1
+        userId: this.$store.getters['auth/getUserId']
       }
     }
   },

@@ -7,7 +7,11 @@ const errorHandler = require('../utils/errorHandler')
 
 module.exports.register = async function (req, res) {
 
-  const candidate = await Users.findOne({ where: {email: req.body.email} })
+  const candidate = await Users.findOne({
+    where: {
+      email: req.body.email
+    }
+  })
 
   if (candidate) {
     // если пользователь существеует то возвращаем ошибку
@@ -46,7 +50,7 @@ module.exports.login = async function (req, res) {
       // Генерация токена
       const token = jwt.sign({
         email: candidate.email,
-        userId: candidate._id
+        userId: candidate.id
       }, keys.jwt, {expiresIn: 3600})
       // console.log(token)
 

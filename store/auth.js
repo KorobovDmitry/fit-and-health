@@ -1,5 +1,6 @@
 import cookieParser from 'cookie'
 import cookie from 'js-cookie'
+import jwtDecode from 'jwt-decode'
 
 export const state = () => ({
   token: null,
@@ -8,6 +9,9 @@ export const state = () => ({
 export const getters = {
   isAuthenticated (state) {
     return Boolean(state.token)
+  },
+  getUserId (state) {
+    return jwtDecode(state.token).userId
   }
 }
 
@@ -27,6 +31,7 @@ export const actions = {
   async login ({ dispatch }, formData) {
     try {
       const token = await this.$axios.$post('http://localhost:3000/api/auth/login', formData)
+
       await dispatch('setToken', token)
     } catch (err) {
       // получаем сообщение об ошибке которую возвращае axios
