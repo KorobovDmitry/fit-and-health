@@ -127,8 +127,7 @@ export default {
         kkal: null,
         category: "",
         favoriteProduct: false,
-        userProduct: true,
-        userId: this.$store.getters['auth/getUserId']
+        userProduct: true
       }
     }
   },

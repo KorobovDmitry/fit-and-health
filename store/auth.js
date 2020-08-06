@@ -1,6 +1,5 @@
 import cookieParser from 'cookie'
 import cookie from 'js-cookie'
-import jwtDecode from 'jwt-decode'
 
 export const state = () => ({
   token: null,
@@ -9,9 +8,6 @@ export const state = () => ({
 export const getters = {
   isAuthenticated (state) {
     return Boolean(state.token)
-  },
-  getUserId (state) {
-    return jwtDecode(state.token).userId
   }
 }
 
