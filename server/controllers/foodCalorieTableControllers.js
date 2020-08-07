@@ -134,16 +134,12 @@ module.exports.editProduct = async function (req, res) {
 module.exports.changeFavoriteParam = async function (req, res) {
   try {
     if (req.headers.authorization) {
-      const token = req.headers.authorization.split(' ')[1]
-      const decodedToken = jwt.verify(token, keys.jwt)
+      // const token = req.headers.authorization.split(' ')[1]
+      // const decodedToken = jwt.verify(token, keys.jwt)
 
       const UpdatedProduct = await Products.update(
         req.body.newParam, // должно быть в виде { title: 'foooo', fats: 'baaaaaar'}
-        {
-          where: {
-            [Op.and]: [{id: req.body.productId}, {userId: decodedToken.userId}]
-          }
-        }
+        {where: {id: req.body.productId}}
       )
 
       res.status(200).json(UpdatedProduct[0])

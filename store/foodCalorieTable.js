@@ -56,9 +56,11 @@ export const mutations = {
     this.commit('foodCalorieTable/sortProducts')
 
     const notice = {
+      id: Date.now(),
       type: 'success',
       message: 'Продукт успешно добавлен.',
-      timeToShow: 3000
+      timeToShow: 3000,
+      active: true
     }
     this.commit('notifications/addNewNotice', notice)
   },
@@ -74,9 +76,11 @@ export const mutations = {
     this.commit('foodCalorieTable/sortProducts')
 
     const notice = {
+      id: Date.now(),
       type: 'success',
       message: 'Информация о продукте успешно обновлена.',
-      timeToShow: 3000
+      timeToShow: 3000,
+      active: true
     }
     this.commit('notifications/addNewNotice', notice)
   },
@@ -92,9 +96,11 @@ export const mutations = {
     this.commit('foodCalorieTable/sortProducts')
 
     const notice = {
+      id: Date.now(),
       type: 'info',
       message: 'Продукт удален из базы данных.',
-      timeToShow: 3000
+      timeToShow: 3000,
+      active: true
     }
     this.commit('notifications/addNewNotice', notice)
   },
@@ -105,6 +111,15 @@ export const mutations = {
         break
       }
     }
+
+    const notice = {
+      id: Date.now(),
+      type: 'info',
+      message: product.newParam.favorite ? 'Продукт добавлен в избранное.' : 'Продукт удален из избранного.',
+      timeToShow: 3000,
+      active: true
+    }
+    this.commit('notifications/addNewNotice', notice)
   },
   setSearchString (state, searchString) {
     state.selectedFilters.searchString = searchString

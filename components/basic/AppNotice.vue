@@ -8,6 +8,8 @@
       {'notice-info': info},
       {'notice-alert': alert}
     ]"
+    @mouseenter="setHoverEffect()"
+    @mouseleave="setHoverEffect()"
   >
     <div class="notice__info">
       <div class="info__icon">
@@ -21,20 +23,23 @@
 
     <div ref="timeIndicator" class="notice__time-indicator"></div>
 
-    <button class="notice__close-btn">
+    <button class="notice__close-btn" @click="closeNotice()">
       <i class="ti-close"></i>
     </button>
   </li>
 </template>
 
 <script>
+// import { mapMutations } from 'vuex'
+
 export default {
   props: {
     notice: Object
   },
   data () {
     return {
-      isVisible: false
+      isVisible: false,
+      isHover: false
     }
   },
   computed: {
@@ -57,39 +62,47 @@ export default {
   },
   methods: {
     startTimeIndicator () {
-
-      // сделать приостановку отсчета времени при наведении мышкой на уведомление
-
       let currentIndicatorWidth = this.$refs.timeIndicator.getBoundingClientRect().width
       // (ширина / кадры в сек) / (кол-во сек / 1000)
-      if (currentIndicatorWidth > 0) {
+      if (currentIndicatorWidth > 0 && this.isVisible) {
         if (currentIndicatorWidth - this.step < 0) {
-          this.$refs.timeIndicator.style.width = 0
-
-          // скрыть элемент анимированно
-          const noticeWidth = this.$refs.notice.getBoundingClientRect().width
-          this.$refs.notice.style.marginLeft = `${noticeWidth + 30}px`
-          this.$refs.notice.style.marginRight = `-${noticeWidth + 30}px`
-          // поднять notice вверх перед удалением из списка
-          setTimeout( () => {
-            const noticeHeight = this.$refs.notice.getBoundingClientRect().height
-            this.$refs.notice.style.marginTop = `-${noticeHeight + 10}px`
-            // удалить notice из списка
-            setTimeout( () => {
-              // удалить notice из списка notifications в store
-              this.$store.commit('notifications/removeNotice', this.notice.id)
-            }, 400)
-          }, 400)
+          this.closeNotice()
         } else {
           this.$refs.timeIndicator.style.width = currentIndicatorWidth - this.step + 'px'
         }
         setTimeout( () => {
-          this.startTimeIndicator()
+          if (!this.isHover) {
+            this.startTimeIndicator()
+          }
         }, 1000 / 30)
       }
+    },
+    setHoverEffect () {
+      this.isHover = !this.isHover
+      if (!this.isHover) {
+        this.startTimeIndicator()
+      }
+    },
+    closeNotice () {
+      this.$refs.timeIndicator.style.width = 0
+      this.isVisible = false
+      // скрыть элемент анимированно
+      const noticeWidth = this.$refs.notice.getBoundingClientRect().width
+      this.$refs.notice.style.marginLeft = `${noticeWidth + 30}px`
+      this.$refs.notice.style.marginRight = `-${noticeWidth + 30}px`
+      // поднять notice вверх перед удалением из списка
+      setTimeout( () => {
+        const noticeHeight = this.$refs.notice.getBoundingClientRect().height
+        this.$refs.notice.style.marginTop = `-${noticeHeight + 10}px`
+        // удалить notice из списка
+        setTimeout( () => {
+          this.$store.commit('notifications/removeNotice', this.notice.id)
+        }, 400)
+      }, 400)
     }
   },
   mounted () {
+    this.isVisible = true
     const noticeWidth = this.$refs.notice.getBoundingClientRect().width
     this.$refs.notice.style.marginLeft = `${noticeWidth}px`
     this.$refs.notice.style.marginRight = `-${noticeWidth}px`
