@@ -1,6 +1,5 @@
 <template>
   <div class="nutrients-calc">
-    <p class="nutrients-calc__block-title">Нутриенты</p>
     <div class="nutrients-calc__chart">график содержания БЖУК</div>
     <div class="nutrients-calc__nutrients">
       <div class="nutrient">
@@ -37,21 +36,15 @@ export default {
 .nutrients-calc {
   display: flex;
   flex-direction: column;
-  width: 250px;
-  margin-left: 5px;
+  width: 100%;
   padding: 10px;
   background: $white;
   border: 1px solid $blockBorder;
   border-radius: 6px;
-  .nutrients-calc__block-title {
-    padding-bottom: 10px;
-    text-align: center;
-    font-weight: 500;
-    border-bottom: 1px dashed $blockBorder;
-  }
   .nutrients-calc__chart {
     flex: 1 1 auto;
     padding: 10px;
+    height: 300px;
   }
   .nutrients-calc__nutrients {
     // border: 1px solid red;
@@ -60,7 +53,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       .nutrient__title {
         font-weight: 500;
       }

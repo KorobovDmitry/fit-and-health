@@ -3,47 +3,39 @@
     <p class="ingredients__block-title">Ингридиенты</p>
 
     <ul class="ingredients__list">
-      <li class="product">
+      <li
+        v-for="(item, index) in 3"
+        :key="index"
+        class="product"
+      >
         <p class="product__element">Гречка</p>
         <div class="product__element">
           <p class="element__title">Вес</p>
-          <p class="element__amount">100</p>
+          <input type="text" class="element__input" value="100">
         </div>
         <div class="product__element">
           <p class="element__title">Белки</p>
-          <p class="element__amount">12</p>
+          <p class="element__amount">{{2.5 * index + 1}}</p>
         </div>
         <div class="product__element">
           <p class="element__title">Жиры</p>
-          <p class="element__amount">12</p>
+          <p class="element__amount">{{15.8 * index + 1}}</p>
         </div>
         <div class="product__element">
           <p class="element__title">Углеводы</p>
-          <p class="element__amount">12</p>
+          <p class="element__amount">{{8.2 * index + 1}}</p>
         </div>
         <div class="product__element">
           <p class="element__title">Ккал</p>
-          <p class="element__amount">12</p>
+          <p class="element__amount">{{24 * index + 1}}</p>
         </div>
       </li>
     </ul>
-
-    <div class="ingredients__actions mt-10">
-      <!-- <app-button size12px uppercase >Сохранить как...</app-button> -->
-      <app-button class="ml-auto" size12px uppercase >Добавить продукт</app-button>
-    </div>
-
   </div>
 </template>
 
 <script>
-import AppButton from '@/components/basic/AppButton'
-
-export default {
-  components: {
-    AppButton
-  }
-}
+export default {}
 </script>
 
 <style lang="scss" scoped>
@@ -53,9 +45,10 @@ export default {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  margin-top: 5px;
   padding: 10px;
   background: white;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid $blockBorder;
   border-radius: 6px;
   .ingredients__block-title {
     margin-bottom: 10px;
@@ -74,6 +67,7 @@ export default {
     .product {
       display: flex;
       align-items: center;
+      margin-bottom: 5px;
       padding: 10px 20px;
       background: $white;
       border: 1px solid $blockBorder;
@@ -89,23 +83,34 @@ export default {
         max-width: 140px;
         .element__title {
           text-transform: uppercase;
+          color: $green;
           font-size: 10px;
           font-weight: 500;
         }
         .element__amount {
           margin-top: 5px;
+          // font-weight: 500;
+        }
+        .element__input {
+          margin-top: 5px;
+          margin-bottom: -3px;
+          width: 100%;
+          min-width: 80px;
+          max-width: 80px;
+          text-align: center;
+          border: none;
+          border-bottom: 2px solid $green;
         }
       }
       .product__element:nth-child(1) {
         align-items:flex-start;
-        // justify-content: flex-start;
         max-width: 100%;
         font-weight: 500;
       }
     }
-  }
-  .ingredients__actions {
-    display: flex;
+    .product:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 

@@ -3,6 +3,11 @@
 
     <div class="recipe-overview">
       <div class="element">
+        <i class="ti-package element__icon"></i>
+        <p class="element__amount">4</p>
+        <p class="element__text">порции</p>
+      </div>
+      <div class="element">
         <i class="ti-pie-chart element__icon"></i>
         <p class="element__amount">8</p>
         <p class="element__text">продуктов</p>
