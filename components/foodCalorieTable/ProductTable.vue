@@ -67,7 +67,7 @@
           <div class="item__element">
             <app-button-with-actions
               :actions="btnActions"
-              :params="{id: item.id, favorite: item.favorite}"
+              :params="{id: item.id}"
               @actionHandler="productMoreAction($event)"
             />
           </div>
@@ -114,6 +114,7 @@ export default {
   },
   methods: {
     ...mapMutations({
+      openModal: 'foodCalorieTable/openModal',
       setSearchString: 'foodCalorieTable/setSearchString',
       sortProducts: 'foodCalorieTable/sortProducts',
       changeProductWeight: 'foodCalorieTable/changeProductWeight'
@@ -127,11 +128,9 @@ export default {
       $event.target.select()
     },
     productMoreAction ($event) {
-      // console.log('actionHandler', action)
       switch ($event.action) {
         case 'Редактировать':
-          console.log('Редактировать', $event.params)
-          // this.editProduct()
+          this.openModal($event.params.id)
           break
         case 'Удалить':
           this.removeProduct({product: $event.params.id})

@@ -31,20 +31,41 @@ module.exports.saveNewProduct = async function (req, res) {
       const token = req.headers.authorization.split(' ')[1]
       const decodedToken = jwt.verify(token, keys.jwt)
 
-      const CreatedProduct = await Products.create({
-        title: req.body.title,
-        weight: req.body.weight,
-        protein: req.body.protein,
-        fats: req.body.fats,
-        carb: req.body.carb,
-        kkal: req.body.kkal,
-        category: req.body.category,
-        favorite: req.body.favoriteProduct,
-        userProduct: req.body.userProduct,
-        userId: decodedToken.userId
-      })
-
-      res.status(200).json(CreatedProduct)
+      if (req.body.id && req.body.userId === decodedToken.userId) {
+        const UpdatedProduct = await Products.update(
+          {
+            title: req.body.title,
+            weight: req.body.weight,
+            protein: req.body.protein,
+            fats: req.body.fats,
+            carb: req.body.carb,
+            kkal: req.body.kkal,
+            category: req.body.category,
+            favorite: req.body.favorite,
+            userProduct: req.body.userProduct,
+          },
+          {
+            where: {
+              [Op.and]: [{id: req.body.id}, {userId: decodedToken.userId}]
+            }
+          }
+        )
+        res.status(200).json(UpdatedProduct[0])
+      } else {
+        const CreatedProduct = await Products.create({
+          title: req.body.title,
+          weight: req.body.weight,
+          protein: req.body.protein,
+          fats: req.body.fats,
+          carb: req.body.carb,
+          kkal: req.body.kkal,
+          category: req.body.category,
+          favorite: req.body.favorite,
+          userProduct: req.body.userProduct,
+          userId: decodedToken.userId
+        })
+        res.status(200).json(CreatedProduct)
+      }
     } else {
       res.status(401).json({message: 'Необходима авторизация'})
     }
@@ -91,7 +112,7 @@ module.exports.editProduct = async function (req, res) {
         //   carb: req.body.carb,
         //   kkal: req.body.kkal,
         //   category: req.body.category,
-        //   favorite: req.body.favoriteProduct,
+        //   favorite: req.body.favorite,
         //   userProduct: req.body.userProduct,
         //   userId: req.body.userId
         // },

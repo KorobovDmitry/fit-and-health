@@ -14,7 +14,7 @@ export default {
   },
   props: {
     value: {
-      type: String
+      type: [String, Boolean]
     },
     modelValue: {
       default: false
@@ -38,6 +38,9 @@ export default {
     shouldBeChecked () {
       if (this.modelValue instanceof Array) {
         return this.modelValue.includes(this.value)
+      }
+      if (typeof this.value === 'boolean') {
+        return this.value
       }
       // Обратите внимание, что `true-value` и` false-value` являются camelCase в JS
       return this.modelValue === this.trueValue

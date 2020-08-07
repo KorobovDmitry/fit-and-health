@@ -23,7 +23,7 @@
               <p class="field__title">Название</p>
               <app-input-text
                 :value="newProduct.title"
-                @valueChanged="newProduct.title = $event"
+                @valueChanged="setNewProductParams({field: 'title', value: $event})"
               />
             </div>
 
@@ -35,15 +35,16 @@
                 defaultValue="Мясо"
                 alignListLeft
                 alignSelectedValueLeft
-                @selectValueChanged="newProduct.category = $event"
+                @selectValueChanged="setNewProductParams({field: 'category', value: $event})"
               />
             </div>
 
             <div class="form-field">
               <div class="checkbox-group">
                 <app-input-checkbox
+                  :value="newProduct.favorite"
                   label="Добавить в избранное"
-                  @change="newProduct.favoriteProduct = $event"
+                  @change="setNewProductParams({field: 'favorite', value: $event})"
                 />
               </div>
             </div>
@@ -54,7 +55,7 @@
               <p class="field__title">Белки</p>
               <app-input-text
                 :value="newProduct.protein"
-                @valueChanged="newProduct.protein = $event"
+                @valueChanged="setNewProductParams({field: 'protein', value: $event})"
               />
             </div>
 
@@ -62,7 +63,7 @@
               <p class="field__title">Жиры</p>
               <app-input-text
                 :value="newProduct.fats"
-                @valueChanged="newProduct.fats = $event"
+                @valueChanged="setNewProductParams({field: 'fats', value: $event})"
               />
             </div>
 
@@ -70,7 +71,7 @@
               <p class="field__title">Углеводы</p>
               <app-input-text
                 :value="newProduct.carb"
-                @valueChanged="newProduct.carb = $event"
+                @valueChanged="setNewProductParams({field: 'carb', value: $event})"
               />
             </div>
 
@@ -78,7 +79,7 @@
               <p class="field__title">Калорийность</p>
               <app-input-text
                 :value="newProduct.kkal"
-                @valueChanged="newProduct.kkal = $event"
+                @valueChanged="setNewProductParams({field: 'kkal', value: $event})"
               />
             </div>
           </div>
@@ -90,7 +91,7 @@
           uppercase
           size14px
           class="modal-action-btn"
-          @click.native="saveNewUserProduct()"
+          @click.native="saveUserProduct()"
         >Сохранить продукт</app-button>
       </template>
     </app-modal>
@@ -98,7 +99,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 import AppPageInfo from "@/components/basic/AppPageInfo"
 import AppModal from "@/components/basic/AppModal"
 import AppInputText from "@/components/basic/AppInputText"
@@ -116,23 +117,12 @@ export default {
     AppButton
   },
   data() {
-    return {
-      modalActive: false,
-      newProduct: {
-        title: "",
-        weight: 100,
-        protein: null,
-        fats: null,
-        carb: null,
-        kkal: null,
-        category: "",
-        favoriteProduct: false,
-        userProduct: true
-      }
-    }
+    return {}
   },
   computed: {
     ...mapState({
+      modalActive: state => state.foodCalorieTable.modalActive,
+      newProduct: state => state.foodCalorieTable.newProduct,
       productCategories: state => state.foodCalorieTable.productCategories,
       productsAmount: state => state.foodCalorieTable.products.length,
       categoriesAmount: state => state.foodCalorieTable.productCategories.length
@@ -163,17 +153,16 @@ export default {
     }
   },
   methods: {
-    ...mapActions({
-      saveNewProduct: 'foodCalorieTable/saveNewProduct'
+    ...mapMutations({
+      openModal: 'foodCalorieTable/openModal',
+      closeModal: 'foodCalorieTable/closeModal',
+      setNewProductParams: 'foodCalorieTable/setNewProductParams',
     }),
-    openModal() {
-      this.modalActive = true
-    },
-    closeModal() {
-      this.modalActive = false
-    },
-    saveNewUserProduct() {
-      this.saveNewProduct(this.newProduct)
+    ...mapActions({
+      saveProduct: 'foodCalorieTable/saveProduct'
+    }),
+    saveUserProduct() {
+      this.saveProduct()
       this.closeModal()
     }
   }

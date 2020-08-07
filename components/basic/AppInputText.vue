@@ -11,12 +11,17 @@
 <script>
 export default {
   props: {
-    value: String,
+    value: [String, Number],
     placeholder: String,
   },
   data () {
     return {
       inputValue: this.value || ''
+    }
+  },
+  watch: {
+    value (newValue) {
+      this.inputValue = newValue
     }
   },
   methods: {

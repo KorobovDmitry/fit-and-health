@@ -9,7 +9,20 @@ export const state = () => ({
     productType: 'Все продукты',
     productCategory: ['Мясо', 'Морепродукты', 'Яйца, яичные продукты', 'Молоко, молочные продукты', 'Соя, соевые продукты', 'Овощи, овощные продукты', 'Зелень, травы, листья, салаты', 'Фрукты, ягоды, сухофрукты', 'Грибы', 'Жиры, масла', 'Орехи', 'Крупы, злаки', 'Семена', 'Специи, пряности', 'Мука, продукты из муки', 'Напитки, соки'],
     searchString: ''
-  }
+  },
+  newProduct: {
+    title: "",
+    weight: 100,
+    protein: null,
+    fats: null,
+    carb: null,
+    kkal: null,
+    category: "Мясо",
+    favoriteProduct: false,
+    userProduct: true,
+    // userId: null
+  },
+  modalActive: false
 })
 
 export const getters = {
@@ -45,6 +58,24 @@ export const mutations = {
     const notice = {
       type: 'success',
       message: 'Продукт успешно добавлен.',
+      timeToShow: 3000
+    }
+    this.commit('notifications/addNewNotice', notice)
+  },
+  updateProducts (state, newProduct) {
+    let targetProduct = null
+    for (let i = 0; i < state.products.length; i++) {
+      if (state.products[i].id === newProduct.id) {
+        targetProduct = i
+        state.products[i] = newProduct
+        break
+      }
+    }
+    this.commit('foodCalorieTable/sortProducts')
+
+    const notice = {
+      type: 'success',
+      message: 'Информация о продукте успешно обновлена.',
       timeToShow: 3000
     }
     this.commit('notifications/addNewNotice', notice)
@@ -164,11 +195,35 @@ export const mutations = {
     product.weight = newWeight
 
     state.sortedProducts.splice(index, 1, product)
+  },
+  setNewProductParams (state, params) {
+    state.newProduct[params.field] = params.value
+  },
+  openModal (state, productId) {
+    if (productId) {
+      state.newProduct = state.products.filter(product => product.id === productId)[0]
+    } else {
+      state.newProduct = {
+        title: "",
+        weight: 100,
+        protein: null,
+        fats: null,
+        carb: null,
+        kkal: null,
+        category: "Мясо",
+        favorite: false,
+        userProduct: true
+      }
+    }
+    state.modalActive = true
+  },
+  closeModal (state) {
+    state.modalActive = false
   }
 }
 
 export const actions = {
-  async getAllProducts ({ commit } ) {
+  async getAllProducts ({ commit }) {
     try {
       const products = await this.$axios.$get(`${BASE_URL}/api/food-calorie-table`)
       commit('setProducts', products)
@@ -176,11 +231,16 @@ export const actions = {
       console.log(err)
     }
   },
-  async saveNewProduct ({ commit }, product) {
+  async saveProduct ({ state, commit }) {
     try {
-      const newProduct = await this.$axios.$post(`${BASE_URL}/api/food-calorie-table/saveNewProduct`, product)
+      const newProduct = await this.$axios.$post(`${BASE_URL}/api/food-calorie-table/saveNewProduct`, state.newProduct)
 
-      await commit('addNewProduct', newProduct)
+      if (newProduct === 1) {
+        commit('updateProducts', state.newProduct)
+      } else {
+        commit('addNewProduct', newProduct)
+      }
+
     } catch (err) {
       console.log(err)
     }
