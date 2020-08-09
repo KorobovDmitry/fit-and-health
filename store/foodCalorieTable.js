@@ -248,7 +248,7 @@ export const actions = {
   },
   async saveProduct ({ state, commit }) {
     try {
-      const newProduct = await this.$axios.$post(`${BASE_URL}/api/food-calorie-table/saveNewProduct`, state.newProduct)
+      const newProduct = await this.$axios.$post(`${BASE_URL}/api/food-calorie-table/save-product`, state.newProduct)
 
       if (newProduct === 1) {
         commit('updateProducts', state.newProduct)
@@ -262,28 +262,27 @@ export const actions = {
   },
   async removeProduct ({ commit }, product) {
     try {
-      const remove = await this.$axios.$post(`${BASE_URL}/api/food-calorie-table/removeProduct`, product)
+      const remove = await this.$axios.$post(`${BASE_URL}/api/food-calorie-table/remove-product`, product)
+
       if (remove) {
         await commit('deleteProduct', product)
       } else {
-        console.log('Удалить продукт не удалось')
+        const notice = {
+          id: Date.now(),
+          type: 'alert',
+          message: 'Удалить продукт не удалось.',
+          timeToShow: 3000,
+          active: true
+        }
+        this.commit('notifications/addNewNotice', notice)
       }
-    } catch (err) {
-      console.log(err)
-    }
-  },
-  async editProduct ({ commit }, product) {
-    try {
-      const editedProduct = await this.$axios.$post(`${BASE_URL}/api/food-calorie-table/editProduct`, product)
-      // commit('updateProduct', editedProduct)
-      console.log(editedProduct)
     } catch (err) {
       console.log(err)
     }
   },
   async changeFavoriteParam ({ commit }, productParam) {
     try {
-      const updatedProduct = await this.$axios.$post(`${BASE_URL}/api/food-calorie-table/changeFavoriteParam`, productParam)
+      const updatedProduct = await this.$axios.$post(`${BASE_URL}/api/food-calorie-table/change-favorite-param`, productParam)
       if (updatedProduct) {
         commit('updateFavoriteProduct', productParam)
       }

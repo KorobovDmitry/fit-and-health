@@ -95,42 +95,6 @@ module.exports.removeProduct = async function (req, res) {
   }
 }
 
-module.exports.editProduct = async function (req, res) {
-  try {
-    if (req.headers.authorization) {
-      const token = req.headers.authorization.split(' ')[1]
-      const decodedToken = jwt.verify(token, keys.jwt)
-
-      Products.update(
-        req.body.updateProduct,
-        // updateProduct Должен содержать в себе стандартный набор параметров согласно модели для БД "Products"
-        // {
-        //   title: req.body.title,
-        //   weight: req.body.weight,
-        //   protein: req.body.protein,
-        //   fats: req.body.fats,
-        //   carb: req.body.carb,
-        //   kkal: req.body.kkal,
-        //   category: req.body.category,
-        //   favorite: req.body.favorite,
-        //   userProduct: req.body.userProduct,
-        //   userId: req.body.userId
-        // },
-        {
-          where: {
-            [Op.and]: [{id: req.body.productId}, {userId: decodedToken.userId}]
-          }
-        }
-      )
-      res.status(200).json(product)
-    } else {
-      res.status(401).json({message: 'Необходима авторизация'})
-    }
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 module.exports.changeFavoriteParam = async function (req, res) {
   try {
     if (req.headers.authorization) {

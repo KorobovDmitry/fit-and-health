@@ -40,7 +40,7 @@ export const actions = {
     // сохроняем в state токен полученный из action login
     commit('setToken', token)
     // сохраняем cookie на 361 день
-    cookie.set('jwt-token', token, { expires: 361 })
+    cookie.set('jwt-token', token, { expires: 365 })
   },
   logout ({ commit }, token) {
     // убираем токен из запросов axios
