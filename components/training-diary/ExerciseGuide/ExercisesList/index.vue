@@ -7,7 +7,7 @@
     <div class="exercises-list__content">
       <app-search-block small />
 
-      <app-scroll-block>
+      <app-scroll-block class="mt-10">
         <template v-slot:scrollContent>
           <div v-for="(element, index) in exercises" :key="index" class="category__item">
             <app-accordion :isOpened="true">
@@ -123,8 +123,8 @@ export default {
   max-width: 400px;
   .exercises-list__content {
     // border: 1px solid red;
-    // display: flex;
-    // flex-direction: column;
+    display: flex;
+    flex-direction: column;
     padding: 10px;
     background: $hiddenBlockBG;
     box-shadow: $boxShadow;

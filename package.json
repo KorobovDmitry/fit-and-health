@@ -11,7 +11,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.12.0",
+    "@nuxtjs/axios": "^5.12.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie": "^0.4.1",
@@ -25,14 +25,14 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "mysql2": "^2.1.0",
-    "nuxt": "^2.14.0",
+    "nuxt": "^2.14.1",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "sequelize": "^6.3.3"
+    "sequelize": "^6.3.4"
   },
   "devDependencies": {
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
-    "sass-loader": "^9.0.2"
+    "sass-loader": "^9.0.3"
   }
 }

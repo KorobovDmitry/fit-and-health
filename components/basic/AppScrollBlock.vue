@@ -1,5 +1,5 @@
 <template>
-  <div ref="scrollBlock" class="scroll-block" @mousewheel.stop="onScroll($event)">
+  <div class="scroll-block" @mousewheel="updateScrollLine()">
 
     <div ref="scrollContent" class="scroll-block__content">
       <slot name="scrollContent"></slot>
@@ -14,94 +14,20 @@
 
 <script>
 export default {
-  data () {
-    return {
-      currentScroll: 0,
-      targetScroll: 0,
-      moveStep: 5,
-      targetStep: 100,
-      isMove: false,
-      framesPerSecond: 340
-    }
-  },
   methods: {
-    onScroll ($event) {
-      // Остановить стандартное событие скрола страницы
-      $event.preventDefault ? $event.preventDefault() : ($event.returnValue = false)
-
-      this.setTargetScroll($event)
-      if (!this.isMove) {
-        this.isMove = true
-        this.move()
-      }
-    },
-    setTargetScroll ($event) {
-      if ($event.deltaY < 0) {
-        this.targetScroll += this.targetStep
-        // утанавливаем направление движения вниз
-        if (this.moveStep < 0) {
-          this.moveStep = this.moveStep * -1
-        }
-      } else {
-        this.targetScroll += (this.targetStep * -1)
-        // утанавливаем направление движения вверх
-        if (this.moveStep > 0) {
-          this.moveStep = this.moveStep * -1
-        }
-      }
-    },
-    move () {
-
-      const scrollBlockHeight = parseFloat(getComputedStyle(this.$refs.scrollBlock).height)
-      const scrollContentHeight = parseFloat(getComputedStyle(this.$refs.scrollContent).height)
-      const maxScroll = scrollBlockHeight - scrollContentHeight
-
-
-      if (parseFloat(this.$refs.scrollContent.style.marginTop) + this.moveStep > 0) {
-        this.$refs.scrollContent.style.marginTop = 0
-        this.isMove = false
-        this.currentScroll = 0
-        this.targetScroll = 0
-        // console.log('dont bottom scroll')
-      } else if (parseFloat(this.$refs.scrollContent.style.marginTop) + this.moveStep > maxScroll) {
-        // console.log('up scroll', parseFloat(this.$refs.scrollContent.style.marginTop) + this.moveStep, maxScroll)
-        this.$refs.scrollContent.style.marginTop = parseFloat(this.$refs.scrollContent.style.marginTop) + this.moveStep + 'px'
-        this.currentScroll = parseFloat(this.$refs.scrollContent.style.marginTop)
-        setTimeout(() => {
-        if (this.moveStep < 0 && this.currentScroll > this.targetScroll) {
-            // console.log('смещение вверх')
-            this.move()
-          } else if (this.moveStep > 0 && this.currentScroll < this.targetScroll) {
-            // console.log('смещение вниз')
-            this.move()
-          } else {
-            this.isMove = false
-            this.targetScroll = this.currentScroll
-          }
-        }, 1000 / this.framesPerSecond)
-      }
-      else {
-        this.$refs.scrollContent.style.marginTop = parseFloat(this.$refs.scrollContent.style.marginTop) + (maxScroll - parseFloat(this.$refs.scrollContent.style.marginTop)) + 'px'
-        this.currentScroll = parseFloat(this.$refs.scrollContent.style.marginTop)
-        this.isMove = false
-        this.targetScroll = this.currentScroll
-        // console.log('dont up scroll');
-      }
-
-
+    updateScrollLine () {
+      // https://learn.javascript.ru/size-and-scroll
+      console.log(this.$refs.scrollContent.scrollTop)
     }
   },
   mounted () {
-    // устанавливаем высоту блока scroll-block
-    const scrollBlockParent = this.$refs.scrollBlock.parentNode
-    const parrentPaddingTop = parseFloat(getComputedStyle(scrollBlockParent).paddingTop) + parseFloat(getComputedStyle(scrollBlockParent).paddingBottom)
-    this.$refs.scrollBlock.style.height = scrollBlockParent.getBoundingClientRect().height - parrentPaddingTop + 'px'
+    const ScrollContent = this.$refs.scrollContent
+    const ScrollWidth = ScrollContent.offsetWidth - ScrollContent.clientWidth
+    ScrollContent.style.width = `calc(100% + ${ScrollWidth}px)`
+    ScrollContent.style.height = `calc(100% + ${ScrollWidth}px)`
 
-    // делаем блок видимым, чтобы он раньше врмени не растягивался на всю длинну, а имел высоту родителя
-    this.$refs.scrollBlock.style.visibility = 'visible'
-
-    // устанавливаем значение margin по умолчанию, чтобы не использовать в дальнейшем метод getComputedStyle(), а обрашаться напрямую к свойству через elem.style.marginTop
-    this.$refs.scrollContent.style.marginTop = 0
+    console.log(ScrollContent.scrollHeight)
+    console.log(ScrollContent.scrollTop)
   }
 }
 </script>
@@ -112,14 +38,17 @@ export default {
 .scroll-block {
   // border: 1px solid red;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  padding-right: 12px;
+  flex: 1 1 auto;
   overflow: hidden;
-  visibility: hidden;
   .scroll-block__content {
     // border: 1px solid red;
-    // transition: all .01s linear;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-right: 10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    overflow: scroll;
   }
   .scroll-block__scroll-line {
     // border: 1px solid red;

@@ -74,6 +74,8 @@ export default {
 
 .opened-dialogs {
   .opened-dialogs__chat-list {
+    display: flex;
+    flex-direction: column;
     height: calc(100vh - 242px);
     margin-top: 10px;
     padding: 10px;

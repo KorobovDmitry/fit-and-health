@@ -4,35 +4,35 @@
     <div class="meal-parts__tabs">
       <div class="tab tab--active">
         <p class="tab__title">Завтрак</p>
-        <div class="tab__info">
+        <!-- <div class="tab__info">
           <p class="info__element">09 : 00</p>
           <p class="info__element">1 рецепт</p>
           <p class="info__element">4 продукта</p>
-        </div>
+        </div> -->
       </div>
       <div class="tab">
         <p class="tab__title">Обед</p>
-        <div class="tab__info">
+        <!-- <div class="tab__info">
           <p class="info__element">09 : 00</p>
           <p class="info__element">1 рецепт</p>
           <p class="info__element">4 продукта</p>
-        </div>
+        </div> -->
       </div>
       <div class="tab">
         <p class="tab__title">Перекус</p>
-        <div class="tab__info">
+        <!-- <div class="tab__info">
           <p class="info__element">09 : 00</p>
           <p class="info__element">1 рецепт</p>
           <p class="info__element">4 продукта</p>
-        </div>
+        </div> -->
       </div>
       <div class="tab">
         <p class="tab__title">Ужин</p>
-        <div class="tab__info">
+        <!-- <div class="tab__info">
           <p class="info__element">09 : 00</p>
           <p class="info__element">1 рецепт</p>
           <p class="info__element">4 продукта</p>
-        </div>
+        </div> -->
       </div>
       
       <div class="add-meal-part">
@@ -81,7 +81,7 @@ export default {
     // border-bottom: 1px solid $blockBorder;
     .tab {
       margin-left: 5px;
-      padding: 10px;
+      padding: 10px 20px;
       background: $white;
       border: 1px solid $blockBorder;
       border-bottom: 1px solid transparent;
@@ -92,26 +92,26 @@ export default {
       .tab__title {
         text-align: center;
         font-weight: 500;
-        padding-bottom: 10px;
-        border-bottom: 1px dashed $blockBorder;
+        // padding-bottom: 10px;
+        // border-bottom: 1px dashed $blockBorder;
       }
-      .tab__info {
-        display: flex;
-        margin-top: 10px;
-        .info__element {
-          padding: 0 10px;
-          font-size: 12px;
-          border-right: 1px solid $blockBorder;
-        }
-        .info__element:first-child {
-          color: $green;
-          font-size: 14px;
-          font-weight: 600;
-        }
-        .info__element:last-child {
-          border-right: none;
-        }
-      }
+      // .tab__info {
+      //   display: flex;
+      //   margin-top: 10px;
+      //   .info__element {
+      //     padding: 0 10px;
+      //     font-size: 12px;
+      //     border-right: 1px solid $blockBorder;
+      //   }
+      //   .info__element:first-child {
+      //     color: $green;
+      //     font-size: 14px;
+      //     font-weight: 600;
+      //   }
+      //   .info__element:last-child {
+      //     border-right: none;
+      //   }
+      // }
     }
     .tab:first-child {
       margin-left: 0;
@@ -121,14 +121,14 @@ export default {
       border: 1px solid transparent;
       .tab__title {
         color: $white;
-        border-bottom: 1px dashed $white;
+        // border-bottom: 1px dashed $white;
       }
-      .tab__info {
-        .info__element, .info__element:first-child {
-          color: $white;
-          border-right: 1px solid $white;
-        }
-      }
+      // .tab__info {
+      //   .info__element, .info__element:first-child {
+      //     color: $white;
+      //     border-right: 1px solid $white;
+      //   }
+      // }
     }
     .add-meal-part {
       display: flex;
