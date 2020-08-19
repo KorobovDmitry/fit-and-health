@@ -2,51 +2,12 @@
   <div class="exercises-list">
     <app-block-title>База упражнений</app-block-title>
 
-    <!-- <pre>{{ exercises }}</pre> -->
-
     <div class="exercises-list__content">
       <app-search-block small />
 
       <app-scroll-block class="mt-10">
-        <template v-slot:scrollContent>
-          <div v-for="(element, index) in exercises" :key="index" class="category__item">
-            <app-accordion :isOpened="true">
-              <template v-slot:accordionHeader>
-                <div class="item__header">
-                  <div class="header__title">
-                    <p class="title__text">{{ element.category }}</p>
-                    <p class="title__exercises-count">Кол-во упражнений {{ element.exercises.length }}</p>
-                  </div>
-                  <i class="ti-angle-double-down header__icon"></i>
-                </div>
-              </template>
-              <template v-slot:accordionHiddenContent>
-                <ul class="item__exercises-list">
-                  <li
-                    v-for="(exercise, index) in element.exercises"
-                    :key="index"
-                    class="exercises-list__item"
-                    @click="fetchExerciseInfo(exercise.id)"
-                  >
-                    <div class="item__exercises-image">
-                      <img src="" alt="img" class="exercise-image">
-                    </div>
-                    <div class="item__exercise-title-and-type">
-                      <p class="exercises-title">{{ exercise.title }}</p>
-                      <p class="exercise__target-muscles">Широчайшие, предплечья</p>
-                    </div>
-                    <i class="ti-star item__favorite-icon"></i>
-                  </li>
-                </ul>
-              </template>
-            </app-accordion>
-          </div>
-        </template>
-      </app-scroll-block>
-
-      <!-- <div class="categories">
         <div v-for="(element, index) in exercises" :key="index" class="category__item">
-          <app-accordion :isOpened="false">
+          <app-accordion :isOpened="true">
             <template v-slot:accordionHeader>
               <div class="item__header">
                 <div class="header__title">
@@ -77,8 +38,7 @@
             </template>
           </app-accordion>
         </div>
-      </div> -->
-
+      </app-scroll-block>
     </div>
   </div>
 </template>

@@ -4,52 +4,50 @@
     <app-search-block small />
     <ul class="opened-dialogs__chat-list">
       <app-scroll-block>
-        <template v-slot:scrollContent>
-          <li class="chat-list__item">
-            <div class="dialog-card">
-              <div class="dialog-card__header">
-                <img class="header__user-avatar" src="https://pic.sport.ua/media/images/Foto%202.jpg" alt="">
-                <div class="header__user-info">
-                  <p class="user-info__name">Дмитрий Коробов</p>
-                  <p class="user-info__last-visit-or-status">online</p>
-                  <!-- <p class="user-info__last-visit-or-status">11 : 45</p> -->
-                </div>
-                <div class="header__unread-message header__unread-message--disable">
-                  <p class="unread-message__amount">3</p>
-                </div>
+        <li class="chat-list__item">
+          <div class="dialog-card">
+            <div class="dialog-card__header">
+              <img class="header__user-avatar" src="https://pic.sport.ua/media/images/Foto%202.jpg" alt="">
+              <div class="header__user-info">
+                <p class="user-info__name">Дмитрий Коробов</p>
+                <p class="user-info__last-visit-or-status">online</p>
+                <!-- <p class="user-info__last-visit-or-status">11 : 45</p> -->
               </div>
-              <div class="dialog-card__last-message-preview">
-                <p class="last-message-preview__text">Посленее сообщение, содержащее максимум 100 символов и    размером в две строки...</p>
-                <div class="last-message-preview__status">
-                  <i class="ti-check status__icon"></i>
-                  <i class="ti-check status__icon"></i>
-                </div>
+              <div class="header__unread-message header__unread-message--disable">
+                <p class="unread-message__amount">3</p>
               </div>
             </div>
-          </li>
-          <li v-for="(item, index) in 5" :key="index" class="chat-list__item">
-            <div class="dialog-card">
-              <div class="dialog-card__header">
-                <img class="header__user-avatar" src="https://pic.sport.ua/media/images/Foto%202.jpg" alt="">
-                <div class="header__user-info">
-                  <p class="user-info__name">John Doe</p>
-                  <!-- <p class="user-info__last-visit-or-status">online</p> -->
-                  <p class="user-info__last-visit-or-status">11 : 45</p>
-                </div>
-                <div class="header__unread-message">
-                  <p class="unread-message__amount">3</p>
-                </div>
-              </div>
-              <div class="dialog-card__last-message-preview">
-                <p class="last-message-preview__text">Посленее сообщение, содержащее максимум 100 символов и    размером в две строки...</p>
-                <div class="last-message-preview__status">
-                  <i class="ti-check status__icon"></i>
-                  <!-- <i class="ti-check status__icon"></i> -->
-                </div>
+            <div class="dialog-card__last-message-preview">
+              <p class="last-message-preview__text">Посленее сообщение, содержащее максимум 100 символов и    размером в две строки...</p>
+              <div class="last-message-preview__status">
+                <i class="ti-check status__icon"></i>
+                <i class="ti-check status__icon"></i>
               </div>
             </div>
-          </li>
-        </template>
+          </div>
+        </li>
+        <li v-for="(item, index) in 5" :key="index" class="chat-list__item">
+          <div class="dialog-card">
+            <div class="dialog-card__header">
+              <img class="header__user-avatar" src="https://pic.sport.ua/media/images/Foto%202.jpg" alt="">
+              <div class="header__user-info">
+                <p class="user-info__name">John Doe</p>
+                <!-- <p class="user-info__last-visit-or-status">online</p> -->
+                <p class="user-info__last-visit-or-status">11 : 45</p>
+              </div>
+              <div class="header__unread-message">
+                <p class="unread-message__amount">3</p>
+              </div>
+            </div>
+            <div class="dialog-card__last-message-preview">
+              <p class="last-message-preview__text">Посленее сообщение, содержащее максимум 100 символов и    размером в две строки...</p>
+              <div class="last-message-preview__status">
+                <i class="ti-check status__icon"></i>
+                <!-- <i class="ti-check status__icon"></i> -->
+              </div>
+            </div>
+          </div>
+        </li>
       </app-scroll-block>
     </ul>
   </div>

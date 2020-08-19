@@ -38,7 +38,7 @@ export default {
       margin: 20px;
       padding: 10px;
       width: 100%;
-      height: 40px;
+      height: 41px;
       color: $black;
       resize: none;
       outline: none;

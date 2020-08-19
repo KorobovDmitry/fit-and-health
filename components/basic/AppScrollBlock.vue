@@ -2,7 +2,7 @@
   <div class="scroll-block" @mousewheel="updateScrollLine()">
 
     <div ref="scrollContent" class="scroll-block__content">
-      <slot name="scrollContent"></slot>
+      <slot></slot>
     </div>
 
     <div class="scroll-block__scroll-line">
