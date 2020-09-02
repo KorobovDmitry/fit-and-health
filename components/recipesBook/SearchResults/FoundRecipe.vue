@@ -48,10 +48,6 @@
       <p class="ti-flag-alt favorite-mark__icon"></p>
     </div>
 
-<!-- <pre>
-{{recipe}}
-</pre> -->
-
   </nuxt-link>
 </template>
 

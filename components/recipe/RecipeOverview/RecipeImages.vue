@@ -2,13 +2,12 @@
   <div class="recipe-images">
     <img
       class="recipe-images__main"
-      src="http://bientasty.ru/wp-content/uploads/2017/04/1491022672_maxresdefault.jpg"
-      alt
+      src="/uploads/recipes/1/recipe-01.jpg"
     />
     <div class="recipe-images__additionals">
-      <img class="additional__img" src="http://bientasty.ru/wp-content/uploads/2017/04/1491022672_maxresdefault.jpg" alt />
-      <img class="additional__img" src="http://bientasty.ru/wp-content/uploads/2017/04/1491022672_maxresdefault.jpg" alt />
-      <img class="additional__img" src="http://bientasty.ru/wp-content/uploads/2017/04/1491022672_maxresdefault.jpg" alt />
+      <img class="additional__img" src="/uploads/recipes/1/recipe-01.jpg" />
+      <img class="additional__img" src="/uploads/recipes/1/recipe-01.jpg" />
+      <img class="additional__img" src="/uploads/recipes/1/recipe-01.jpg" />
     </div>
   </div>
 </template>

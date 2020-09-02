@@ -1,6 +1,7 @@
 <template>
   <div class="recipe">
-    <app-page-title>Рецепт название</app-page-title>
+    <app-page-title>Рецепт "{{ productTitle }}"</app-page-title>
+    <pre>{{ recipe }}</pre>
     <div class="recipe__content">
       <recipe-overview />
       <additional-info />
@@ -9,14 +10,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AppPageTitle from "@/components/basic/AppPageTitle";
 import RecipeOverview from '@/components/recipe/RecipeOverview/index'
 import AdditionalInfo from '@/components/recipe/AdditionalInfo/index'
 
 export default {
-  // async fetch ({ store }) {
-  //   await store.dispatch('recipe/fetchRecipe')
-  // },
+  async fetch ({ store, params }) {
+    await store.dispatch('recipe/fetchRecipe', params.recipe)
+  },
+  computed: {
+    ...mapState({
+      productTitle: state => state.recipe.recipe.title,
+      recipe: state => state.recipe.recipe
+    }),
+  },
   components: {
     AppPageTitle,
     RecipeOverview,

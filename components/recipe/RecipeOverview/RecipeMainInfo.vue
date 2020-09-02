@@ -14,14 +14,14 @@
       </div>
       <div class="element">
         <i class="ti-timer element__icon"></i>
-        <p class="element__amount">25</p>
+        <p class="element__amount">{{ cookingTimes }}</p>
         <p class="element__text">мин.</p>
       </div>
     </div>
 
     <div class="description">
       <p class="description__title">Описание</p>
-      <p class="description__text">описание рецепта vyjuj ntrcnf</p>
+      <p class="description__text">{{ description }}</p>
       <div class="description__marks">
         <p class="mark">Низкоуглеводное</p>
         <p class="mark">Без ГМО</p>
@@ -31,17 +31,25 @@
 
     <div class="cooking-skill">
       <p class="cooking-skill__block-title">Сложность приготовления:</p>
-      <app-rating class="ml-auto" :rating="2" />
+      <app-rating class="ml-auto" :rating="cookingSkill" />
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AppRating from '@/components/basic/AppRating'
 
 export default {
   components: {
     AppRating
+  },
+  computed: {
+    ...mapState({
+      description: state => state.recipe.recipe.description,
+      cookingTimes: state => state.recipe.recipe.cookingTimes,
+      cookingSkill: state => state.recipe.recipe.cookingSkill
+    })
   }
 }
 </script>

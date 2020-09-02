@@ -239,6 +239,7 @@ export const mutations = {
 
 export const actions = {
   async getAllProducts ({ commit }) {
+    console.log('food');
     try {
       const products = await this.$axios.$get(`${BASE_URL}/api/food-calorie-table`)
       commit('setProducts', products)

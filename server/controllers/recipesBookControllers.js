@@ -15,29 +15,29 @@ module.exports.getRecipes = async function (req, res) {
     })
 
     // Подготовленные данные о продуктах
-    let ReceivedProducts = []
-    for (let i = 0; i < ReceivedRecipes.length; i++) {
-      // продукты конкретного рецепта (id и вес)
-      const products = JSON.parse(ReceivedRecipes[i].products)
+    // let ReceivedProducts = []
+    // for (let i = 0; i < ReceivedRecipes.length; i++) {
+    //   // продукты конкретного рецепта (id и вес)
+    //   const products = JSON.parse(ReceivedRecipes[i].products)
 
-      // Массив с продуктами итерируемого рецепта
-      let ProductsFullInfo = []
-      for (let i = 0; i < products.length; i++) {
-        let ProductInfo = await Products.findOne({
-          where: {id: products[i].id}
-        })
-        // Добавляем данные о весе продукта в рецепте
-        ProductInfo.dataValues.weightInRecipe = products[i].weight
+    //   // Массив с продуктами итерируемого рецепта
+    //   let ProductsFullInfo = []
+    //   for (let i = 0; i < products.length; i++) {
+    //     let ProductInfo = await Products.findOne({
+    //       where: {id: products[i].id}
+    //     })
+    //     // Добавляем данные о весе продукта в рецепте
+    //     ProductInfo.dataValues.weightInRecipe = products[i].weight
 
-        ProductsFullInfo.push(ProductInfo)
-      }
-      ReceivedProducts.push(ProductsFullInfo)
-    }
+    //     ProductsFullInfo.push(ProductInfo)
+    //   }
+    //   ReceivedProducts.push(ProductsFullInfo)
+    // }
 
-    // Рецепты с полными данными о продуктах
-    for (let i = 0; i < ReceivedRecipes.length; i++) {
-      ReceivedRecipes[i].products = ReceivedProducts[i]
-    }
+    // // Рецепты с полными данными о продуктах
+    // for (let i = 0; i < ReceivedRecipes.length; i++) {
+    //   ReceivedRecipes[i].products = ReceivedProducts[i]
+    // }
 
     res.status(200).json(ReceivedRecipes)
   } catch (err) {

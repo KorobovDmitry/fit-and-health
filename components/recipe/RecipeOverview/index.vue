@@ -15,7 +15,6 @@
       <recipe-ingredients />
       <recipe-cooking-steps />
 
-
     </div>
   </div>
 </template>

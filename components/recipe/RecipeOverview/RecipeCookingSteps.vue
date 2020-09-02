@@ -4,7 +4,7 @@
     <ul class="steps">
       <li v-for="(item, index) in 4" :key="index" class="step">
         <div class="image-and-description">
-          <img class="image" src="a">
+          <img class="image" src="" alt="step-image">
           <div class="description">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor laboriosam dignissimos vel ut? Repellat fugiat, repellendus ullam eius quasi voluptates sit nisi magni sint unde id odio fugit labore reiciendis est facere veniam ducimus natus maxime distinctio consectetur saepe vel a officiis? Aliquam porro, illo voluptate animi commodi ut rerum, eos minima magni, unde quibusdam earum tenetur exercitationem placeat voluptas modi.</p>
           </div>
@@ -15,9 +15,7 @@
 </template>
 
 <script>
-export default {
-  
-}
+export default {}
 </script>
 
 <style lang="scss" scoped>

@@ -10,9 +10,6 @@ export const getters = {
 
 export const mutations = {
   setRecipes (state, Recipes) {
-    // Recipes.forEach(element => {
-    //   element.products = JSON.parse(element.products)
-    // })
     state.recipes = Recipes
   }
 }
