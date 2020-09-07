@@ -1,5 +1,5 @@
 <template>
-  <div class="scroll-block" @mousewheel="updateScrollLine()">
+  <div class="scroll-block">
 
     <div ref="scrollContent" class="scroll-block__content">
       <slot></slot>
@@ -14,21 +14,7 @@
 
 <script>
 export default {
-  methods: {
-    updateScrollLine () {
-      // https://learn.javascript.ru/size-and-scroll
-      console.log(this.$refs.scrollContent.scrollTop)
-    }
-  },
-  mounted () {
-    const ScrollContent = this.$refs.scrollContent
-    const ScrollWidth = ScrollContent.offsetWidth - ScrollContent.clientWidth
-    ScrollContent.style.width = `calc(100% + ${ScrollWidth}px)`
-    ScrollContent.style.height = `calc(100% + ${ScrollWidth}px)`
 
-    console.log(ScrollContent.scrollHeight)
-    console.log(ScrollContent.scrollTop)
-  }
 }
 </script>
 
@@ -46,9 +32,6 @@ export default {
     top: 0;
     left: 0;
     padding-right: 10px;
-    width: calc(100% + 20px);
-    height: calc(100% + 20px);
-    overflow: scroll;
   }
   .scroll-block__scroll-line {
     // border: 1px solid red;

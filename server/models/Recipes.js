@@ -11,16 +11,44 @@ const Recipes = sequelize.define('recipes', {
     type: Sequelize.STRING,
     allowNull: true
   },
-  products: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
   cookingTimes: {
     type: Sequelize.INTEGER,
     allowNull: true
   },
   cookingSkill: {
     type: Sequelize.INTEGER,
+    allowNull: true
+  },
+  portions: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+  },
+  likes: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+  },
+  dislikes: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+  },
+  shares: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+  },
+  marks: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  media: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  products: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  cookingSteps: {
+    type: Sequelize.STRING,
     allowNull: true
   },
   userId: {

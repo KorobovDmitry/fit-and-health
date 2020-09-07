@@ -1,7 +1,6 @@
 <template>
   <div class="recipe">
-    <app-page-title>Рецепт "{{ productTitle }}"</app-page-title>
-    <pre>{{ recipe }}</pre>
+    <app-page-title>{{ productTitle }}</app-page-title>
     <div class="recipe__content">
       <recipe-overview />
       <additional-info />
@@ -21,8 +20,7 @@ export default {
   },
   computed: {
     ...mapState({
-      productTitle: state => state.recipe.recipe.title,
-      recipe: state => state.recipe.recipe
+      productTitle: state => state.recipe.recipe.title
     }),
   },
   components: {

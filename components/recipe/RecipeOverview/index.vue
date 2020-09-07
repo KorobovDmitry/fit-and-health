@@ -7,7 +7,7 @@
       <div class="images-social-main-info">
         <div class="images-and-social">
           <recipe-images />
-          <social-btns class="mt-5" :btnsInfo="{like: 0, dislike: 0, share: 0}" />
+          <social-btns class="mt-5" :btnsInfo="{like: likes, dislike: dislikes, share: shares}" />
         </div>
         <recipe-main-info />
       </div>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import RecipeImages from '@/components/recipe/RecipeOverview/RecipeImages'
 import RecipeMainInfo from '@/components/recipe/RecipeOverview/RecipeMainInfo'
@@ -35,6 +36,13 @@ export default {
     RecipeIngredients,
     RecipeCookingSteps,
     SocialBtns
+  },
+  computed: {
+    ...mapState({
+      likes: state => state.recipe.recipe.likes.toLocaleString(),
+      dislikes: state => state.recipe.recipe.dislikes.toLocaleString(),
+      shares: state => state.recipe.recipe.shares.toLocaleString(),
+    })
   }
 }
 </script>

@@ -4,7 +4,7 @@
     <div class="recipe-overview">
       <div class="element">
         <i class="ti-package element__icon"></i>
-        <p class="element__amount">4</p>
+        <p class="element__amount">{{ portions }}</p>
         <p class="element__text">порции</p>
       </div>
       <div class="element">
@@ -23,9 +23,7 @@
       <p class="description__title">Описание</p>
       <p class="description__text">{{ description }}</p>
       <div class="description__marks">
-        <p class="mark">Низкоуглеводное</p>
-        <p class="mark">Без ГМО</p>
-        <p class="mark">Для снижения веса</p>
+        <p v-for="(item, index) in marks" :key="index" class="mark">{{ item }}</p>
       </div>
     </div>
 
@@ -48,7 +46,9 @@ export default {
     ...mapState({
       description: state => state.recipe.recipe.description,
       cookingTimes: state => state.recipe.recipe.cookingTimes,
-      cookingSkill: state => state.recipe.recipe.cookingSkill
+      cookingSkill: state => state.recipe.recipe.cookingSkill,
+      portions: state => state.recipe.recipe.portions,
+      marks: state => state.recipe.recipe.marks
     })
   }
 }

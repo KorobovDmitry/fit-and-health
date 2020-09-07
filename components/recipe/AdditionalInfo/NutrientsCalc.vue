@@ -19,11 +19,29 @@
         <p class="nutrient__amount">254</p>
       </div>
     </div>
+
+    <pre>{{ protein }}</pre>
+
   </div>
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      recipe: state => state.recipe.recipe
+    }),
+    protein () {
+      return this.recipe
+      // let amount = 0
+      // for (let i = 0; i < this.recipe.products.length; i++) {
+      //   amount += this.recipe.products[i].protein / 100 * this.recipe.products[i].weightInRecipe
+      // }
+      // return Math.round(amount * 100) / 100
+    },
+  }
+}
 </script>
 
 <style lang="scss" scoped>

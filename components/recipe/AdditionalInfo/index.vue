@@ -14,13 +14,16 @@
           <app-button class="ml-5" uppercase fillArea>Редактировать</app-button>
         </nuxt-link>
       </div>
+      <nuxt-link to="/meal-planer/recipes-book" class="actions__link">
+        <app-button class="mt-10" uppercase fillArea>Книга рецептов</app-button>
+      </nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
-import NutrientsCalc from '@/components/recipe/RecipeOverview/NutrientsCalc'
+import NutrientsCalc from '@/components/recipe/AdditionalInfo/NutrientsCalc'
 import AppButton from '@/components/basic/AppButton'
 
 export default {
