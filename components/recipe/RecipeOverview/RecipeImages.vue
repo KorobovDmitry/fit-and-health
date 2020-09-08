@@ -2,7 +2,7 @@
   <div class="recipe-images">
     <img
       class="recipe-images__main"
-      src="/uploads/recipes/1/recipe-01.jpg"
+      :src="media[0]"
     />
     <div class="recipe-images__additionals">
       <img class="additional__img" src="/uploads/recipes/1/recipe-01.jpg" />
@@ -13,7 +13,15 @@
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+
+export default {
+  computed: {
+    ...mapState({
+      media: state => state.recipe.recipe.media
+    })
+  }
+}
 </script>
 
 <style lang="scss" scoped>

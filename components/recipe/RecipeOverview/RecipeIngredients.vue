@@ -4,30 +4,30 @@
 
     <ul class="ingredients__list">
       <li
-        v-for="(item, index) in 3"
+        v-for="(item, index) in products"
         :key="index"
         class="product"
       >
-        <p class="product__element">Гречка</p>
+        <p class="product__element">{{ item.title }}</p>
         <div class="product__element">
           <p class="element__title">Вес</p>
-          <input type="text" class="element__input" value="100">
+          <input type="text" class="element__input" :value="item.weight">
         </div>
         <div class="product__element">
           <p class="element__title">Белки</p>
-          <p class="element__amount">{{2.5 * index + 1}}</p>
+          <p class="element__amount">{{ Math.round((item.protein / 100 * item.weight) * 100) / 100 }}</p>
         </div>
         <div class="product__element">
           <p class="element__title">Жиры</p>
-          <p class="element__amount">{{15.8 * index + 1}}</p>
+          <p class="element__amount">{{ Math.round((item.fats / 100 * item.weight) * 100) / 100 }}</p>
         </div>
         <div class="product__element">
           <p class="element__title">Углеводы</p>
-          <p class="element__amount">{{8.2 * index + 1}}</p>
+          <p class="element__amount">{{ Math.round((item.carb / 100 * item.weight) * 100) / 100 }}</p>
         </div>
         <div class="product__element">
           <p class="element__title">Ккал</p>
-          <p class="element__amount">{{24 * index + 1}}</p>
+          <p class="element__amount">{{ Math.round((item.kkal / 100 * item.weight) * 100) / 100 }}</p>
         </div>
       </li>
     </ul>
@@ -35,7 +35,15 @@
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+
+export default {
+  computed: {
+    ...mapState({
+      products: state => state.recipe.recipe.products
+    })
+  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -9,7 +9,7 @@
       </div>
       <div class="element">
         <i class="ti-pie-chart element__icon"></i>
-        <p class="element__amount">8</p>
+        <p class="element__amount">{{ productsAmount }}</p>
         <p class="element__text">продуктов</p>
       </div>
       <div class="element">
@@ -45,6 +45,7 @@ export default {
   computed: {
     ...mapState({
       description: state => state.recipe.recipe.description,
+      productsAmount: state => state.recipe.recipe.products.length,
       cookingTimes: state => state.recipe.recipe.cookingTimes,
       cookingSkill: state => state.recipe.recipe.cookingSkill,
       portions: state => state.recipe.recipe.portions,

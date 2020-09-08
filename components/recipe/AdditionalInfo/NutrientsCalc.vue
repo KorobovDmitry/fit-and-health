@@ -1,27 +1,27 @@
 <template>
   <div class="nutrients-calc">
+
+<pre>{{ recipe }}</pre>
+
     <div class="nutrients-calc__chart">график содержания БЖУК</div>
     <div class="nutrients-calc__nutrients">
       <div class="nutrient">
         <p class="nutrient__title">Белки:</p>
-        <p class="nutrient__amount">24</p>
+        <p class="nutrient__amount">{{ protein }}</p>
       </div>
       <div class="nutrient">
         <p class="nutrient__title">Жиры:</p>
-        <p class="nutrient__amount">7.6</p>
+        <p class="nutrient__amount">{{ fats }}</p>
       </div>
       <div class="nutrient">
         <p class="nutrient__title">Углеводы:</p>
-        <p class="nutrient__amount">78</p>
+        <p class="nutrient__amount">{{ carb }}</p>
       </div>
       <div class="nutrient">
         <p class="nutrient__title">Ккал:</p>
-        <p class="nutrient__amount">254</p>
+        <p class="nutrient__amount">{{ kkal }}</p>
       </div>
     </div>
-
-    <pre>{{ protein }}</pre>
-
   </div>
 </template>
 
@@ -33,12 +33,32 @@ export default {
       recipe: state => state.recipe.recipe
     }),
     protein () {
-      return this.recipe
-      // let amount = 0
-      // for (let i = 0; i < this.recipe.products.length; i++) {
-      //   amount += this.recipe.products[i].protein / 100 * this.recipe.products[i].weightInRecipe
-      // }
-      // return Math.round(amount * 100) / 100
+      let amount = 0
+      for (let i = 0; i < this.recipe.products.length; i++) {
+        amount += this.recipe.products[i].protein / 100 * this.recipe.products[i].weight
+      }
+      return Math.round(amount * 100) / 100
+    },
+    fats () {
+      let amount = 0
+      for (let i = 0; i < this.recipe.products.length; i++) {
+        amount += this.recipe.products[i].fats / 100 * this.recipe.products[i].weight
+      }
+      return Math.round(amount * 100) / 100
+    },
+    carb () {
+      let amount = 0
+      for (let i = 0; i < this.recipe.products.length; i++) {
+        amount += this.recipe.products[i].carb / 100 * this.recipe.products[i].weight
+      }
+      return Math.round(amount * 100) / 100
+    },
+    kkal () {
+      let amount = 0
+      for (let i = 0; i < this.recipe.products.length; i++) {
+        amount += this.recipe.products[i].kkal / 100 * this.recipe.products[i].weight
+      }
+      return Math.round(amount * 100) / 100
     },
   }
 }

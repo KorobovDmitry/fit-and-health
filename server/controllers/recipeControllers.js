@@ -19,8 +19,6 @@ module.exports.getRecipe = async function (req, res) {
     Recipe.media = JSON.parse(Recipe.media)
 
     // Подготовленные данные о продуктах
-    let ReceivedProducts = []
-    // продукты конкретного рецепта (id и вес)
     const products = JSON.parse(Recipe.products)
 
     // Массив с продуктами итерируемого рецепта
@@ -35,10 +33,9 @@ module.exports.getRecipe = async function (req, res) {
 
       ProductsFullInfo.push(ProductInfo)
     }
-    ReceivedProducts.push(ProductsFullInfo)
 
     // Рецепты с полными данными о продуктах
-    Recipe.products = ReceivedProducts
+    Recipe.products = ProductsFullInfo
 
     res.status(200).json(Recipe)
   } catch (err) {
