@@ -11,7 +11,7 @@
         <p class="product__element">{{ item.title }}</p>
         <div class="product__element">
           <p class="element__title">Вес</p>
-          <input type="text" class="element__input" :value="item.weight">
+          <input type="text" class="element__input" :value="item.weight" @input="updateProductWeight($event, item.id)">
         </div>
         <div class="product__element">
           <p class="element__title">Белки</p>
@@ -42,6 +42,15 @@ export default {
     ...mapState({
       products: state => state.recipe.recipe.products
     })
+  },
+  methods: {
+    updateProductWeight ($event, id) {
+      const newProductWeight = {
+        id: id,
+        weight: $event.target.value
+      }
+      this.$store.commit('recipe/updateProductWeight', newProductWeight)
+    }
   }
 }
 </script>

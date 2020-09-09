@@ -1,8 +1,5 @@
 <template>
   <div class="nutrients-calc">
-
-<pre>{{ recipe }}</pre>
-
     <div class="nutrients-calc__chart">график содержания БЖУК</div>
     <div class="nutrients-calc__nutrients">
       <div class="nutrient">

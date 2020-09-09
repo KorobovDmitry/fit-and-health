@@ -2,11 +2,11 @@
   <div class="cooking-steps">
     <p class="cooking-steps__block-title">Этапы приготовления</p>
     <ul class="steps">
-      <li v-for="(item, index) in 4" :key="index" class="step">
+      <li v-for="(item, index) in cookingSteps" :key="index" class="step">
         <div class="image-and-description">
-          <img class="image" src="" alt="step-image">
+          <img class="image" :src="item.image" alt="">
           <div class="description">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor laboriosam dignissimos vel ut? Repellat fugiat, repellendus ullam eius quasi voluptates sit nisi magni sint unde id odio fugit labore reiciendis est facere veniam ducimus natus maxime distinctio consectetur saepe vel a officiis? Aliquam porro, illo voluptate animi commodi ut rerum, eos minima magni, unde quibusdam earum tenetur exercitationem placeat voluptas modi.</p>
+            <p>{{ item.description }}</p>
           </div>
         </div>
       </li>
@@ -15,7 +15,15 @@
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+
+export default {
+  computed: {
+    ...mapState({
+      cookingSteps: state => state.recipe.recipe.cookingSteps
+    })
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -59,7 +67,7 @@ export default {}
       }
     }
     .step:last-child {
-      margin-bottom: 0;
+      margin-bottom: 10px;
     }
   }
 }

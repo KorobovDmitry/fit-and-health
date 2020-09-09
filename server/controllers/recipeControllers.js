@@ -17,6 +17,7 @@ module.exports.getRecipe = async function (req, res) {
     })
     Recipe.marks = JSON.parse(Recipe.marks)
     Recipe.media = JSON.parse(Recipe.media)
+    Recipe.cookingSteps = JSON.parse(Recipe.cookingSteps)
 
     // Подготовленные данные о продуктах
     const products = JSON.parse(Recipe.products)
