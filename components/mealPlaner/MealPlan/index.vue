@@ -33,6 +33,7 @@ export default {
   // margin-bottom: 20px;
   display: flex;
   flex-direction: column;
+  flex: 1 1 auto;
   .meal-plan__action-btns {
     display: flex;
     align-items: center;

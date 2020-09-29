@@ -47,8 +47,9 @@ export default {
   flex-direction: column;
   margin-left: 5px;
   padding: 10px;
-  width: 260px;
+  width: 100%;
   min-width: 260px;
+  max-width: 260px;
   background: $white;
   border: 1px solid $blockBorder;
   border-radius: 6px;
