@@ -85,9 +85,35 @@
     </div>
 
     <div class="constructor">
-      constructor
+      <div class="meal-parts">
+        <div class="meal-part meal-part--active">
+          <p class="meal-part__title">Завтрак</p>
+        </div>
+        <div class="meal-part">
+          <p class="meal-part__title">Обед</p>
+        </div>
+        <div class="meal-part">
+          <p class="meal-part__title">Перекус</p>
+        </div>
+        <div class="meal-part">
+          <p class="meal-part__title">Ужин</p>
+        </div>
+        <div class="meal-part">
+          <i class="ti-plus"></i>
+          <i class="ti-marker-alt"></i>
+          <i class="ti-save"></i>
+          <i class="ti-trash"></i>
+        </div>
+      </div>
+
       <div class="info-and-image">
-        <div class="info">info</div>
+        <div class="info">
+          <div class="title-and-time">
+            <app-input-text value="Завтрак" />
+            <app-input-text class="ml-10" value="08 : 00" />
+          </div>
+          <app-textarea class="mt-10" value="Небольшое описание" />
+        </div>
         <div class="image">image</div>
       </div>
       <div class="quick-search-and-added-products">
@@ -157,6 +183,9 @@ export default {
     // border: 1px solid red;
     display: flex;
     .settings {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: -66px;
       width: 100%;
       min-width: 300px;
       max-width: 300px;
@@ -206,6 +235,7 @@ export default {
         flex-direction: column;
         margin-top: 5px;
         padding: 10px;
+        min-height: 300px;
         background: $white;
         border: 1px solid $blockBorder;
         border-radius: 6px;
@@ -221,6 +251,7 @@ export default {
     display: flex;
     justify-content: space-around;
     margin-top: 5px;
+    margin-left: 305px;
     padding: 10px;
     background: $white;
     border: 1px solid $blockBorder;
@@ -269,18 +300,59 @@ export default {
 
   .constructor {
     margin-top: 5px;
-    padding: 10px;
+    // padding: 10px;
     background: $white;
     border: 1px solid $blockBorder;
     border-radius: 6px;
+    overflow: hidden;
+    .meal-parts {
+      display: flex;
+      border-bottom: 1px solid $blockBorder;
+      .meal-part {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        padding: 15px 20px;
+        max-width: 200px;
+        border-right: 1px solid $blockBorder;
+        cursor: pointer;
+        .meal-part__title {
+          text-transform: uppercase;
+          font-size: 14px;
+          text-align: center;
+          font-weight: 500;
+        }
+      }
+      .meal-part:last-child {
+        flex-direction: row;
+        margin-left: auto;
+        i {
+          padding: 0 10px;
+          font-size: 18px;
+        }
+      }
+      .meal-part--active {
+        background: $green;
+        color: $white;
+        border-right: none;
+        .meal-part__title {
+          font-weight: 600;
+        }
+      }
+    }
     .info-and-image {
       display: flex;
+      padding: 20px;
       height: 250px;
       .info {
         flex: 1 1 auto;
+        .title-and-time {
+          display: flex;
+        }
       }
       .image {
         width: 400px;
+        margin-left: 20px;
         padding: 10px;
         border: 1px solid $blockBorder;
         border-radius: 6px;
@@ -289,6 +361,7 @@ export default {
     .quick-search-and-added-products {
       display: flex;
       margin-top: 20px;
+      padding: 10px;
       .quick-search {
         padding: 10px;
         width: 400px;
