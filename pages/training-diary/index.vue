@@ -34,7 +34,7 @@
 import AppPageTitle from "@/components/basic/AppPageTitle"
 import AppBlockTitle from "@/components/basic/AppBlockTitle"
 import MainTrainingProgram from "@/components/training-diary/MainTrainingProgram/index"
-import MealPlanerCalendar from "@/components/mealPlaner/MealPlanerSettings/MealPlanerCalendar"
+import MealPlanerCalendar from "@/components/mealPlaner/MealPlanerCalendar"
 
 export default {
   components: {

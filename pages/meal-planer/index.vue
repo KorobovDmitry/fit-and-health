@@ -3,15 +3,21 @@
     <app-page-title>Дневник питания</app-page-title>
     <div class="meal-planer__content">
       <meal-plan />
-      <meal-planer-settings />
+      <div class="calendar-and-useful-pages">
+        <app-block-title>Календарь</app-block-title>
+        <meal-planer-calendar />
+        <useful-pages />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import AppPageTitle from '@/components/basic/AppPageTitle'
+import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import MealPlan from '@/components/mealPlaner/MealPlan/index'
-import MealPlanerSettings from '@/components/mealPlaner/MealPlanerSettings/index'
+import MealPlanerCalendar from '@/components/mealPlaner/MealPlanerCalendar'
+import UsefulPages from '@/components/mealPlaner/UsefulPages'
 
 export default {
   head: {
@@ -23,8 +29,10 @@ export default {
   },
   components: {
     AppPageTitle,
+    AppBlockTitle,
     MealPlan,
-    MealPlanerSettings
+    MealPlanerCalendar,
+    UsefulPages
   }
 }
 </script>
@@ -44,6 +52,13 @@ export default {
     display: flex;
     width: 100%;
     max-width: 1700px;
+    .calendar-and-useful-pages {
+      // border: 1px solid red;
+      margin-left: 40px;
+      width: 400px;
+      min-width: 400px;
+      max-width: 400px;
+    }
   }
 }
 

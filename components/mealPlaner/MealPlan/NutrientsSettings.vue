@@ -184,6 +184,9 @@ export default {
   flex-direction: column;
   margin-top: 5px;
   padding: 10px;
+  width: 100%;
+  min-width: 300px;
+  max-width: 300px;
   background: $white;
   border: 1px solid $blockBorder;
   border-radius: 6px;
