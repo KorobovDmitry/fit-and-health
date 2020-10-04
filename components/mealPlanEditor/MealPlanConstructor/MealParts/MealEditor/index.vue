@@ -1,7 +1,7 @@
 <template>
   <div class="meal-editor">
-    <quick-search />
-    <meal-part-constructor />
+    <!-- <quick-search /> -->
+    <!-- <meal-part-constructor /> -->
   </div>
 </template>
 

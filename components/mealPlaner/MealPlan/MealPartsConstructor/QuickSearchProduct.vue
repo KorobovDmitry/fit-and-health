@@ -1,9 +1,9 @@
 <template>
   <div class="quick-search-product">
     <div class="product__title-and-action-btn">
-      <i class="ti-bookmark product__favorite-icon product__favorite-icon--active"></i>
+      <!-- <i class="ti-bookmark product__favorite-icon product__favorite-icon--active"></i> -->
       <p class="product__title">Гречка</p>
-      <i class="ti-more product__action-btn"></i>
+      <i class="ti-plus product__action-btn"></i>
     </div>
     <div class="product__nutrients-and-img">
       <div class="product__nutrients">
