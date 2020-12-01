@@ -1,6 +1,6 @@
 <template>
   <div class="messages">
-    <app-page-title>Диалоги</app-page-title>
+    <app-page-title>Сообщения</app-page-title>
     <div class="messages__content">
       <div class="content__left">
         <opened-dialogs />
@@ -50,6 +50,8 @@ export default {
     max-width: 1700px;
     .content__left {
       // border: 1px solid red;
+      display: flex;
+      flex-direction: column;
       width: 400px;
       min-width: 400px;
       max-width: 400px;
