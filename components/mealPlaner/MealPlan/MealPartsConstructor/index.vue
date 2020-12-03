@@ -21,7 +21,7 @@
         <nuxt-link to="/meal-planer/meal-plan-editor">
           <i class="ti-save-alt"></i>
         </nuxt-link>
-        <i class="ti-trash"></i>
+        <!-- <i class="ti-trash"></i> -->
       </div>
     </div>
     <!-- <div class="meal-part-settings">
@@ -73,7 +73,7 @@
         </div>
       </div> -->
       <div class="added-products">
-        <div class="added-products__tabs">
+        <!-- <div class="added-products__tabs">
           <div class="tab tab--active">
             <p class="tab__title">Добавленное в рацион</p>
           </div>
@@ -83,16 +83,13 @@
           <div class="tab">
             <p class="tab__title">Рецепты</p>
           </div>
-          <!-- <div class="tab">
-            <i class="ti-filter"></i>
-          </div> -->
-        </div>
+        </div> -->
         <div class="added-products__content">
 
-          <app-search-block small class="mb-10"/>
+          <!-- <app-search-block small class="mb-10"/>
 
           <quick-search-product />
-          <quick-search-recipe />
+          <quick-search-recipe /> -->
 
           <added-product />
           <added-recipe />
@@ -248,7 +245,7 @@ export default {
   }
   .quick-search-and-added-products {
     // display: flex;
-    padding: 10px;
+    padding: 10px 10px 20px 10px;
     // .quick-search {
     //   .quick-search__tabs {
     //     // border: 1px solid red;
