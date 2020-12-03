@@ -24,7 +24,7 @@
         <i class="ti-trash"></i>
       </div>
     </div>
-    <div class="meal-part-settings">
+    <!-- <div class="meal-part-settings">
       <div class="info">
         <div class="title-and-time">
           <app-input-text value="Завтрак" />
@@ -52,9 +52,9 @@
         </div>
         <div class="chart">1768<br />ккал</div>
       </div>
-    </div>
+    </div> -->
     <div class="quick-search-and-added-products">
-      <div class="quick-search">
+      <!-- <div class="quick-search">
         <div class="quick-search__tabs">
           <div class="tab tab--active">
             <p class="tab__title">Продукты</p>
@@ -71,9 +71,29 @@
           <quick-search-product />
           <quick-search-recipe />
         </div>
-      </div>
+      </div> -->
       <div class="added-products">
+        <div class="added-products__tabs">
+          <div class="tab tab--active">
+            <p class="tab__title">Добавленное в рацион</p>
+          </div>
+          <div class="tab">
+            <p class="tab__title">Продукты</p>
+          </div>
+          <div class="tab">
+            <p class="tab__title">Рецепты</p>
+          </div>
+          <!-- <div class="tab">
+            <i class="ti-filter"></i>
+          </div> -->
+        </div>
         <div class="added-products__content">
+
+          <app-search-block small class="mb-10"/>
+
+          <quick-search-product />
+          <quick-search-recipe />
+
           <added-product />
           <added-recipe />
         </div>
@@ -169,7 +189,7 @@ export default {
     // border: 1px solid red;
     display: flex;
     padding: 20px 10px;
-    border-bottom: 1px dashed $blockBorder;
+    // border-bottom: 1px dashed $blockBorder;
     .info {
       flex: 1 1 auto;
       display: flex;
@@ -227,10 +247,52 @@ export default {
     }
   }
   .quick-search-and-added-products {
-    display: flex;
-    padding: 20px 10px;
-    .quick-search {
-      .quick-search__tabs {
+    // display: flex;
+    padding: 10px;
+    // .quick-search {
+    //   .quick-search__tabs {
+    //     // border: 1px solid red;
+    //     display: flex;
+    //     margin: 0 10px;
+    //     // margin: 10px 10px 0 10px;
+    //     .tab {
+    //       margin-right: 5px;
+    //       padding: 10px 20px;
+    //       border: 1px solid $blockBorder;
+    //       border-bottom: none;
+    //       border-top-left-radius: 6px;
+    //       border-top-right-radius: 6px;
+    //       user-select: none;
+    //       cursor: pointer;
+    //     }
+    //     .tab:last-child {
+    //       margin-left: auto;
+    //       margin-right: 0;
+    //     }
+    //     .tab--active {
+    //       background: $green;
+    //       color: $white;
+    //       border: 1px solid $green;
+    //       border-bottom: none;
+    //     }
+    //   }
+    //   .quick-search__content {
+    //     display: flex;
+    //     flex-direction: column;
+    //     padding: 10px;
+    //     width: 400px;
+    //     height: 500px;
+    //     background: rgba(0, 0, 0, 0.025);
+    //     box-shadow: inset 0 0 5px 0px rgba(0, 0, 0, 0.25);
+    //     border-radius: 6px;
+    //   }
+    // }
+    .added-products {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      // margin-left: 10px;
+      .added-products__tabs {
         // border: 1px solid red;
         display: flex;
         margin: 0 10px;
@@ -245,8 +307,10 @@ export default {
           user-select: none;
           cursor: pointer;
         }
-        .tab:last-child {
+        .tab:nth-child(2) {
           margin-left: auto;
+        }
+        .tab:last-child {
           margin-right: 0;
         }
         .tab--active {
@@ -256,22 +320,6 @@ export default {
           border-bottom: none;
         }
       }
-      .quick-search__content {
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
-        width: 400px;
-        height: 500px;
-        background: rgba(0, 0, 0, 0.025);
-        box-shadow: inset 0 0 5px 0px rgba(0, 0, 0, 0.25);
-        border-radius: 6px;
-      }
-    }
-    .added-products {
-      flex: 1 1 auto;
-      display: flex;
-      flex-direction: column;
-      margin-left: 10px;
       .added-products__content {
         flex: 1 1 auto;
         padding: 10px;

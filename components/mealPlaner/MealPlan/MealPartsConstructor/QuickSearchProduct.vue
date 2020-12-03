@@ -6,8 +6,14 @@
       <i class="ti-plus product__action-btn"></i>
     </div>
     <div class="product__nutrients-and-img">
+      <img
+        class="product__img"
+        src="https://ic.pics.livejournal.com/palsanovich/25623435/954433/954433_1000.jpg"
+        alt
+      />
+      
       <div class="product__nutrients">
-        <p class="nutrients__block-title">Содержание БЖУК:</p>
+        <!-- <p class="nutrients__block-title">Содержание БЖУК:</p> -->
         <p class="nutrients__element">
           Белки:
           <span class="nutrients__amount">12,1</span> гр.
@@ -25,11 +31,11 @@
           <span class="nutrients__amount">321,2</span> ккал.
         </p>
       </div>
-      <img
+      <!-- <img
         class="product__img"
         src="https://ic.pics.livejournal.com/palsanovich/25623435/954433/954433_1000.jpg"
         alt
-      />
+      /> -->
     </div>
   </div>
 </template>
@@ -77,11 +83,11 @@ export default {}
     border-top: 1px dashed $blockBorder;
     .product__nutrients {
       margin-left: 10px;
-      .nutrients__block-title {
-        margin-bottom: 5px;
-        font-size: 14px;
-        font-weight: 500;
-      }
+      // .nutrients__block-title {
+      //   margin-bottom: 5px;
+      //   font-size: 14px;
+      //   font-weight: 500;
+      // }
       .nutrients__element {
         font-size: 12px;
         .nutrients__amount {
@@ -92,7 +98,7 @@ export default {}
     }
     .product__img {
       margin-right: 10px;
-      width: 150px;
+      width: 60px;
       // height: 60px;
       border: 1px solid $blockBorder;
       border-radius: 6px;
