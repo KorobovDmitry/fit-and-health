@@ -1,5 +1,6 @@
 <template>
   <div class="meal-parts-constructor">
+    <p class="meal-parts-constructor__title">Редактор рациона</p>
     <div class="meal-parts-and-actions">
       <div class="meal-parts">
         <div class="meal-part meal-part--active">
@@ -14,9 +15,12 @@
         <div class="meal-part">
           <p class="meal-part__title">Ужин</p>
         </div>
+        <div class="meal-part">
+          <i class="ti-plus"></i>
+        </div>
       </div>
       <div class="actions">
-        <i class="ti-plus"></i>
+        <!-- <i class="ti-plus"></i> -->
         <i class="ti-marker-alt"></i>
         <nuxt-link to="/meal-planer/meal-plan-editor">
           <i class="ti-save-alt"></i>
@@ -86,6 +90,8 @@
         </div> -->
         <div class="added-products__content">
 
+          <app-search-block small class="mb-20"/>
+
           <!-- <app-search-block small class="mb-10"/>
 
           <quick-search-product />
@@ -126,25 +132,38 @@ export default {
 
 .meal-parts-constructor {
   margin-top: 5px;
-  // padding: 10px;
+  padding: 10px;
   background: $white;
   border: 1px solid $blockBorder;
   border-radius: 6px;
   overflow: hidden;
+  .meal-parts-constructor__title {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: 500;
+    border-bottom: 1px dashed $blockBorder;
+  }
   .meal-parts-and-actions {
     display: flex;
-    border-bottom: 1px solid $blockBorder;
+    // border-top: 1px solid $blockBorder;
+    // border-bottom: 1px solid $blockBorder;
     .meal-parts {
       // border: 1px solid red;
       flex: 1 1 auto;
       display: flex;
+      padding: 0 10px;
       .meal-part {
-        flex: 1 1 auto;
+        // flex: 1 1 auto;
         display: flex;
         flex-direction: column;
+        margin-right: 5px;
         padding: 15px 20px;
         max-width: 200px;
-        border-right: 1px solid $blockBorder;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        border: 1px solid $blockBorder;
+        border-bottom: none;
         cursor: pointer;
         .meal-part__title {
           text-transform: uppercase;
@@ -156,7 +175,7 @@ export default {
       .meal-part--active {
         background: $green;
         color: $white;
-        border-right: none;
+        border: $green;
         .meal-part__title {
           font-weight: 600;
         }
@@ -245,7 +264,7 @@ export default {
   }
   .quick-search-and-added-products {
     // display: flex;
-    padding: 10px 10px 20px 10px;
+    // padding: 10px 10px 20px 10px;
     // .quick-search {
     //   .quick-search__tabs {
     //     // border: 1px solid red;
