@@ -60,6 +60,28 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
   ],
+
+  sitemap: {
+    // options
+    hostname: 'https://fit-and-health.ru',
+    gzip: true,
+    exclude: [
+      // '/_icons',
+      // '/secret',
+      // '/admin/**'
+    ],
+    // routes: async () => {
+    //   const { data } = await axios.get('https://jsonplaceholder.typicode.com/users')
+    //   return data.map((user) => `/users/${user.username}`)
+    // }
+  },
+
+  svgSprite: {
+    // manipulate module options
+    input: '~/assets/sprite/svg', // Directory of original svg files
+    output: '~/assets/sprite/gen' // Directory to store generated sprites
+  },
+
   /*
   ** Axios module configuration
   */
