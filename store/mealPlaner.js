@@ -16,34 +16,34 @@ export const state = () => ({
     },
     mealParts: [
       {
-        title: 'Название приема пищи',
-        mealTime: 0,
-        foods: [
+        title: 'Завтрак',
+        mealTime: '09 : 00',
+        products: [
           {
-            type: 'recipe',
             id: null,
             title: 'Название рецепта',
-            products: [
-              {
-                id: null,
-                title: 'Название продукта',
-                weight: 0,
-                protein: 0,
-                fats: 0,
-                carb: 0,
-                kkal: 0,
-              }
-            ]
-          },
+          }
+        ],
+        recipes: [
           {
-            type: 'product',
             id: null,
-            title: 'Название продукта',
-            weight: 0,
-            protein: 0,
-            fats: 0,
-            carb: 0,
-            kkal: 0,
+            title: 'Название рецепта',
+          }
+        ]
+      },
+      {
+        title: 'Обед',
+        mealTime: '13 : 00',
+        products: [
+          {
+            id: null,
+            title: 'Название рецепта',
+          }
+        ],
+        recipes: [
+          {
+            id: null,
+            title: 'Название рецепта',
           }
         ]
       }

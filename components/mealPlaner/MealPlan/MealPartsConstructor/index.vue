@@ -4,10 +4,16 @@
     <p class="block-title">Редактор рациона</p>
 
     <div class="meal-parts">
-      <div class="meal-part meal-part--active">
-        <p class="meal-part__title">09 : 00 - Завтрак</p>
+      <div
+        v-for="(item, index) in mealParts"
+        :key="index"
+        class="meal-part"
+        :class="[{'meal-part--active' : index == selectedMealPart ? true : false}]"
+        @click="changeSelectedMealPart(index)"
+      >
+        <p class="meal-part__title">{{ item.mealTime }} - {{ item.title }}</p>
       </div>
-      <div class="meal-part">
+      <!-- <div class="meal-part">
         <p class="meal-part__title">13 : 00 - Обед</p>
       </div>
       <div class="meal-part">
@@ -15,7 +21,7 @@
       </div>
       <div class="meal-part">
         <p class="meal-part__title">20 : 00 - Ужин</p>
-      </div>
+      </div> -->
       <div class="meal-part">
         <i class="ti-plus"></i>
       </div>
@@ -24,8 +30,8 @@
     <div class="added-products">
       <div class="settings-and-search">
         <div class="settings">
-          <app-input-text value="09 : 00" class="target-time" />
-          <app-input-text value="Завтрак" />
+          <app-input-text :value="mealParts[selectedMealPart].mealTime" class="target-time" />
+          <app-input-text :value="mealParts[selectedMealPart].title" />
         </div>
         <app-search-block placeholder="Поиск продуктов и рецептов" small />
       </div>
@@ -41,6 +47,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import AppInputText from '@/components/basic/AppInputText'
 import AppSearchBlock from '@/components/basic/AppSearchBlock'
 import AddedProduct from '@/components/mealPlaner/MealPlan/MealPartsConstructor/AddedProduct'
@@ -52,6 +60,21 @@ export default {
     AppSearchBlock,
     AddedProduct,
     AddedRecipe
+  },
+  data() {
+    return {
+      selectedMealPart: 1
+    }
+  },
+  computed: {
+    ...mapState({
+      mealParts: state => state.mealPlaner.mealPlanerInfo.mealParts
+    })
+  },
+  methods: {
+    changeSelectedMealPart(index) {
+      this.selectedMealPart = index
+    }
   }
 }
 </script>
