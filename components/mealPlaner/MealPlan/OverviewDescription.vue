@@ -1,16 +1,23 @@
 <template>
   <div class="overview__description">
     <p class="block-title">Описание</p>
-    <app-textarea class="mt-10 fill-area" value="Низкоуглеводный рацион на сутки для снижения веса. Увеличенное содержание белка для поддержания мышечной массы. Содержит глютен и может вызывать аллергическую реакцию на арахис." />
+    <app-textarea class="mt-10 fill-area" :value="description" />
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import AppTextarea from '@/components/basic/AppTextarea'
 
 export default {
   components: {
     AppTextarea
+  },
+  computed: {
+    ...mapState({
+      description: state => state.mealPlaner.mealPlanerInfo.description
+    })
   }
 }
 </script>

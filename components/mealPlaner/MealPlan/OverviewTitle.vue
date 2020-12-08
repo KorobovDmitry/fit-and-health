@@ -1,7 +1,7 @@
 <template>
   <div class="overview__title">
     <p class="title__text">Название рациона:</p>
-    <app-input-text value="Низкоуглеводное меню для снижения веса" class="title__input" />
+    <app-input-text :value="title" class="title__input" />
     <app-button-with-actions
       :actions="btnActions"
       :params="{id: 1}"
@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import AppInputText from '@/components/basic/AppInputText'
 import AppButtonWithActions from '@/components/basic/AppButtonWithActions'
 
@@ -23,6 +25,11 @@ export default {
     return {
       btnActions: ['Сохранить как...', 'Удалить'],
     }
+  },
+  computed: {
+    ...mapState({
+      title: state => state.mealPlaner.mealPlanerInfo.title
+    })
   },
   methods: {
     mealPlanActions ($event) {

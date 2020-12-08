@@ -102,6 +102,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import AppTooltip from '@/components/basic/AppTooltip'
 
 export default {
@@ -110,16 +112,20 @@ export default {
   },
   data () {
     return {
-      targetProtein: 1.52,
-      targetFats: 1,
-      targetCarb: 3.2,
-      targetWeight: 65.8,
       currentWeight: 72.3,
       proteinIsEdit: false,
       fatsIsEdit: false,
       carbIsEdit: false,
       weightIsEdit: false
     }
+  },
+  computed: {
+    ...mapState({
+      targetProtein: state => state.mealPlaner.mealPlanerInfo.targetProtein,
+      targetFats: state => state.mealPlaner.mealPlanerInfo.targetFats,
+      targetCarb: state => state.mealPlaner.mealPlanerInfo.targetCarb,
+      targetWeight: state => state.mealPlaner.mealPlanerInfo.targetWeight,
+    })
   },
   methods: {
     proteinEdit () {

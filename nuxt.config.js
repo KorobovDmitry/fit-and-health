@@ -59,14 +59,18 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    // https://github.com/nuxt-community/svg-sprite-module
+    '@nuxtjs/svg-sprite',
+    // https://github.com/nuxt-community/sitemap-module
+    '@nuxtjs/sitemap',
   ],
 
   sitemap: {
     // options
-    hostname: 'https://fit-and-health.ru',
+    // hostname: 'https://fit-and-health.ru',
     gzip: true,
     exclude: [
-      // '/_icons',
+      '/_icons',
       // '/secret',
       // '/admin/**'
     ],

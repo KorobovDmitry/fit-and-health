@@ -1,19 +1,18 @@
 export const state = () => ({
   mealPlanerInfo: {
-    id: null,
-    date: null,
-    targetProtein: 0,
-    targetFats: 0,
-    targetCarb: 0,
-    targetWeight: 0,
-    title: '',
-    description: '',
-    imgUrl: '',
-    marks: ['1', '2', '3'],
-    social: {
-      like: 0,
+    id: 1,
+    date: '21.11.2020',
+    targetProtein: 1,
+    targetFats: 0.5,
+    targetCarb: 2,
+    targetWeight: 65.8,
+    title: 'Название рациона на сутки',
+    description: 'Короткое описание рациона из нескольких предложений',
+    marks: ['Отметка 1', 'Отметка 2', 'Отметка 3'],
+    socials: {
+      like: 2,
       dislike: 0,
-      repost: 0
+      repost: 54
     },
     mealParts: [
       {
@@ -53,9 +52,6 @@ export const state = () => ({
 })
 
 export const getters = {
-  getMealPlanerInfo (state) {
-    return state.mealPlanerDayInfo
-  },
   getDayTargetKkal (state) {
     // targetKkalMale = (88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)) * activity
     // targetKkalFemale = (447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age)) * activity
@@ -68,7 +64,8 @@ export const getters = {
     //   return Math.round(targetKkal)
     // }
 
-    let currentKkal = (state.targetProtein * state.targetWeight * 4.1) + (state.targetFats * state.targetWeight * 9.3) + (state.targetCarb * state.targetWeight * 4.1)
+    let currentKkal = (state.mealPlanerInfo.targetProtein * state.mealPlanerInfo.targetWeight * 4.1) + (state.mealPlanerInfo.targetFats * state.mealPlanerInfo.targetWeight * 9.3) + (state.mealPlanerInfo.targetCarb * state.mealPlanerInfo.targetWeight * 4.1)
+
     return Math.round(currentKkal)
   }
 }
@@ -87,7 +84,8 @@ export const actions = {
   async fetchMealPlanerInfo ({ commit }, query ) {
     try {
       const mealPlanerInfo = await this.$axios.$get(`http://localhost:3000/api/meal-planer?date=${query.date}`)
-      commit('setMealPlanerInfo', mealPlanerInfo)
+
+      // commit('setMealPlanerInfo', mealPlanerInfo)
     } catch (e) {
       console.log(e)
     }

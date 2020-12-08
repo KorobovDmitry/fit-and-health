@@ -17,7 +17,7 @@
 
             <app-add-marks-form
               class="mt-5"
-              :marks="[1,2]"
+              :marks="marks"
               @addMark="addMark($event)"
               @removeMark="removeMark($event)"
             />
@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import OverviewTitle from '@/components/mealPlaner/MealPlan/OverviewTitle'
 import NutrientsSettings from '@/components/mealPlaner/MealPlan/NutrientsSettings'
@@ -51,6 +53,11 @@ export default {
     AppAddMarksForm,
     NutrientsCalculations,
     MealPartsConstructor
+  },
+  computed: {
+    ...mapState({
+      marks: state => state.mealPlaner.mealPlanerInfo.marks
+    })
   },
   methods: {
     addMark ($event) {

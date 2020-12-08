@@ -5,8 +5,8 @@
       <div class="item__value">
         <p class="value__current">128</p>
         <p class="value__divider">/</p>
-        <p class="value__max">140</p>
-        <p class="value__scale">гр.</p>
+        <p class="value__max">{{ Math.round(parseFloat(targetProtein * targetWeight) * 100) / 100 }}</p>
+        <p class="value__scale">гр</p>
       </div>
     </div>
     <div class="nutrients-calculations__item">
@@ -14,8 +14,8 @@
       <div class="item__value">
         <p class="value__current">24</p>
         <p class="value__divider">/</p>
-        <p class="value__max">30</p>
-        <p class="value__scale">гр.</p>
+        <p class="value__max">{{ Math.round(parseFloat(targetFats * targetWeight) * 100) / 100 }}</p>
+        <p class="value__scale">гр</p>
       </div>
     </div>
     <div class="nutrients-calculations__item">
@@ -23,8 +23,8 @@
       <div class="item__value">
         <p class="value__current">70</p>
         <p class="value__divider">/</p>
-        <p class="value__max">76</p>
-        <p class="value__scale">гр.</p>
+        <p class="value__max">{{ Math.round(parseFloat(targetCarb * targetWeight) * 100) / 100 }}</p>
+        <p class="value__scale">гр</p>
       </div>
     </div>
     <div class="nutrients-calculations__item">
@@ -32,15 +32,32 @@
       <div class="item__value">
         <p class="value__current">1768</p>
         <p class="value__divider">/</p>
-        <p class="value__max">1968</p>
-        <p class="value__scale">гр.</p>
+        <p class="value__max">{{ getDayTargetKkal }}</p>
+        <p class="value__scale">ккал</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import { mapState, mapGetters } from 'vuex'
+
+export default {
+  data () {
+    return {}
+  },
+  computed: {
+    ...mapState({
+      targetProtein: state => state.mealPlaner.mealPlanerInfo.targetProtein,
+      targetFats: state => state.mealPlaner.mealPlanerInfo.targetFats,
+      targetCarb: state => state.mealPlaner.mealPlanerInfo.targetCarb,
+      targetWeight: state => state.mealPlaner.mealPlanerInfo.targetWeight
+    }),
+    ...mapGetters({
+      getDayTargetKkal: 'mealPlaner/getDayTargetKkal',
+    })
+  }
+}
 </script>
 
 <style lang="scss" scoped>
