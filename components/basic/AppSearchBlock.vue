@@ -6,7 +6,7 @@
         ref="searchInput"
         class="search__input"
         type="text"
-        placeholder="Поиск по названия"
+        :placeholder="placeholder"
         v-model="searchString"
       >
       <div class="search__action-btn">
@@ -29,6 +29,7 @@
 <script>
 export default {
   props: {
+    placeholder: String,
     small: Boolean,
     filters: Boolean
   },

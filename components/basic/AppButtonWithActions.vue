@@ -81,9 +81,11 @@ export default {
 
 .btn-with-actions {
   // border: 1px solid red;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   .btn-with-actions__btn {
     // border: 1px solid red;
     position: relative;

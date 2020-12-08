@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <div class="added-recipe__info">
+    <!-- <div class="added-recipe__info">
       <div class="info__element">
         <i class="ti-timer element__icon"></i>
         <span class="element__text">25 мин.</span>
@@ -62,7 +62,7 @@
       <div class="info__element">
         <app-rating :rating="2" />
       </div>
-    </div>
+    </div> -->
 
   </div>
 </template>
@@ -129,7 +129,8 @@ export default {
         flex-direction: column;
         justify-content: center;
         padding: 5px 10px;
-        width: 100px;
+        width: 100%;
+        max-width: 150px;
         text-align: center;
         border-right: 1px solid $inputBorder;
         .element__value {
@@ -163,8 +164,8 @@ export default {
         cursor: pointer;
       }
       .item__element:nth-child(2) {
-        flex: 1 1 auto;
-        min-width: 100px;
+        min-width: 250px;
+        max-width: 100%;
         .element__value {
           text-align: left;
           font-weight: 500;

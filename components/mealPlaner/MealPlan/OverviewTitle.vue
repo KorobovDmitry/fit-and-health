@@ -1,20 +1,33 @@
 <template>
   <div class="overview__title">
     <p class="title__text">Название рациона:</p>
-    <app-input-text value="Низкоуглеводное меню для снижения веса" />
-    <nuxt-link to="/meal-planer/meal-plan-editor">
-      <i class="ti-save"></i>
-    </nuxt-link>
-    <i class="ti-trash"></i>
+    <app-input-text value="Низкоуглеводное меню для снижения веса" class="title__input" />
+    <app-button-with-actions
+      :actions="btnActions"
+      :params="{id: 1}"
+      @actionHandler="mealPlanActions($event)"
+    />
   </div>
 </template>
 
 <script>
 import AppInputText from '@/components/basic/AppInputText'
+import AppButtonWithActions from '@/components/basic/AppButtonWithActions'
 
 export default {
   components: {
-    AppInputText
+    AppInputText,
+    AppButtonWithActions
+  },
+  data () {
+    return {
+      btnActions: ['Сохранить как...', 'Удалить'],
+    }
+  },
+  methods: {
+    mealPlanActions ($event) {
+      console.log('mealPlanActions', $event)
+    }
   }
 }
 </script>
@@ -34,9 +47,8 @@ export default {
     font-weight: 500;
     white-space: nowrap;
   }
-  i {
-    padding: 0 10px;
-    font-size: 20px;
+  .title__input {
+    margin-right: 10px;
   }
 }
 
