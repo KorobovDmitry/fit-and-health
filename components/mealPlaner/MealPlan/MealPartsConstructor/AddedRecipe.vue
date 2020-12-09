@@ -50,7 +50,11 @@
         </div>
       </div>
     </div>
-    <!-- <div class="added-recipe__info">
+    <div class="added-recipe__info">
+      <div class="info__element">
+        <i class="ti-timer element__icon"></i>
+        <span class="element__text">25 мин.</span>
+      </div>
       <div class="info__element">
         <i class="ti-timer element__icon"></i>
         <span class="element__text">25 мин.</span>
@@ -62,7 +66,7 @@
       <div class="info__element">
         <app-rating :rating="2" />
       </div>
-    </div> -->
+    </div>
 
   </div>
 </template>

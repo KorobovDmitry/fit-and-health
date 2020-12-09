@@ -13,15 +13,6 @@
       >
         <p class="meal-part__title">{{ item.mealTime }} - {{ item.title }}</p>
       </div>
-      <!-- <div class="meal-part">
-        <p class="meal-part__title">13 : 00 - Обед</p>
-      </div>
-      <div class="meal-part">
-        <p class="meal-part__title">16 : 00 - Перекус</p>
-      </div>
-      <div class="meal-part">
-        <p class="meal-part__title">20 : 00 - Ужин</p>
-      </div> -->
       <div class="meal-part">
         <i class="ti-plus"></i>
       </div>
@@ -34,6 +25,34 @@
           <app-input-text :value="mealParts[selectedMealPart].title" />
         </div>
         <app-search-block placeholder="Поиск продуктов и рецептов" small />
+        
+        <div class="search__results">
+          <div class="filters">
+            <div class="filter__radio">
+              <app-input-radio
+                class="mr-10"
+                v-for="(item, index) in filterByMarks"
+                :key="index"
+                v-model="filterByMarksChecked"
+                :label="item"
+                :value="item"
+              />
+            </div>
+
+            <div class="filter__checbox">
+              <app-input-checkbox
+                class="mr-10"
+                v-for="(item, index) in filterByType"
+                :key="index"
+                v-model="filterByTypeChecked"
+                :label="item"
+                :value="item"
+              />
+            </div>
+          </div>
+
+          <found-product-or-recipe v-for="(item,index) in 5" :key="index" />
+        </div>
       </div>
 
       <added-product />
@@ -50,20 +69,30 @@
 import { mapState } from 'vuex'
 
 import AppInputText from '@/components/basic/AppInputText'
+import AppInputRadio from '@/components/basic/AppInputRadio'
+import AppInputCheckbox from '@/components/basic/AppInputCheckbox'
 import AppSearchBlock from '@/components/basic/AppSearchBlock'
+import FoundProductOrRecipe from '@/components/mealPlaner/MealPlan/MealPartsConstructor/FoundProductOrRecipe'
 import AddedProduct from '@/components/mealPlaner/MealPlan/MealPartsConstructor/AddedProduct'
 import AddedRecipe from '@/components/mealPlaner/MealPlan/MealPartsConstructor/AddedRecipe'
 
 export default {
   components: {
     AppInputText,
+    AppInputRadio,
+    AppInputCheckbox,
     AppSearchBlock,
+    FoundProductOrRecipe,
     AddedProduct,
     AddedRecipe
   },
   data() {
     return {
-      selectedMealPart: 1
+      selectedMealPart: 0,
+      filterByMarks: ['Все совпадения', 'Добавленные мной', 'Избранное'],
+      filterByMarksChecked: 'Все совпадения',
+      filterByType: ['Продукты', 'Рецепты'],
+      filterByTypeChecked: ['Продукты', 'Рецепты'],
     }
   },
   computed: {
@@ -157,6 +186,29 @@ export default {
         .target-time {
           margin-right: 5px;
           max-width: 100px;
+        }
+      }
+      .search__results {
+        margin-top: 5px;
+        background: $white;
+        border-radius: 6px;
+        border: 1px solid $blockBorder;
+        .filters {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 20px 10px 20px 20px;
+          border-bottom: 1px solid $blockBorder;
+          .filter__radio {
+            // display: flex;
+            // align-items: center;
+            // justify-content: flex-start;
+          }
+          .filter__checbox {
+            // display: flex;
+            // align-items: center;
+            // justify-content: flex-start;
+          }
         }
       }
     }
