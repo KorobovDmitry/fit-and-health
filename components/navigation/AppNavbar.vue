@@ -104,6 +104,11 @@ export default {
               icon: 'ti-agenda'
             },
             {
+              title: 'Редактор рационов',
+              link: '/meal-planer/meal-planer-editor',
+              icon: 'ti-pencil-alt'
+            },
+            {
               title: 'Сохраненные рационы',
               link: '/meal-planer/meal-plans',
               icon: 'ti-write'
