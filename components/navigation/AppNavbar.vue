@@ -237,7 +237,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: auto;
+    margin-bottom: 20px;
     width: 100%;
     height: 60px;
     background: $green;
@@ -252,7 +252,7 @@ export default {
     flex-direction: column;
     border: 2px solid transparent;
     border-radius: 8px;
-    transition: $tr-02;
+    transition: $tr-04;
     height: 0;
     overflow: hidden;
     .navbar__page-link {
@@ -262,7 +262,7 @@ export default {
       text-align: center;
       text-decoration: none;
       color: $black;
-      font-size: 28px;
+      font-size: 24px;
       border-left: 2px solid transparent;
       border-right: 2px solid transparent;
       transition: $tr-02;
@@ -291,7 +291,7 @@ export default {
     padding: 10px;
     transform: rotate(90deg);
     color: $black;
-    font-size: 28px;
+    font-size: 24px;
   }
 }
 

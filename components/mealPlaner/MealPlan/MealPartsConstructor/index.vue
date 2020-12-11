@@ -28,23 +28,24 @@
         
         <div class="search__results">
           <div class="filters">
-            <div class="filter__radio">
-              <app-input-radio
-                class="mr-10"
-                v-for="(item, index) in filterByMarks"
+            <div class="filter__checbox">
+              <app-input-checkbox
+                small
+                class="input-item"
+                v-for="(item, index) in filterByType"
                 :key="index"
-                v-model="filterByMarksChecked"
+                v-model="filterByTypeChecked"
                 :label="item"
                 :value="item"
               />
             </div>
-
-            <div class="filter__checbox">
-              <app-input-checkbox
-                class="mr-10"
-                v-for="(item, index) in filterByType"
+            <div class="filter__radio">
+              <app-input-radio
+                small
+                class="input-item"
+                v-for="(item, index) in filterByMarks"
                 :key="index"
-                v-model="filterByTypeChecked"
+                v-model="filterByMarksChecked"
                 :label="item"
                 :value="item"
               />
@@ -197,17 +198,29 @@ export default {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 20px 10px 20px 20px;
+          padding: 15px 20px;
           border-bottom: 1px solid $blockBorder;
           .filter__radio {
-            // display: flex;
-            // align-items: center;
-            // justify-content: flex-start;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            .input-item {
+              margin-right: 20px;
+            }
+            .input-item:last-child {
+              margin-right: 0;
+            }
           }
           .filter__checbox {
-            // display: flex;
-            // align-items: center;
-            // justify-content: flex-start;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            .input-item {
+              margin-right: 20px;
+            }
+            .input-item:last-child {
+              margin-right: 0;
+            }
           }
         }
       }

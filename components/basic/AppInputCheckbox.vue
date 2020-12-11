@@ -1,5 +1,5 @@
 <template>
-  <label class="input__label">
+  <label class="input__label" :class="[{'input__label--small': small}]">
     <input class="input__value-field" type="checkbox" :checked="shouldBeChecked" :value="value" @change="updateInput($event)">
     <p class="input__visible-switch"></p>
     <p class="input__text">{{ label }}</p>
@@ -32,7 +32,8 @@ export default {
     },
     falseValue: {
       default: false
-    }
+    },
+    small: Boolean
   },
   computed: {
     shouldBeChecked () {
@@ -114,6 +115,28 @@ export default {
     margin-left: 12px;
     user-select: none;
     transition: $tr-01;
+  }
+}
+
+.input__label--small {
+
+  .input__value-field {}
+  .input__value-field:checked + .input__visible-switch:after {}
+  .input__value-field:checked ~ .input__text {}
+
+  .input__visible-switch {
+    height: 16px;
+    width: 16px;
+  }
+  .input__visible-switch:after {
+    transform: translateY(calc(-50% + 6px));
+    height: 8px;
+    width: 8px;
+  }
+
+  .input__text {
+    margin-left: 5px;
+    font-size: 14px;
   }
 }
 
