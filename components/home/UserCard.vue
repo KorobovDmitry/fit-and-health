@@ -68,11 +68,11 @@
     </div>
 
     <div class="user-card__media-and-subscriptions">
-      <nuxt-link to="/media" no-prefetch class="media-and-subscriptions__element">
+      <nuxt-link to="/profile/media" no-prefetch class="media-and-subscriptions__element">
         <i class="ti-gallery element__icon"></i>
         <p class="element__text">Фото и видео</p>
       </nuxt-link>
-      <nuxt-link to="/subscriptions" no-prefetch class="media-and-subscriptions__element">
+      <nuxt-link to="/profile/subscriptions" no-prefetch class="media-and-subscriptions__element">
         <i class="ti-crown element__icon"></i>
         <p class="element__text">Интересные страницы</p>
       </nuxt-link>

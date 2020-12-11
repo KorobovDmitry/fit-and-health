@@ -1,6 +1,6 @@
 <template>
   <div class="training-program-editor">
-    <app-page-title>Редактор тренировочной программы</app-page-title>
+    <app-page-title>Редактор тренировочных программ</app-page-title>
     <div class="training-program-editor__content">
       <editor />
       <additional-info />

@@ -20,11 +20,13 @@
         class="navbar__page-link"
         :class="item.icon"
         active-class="navbar__page-link--active"
+        :title="item.title"
       ></nuxt-link>
     </div>
 
     <i
       class="ti-export logout"
+      title="Выйти"
       @click="logout()"
     ></i>
   </nav>
@@ -40,12 +42,24 @@ export default {
           group: 'profile',
           links: [
             {
+              title: 'Профиль',
               link: '/profile',
               icon: 'ti-home'
             },
             {
+              title: 'Сообщения',
               link: '/profile/messages',
               icon: 'ti-comments'
+            },
+            {
+              title: 'Интересные страницы',
+              link: '/profile/subscriptions',
+              icon: 'ti-crown'
+            },
+            {
+              title: 'Фото и видео',
+              link: '/profile/media',
+              icon: 'ti-gallery'
             }
           ]
         },
@@ -54,16 +68,29 @@ export default {
           group: 'training-diary',
           links: [
             {
+              title: 'Дневник тренировок',
               link: '/training-diary',
               icon: 'ti-timer'
             },
             {
+              title: 'Редактор тренировочных программ',
+              link: '/training-diary/training-program-editor',
+              icon: 'ti-pencil-alt'
+            },
+            {
+              title: 'Программы тренировок',
               link: '/training-diary/training-programs',
               icon: 'ti-clipboard'
             },
             {
+              title: 'Справочник по упражнениям',
               link: '/training-diary/exercise-guide',
-              icon: 'ti-book'
+              icon: 'ti-headphone-alt'
+            },
+            {
+              title: 'Новая тренировка',
+              link: '/training-diary/training-in-progress',
+              icon: 'ti-bolt'
             }
           ]
         },
@@ -72,18 +99,22 @@ export default {
           group: 'meal-planer',
           links: [
             {
+              title: 'Дневник питания',
               link: '/meal-planer',
               icon: 'ti-agenda'
             },
             {
+              title: 'Сохраненные рационы',
               link: '/meal-planer/meal-plans',
-              icon: 'ti-clipboard'
+              icon: 'ti-write'
             },
             {
+              title: 'Книга рецептов',
               link: '/meal-planer/recipes-book',
               icon: 'ti-book'
             },
             {
+              title: 'Таблица калорийности продуктов',
               link: '/meal-planer/food-calorie-table',
               icon: 'ti-view-list-alt'
             }
@@ -94,6 +125,7 @@ export default {
           group: 'challenges',
           links: [
             {
+              title: 'Вызовы',
               link: '/challenges',
               icon: 'ti-cup'
             }
@@ -104,6 +136,7 @@ export default {
           group: 'measurements',
           links: [
             {
+              title: 'Статистика и замеры',
               link: '/measurements',
               icon: 'ti-bar-chart'
             }
@@ -114,6 +147,7 @@ export default {
           group: 'handbook',
           links: [
             {
+              title: 'Справочник',
               link: '/handbook',
               icon: 'ti-bookmark-alt'
             }
@@ -124,6 +158,7 @@ export default {
           group: 'settings',
           links: [
             {
+              title: 'Настройки',
               link: '/settings',
               icon: 'ti-settings'
             }
