@@ -2,11 +2,12 @@
   <div class="settings-page">
     <app-page-title>Настройки</app-page-title>
     <div class="settings-page__content">
-      settings
+
 
       <p>upload 1 file</p>
       <div>
-        <label>File
+        <label>
+          <p>File</p>
           <!-- Загрузка 1 файла -->
           <input type="file" name="file" ref="file" @change="handleFileUpload()"/>
           <!-- Загрузка нескольких файлов -->
@@ -15,15 +16,19 @@
         <button @click="submitFile()">Submit</button>
       </div>
     </div>
+
+    <app-chart-circle />
   </div>
 </template>
 
 <script>
 import AppPageTitle from '@/components/basic/AppPageTitle'
+import AppChartCircle from '@/components/basic/AppChartCircle'
 
 export default {
   components: {
-    AppPageTitle
+    AppPageTitle,
+    AppChartCircle
   },
   data () {
     return {
