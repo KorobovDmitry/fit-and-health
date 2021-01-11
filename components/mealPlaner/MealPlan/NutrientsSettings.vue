@@ -2,7 +2,11 @@
   <div class="nutrients-settings">
 
     <div class="chart">
-      chart
+      <app-chart-circle />
+      <div class="chart__calculated-calories">
+        <p>1115</p>
+        <p>ккал</p>
+      </div>
     </div>
 
     <div class="nutrients-settings__nutrients">
@@ -104,10 +108,12 @@
 <script>
 import { mapState } from 'vuex'
 
+import AppChartCircle from '@/components/basic/AppChartCircle'
 import AppTooltip from '@/components/basic/AppTooltip'
 
 export default {
   components: {
+    AppChartCircle,
     AppTooltip
   },
   data () {
@@ -197,8 +203,17 @@ export default {
   border: 1px solid $blockBorder;
   border-radius: 6px;
   .chart {
+    position: relative;
     flex: 1 1 auto;
-    height: 200px;
+    // height: 200px;
+    .chart__calculated-calories {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      text-align: center;
+      z-index: 2;
+    }
   }
   .nutrients-settings__nutrients {
     display: flex;

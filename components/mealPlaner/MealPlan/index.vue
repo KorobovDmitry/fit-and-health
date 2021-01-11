@@ -94,6 +94,7 @@ export default {
         flex-direction: column;
         margin-left: 5px;
         .stats-description-marks {
+          flex: 1 1 auto;
           display: flex;
           .stats-and-description {
             flex: 1 1 auto;

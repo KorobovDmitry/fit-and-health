@@ -1,6 +1,6 @@
 <template>
   <div class="app-chart-circle">
-    <canvas width="500" height="500" id="myCanvas"></canvas>
+    <canvas width="250" height="250" id="myCanvas"></canvas>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
     var x = canvas.width / 2
     var y = canvas.height / 2
     var radius = 100
-    var endPercent = 90
+    var endPercent = 350
     var curPerc = 0
     var anticlockwise = false; // clockwise or anticlockwise
     var circ = Math.PI * 2
@@ -36,7 +36,7 @@ export default {
     function animate() {
         context.clearRect(0, 0, canvas.width, canvas.height)
         context.beginPath()
-        context.arc(80, 80, 50, degreesToRadians(startAngle) - Math.PI / 2, degreesToRadians(startAngle + curPerc) - Math.PI / 2, anticlockwise)
+        context.arc(125, 125, radius, degreesToRadians(startAngle) - Math.PI / 2, degreesToRadians(startAngle + curPerc) - Math.PI / 2, anticlockwise)
         context.stroke()
         curPerc += 5
         if (curPerc < endPercent) {
@@ -56,8 +56,12 @@ export default {
 @import '@/assets/scss/vars.scss';
 
 .app-chart-circle {
-  #canvas {
-    border: 1px solid black;
+  // border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  #myCanvas {
+    // border: 1px solid black;
   }
 }
 
