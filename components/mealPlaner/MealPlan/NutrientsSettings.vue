@@ -4,8 +4,8 @@
     <div class="chart">
       <app-chart-circle />
       <div class="chart__calculated-calories">
-        <p>1115</p>
-        <p>ккал</p>
+        <p class="calculated-calories__value">1264</p>
+        <p class="calculated-calories__scale">ккал</p>
       </div>
     </div>
 
@@ -195,7 +195,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin-top: 5px;
-  padding: 10px;
+  padding: 0 10px 10px 10px;
   width: 100%;
   min-width: 300px;
   max-width: 300px;
@@ -213,6 +213,17 @@ export default {
       transform: translate(-50%,-50%);
       text-align: center;
       z-index: 2;
+      .calculated-calories__value {
+        margin-top: 15px;
+        color: $green;
+        font-size: 32px;
+        font-weight: 600;
+      }
+      .calculated-calories__scale {
+        margin-top: -5px;
+        color: $green;
+        font-size: 14px;
+      }
     }
   }
   .nutrients-settings__nutrients {
