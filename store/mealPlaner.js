@@ -1,6 +1,7 @@
 export const state = () => ({
   mealPlanerInfo: {
     id: 1,
+    userId: 1,
     date: '21.11.2020',
     targetProtein: 1,
     targetFats: 0.5,
@@ -83,7 +84,9 @@ export const mutations = {
 export const actions = {
   async fetchMealPlanerInfo ({ commit }, query ) {
     try {
-      const mealPlanerInfo = await this.$axios.$get(`http://localhost:3000/api/meal-planer?date=${query.date}`)
+      const MealPlanerInfo = await this.$axios.$get(`http://localhost:3000/api/meal-planer?date=${query.date}`)
+
+      // console.log(MealPlanerInfo)
 
       // commit('setMealPlanerInfo', mealPlanerInfo)
     } catch (e) {

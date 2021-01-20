@@ -1,32 +1,40 @@
 const errorHandler = require('../utils/errorHandler.js')
-const MealPlanerInfos = require('../models/MealPlanerInfos')
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op;
+const MealPlaner = require('../models/MealPlaner')
+const jwt = require('jsonwebtoken')
+const keys = require('../keys')
 
 module.exports.getMealPlanerInfo = async function (req, res) {
   try {
+    if (req.headers.authorization) {
+      const token = req.headers.authorization.split(' ')[1]
+      const decodedToken = jwt.verify(token, keys.jwt)
 
-    // console.log(req.params)
-    console.log(req.query)
-    // console.log(req.body)
-
-    // Дата по которой искать данные в БД для невника питания
-    const mealPlanerTargetDay = req.query.date
-    const token = req.headers.cookie
-    const userId = null
-
-    MealPlanerInfos.findOne({
-      where: {
-        // userId: userId,
-        date: mealPlanerTargetDay
+      // Дата по которой искать данные в БД для дневника питания
+      let MealPlanerTargetDay = req.query.date
+      // const CurrentDate = new Date().toISOString().split('T')[0]
+      if (MealPlanerTargetDay === 'undefined') {
+        MealPlanerTargetDay = new Date().toISOString().split('T')[0]
       }
-    }).then(info => console.log(info))
 
-    res.status(200).json({})
+      console.log(MealPlanerTargetDay)
 
-    // console.log(req.headers.cookie)
-    // const dayInfo = await MealPlanerInfos.create({
-    //   title: `Название дневного рациона ${req.query.date}`
-    // })
-    // res.status(200).json({dayInfo})
+      // MealPlaner.findOne({
+      //   where: {
+      //     userId: decodedToken.userId,
+      //     date: mealPlanerTargetDay
+      //   }
+      // }).then(info => console.log(info))
+
+      res.status(200).json({
+        message: 'test message'
+      })
+
+    } else {
+      res.status(401).json({message: 'Необходима авторизация'})
+    }
+
   } catch (err) {
     errorHandler(res, err)
   }

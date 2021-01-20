@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const sequelize = require('../utils/dbConnect')
 
 // Описание модели таблицы в БД MySQL
-const MealPlanerInfos = sequelize.define('meal_planer_infos', {
+const MealPlaner = sequelize.define('meal_planer', {
   // id: {
   //   primaryKey: true,
   //   autoIncrement: true,
@@ -41,19 +41,18 @@ const MealPlanerInfos = sequelize.define('meal_planer_infos', {
     type: Sequelize.STRING,
     allowNull: true
   },
-  imgUrl: {
+  marks: {
     type: Sequelize.STRING,
     allowNull: true
   },
-  // marks: {
-  //   // array whith strings
-  // },
-  // social: {
-  //   // object
-  // },
-  // mealParts: {
-  //   // array with object
-  // }
+  social: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  mealParts: {
+    type: Sequelize.STRING,
+    allowNull: true
+  }
 })
 
-module.exports = MealPlanerInfos
+module.exports = MealPlaner
