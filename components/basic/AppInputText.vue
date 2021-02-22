@@ -3,7 +3,7 @@
     class="input-text"
     type="text"
     :placeholder="placeholder"
-    @input="changeInputValue"
+    @input="changeInputValue()"
     v-model="inputValue"
   >
 </template>

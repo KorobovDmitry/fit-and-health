@@ -18,6 +18,8 @@
     </div>
 
     <app-chart-circle />
+
+
   </div>
 </template>
 
@@ -33,7 +35,7 @@ export default {
   data () {
     return {
       file: null,
-      files: null
+      files: null,
     }
   },
   methods: {
