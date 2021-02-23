@@ -17,25 +17,76 @@
       </div>
     </div>
 
-    <app-chart-circle />
-
+    <app-objects-tree :treeList="objectsTreeList"/>
+    <pre>{{ objectsTreeList }}</pre>
 
   </div>
 </template>
 
 <script>
 import AppPageTitle from '@/components/basic/AppPageTitle'
-import AppChartCircle from '@/components/basic/AppChartCircle'
+import AppObjectsTree from '@/components/basic/AppObjectsTree/index'
 
 export default {
   components: {
     AppPageTitle,
-    AppChartCircle
+    AppObjectsTree
   },
   data () {
     return {
       file: null,
       files: null,
+      objectsTreeList: [
+        {
+          title: 'item 1',
+          active: false,
+          selectedValue: ['children 1'],
+          children: [
+            {
+              title: 'children 1',
+            },
+            {
+              title: 'children 2',
+            },
+            {
+              title: 'children 3',
+              active: true,
+              selectedValue: ['level 1', 'level 2'],
+              children: [
+                {
+                  title: 'level 1',
+                },
+                {
+                  title: 'level 2',
+                },
+                {
+                  title: 'level 3',
+                },
+              ]
+            },
+          ]
+        },
+        {
+          title: 'item 2',
+          active: false,
+          selectedValue: ['children 2'],
+          children: [
+            {
+              title: 'children 2'
+            }
+          ]
+        },
+        {
+          title: 'item 3',
+          active: false,
+          selectedValue: [],
+          children: [
+            {
+              title: 'children 3'
+            }
+          ]
+        }
+      ]
     }
   },
   methods: {
@@ -61,9 +112,6 @@ export default {
       this.file = this.$refs.file.files[0]
       // console.log(this.file)
     },
-
-
-
 // Загрузка нескольких файлов
     submitFiles(){
       let formData = new FormData();
