@@ -36,11 +36,15 @@ export default {
   methods: {
     update (item) {
       console.log(item.title)
-      if (item.children.length === item.selectedValue.length) {
-        item.active = true
-      } else {
-        item.active = false
-      }
+
+      setTimeout(() => {
+        if (item.children.length === item.selectedValue.length) {
+          item.active = true
+        } else {
+          item.active = false
+        }
+      }, 0)
+
     }
   }
 }
