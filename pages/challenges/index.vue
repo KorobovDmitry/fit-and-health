@@ -11,16 +11,49 @@
       <div class="challenges">
         <div class="left">
           <app-block-title>Вызовы этой недели</app-block-title>
-          <div class="content">
-            <p>большие карточки (основной навсю стринцацу и маленькие 1/2)</p>
-            <br>
-            <p>Поиск по вызовам с сортировкой по ровню сложности, популятронсти, на кардио, силу, выносливость, гибкость</p>
+          <div class="week-chalenges">
+            <div class="week-chalenge">
+              <p>Первый вызов</p>
+            </div>
+            <div class="week-chalenge">
+              <p>Второй вызов</p>
+            </div>
+            <div class="week-chalenge">
+              <p>Третий вызов</p>
+            </div>
+          </div>
+
+          <app-block-title>Рейтинг пользователей</app-block-title>
+          <div class="users-raiting">
+            <p>TOP - 100</p>
           </div>
         </div>
         <div class="right">
-          <app-block-title>Рейтинг пользователей</app-block-title>
-          <div class="content">
-            TOP - 100
+          <app-block-title>Полезные страницы</app-block-title>
+          <div class="useful-pages">
+            <nuxt-link to="/" class="page-link">
+              <i class="ti-search page-link__icon"></i>
+              <p class="page-link__title">Поиск<br>вызовов</p>
+              <!-- <p>Поиск по вызовам с сортировкой по ровню сложности, популятронсти, на кардио, силу, выносливость, гибкость</p> -->
+            </nuxt-link>
+            <nuxt-link to="/" class="page-link">
+              <i class="ti-layout page-link__icon"></i>
+              <p class="page-link__title">Конструктор<br>вызовов</p>
+            </nuxt-link>
+
+            <nuxt-link to="/" class="page-link">
+              <i class="ti-pencil-alt page-link__icon"></i>
+              <p class="page-link__title">Принятые вызовы</p>
+            </nuxt-link>
+
+            <nuxt-link to="/" class="page-link">
+              <i class="ti-heart page-link__icon"></i>
+              <p class="page-link__title">Мои вызовы</p>
+            </nuxt-link>
+            <nuxt-link to="/" class="page-link">
+              <i class="ti-bar-chart page-link__icon"></i>
+              <p class="page-link__title">Статистика</p>
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -95,7 +128,34 @@ export default {
       .left {
         // border: 1px solid red;
         flex: 1 1 auto;
-        .content {
+        .week-chalenges {
+          display: flex;
+          flex-wrap: wrap;
+          margin-bottom: 20px;
+          padding: 10px;
+          background: $hiddenBlockBG;
+          border-radius: 6px;
+          box-shadow: $boxShadow;
+          .week-chalenge {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+            background: $white;
+            border: 1px solid $blockBorder;
+            border-radius: 6px;
+          }
+          .week-chalenge:nth-child(2) {
+            margin-right: 5px;
+            margin-bottom: 0;
+            width: calc(50% - 5px);
+          }
+          .week-chalenge:nth-child(3) {
+            margin-left: 5px;
+            margin-bottom: 0;
+            width: calc(50% - 5px);
+          }
+        }
+        .users-raiting {
           padding: 10px;
           background: $hiddenBlockBG;
           border-radius: 6px;
@@ -108,11 +168,63 @@ export default {
         width: 400px;
         min-width: 400px;
         max-width: 400px;
-        .content {
+        .useful-pages {
+          display: flex;
+          flex-wrap: wrap;
           padding: 10px;
           background: $hiddenBlockBG;
           border-radius: 6px;
           box-shadow: $boxShadow;
+          .page-link {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 5px;
+            padding: 20px;
+            background: $white;
+            border: 1px solid $blockBorder;
+            border-radius: 6px;
+            .page-link__icon {
+              font-size: 26px;
+              transition: $tr-02;
+            }
+            .page-link__title {
+              margin-top: 15px;
+              text-align: center;
+              font-weight: 500;
+              transition: $tr-02;
+            }
+          }
+          .page-link:nth-child(1) {
+            margin-left: 0;
+            margin-right: 2.5px;
+          }
+          .page-link:nth-child(2) {
+            margin-left: 2.5px;
+            margin-right: 0;
+          }
+          .page-link:nth-child(3) {
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+          }
+          .page-link:nth-child(4) {
+            margin-right: 2.5px;
+            margin-bottom: 0;
+          }
+          .page-link:nth-child(5) {
+            margin-left: 2.5px;
+            margin-bottom: 0;
+          }
+          .page-link:hover {
+            .page-link__icon {
+              color: $green;
+            }
+            .page-link__title {
+              color: $green;
+            }
+          }
         }
       }
     }
