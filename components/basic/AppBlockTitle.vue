@@ -9,8 +9,8 @@
 .block-title {
   margin: 0 20px 14px 20px;
   padding: 0 5px;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 20px;
+  // font-weight: 500;
 }
 
 </style>

@@ -2,33 +2,61 @@
   <div class="challenge-page">
     <app-page-title>Вызовы</app-page-title>
     <div class="callenge-page__content">
-      <!-- <app-page-info
-        :infoElements="pageInfoElements"
-        btnTitle="Добавить вызов"
-        @btnAction="openModal()"
-      /> -->
-      
-      <div class="challenges">
-        <div class="left">
-          <app-block-title>Вызовы этой недели</app-block-title>
-          <div class="week-chalenges">
-            <div class="week-chalenge">
-              <p>Первый вызов</p>
-            </div>
-            <div class="week-chalenge">
-              <p>Второй вызов</p>
-            </div>
-            <div class="week-chalenge">
-              <p>Третий вызов</p>
-            </div>
-          </div>
 
+      <div class="challenges">
+        <app-block-title>Легендарный вызов</app-block-title>
+        <div class="week-chalenges">
+          <div class="main-chalenge">
+            <p class="main-chalenge__title">Название вызова</p>
+
+            <div class="image-overview-user-rating">
+              <div class="image-and-socials">
+                <div class="image__wrapper">
+                  <img class="image" src="https://wallpapercave.com/wp/wp1836146.jpg">
+                </div>
+
+                <social-btns class="mt-5" :btnsInfo="{like: 1, dislike: 0, share: 10}" />
+              </div>
+              <div class="description">
+                <div class="description__overview">
+                  <p class="overview__block-title">Описание</p>
+
+                  <p class="overview__text">Описание текст</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="challenges__actions">
+          <app-button size14px uppercase>Найти похожие</app-button>
+
+          <app-button size14px class="ml-auto" uppercase>Подробнее</app-button>
+          <app-button size14px class="ml-10" uppercase>Приступить к выполнению</app-button>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="additional-info">
           <app-block-title>Рейтинг пользователей</app-block-title>
           <div class="users-raiting">
             <p>TOP - 100</p>
           </div>
-        </div>
-        <div class="right">
+
           <app-block-title>Полезные страницы</app-block-title>
           <div class="useful-pages">
             <nuxt-link to="/" class="page-link">
@@ -56,7 +84,6 @@
             </nuxt-link>
           </div>
         </div>
-      </div>
       
     </div>
   </div>
@@ -64,45 +91,19 @@
 
 <script>
 import AppPageTitle from '@/components/basic/AppPageTitle'
-import AppPageInfo from '@/components/basic/AppPageInfo'
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
+import SocialBtns from '@/components/basic/SocialBtns'
+import AppButton from '@/components/basic/AppButton'
 
 export default {
   components: {
     AppPageTitle,
-    AppPageInfo,
-    AppBlockTitle
+    AppBlockTitle,
+    SocialBtns,
+    AppButton
   },
   data () {
-    return {
-      pageInfoElements: [
-        // {
-        //   title: 'Всего вызывов',
-        //   value: 2123
-        // },
-        {
-          title: 'Принято',
-          value: 12
-        },
-        {
-          title: 'Побед',
-          value: 10
-        },
-        {
-          title: 'Поражений',
-          value: 1
-        },
-        {
-          title: 'Мои вызовы',
-          value: 3
-        }
-      ]
-    }
-  },
-  methods: {
-    openModal () {
-      console.log('добавить вызов')
-    }
+    return {}
   }
 }
 </script>
@@ -120,54 +121,84 @@ export default {
   .callenge-page__content {
     // border: 1px solid red;
     display: flex;
-    flex-direction: column;
     width: 100%;
     max-width: 1700px;
-    .challenges {
-      display: flex;
-      .left {
+
+      .challenges {
         // border: 1px solid red;
         flex: 1 1 auto;
         .week-chalenges {
           display: flex;
           flex-wrap: wrap;
-          margin-bottom: 20px;
           padding: 10px;
           background: $hiddenBlockBG;
           border-radius: 6px;
           box-shadow: $boxShadow;
-          .week-chalenge {
-            margin-bottom: 10px;
+          .main-chalenge {
+            display: flex;
+            flex-direction: column;
             width: 100%;
-            padding: 10px;
-            background: $white;
-            border: 1px solid $blockBorder;
-            border-radius: 6px;
-          }
-          .week-chalenge:nth-child(2) {
-            margin-right: 5px;
-            margin-bottom: 0;
-            width: calc(50% - 5px);
-          }
-          .week-chalenge:nth-child(3) {
-            margin-left: 5px;
-            margin-bottom: 0;
-            width: calc(50% - 5px);
+            .main-chalenge__title {
+              padding: 10px;
+              background: $white;
+              border: 1px solid $blockBorder;
+              border-radius: 6px;
+              text-align: center;
+              font-weight: 500;
+            }
+            .image-overview-user-rating {
+              display: flex;
+              margin-top: 5px;
+              .image-and-socials {
+                .image__wrapper {
+                  padding: 10px;
+                  max-width: 500px;
+                  background: $white;
+                  border: 1px solid $blockBorder;
+                  border-radius: 6px;
+                  .image {
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 6px;
+                  }
+                }
+              }
+              .description {
+                flex: 1 1 auto;
+                margin-left: 5px;
+                .description__overview {
+                  padding: 10px;
+                  background: $white;
+                  border: 1px solid $blockBorder;
+                  border-radius: 6px;
+                  .overview__block-title {
+                    text-align: center;
+                    font-weight: 500;
+                  }
+                }
+              }
+            }
           }
         }
-        .users-raiting {
-          padding: 10px;
-          background: $hiddenBlockBG;
-          border-radius: 6px;
-          box-shadow: $boxShadow;
+        .challenges__actions {
+          display: flex;
+          margin-top: 10px;
         }
       }
-      .right {
+      .additional-info {
         // border: 1px solid red;
         margin-left: 40px;
         width: 400px;
         min-width: 400px;
         max-width: 400px;
+        .users-raiting {
+          margin-bottom: 20px;
+          padding: 10px;
+          height: 600px;
+          background: $hiddenBlockBG;
+          border-radius: 6px;
+          box-shadow: $boxShadow;
+        }
         .useful-pages {
           display: flex;
           flex-wrap: wrap;
@@ -227,7 +258,7 @@ export default {
           }
         }
       }
-    }
+
   }
 }
 

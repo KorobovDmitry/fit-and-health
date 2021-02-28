@@ -1,6 +1,7 @@
 <template>
   <div class="useful-pages">
-    <p class="useful-pages__block-title">Полезные страницы</p>
+    <app-block-title>Полезные страницы</app-block-title>
+
     <div class="useful-pages__elements">
       <nuxt-link
         to="meal-planer/meal-plans"
@@ -27,16 +28,20 @@
   </div>
 </template>
 
+<script>
+import AppBlockTitle from '@/components/basic/AppBlockTitle'
+
+export default {
+  components: {
+    AppBlockTitle
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 @import "@/assets/scss/vars.scss";
 
 .useful-pages {
-  .useful-pages__block-title {
-    margin: 0 20px 14px 20px;
-    padding: 0 5px;
-    font-size: 18px;
-    font-weight: 500;
-  }
   .useful-pages__elements {
     display: flex;
     flex-wrap: wrap;
