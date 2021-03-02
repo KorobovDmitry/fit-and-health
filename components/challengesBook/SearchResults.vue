@@ -1,8 +1,6 @@
 <template>
   <div class="search-results">
-
     <app-block-title>Поиск рецептов</app-block-title>
-
     <app-search-block />
 
     <div class="filter-by">
@@ -31,32 +29,28 @@
       />
     </div>
 
-    <div class="found-recipes">
-      <found-recipe
-        v-for="(recipe, index) in recipes"
-        :key="index"
-        :recipe="recipe"
-      />
+    <div class="found-challenges">
+      <p>Поиск по вызовам с сортировкой по ровню сложности, популятронсти, на кардио, силу, выносливость, гибкость</p><br>
+      <challenge v-for="(item, index) in 8" :key="index"/>
     </div>
 
     <app-button sizeSM uppercase center>Загрузить еще</app-button>
-
   </div>
 </template>
 
 <script>
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
+import AppButton from '@/components/basic/AppButton'
 import AppSearchBlock from '@/components/basic/AppSearchBlock'
 import FilterRadioTextGroup from '@/components/basic/FilterRadioTextGroup'
-import FoundRecipe from '@/components/recipesBook/SearchResults/FoundRecipe'
-import AppButton from '@/components/basic/AppButton'
+import Challenge from '@/components/challengesBook/Challenge'
 
 export default {
   components: {
     AppBlockTitle,
     AppSearchBlock,
     FilterRadioTextGroup,
-    FoundRecipe,
+    Challenge,
     AppButton
   },
   data () {
@@ -66,11 +60,6 @@ export default {
         foodOrDrink: 'Все',
         type: 'Все'
       }
-    }
-  },
-  computed: {
-    recipes () {
-      return this.$store.getters['recipesBook/getRecipes']
     }
   },
 }
@@ -95,11 +84,10 @@ export default {
       user-select: none;
     }
   }
-  .found-recipes {
+  .found-challenges {
     // border: 1px solid red;
     display: flex;
     flex-wrap: wrap;
   }
 }
-
 </style>

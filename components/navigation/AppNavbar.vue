@@ -133,7 +133,12 @@ export default {
               title: 'Вызовы',
               link: '/challenges',
               icon: 'ti-cup'
-            }
+            },
+            {
+              title: 'Книга вызывов',
+              link: '/challenges/challenges-book',
+              icon: 'ti-book'
+            },
           ]
         },
         {

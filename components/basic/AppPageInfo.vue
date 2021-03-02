@@ -4,7 +4,7 @@
     <div class="page-info">
       <div v-for="(element, index) in infoElements" :key="index" class="page-info__element">
         <p class="element__text">{{ element.title }}</p>
-        <p class="element__value">{{ element.value }}</p>
+        <p class="element__value">{{ element.value.toLocaleString() }}</p>
       </div>
     </div>
 

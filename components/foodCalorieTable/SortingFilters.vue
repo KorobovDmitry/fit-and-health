@@ -10,7 +10,7 @@
         headerTitle="Сортировать по ..."
         :valueList="sortingBy"
         defaultValue="Названию"
-        @applyFunc="applyFilters"
+        @applyFunc="applyFilters()"
         @inputGroupValueChanged="applyFilters($event, 'sortingBy')"
       />
 
@@ -19,7 +19,7 @@
         headerTitle="Продукты"
         :valueList="productType"
         defaultValue="Все продукты"
-        @applyFunc="applyFilters"
+        @applyFunc="applyFilters()"
         @inputGroupValueChanged="applyFilters($event, 'productType')"
       />
 
@@ -28,7 +28,7 @@
         headerTitle="Категории"
         :valueList="productCategories"
         :defaultValue="selectedProductCategories"
-        @applyFunc="applyFilters"
+        @applyFunc="applyFilters()"
         @inputGroupValueChanged="applyFilters($event, 'productCategory')"
       >
         <template v-slot:btnWrapper>
@@ -44,16 +44,17 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-import AppButton from '@/components/basic/AppButton'
 import AppBlockTitle from '@/components/basic/AppBlockTitle'
 import FilterRadioGroup from '@/components/basic/FilterRadioGroup'
 import FilterCheckboxGroup from '@/components/basic/FilterCheckboxGroup'
+import AppButton from '@/components/basic/AppButton'
+
 export default {
   components: {
-    AppButton,
     AppBlockTitle,
     FilterRadioGroup,
-    FilterCheckboxGroup
+    FilterCheckboxGroup,
+    AppButton,
   },
   data () {
     return {

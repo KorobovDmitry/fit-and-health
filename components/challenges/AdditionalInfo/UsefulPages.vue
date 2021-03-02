@@ -3,10 +3,9 @@
       <app-block-title>Полезные страницы</app-block-title>
 
       <div class="useful-pages__links">
-        <nuxt-link to="/" class="page-link">
+        <nuxt-link to="/challenges/challenges-book" class="page-link">
           <i class="ti-search page-link__icon"></i>
           <p class="page-link__title">Поиск<br />вызовов</p>
-          <!-- <p>Поиск по вызовам с сортировкой по ровню сложности, популятронсти, на кардио, силу, выносливость, гибкость</p> -->
         </nuxt-link>
         <nuxt-link to="/" class="page-link">
           <i class="ti-layout page-link__icon"></i>
