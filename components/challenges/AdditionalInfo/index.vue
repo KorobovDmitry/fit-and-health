@@ -1,12 +1,12 @@
 <template>
   <div class="additional-info">
-    <users-raiting />
     <useful-pages />
+    <users-raiting />
   </div>
 </template>
 
 <script>
-import UsersRaiting from '@/components/challenges/AdditionalInfo/UsersRaiting'
+import UsersRaiting from '@/components/challenges/AdditionalInfo/UsersRaiting/index'
 import UsefulPages from '@/components/challenges/AdditionalInfo/UsefulPages'
 
 export default {

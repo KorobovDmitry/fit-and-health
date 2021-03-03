@@ -7,21 +7,17 @@
           <i class="ti-search page-link__icon"></i>
           <p class="page-link__title">Поиск<br />вызовов</p>
         </nuxt-link>
-        <nuxt-link to="/" class="page-link">
+        <nuxt-link to="/challenges/challenges-constructor" class="page-link">
           <i class="ti-layout page-link__icon"></i>
           <p class="page-link__title">Конструктор<br />вызовов</p>
         </nuxt-link>
 
-        <nuxt-link to="/" class="page-link">
+        <nuxt-link to="/challenges/accepted-challenges" class="page-link">
           <i class="ti-pencil-alt page-link__icon"></i>
           <p class="page-link__title">Принятые вызовы</p>
         </nuxt-link>
 
-        <nuxt-link to="/" class="page-link">
-          <i class="ti-heart page-link__icon"></i>
-          <p class="page-link__title">Мои вызовы</p>
-        </nuxt-link>
-        <nuxt-link to="/" class="page-link">
+        <nuxt-link to="/challenges/challenges-statistic" class="page-link">
           <i class="ti-bar-chart page-link__icon"></i>
           <p class="page-link__title">Статистика</p>
         </nuxt-link>
@@ -44,6 +40,7 @@ export default {
 
 .useful-pages {
   // border: 1px solid red;
+  margin-bottom: 20px;
   .useful-pages__links {
     display: flex;
     flex-wrap: wrap;
@@ -86,11 +83,6 @@ export default {
       width: 100%;
     }
     .page-link:nth-child(4) {
-      margin-right: 2.5px;
-      margin-bottom: 0;
-    }
-    .page-link:nth-child(5) {
-      margin-left: 2.5px;
       margin-bottom: 0;
     }
     .page-link:hover {
