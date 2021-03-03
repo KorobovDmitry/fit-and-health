@@ -16,11 +16,6 @@
           <i class="ti-pencil-alt page-link__icon"></i>
           <p class="page-link__title">Принятые вызовы</p>
         </nuxt-link>
-
-        <nuxt-link to="/challenges/challenges-statistic" class="page-link">
-          <i class="ti-bar-chart page-link__icon"></i>
-          <p class="page-link__title">Статистика</p>
-        </nuxt-link>
       </div>
     </div>
 </template>

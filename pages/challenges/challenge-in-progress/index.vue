@@ -1,7 +1,7 @@
 <template>
-  <div class="challenges-statistic-page">
-    <app-page-title>Статистика по вызовам</app-page-title>
-    <div class="challenges-statistic-page__content">
+  <div class="challenges-in-progress-page">
+    <app-page-title>Выполнение вызова</app-page-title>
+    <div class="challenges-in-progress-page__content">
       content
     </div>
   </div>
@@ -23,14 +23,14 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/vars.scss';
 
-.challenges-statistic-page {
+.challenges-in-progress-page {
   // border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-left: 80px;
   padding: 40px;
-  .challenges-statistic-page__content {
+  .challenges-in-progress-page__content {
     // border: 1px solid red;
     display: flex;
     width: 100%;

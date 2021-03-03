@@ -135,9 +135,24 @@ export default {
               icon: 'ti-cup'
             },
             {
-              title: 'Книга вызывов',
+              title: 'Поиск вызывов',
               link: '/challenges/challenges-book',
               icon: 'ti-book'
+            },
+            {
+              title: 'Конструктор вызывов',
+              link: '/challenges/challenges-constructor',
+              icon: 'ti-layout'
+            },
+            {
+              title: 'Принятые вызовы',
+              link: '/challenges/accepted-challenges',
+              icon: 'ti-pencil-alt'
+            },
+            {
+              title: 'Статистика по вызовам',
+              link: '/challenges/challenge-in-progress',
+              icon: 'ti-bolt'
             },
           ]
         },
