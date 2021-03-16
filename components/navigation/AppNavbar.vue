@@ -252,10 +252,11 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80px;
+  width: 70px;
   height: 100%;
   background: $white;
-  border-right: 1px solid $blockBorder;
+  // border-right: 1px solid $blockBorder;
+  box-shadow: 0 0 20px 2px rgba(0,0,0,.2);
   z-index: 9000;
   .navbar__logo {
     // border: 1px solid red;
@@ -275,21 +276,28 @@ export default {
   .navbar__page-links-group {
     display: flex;
     flex-direction: column;
-    border: 2px solid transparent;
-    border-radius: 8px;
+    // margin-bottom: 10px;
+    padding: 5px;
+    // background: rgba(0,0,0,.05);
+    // border: 2px solid transparent;
+    border-radius: 35px;
     transition: $tr-04;
     height: 0;
     overflow: hidden;
     .navbar__page-link {
       // border: 1px solid red;
       position: relative;
+      margin-bottom: 10px;
       padding: 10px;
+      width: 40px;
+      min-height: 40px;
       text-align: center;
       text-decoration: none;
-      color: $black;
-      font-size: 24px;
+      color: rgba(0,0,0,.5);
+      font-size: 18px;
       border-left: 2px solid transparent;
       border-right: 2px solid transparent;
+      border-radius: 50%;
       transition: $tr-02;
     }
     .navbar__page-link:last-child {
@@ -299,16 +307,18 @@ export default {
       color: $green;
     }
     .navbar__page-link--active {
-      color: $white;
-      background: $green;
+      color: $green;
+      background: $white;
+      box-shadow: 0 0 5px 1px rgba(0,0,0,.2);
     }
-    .navbar__page-link--active:hover {
-      color: $white;
-    }
+    // .navbar__page-link--active:hover {
+    //   color: $white;
+    // }
   }
 
   .navbar__page-links-group--active {
-    border: 2px solid $green;
+    // border: 2px solid $green;
+    background: rgba(0,0,0,.05);
   }
   
   .logout {
