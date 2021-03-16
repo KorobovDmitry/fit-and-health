@@ -21,7 +21,7 @@
         :title="item.title"
         @click.native="updateGroupHeight($event)"
       >
-        <i :class="item.icon"></i>
+        <i class="page-link__icon" :class="item.icon"></i>
       </nuxt-link>
     </div>
 
@@ -263,7 +263,6 @@ export default {
   box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
   z-index: 9000;
   .navbar__logo {
-    // border: 1px solid red;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -286,20 +285,22 @@ export default {
     height: 0;
     overflow: hidden;
     .navbar__page-link {
-      // border: 1px solid red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
-      // margin-bottom: 10px;
       padding: 10px;
       width: 40px;
       min-height: 40px;
       text-align: center;
       text-decoration: none;
-      color: rgba(0,0,0,.5);
-      font-size: 18px;
-      // border-left: 2px solid transparent;
-      // border-right: 2px solid transparent;
       border-radius: 50%;
       transition: $tr-02;
+      .page-link__icon {
+        color: rgba(0,0,0,.5);
+        font-size: 18px;
+        transition: $tr-02;
+      }
     }
     .navbar__page-link:last-child {
       margin-bottom: 0;
@@ -308,9 +309,11 @@ export default {
       color: $green;
     }
     .navbar__page-link--active {
-      color: $green;
       background: $white;
       box-shadow: 0 0 5px 1px rgba(0,0,0,.2);
+      .page-link__icon {
+        color: $green;
+      }
     }
   }
 
