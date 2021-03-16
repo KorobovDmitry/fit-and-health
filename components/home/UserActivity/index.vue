@@ -44,7 +44,7 @@ export default {
 
 .user-activity {
   flex: 1 1 auto;
-  margin-left: 40px;
+  margin: 0 40px;
   .user-activity__news-visibility {
     display: flex;
     align-items: center;

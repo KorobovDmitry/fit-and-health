@@ -9,7 +9,6 @@
       :key="index"
       class="navbar__page-links-group"
       :class="[{'navbar__page-links-group--active': linkGroup.active}]"
-      @click="updateGroupHeight($event)"
     >
       <nuxt-link
         v-for="(item, index) in linkGroup.links"
@@ -18,10 +17,12 @@
         exact
         no-prefetch
         class="navbar__page-link"
-        :class="item.icon"
         active-class="navbar__page-link--active"
         :title="item.title"
-      ></nuxt-link>
+        @click.native="updateGroupHeight($event)"
+      >
+        <i :class="item.icon"></i>
+      </nuxt-link>
     </div>
 
     <i
@@ -206,12 +207,15 @@ export default {
     updateGroupHeight ($event) {
       const LinksGroups = document.querySelectorAll('.navbar__page-links-group')
       const LinkHeight = document.querySelector('.navbar__page-link').getBoundingClientRect().height
+
       for (let i = 0; i < LinksGroups.length; i++) {
-        LinksGroups[i].style.height = LinkHeight + 4 + 'px'
+        LinksGroups[i].style.height = LinkHeight + 'px'
       }
 
-      const ActiveLinksGroupLinks = $event.target.parentElement.querySelectorAll('.navbar__page-link')
-      $event.target.parentElement.style.height = LinkHeight * ActiveLinksGroupLinks.length + 4 + 'px'
+      const TargetLinksGroup = $event.target.closest('.navbar__page-links-group')
+      const TargetLinksGroupChildElements = TargetLinksGroup.querySelectorAll('.navbar__page-link')
+
+      TargetLinksGroup.style.height = TargetLinksGroupChildElements.length * LinkHeight + 10 + 'px'
     },
     logout () {
       this.$store.dispatch('auth/logout')
@@ -229,13 +233,14 @@ export default {
     this.$nextTick(function () {
       const LinksGroups = document.querySelectorAll('.navbar__page-links-group')
       const LinkHeight = document.querySelector('.navbar__page-link').getBoundingClientRect().height
+      
       for (let i = 0; i < LinksGroups.length; i++) {
-        LinksGroups[i].style.height = LinkHeight + 4 + 'px'
+        LinksGroups[i].style.height = LinkHeight + 'px'
       }
 
-      const ActiveLinksGroup = document.querySelector('.navbar__page-links-group--active')
-      const ActiveLinksGroupLinks = ActiveLinksGroup.querySelectorAll('.navbar__page-link')
-      ActiveLinksGroup.style.height = LinkHeight * ActiveLinksGroupLinks.length + 4 + 'px'
+      const TargetLinksGroup = document.querySelector('.navbar__page-links-group--active')
+      const TargetLinksGroupChildElements = TargetLinksGroup.querySelectorAll('.navbar__page-link')
+      TargetLinksGroup.style.height = TargetLinksGroupChildElements.length * LinkHeight + 10 + 'px'
     })
   }
 }
@@ -252,10 +257,10 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80px;
+  width: 70px;
   height: 100%;
   background: $white;
-  border-right: 1px solid $blockBorder;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
   z-index: 9000;
   .navbar__logo {
     // border: 1px solid red;
@@ -264,7 +269,7 @@ export default {
     justify-content: center;
     margin-bottom: 20px;
     width: 100%;
-    height: 60px;
+    min-height: 60px;
     background: $green;
     a {
       color: $white;
@@ -275,21 +280,25 @@ export default {
   .navbar__page-links-group {
     display: flex;
     flex-direction: column;
-    border: 2px solid transparent;
-    border-radius: 8px;
+    padding: 5px;
+    border-radius: 35px;
     transition: $tr-04;
     height: 0;
     overflow: hidden;
     .navbar__page-link {
       // border: 1px solid red;
       position: relative;
+      // margin-bottom: 10px;
       padding: 10px;
+      width: 40px;
+      min-height: 40px;
       text-align: center;
       text-decoration: none;
-      color: $black;
-      font-size: 24px;
-      border-left: 2px solid transparent;
-      border-right: 2px solid transparent;
+      color: rgba(0,0,0,.5);
+      font-size: 18px;
+      // border-left: 2px solid transparent;
+      // border-right: 2px solid transparent;
+      border-radius: 50%;
       transition: $tr-02;
     }
     .navbar__page-link:last-child {
@@ -299,24 +308,22 @@ export default {
       color: $green;
     }
     .navbar__page-link--active {
-      color: $white;
-      background: $green;
-    }
-    .navbar__page-link--active:hover {
-      color: $white;
+      color: $green;
+      background: $white;
+      box-shadow: 0 0 5px 1px rgba(0,0,0,.2);
     }
   }
 
   .navbar__page-links-group--active {
-    border: 2px solid $green;
+    background: rgba(0,0,0,.05);
   }
   
   .logout {
     margin: auto 0 10px 0;
     padding: 10px;
     transform: rotate(90deg);
-    color: $black;
-    font-size: 24px;
+    color: rgba(0,0,0,.5);
+    font-size: 18px;
   }
 }
 
