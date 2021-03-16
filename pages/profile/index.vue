@@ -65,7 +65,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 80px;
+  margin-left: 70px;
   padding: 40px;
   .user-page__content {
     // border: 1px solid red;

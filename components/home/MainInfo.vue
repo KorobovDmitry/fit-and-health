@@ -80,7 +80,7 @@ export default {
 .main-info {
   display: flex;
   flex-direction: column;
-  margin-left: 40px;
+  // margin-left: 40px;
   min-width: 400px;
   max-width: 400px;
   .trainings-stats {
